@@ -2,6 +2,9 @@
 Garmin Connect Overrides
 =========================================================================================
 
+2020/30/01 v0.03
+- Identification (incl. the version number) of GCOverrides added to the GC header
+
 2020/30/01 v0.02
 - overrides for the zoomed graphs on Activity pages, adding missing labels for overlays
 
