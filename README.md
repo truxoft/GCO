@@ -1,5 +1,5 @@
 # GCOverrides
-##### Garmin Connect Overrides - local bugfixes and enhancements of Garmin Connect Web 
+##### Garmin Connect Overrides - local bugfixes and enhancements of [Garmin Connect Web](https://connect.garmin.com/) 
 The Chrome browser allows the user to override the look, the behaviour, and even (to certain extent) the functionality of a remote website. GCOverrides take the advantage of this Chrome feature, and try to fix some known bugs of the Garmin Connect Web application, adding also some supplementary functionality not available in the original version.
 
 *The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect are being presented to the local user of the given Chrome instance.*
@@ -47,5 +47,5 @@ the Overrides in Chrome Dev Tools (on the same place you enabled them during the
 GCOverrides in no way impact the data on your device, or in your Garin Connect account. The overrides, being installed on your computer, and having open source, are safe, and in no way expose your data. The overrides do not send any data to any party. They do not use any cookies, or any local or remote storage of data. No personal data is being collected, and no registrations or emails are needed for the usage. GCOverrides do **not** use your user name, your email address, your password, or any other personal data. We never contact users of GCOverrides, except of informing them through the GitHub, or by posting informtaion on community forums such as https://forums.garmin.com/. We never send emails to GCOverrides users, and we do not have their addresses, unless they contact us.
 
 ## Support
-This is a volunteer project, and we may not be able to cope with numerous support request, so before trying to contact us, please make sure you are using the latest version. Also please try searching for answers in the FAQ section of the latest version of this README file, and in the thread Introducing GCOverrides on the Garmin Connect Web Forum.
+This is a volunteer project, and we may not be able to cope with numerous support request, so before trying to contact us, please make sure you are using the latest version. Also please try searching for answers in the FAQ section of the latest version of this README file, and in the thread **Introducing GCOverrides** on the [Garmin Connect Web Forum](https://forums.garmin.com/apps-software/mobile-apps-web/f/garmin-connect-web).
 
