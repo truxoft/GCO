@@ -40,9 +40,14 @@ in future, if the functionality of the original website no more requires the ove
 Garmin, Garmin Connect, and any other registered trademarks or copyrighted terms are the property of their owners, and all rights may be reserved. 
 We are in **no affiliation with Garmin** (except of owning Garmin devices, and being regular users of Garmin Connect). By installing the overrides you may be bypassing some of the default functionality of the original website. Although we try avoding any conflicts, and try preserving the original functionality as much as possible, the overrides may, in some exceptional cases, cause inexpected or undocumented behaviour. When in doubts, you can disable the overrides instantly by simply unchecking the Overrides in Chrome Dev Tools (on the same place you enabled them during the installation), or by deleting the folder **GCO-master**. 
 
+GCOverrides are released under the [GPL v3 license](https://github.com/truxoft/GCO/blob/master/LICENSE)
+
 ## Safety and Privacy 
 GCOverrides in no way impact the data on your device, or in your Garmin Connect account. The overrides, being installed on your computer, and having open source, are safe, and in no way expose your data. The overrides do not send any data to any party. They do not use any cookies, or any local or remote storage of data. No personal data is being collected, and no registrations, paswords, personal data, or emails are needed for the usage. GCOverrides do **not** use your user name, your email address, your password, or any other personal data. We never contact users of GCOverrides, except of informing them through [GitHub](https://github.com/truxoft/GCO), or by posting informtaion on community forums such as https://forums.garmin.com/. We never send emails to GCOverrides users, and we do not have their addresses, unless they contact us.
 
 ## Support
 This is a volunteer project, and we may not be able to cope with numerous support request, so before trying to contact us, please make sure you are using the latest version. Also please try searching for answers in the FAQ section of the latest version of this README file, and in the thread **Introducing GCOverrides** on the [Garmin Connect Web Forum](https://forums.garmin.com/apps-software/mobile-apps-web/f/garmin-connect-web).
+
+## Author
+GCOverrides were first created on 30th January 2020 by Ivo Truxa and included the first two overrides of Garmin Connect
 
