@@ -49,5 +49,5 @@ GCOverrides in no way impact the data on your device, or in your Garmin Connect 
 This is a volunteer project, and we may not be able to cope with numerous support request, so before trying to contact us, please make sure you are using the latest version. Also please try searching for answers in the FAQ section of the latest version of this README file, and in the thread **Introducing GCOverrides** on the [Garmin Connect Web Forum](https://forums.garmin.com/apps-software/mobile-apps-web/f/garmin-connect-web).
 
 ## Author
-GCOverrides were first created on 30th January 2020 by Ivo Truxa and included the first two overrides of Garmin Connect
+GCOverrides were first created on **30th January 2020** by **Ivo Truxa** and included the first two overrides of Garmin Connect
 
