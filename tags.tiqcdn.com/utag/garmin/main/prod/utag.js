@@ -87,15 +87,12 @@ if(utag.cfg.readywait||utag.cfg.waittimer){utag.loader.EV('','ready',function(a)
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-// Note: using setInterval() is a temporary quick & dirty hack; 
-//       properly it should be done by overriding events or classes
-
 var gcoVer = 0.05;
 var gcoVerTm = '2020/01/31';
 
 // === GCOverrides SETTINGS ============================================
-var gcoSleepH = 5;      // enter the number of hours (without minutes) of your sleep goal
-var gcoSleepM = 40;     // enter the remaining number of minutes of your sleep goal
+var gcoSleepH = 8;      // enter the number of hours (without minutes) of your sleep goal
+var gcoSleepM = 0;      // enter the remaining number of minutes of your sleep goal
 // === end of GCO settings =============================================
 
 
@@ -110,11 +107,15 @@ if (gcControls && gcControls[0])
 // ---------------------------------------------------------------------
 // some GCO functions need to be re-applied periodically
 // ---------------------------------------------------------------------
+// Note: using setInterval() is a temporary quick & dirty hack; 
+//       properly it should be done by overriding events or classes
+//       in some cases one-time call in document.onload would be sufficient 
 setInterval(function(){
     gcoWeight6m();
     gcoActivityOverlays();
     gcoFloorsPerMin(); 
     gcoSleepGoalFix();
+    gcoKCalToKJoule();
 },1000);
 
 
@@ -192,6 +193,29 @@ function gcoSleepGoalFix() {
         }
     }
 } 
+
+
+// ---------------------------------------------------------------------
+// Converting kCal values to kJoules (SI units)
+// ---------------------------------------------------------------------
+var kcalConverted = false;
+function gcoKCalToKJoule() {
+/*    
+    var gcCalTitle = document.getElementsByClassName("DailySummaryPageCardTitle_cardTitle__2Hwgo");
+    if (gcCalTitle && gcCalTitle[0])
+        gcCalTitle[0].innerText = "Energy Burned [kJ]";
+    var gcFloorClimb = document.getElementById("react-activitySmallStats");
+    if (gcFloorClimb) {
+        var gcFloorsMin = gcFloorClimb.children[0].children[0].children[3].children[0].children[0];
+        var val = parseFloat(gcFloorsMin.innerText);
+        if (val > 0 && !kcalConverted) {
+            kcalConverted = true;
+            gcFloorsMin.innerText = Math.round(val/0.6)/100; // rounding division by 60 to 2 decimals
+        }
+    }
+*/    
+}
+
 
 // TX end ==============================================================
 
