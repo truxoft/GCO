@@ -2,7 +2,7 @@
 ##### [Garmin Connect Overrides](https://github.com/truxoft/GCO) - local bugfixes and enhancements of [Garmin Connect Web](https://connect.garmin.com/) 
 The Chrome browser allows the user to override the look, the behaviour, and even (to certain extent) the functionality of a remote website. GCOverrides take the advantage of this Chrome feature, and try to fix some known bugs of the Garmin Connect Web application, adding also some supplementary functionality not available in the original version.
 
-*The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect are being presented to the local user of the given Chrome instance.*
+*The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect is being presented to the local user of the given Chrome instance.*
 
 ## Current Features
 * **Weight - 6 Months Report** - brings back the 6 Months report plotting all weight data within the 6 motnhs period (not only monthly averages like the 12 Months report does)
