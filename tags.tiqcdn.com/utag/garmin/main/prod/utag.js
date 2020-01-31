@@ -107,7 +107,9 @@ if (gcControls && gcControls[0])
 setInterval(function(){
     gcoWeight6m();
     gcoActivityOverlays();
+    gcoFloorsPerMin();
 },1000);
+
 
 // ---------------------------------------------------------------------
 // Injecting the missing 6 Months tab on the Weight page
@@ -118,7 +120,7 @@ function gcoWeight6m() {
         aYear.parentElement.insertAdjacentHTML("beforebegin", '<a href="#pane3" data-toggle="tab" id="lastSixMonthsLinkId">6 Months</a>');
     }
 } 
-gcoWeight6m(); 
+
 
 // ---------------------------------------------------------------------
 // Injecting missing overlay labels on zoomed charts of an Activity
@@ -144,23 +146,23 @@ function gcoActivityOverlays() {
         }
     }
 } 
-gcoActivityOverlays();
 
 
 // ---------------------------------------------------------------------
 // Floors per minute need to be divided by 60 to fix the GC bug
 // ---------------------------------------------------------------------
+var floorFixDone = false;
 function gcoFloorsPerMin() {
     var gcFloorClimb = document.getElementById("react-activitySmallStats");
     if (gcFloorClimb) {
         var gcFloorsMin = gcFloorClimb.children[0].children[0].children[3].children[0].children[0];
         var val = parseFloat(gcFloorsMin.innerText);
-        if (val > 0) {
+        if (val > 0 && !floorFixDone) {
+            floorFixDone = true;
             gcFloorsMin.innerText = Math.round(val/0.6)/100; // rounding division by 60 to 2 decimals
         }
     }
 }
-gcoFloorsPerMin();
 
 // TX end ==============================================================
 
