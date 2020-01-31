@@ -27,6 +27,11 @@ For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GC
 1. Verify that the checkbox **Enable Local Overrides** in the bar above the folder name is checked
 1. Close the DevTools or go back to the Chrome browser and load (or reload) the Garmin Connect website. If you see, at the center of the top of the website, a gray label **GCOverrides**, the installation was successfull, and the bugfixes and additional features of GCO shoud be active
 
+## Settings
+Some GCO features allow the user to customize certain parameters. Since the version 0.05, it is for example the sleeping goal. Since GCO has no access to your device, to your disk, or to your GC account settings, the custom settings need to be stored in one of the override files. For editing the parameters, please open the override folder **GCO-master** and navigate to the file **GCO-master\tags.tiqcdn.com\utag\garmin\main\prod\utag.js**. Open the file in a text editor, like for example the Notepad, and search for the string "GCOverrides SETTINGS", or scroll down in the file to that section. You can edit the values within this section to adjust the parameters.
+
+**Important:** Please note that the assignment of the value **must end with a semicolon**! Accidental deleting of the semicolon would prevent the override script from working.
+
 ## Updates
 Updates do **not** happen automatically. When you encounter a problem, or want to use a new functionality, please download and the up-to-date [master.zip](https://github.com/truxoft/GCO/archive/master.zip). Unzip it into the same folder as the older version. Before unzipping the master.zip, please remove the old GCO-master folder. No other operations are needed.
 

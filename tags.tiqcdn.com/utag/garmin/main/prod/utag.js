@@ -90,8 +90,14 @@ if(utag.cfg.readywait||utag.cfg.waittimer){utag.loader.EV('','ready',function(a)
 // Note: using setInterval() is a temporary quick & dirty hack; 
 //       properly it should be done by overriding events or classes
 
-var gcoVer = 0.04;
+var gcoVer = 0.05;
 var gcoVerTm = '2020/01/31';
+
+// === GCOverrides SETTINGS ============================================
+var gcoSleepH = 5;      // enter the number of hours (without minutes) of your sleep goal
+var gcoSleepM = 40;     // enter the remaining number of minutes of your sleep goal
+// === end of GCO settings =============================================
+
 
 // ---------------------------------------------------------------------
 // Identification of GCOverrides
@@ -107,7 +113,8 @@ if (gcControls && gcControls[0])
 setInterval(function(){
     gcoWeight6m();
     gcoActivityOverlays();
-    gcoFloorsPerMin();
+    gcoFloorsPerMin(); 
+    gcoSleepGoalFix();
 },1000);
 
 
@@ -163,6 +170,28 @@ function gcoFloorsPerMin() {
         }
     }
 }
+
+
+// ---------------------------------------------------------------------
+// Adjusting the Sleep Goal
+// ---------------------------------------------------------------------
+function gcoSleepGoalFix() {
+    var gcSleepGoal = document.getElementsByClassName("SleepGauge_secondText__Padqp");
+     
+    if (gcSleepGoal && gcSleepGoal[1]) {
+        gcSleepGoal[1].innerText = parseInt(gcoSleepH) +"h "+ (gcoSleepM? parseInt(gcoSleepM)+"m " : "") +"Goal";
+
+        var gcSleepTm = document.getElementsByClassName("SleepGauge_mainText__1TB0t");
+        if (gcSleepTm && gcSleepTm[0]) {
+            sleepTm = gcSleepTm[0].innerText.match(/\d+/g).map(Number);
+            if (sleepTm[0]>gcoSleepH || sleepTm[0]==gcoSleepH && sleepTm[1]>=gcoSleepM) {
+                var gcGoalMet = document.getElementsByClassName("SleepGauge_goalNotMet__1XU5S");
+                if (gcGoalMet && gcGoalMet[0])
+                    gcGoalMet[0].className = "SleepGauge_goalMet__2fMsJ";
+            }
+        }
+    }
+} 
 
 // TX end ==============================================================
 

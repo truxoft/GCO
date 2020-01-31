@@ -1,8 +1,12 @@
 =========================================================================================
-Garmin Connect Overrides
+GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa 
 =========================================================================================
+CHANGELOG
 
-2020/30/01 v0.04
+2020/31/01 v0.05
+- Added configurable Sleep Goal (see the chapter Setings in README.md for instructions)
+
+2020/31/01 v0.04
 - Minor cosmetic changes and adjustments
 - Added a fix for a GC bug displaying wrong values for Floors Per Minute on the Floor
   Climbing activity pages (added division by 60, and rounding to two decimals)
