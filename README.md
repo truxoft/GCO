@@ -9,7 +9,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 * **Activity Overlays bugfix** - adds missing overlays and their labels on zoomed graphs on the Activity pages
 * **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
 * **Custom Sleep Goal** - the default fixed 8h sleep goal can be now adjusted in the [GCO Settings](#Settings)
-* **Conversion of Calories to kilojoules** - currently only on the Calories In/Out page; needs to be enabled in the [GCO Settings](#Settings)
+* **Conversion of Calories to kilojoules** on the Calories In/Out page and on the Dashboard; needs to be enabled in the [GCO Settings](#Settings)
 * ... more to come
 
 For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GCO/blob/master/CHANGELOG.txt)

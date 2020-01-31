@@ -87,7 +87,7 @@ if(utag.cfg.readywait||utag.cfg.waittimer){utag.loader.EV('','ready',function(a)
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 0.06;
+var gcoVer = 0.07;
 var gcoVerTm = '2020/01/31';
 
 // === GCOverrides SETTINGS ============================================
@@ -180,7 +180,7 @@ function gcoFloorsPerMin() {
 function gcoSleepGoalFix() {
     var gcSleepGoal = document.getElementsByClassName("SleepGauge_secondText__Padqp");
      
-    if (gcSleepGoal && gcSleepGoal[1]) {
+    if (gcSleepGoal && gcSleepGoal[1] && !(gcoSleepH==8 && gcoSleepM==0)) {
         gcSleepGoal[1].innerText = parseInt(gcoSleepH) +"h "+ (gcoSleepM? parseInt(gcoSleepM)+"m " : "") +"Goal";
 
         var gcSleepTm = document.getElementsByClassName("SleepGauge_mainText__1TB0t");
@@ -213,33 +213,56 @@ function gcoKCalToKJoule() {
         }
 
         if (gcCalBox) {
+            // Calories In/Out pane in Daily Summary
             gcoElementsKC2KJ(gcCalBox,"span.DailySummaryCardMainValue_mainValue__1zUSs");
             gcoElementsKC2KJ(gcCalBox,"span.DailySummaryCardDataBlock_dataValue__43rJX");
             gcoElementsKC2KJ(gcCalBox,"div.CaloriesChart_dataBit__3nL6F");
             gcoElementsKC2KJ(gcCalBox,"div.CaloriesInfo_dataBit__wg_D4");
-
-            var goal = gcCalBox.querySelectorAll("div.CaloriesCardContent_centeredText__2MlU7 > h5");
-            if (goal && !goal[0].childNodes[3].textContent.includes('kJ')) {
-                goal[0].childNodes[3].textContent = gcoKC2KJ(goal[0].childNodes[3].textContent) + " kJ";
-                goal[0].style.color = "green";
-            }
-
-            var graph = gcCalBox.querySelectorAll("g.highcharts-axis-labels > text");
-            if (graph) {
-                for (i=0; i<gcCalTitle.length; i++) {
-                    if (graph[i] && !graph[i].textContent.includes('kJ')) {
-                        graph[i].textContent = gcoKC2KJ(graph[i].textContent) + " kJ";
-                        graph[i].style.color = "green";
-                    }
-                }    
-            }
+            gcoGoalKC2KJ(gcCalBox, "div.CaloriesCardContent_centeredText__2MlU7 > h5");
+            gcoLabelsKC2KJ(gcCalBox);
         }
+
+        // Calories In/Out widget
+        var calWidget = document.getElementsByClassName("calories-summary");
+        if (calWidget && calWidget[0]) {
+            gcoElementsKC2KJ(calWidget[0],"div.data-bit");
+            gcoGoalKC2KJ(calWidget[0], "div.chart-goal-overlay > div.data-1 > h5");
+            gcoLabelsKC2KJ(calWidget[0]);
+        }
+
     }
 }
 
 // ---------------------------------------------------------------------
 function gcoKC2KJ(val){
     return Math.round(4.184 * parseInt(val.replace(",","").replace(".","")));
+}
+
+// ---------------------------------------------------------------------
+function gcoLabelsKC2KJ(container) {
+    var graph = container.querySelectorAll("g.highcharts-axis-labels > text");
+    if (graph) {
+        for (i=0; i<graph.length; i++) {
+            if (graph[i] && !graph[i].textContent.includes('kJ')) {
+                graph[i].textContent = gcoKC2KJ(graph[i].textContent) + " kJ";
+            }
+        }    
+    }
+}
+
+// ---------------------------------------------------------------------
+function gcoGoalKC2KJ(rootObj, elemType) {
+    var goal = rootObj.querySelectorAll(elemType);
+    if (goal && goal[0].childNodes[3] && !goal[0].childNodes[3].textContent.includes('kJ')) {
+        goal[0].childNodes[3].textContent = gcoKC2KJ(goal[0].childNodes[3].textContent) + " kJ";
+        goal[0].style.color = "green";
+    } else if (goal && goal[0].childNodes[0].textContent.includes("%") && !goal[0].childNodes[0].textContent.includes('kJ')) {
+        var txt = goal[0].childNodes[0].textContent.split(" ");
+        var val = txt[2];
+        txt.pop();
+        goal[0].childNodes[0].textContent = txt.join(" ") + " " + gcoKC2KJ(val) + " kJ";
+        goal[0].style.color = "green";
+    }
 }
 
 // ---------------------------------------------------------------------
