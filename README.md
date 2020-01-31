@@ -15,7 +15,7 @@ For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GC
 * **Garmin Connect account** - typically a Garmin Connect user also owns a Garmin device (usually a smart watch), though there are people using GC without owning a Garmin device, importing data from devices of other brands.
 * **Chrome Browser** - you need to own a recent version of the Chrome browser, supporting the overlays (available since ~2018)
 
-## Instalation
+## Installation
 1. Download the [master.zip](https://github.com/truxoft/GCO/archive/master.zip)
 1. Unzip it into your Documents folder, on the desktop, or into another location of your choice
 1. In Chrome, hit the key combination **Ctrl+Shift+i** (on Windows) to launch the **DevTools**, or do so through the Chrome menu
