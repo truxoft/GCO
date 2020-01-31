@@ -87,17 +87,27 @@ if(utag.cfg.readywait||utag.cfg.waittimer){utag.loader.EV('','ready',function(a)
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-// Note: using setInterval is a temporary quick & dirty hack; 
+// Note: using setInterval() is a temporary quick & dirty hack; 
 //       properly it should be done by overriding events or classes
-var gcoVer = 0.03;
-var gcoVerTm = '2020/01/30';
+
+var gcoVer = 0.04;
+var gcoVerTm = '2020/01/31';
 
 // ---------------------------------------------------------------------
 // Identification of GCOverrides
 // ---------------------------------------------------------------------
 var gcControls = document.getElementsByClassName("header-controls");
 if (gcControls && gcControls[0])
-    gcControls[0].insertAdjacentHTML("afterend", '<span style="color:#aaa; font-size:14pt;">GCOverrides <span style="font-size:8pt;">v'+gcoVer+'</span></span>');
+    gcControls[0].insertAdjacentHTML("afterend", '<span style="color:#ccc; font-size:12pt;">GCOverrides <span style="font-size:7pt;">v'+gcoVer+'</span></span>');
+
+
+// ---------------------------------------------------------------------
+// some GCO functions need to be re-applied periodically
+// ---------------------------------------------------------------------
+setInterval(function(){
+    gcoWeight6m();
+    gcoActivityOverlays();
+},1000);
 
 // ---------------------------------------------------------------------
 // Injecting the missing 6 Months tab on the Weight page
@@ -109,7 +119,6 @@ function gcoWeight6m() {
     }
 } 
 gcoWeight6m(); 
-setInterval(gcoWeight6m,1000);
 
 // ---------------------------------------------------------------------
 // Injecting missing overlay labels on zoomed charts of an Activity
@@ -136,7 +145,22 @@ function gcoActivityOverlays() {
     }
 } 
 gcoActivityOverlays();
-setInterval(gcoActivityOverlays,1000);
+
+
+// ---------------------------------------------------------------------
+// Floors per minute need to be divided by 60 to fix the GC bug
+// ---------------------------------------------------------------------
+function gcoFloorsPerMin() {
+    var gcFloorClimb = document.getElementById("react-activitySmallStats");
+    if (gcFloorClimb) {
+        var gcFloorsMin = gcFloorClimb.children[0].children[0].children[3].children[0].children[0];
+        var val = parseFloat(gcFloorsMin.innerText);
+        if (val > 0) {
+            gcFloorsMin.innerText = Math.round(val/0.6)/100; // rounding division by 60 to 2 decimals
+        }
+    }
+}
+gcoFloorsPerMin();
 
 // TX end ==============================================================
 

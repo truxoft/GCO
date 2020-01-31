@@ -7,6 +7,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 ## Current Features
 * **Weight - 6 Months Report** - brings back the 6 Months report plotting all weight data within the 6 motnhs period (not only monthly averages like the 12 Months report does)
 * **Activity Overlays bugfix** - adds missing overlays and their labels on zoomed graphs on the Activity pages
+* **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
 * ... more to come
 
 For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GCO/blob/master/CHANGELOG.txt)

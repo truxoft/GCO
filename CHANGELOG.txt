@@ -2,13 +2,18 @@
 Garmin Connect Overrides
 =========================================================================================
 
+2020/30/01 v0.04
+- Minor cosmetic changes and adjustments
+- Added a fix for a GC bug displaying wrong values for Floors Per Minute on the Floor
+  Climbing activity pages (added division by 60, and rounding to two decimals)
+
 2020/30/01 v0.03
 - Identification (incl. the version number) of GCOverrides added to the GC header
 
 2020/30/01 v0.02
-- overrides for the zoomed graphs on Activity pages, adding missing labels for overlays
+- Overrides for the zoomed graphs on Activity pages, adding missing labels for overlays
 
 2020/30/01 v0.01
-- first test with overrides for the Weigt page adding the missing 6 Months tab with
+- First test with overrides for the Weigt page adding the missing 6 Months tab with
   separate nodes for each weight entry (unlike the 12 Months tab with a single node
   per mont)
