@@ -8,6 +8,8 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 * **Weight - 6 Months Report** - brings back the 6 Months report plotting all weight data within the 6 motnhs period (not only monthly averages like the 12 Months report does)
 * **Activity Overlays bugfix** - adds missing overlays and their labels on zoomed graphs on the Activity pages
 * **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
+* **Custom Sleep Goal** - the default fixed 8h sleep goal can be now adjusted in the [GCO Settings](#Settings)
+* **Conversion of Calories to kilojoules** - currently only on the Calories In/Out page; needs to be enabled in the [GCO Settings](#Settings)
 * ... more to come
 
 For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GCO/blob/master/CHANGELOG.txt)
@@ -35,6 +37,8 @@ Some GCO features allow the user to customize certain parameters. Since the vers
 ## Updates
 Updates do **not** happen automatically. When you encounter a problem, or want to use a new functionality, please download and the up-to-date [master.zip](https://github.com/truxoft/GCO/archive/master.zip). Unzip it into the same folder as the older version. Before unzipping the master.zip, please remove the old GCO-master folder. No other operations are needed.
 
+Please note, that after reloading the GCOverride files, your cusomized [GCO Settings](#Settings) will be overwritten and have to be adjusted again!  
+
 ## FAQ
 * currently no questions were asked
 
@@ -48,8 +52,6 @@ Some of the following wishes may be implemented in future, but some may be compl
 * Adjustable Y-axis of activity graphs
 * Exporting/saving graphs as images
 * HR Zones overlays on activity graphs
-* Adjustable sleep goal
-* Converting kCal to kJ
 
 ## Legal Notes
 Garmin, Garmin Connect, and any other registered trademarks or copyrighted terms are the property of their owners, and all rights may be reserved. 

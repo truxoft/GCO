@@ -87,12 +87,13 @@ if(utag.cfg.readywait||utag.cfg.waittimer){utag.loader.EV('','ready',function(a)
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 0.05;
+var gcoVer = 0.06;
 var gcoVerTm = '2020/01/31';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;      // enter the number of hours (without minutes) of your sleep goal
 var gcoSleepM = 0;      // enter the remaining number of minutes of your sleep goal
+var gcoUseKJ = false;   // change false to true to enable the conversion of kcal to kJoules
 // === end of GCO settings =============================================
 
 
@@ -198,24 +199,59 @@ function gcoSleepGoalFix() {
 // ---------------------------------------------------------------------
 // Converting kCal values to kJoules (SI units)
 // ---------------------------------------------------------------------
-var kcalConverted = false;
 function gcoKCalToKJoule() {
-/*    
-    var gcCalTitle = document.getElementsByClassName("DailySummaryPageCardTitle_cardTitle__2Hwgo");
-    if (gcCalTitle && gcCalTitle[0])
-        gcCalTitle[0].innerText = "Energy Burned [kJ]";
-    var gcFloorClimb = document.getElementById("react-activitySmallStats");
-    if (gcFloorClimb) {
-        var gcFloorsMin = gcFloorClimb.children[0].children[0].children[3].children[0].children[0];
-        var val = parseFloat(gcFloorsMin.innerText);
-        if (val > 0 && !kcalConverted) {
-            kcalConverted = true;
-            gcFloorsMin.innerText = Math.round(val/0.6)/100; // rounding division by 60 to 2 decimals
+    if (gcoUseKJ) {
+        var gcCalBox = null;
+        var gcCalTitle = document.getElementsByClassName("DailySummaryPageCardTitle_cardTitle__2Hwgo");
+        if (gcCalTitle) {
+            for (i=0; i<gcCalTitle.length; i++) {
+                if (gcCalTitle[i].innerText.toUpperCase().trim() == 'CALORIES' || gcCalTitle[i].innerText.toUpperCase().includes("KILOJOULES")) {
+                    gcCalTitle[i].innerText = "Energy Burned [kiloJoules]";
+                    gcCalBox = gcCalTitle[i].parentElement.parentElement.parentElement.parentElement;
+                }
+            }
+        }
+
+        if (gcCalBox) {
+            gcoElementsKC2KJ(gcCalBox,"span.DailySummaryCardMainValue_mainValue__1zUSs");
+            gcoElementsKC2KJ(gcCalBox,"span.DailySummaryCardDataBlock_dataValue__43rJX");
+            gcoElementsKC2KJ(gcCalBox,"div.CaloriesChart_dataBit__3nL6F");
+            gcoElementsKC2KJ(gcCalBox,"div.CaloriesInfo_dataBit__wg_D4");
+
+            var goal = gcCalBox.querySelectorAll("div.CaloriesCardContent_centeredText__2MlU7 > h5");
+            if (goal && !goal[0].childNodes[3].textContent.includes('kJ')) {
+                goal[0].childNodes[3].textContent = gcoKC2KJ(goal[0].childNodes[3].textContent) + " kJ";
+                goal[0].style.color = "green";
+            }
+
+            var graph = gcCalBox.querySelectorAll("g.highcharts-axis-labels > text");
+            if (graph) {
+                for (i=0; i<gcCalTitle.length; i++) {
+                    if (graph[i] && !graph[i].textContent.includes('kJ')) {
+                        graph[i].textContent = gcoKC2KJ(graph[i].textContent) + " kJ";
+                        graph[i].style.color = "green";
+                    }
+                }    
+            }
         }
     }
-*/    
 }
 
+// ---------------------------------------------------------------------
+function gcoKC2KJ(val){
+    return Math.round(4.184 * parseInt(val.replace(",","").replace(".","")));
+}
+
+// ---------------------------------------------------------------------
+function gcoElementsKC2KJ(rootObj, elemType) {
+    var calVals = rootObj.querySelectorAll(elemType);
+    for (i=0; i<calVals.length; i++) {
+        if (!calVals[i].innerHTML.includes('kJ')) {
+            calVals[i].innerHTML = gcoKC2KJ(calVals[i].innerText) + '<span style="font-size:50%"> kJ</span>';
+            calVals[i].style.color = "green";
+        }
+    }
+}
 
 // TX end ==============================================================
 
