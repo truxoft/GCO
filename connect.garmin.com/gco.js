@@ -7,7 +7,7 @@ var gcoVerTm = '2020/02/01';
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;      // enter the number of hours (without minutes) of your sleep goal
 var gcoSleepM = 0;      // enter the remaining number of minutes of your sleep goal
-var gcoUseKJ = true;   // change false to true to enable the conversion of kcal to kJoules
+var gcoUseKJ = false;   // change false to true to enable the conversion of kcal to kJoules
 // === end of GCO settings =============================================
 
 var gcoInitDone = false;
