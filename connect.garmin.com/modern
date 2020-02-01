@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="signed-in" lang="en">
+
+
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Garmin Connect</title>
+
+    
+
+
+    
+
+    <link rel="shortcut icon" href="/modern/images/favicon.ico" />
+
+    <!-- Connect Styles -->
+    
+        <link rel="stylesheet" type="text/css" href="/modern/css/dropzone.min.css?bust=4.26.1.0" />
+        <link rel="stylesheet" type="text/css" href="/web-react/styles/global.css?bust=4.26.1.0" />
+    
+    
+
+    <!-- to be modify the google fonts in cdn here -->
+    <!--garmin.cn-->
+
+    
+    
+        <!-- FONTS -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin,cyrillic-ext,greek-ext,vietnamese" />
+    
+
+    
+
+
+    <title>Connect</title>
+</head>
+
+
+<body>
+<a href="connectagent://launch" id="notify-agent" style="display: none" tabindex="-1"><!-- dummy comment --></a>
+
+
+
+<div class="connect-container">
+
+    <nav class="main-nav hide"><!-- main navigation --></nav>
+
+    <div class="react-global-modal"><!-- react-global-modal --></div>
+
+    <div class="main-body">
+        <!-- Header -->
+        
+
+    <header class="header hide">
+        <!-- placeholder -->
+    </header>
+
+    <section class="beta-testers-survey-banner takeover-container">
+        <!-- placeholder -->
+    </section>
+
+
+<div class="main-header"></div>
+
+
+        <!-- Content Container -->
+        
+<div class="content clearfix">
+
+    <script>
+
+        
+
+    
+        window.VIEWER_USERPREFERENCES = JSON.parse("{\"displayName\":\"3c5c21e6-59df-4f95-b7e1-6b9d365510bd\",\"preferredLocale\":\"en\",\"measurementSystem\":\"metric\",\"firstDayOfWeek\":{\"dayId\":3,\"dayName\":\"monday\",\"sortOrder\":3,\"isPossibleFirstDay\":true},\"numberFormat\":\"decimal_period\",\"timeFormat\":{\"formatId\":33,\"formatKey\":\"time_twenty_four_hr\",\"minFraction\":0,\"maxFraction\":0,\"groupingUsed\":false,\"displayFormat\":\"H:mm\"},\"dateFormat\":{\"formatId\":25,\"formatKey\":\"yyyymmdd\",\"minFraction\":0,\"maxFraction\":0,\"groupingUsed\":false,\"displayFormat\":\"EEE, yyyy MMM d\"},\"powerFormat\":{\"formatId\":30,\"formatKey\":\"watt\",\"minFraction\":0,\"maxFraction\":0,\"groupingUsed\":true,\"displayFormat\":null},\"heartRateFormat\":{\"formatId\":21,\"formatKey\":\"bpm\",\"minFraction\":0,\"maxFraction\":0,\"groupingUsed\":false,\"displayFormat\":null},\"timeZone\":\"Europe/Paris\",\"hydrationMeasurementUnit\":\"milliliter\",\"hydrationContainers\":[{\"name\":\"Container 1\",\"volume\":100,\"unit\":\"milliliter\"},{\"name\":\"Container 2\",\"volume\":200,\"unit\":\"milliliter\"},{\"name\":\"Container 3\",\"volume\":500,\"unit\":\"milliliter\"}]}");
+    
+    
+
+
+        
+
+    
+        window.VIEWER_SOCIAL_PROFILE = JSON.parse("{\"id\":373122379,\"profileId\":78799370,\"garminGUID\":\"ec6b3e33-15bb-417b-96a9-93d5153ef9e9\",\"displayName\":\"3c5c21e6-59df-4f95-b7e1-6b9d365510bd\",\"fullName\":\"trux\",\"userName\":\"garmin@truxa.cz\",\"profileImageUrlLarge\":\"https://s3.amazonaws.com/garmin-connect-prod/profile_images/c9bbcbd8-57ae-4b48-b13a-dad22e90e186-78799370.jpg\",\"profileImageUrlMedium\":\"https://s3.amazonaws.com/garmin-connect-prod/profile_images/c4f4d113-4c80-4dcc-8837-327538221962-78799370.jpg\",\"profileImageUrlSmall\":\"https://s3.amazonaws.com/garmin-connect-prod/profile_images/41e7ca1d-b67a-4d77-bd0a-c1172fea8d4d-78799370.jpg\",\"location\":\"Praha, Lyon, Bessan\",\"facebookUrl\":\"\",\"twitterUrl\":\"\",\"personalWebsite\":\"\",\"motivation\":5,\"bio\":null,\"primaryActivity\":null,\"favoriteActivityTypes\":[\"running\",\"cycling\",\"swimming\",\"triathlon\",\"cross_training\",\"walking\",\"other\",\"water_sports\"],\"runningTrainingSpeed\":2.777778,\"cyclingTrainingSpeed\":0.0,\"favoriteCyclingActivityTypes\":[\"road\",\"mountain\",\"touring\"],\"cyclingClassification\":\"recreation\",\"cyclingMaxAvgPower\":0.0,\"swimmingTrainingSpeed\":0.6666667,\"profileVisibility\":\"groups\",\"activityStartVisibility\":\"public\",\"activityMapVisibility\":\"public\",\"courseVisibility\":\"public\",\"activityHeartRateVisibility\":\"public\",\"activityPowerVisibility\":\"public\",\"badgeVisibility\":\"groups\",\"showAge\":true,\"showWeight\":true,\"showHeight\":true,\"showWeightClass\":true,\"showAgeRange\":false,\"showGender\":true,\"showActivityClass\":false,\"showVO2Max\":false,\"showPersonalRecords\":true,\"showLast12Months\":true,\"showLifetimeTotals\":true,\"showUpcomingEvents\":false,\"showRecentFavorites\":false,\"showRecentDevice\":true,\"showRecentGear\":false,\"showBadges\":true,\"otherActivity\":\"UW Rugby\",\"otherPrimaryActivity\":null,\"otherMotivation\":null,\"userRoles\":[\"ROLE_CONNECTUSER\",\"ROLE_FITNESS_USER\",\"ROLE_WELLNESS_USER\",\"ROLE_OUTDOOR_USER\"],\"nameApproved\":true,\"userProfileFullName\":\"trux\",\"makeGolfScorecardsPrivate\":true,\"allowGolfLiveScoring\":false,\"allowGolfScoringByConnections\":true,\"userLevel\":4,\"userPoint\":218,\"levelUpdateDate\":\"2019-12-29T00:05:29.0\",\"levelIsViewed\":true,\"levelPointThreshold\":300,\"userPro\":false}");
+    
+    
+
+
+        
+
+    
+        window.VIEWER_DASHBOARDS = JSON.parse("[{\"dashboardId\":44209852,\"ownerId\":78799370,\"dashboardTitle\":\"\",\"dashboardTitleKey\":\"wellness_dashboard\",\"dashboardOrder\":0},{\"dashboardId\":44209853,\"ownerId\":78799370,\"dashboardTitle\":\"\",\"dashboardTitleKey\":\"fitness_dashboard\",\"dashboardOrder\":1},{\"dashboardId\":45325095,\"ownerId\":78799370,\"dashboardTitle\":\"Groups\",\"dashboardTitleKey\":\"\",\"dashboardOrder\":2}]");
+    
+    
+
+
+        
+
+    
+        window.appConfig = JSON.parse("{\"propertyFiles\":[\"/main/js/properties/main_container/main_container\",\"/main/js/properties/widgets/widgets\"]}");
+    
+    
+
+
+        
+
+    
+        window.queueNotificationTimeout = 60000;
+    
+    
+
+
+        
+
+    
+        window.queuePollRate = 5000;
+    
+    
+
+
+        
+
+    
+        window.USER_MIGRATED = false;
+    
+    
+
+
+        
+        
+
+    
+    
+        window.ERROR_VIEW = null;
+    
+
+
+        
+        
+
+    
+    
+        window.USER_PROFILE = null;
+    
+
+
+        window.viewerIsAuthenticated = true;
+
+        window.SYSTEM_TIME_GMT = 1580564773068;
+        window.ENABLE_ADRUM = false;
+        window.SESSION_LENGTH = 2700 * 1000;
+        window.GAUTH_HOST = 'https://sso.garmin.com/sso';
+        window.GARMIN_APP_URL = 'https://apps.garmin.com/connect?locale={locale}';
+        window.WEB_TOKEN = null !== null ? "null" : "";
+        window.URL_BUST_VALUE = '4.26.1.0';
+        
+    </script>
+
+    <script src="/web-react/static/js/vendor.js?bust=4.26.1.0"></script>
+    <script src="/web-react/static/js/backbone-lib.js?bust=4.26.1.0"></script>
+    <script src="/web-react/static/js/bundle.js?bust=4.26.1.0"></script>
+</div>
+
+        <!-- END .content -->
+
+        <!-- Footer -->
+        <div class="main-footer"></div>
+        <!-- END .footer -->
+        <p style="display: none;" id="garmin-connect-version">4.26.1.0</p>
+    </div>
+
+    <!-- END .container -->
+</div>
+
+<style>
+    .privacy-overlay {
+        position: fixed; /* Sit on top of the page content */
+        width: 100%; /* Full width (cover the whole page) */
+        height: 100%; /* Full height (cover the whole page) */
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
+    }
+</style>
+
+<div id="overlay" class="privacy-overlay">
+</div>
+
+<script src="/gco.js"></script>
+</body>
+
+
+
+</html>

@@ -3,28 +3,36 @@ GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa
 =========================================================================================
 CHANGELOG
 
-2020/31/01 v0.07
+2020/02/01 v1.01
+- GCOverrides moved from the original home of utag.js to an independent file gco.js 
+  gco.js is called directly from the main the HTML page 'modern' (also overriden)
+
+-----------------------------------------------------------------------------------------
+2020/02/01 v0.08
+- added a fix for missing titles on cycling activity charts
+
+2020/01/31 v0.07
 - kcal » kJ conversion added to the Dashboard, too
 - minor changes and improvements
 
-2020/31/01 v0.06
+2020/01/31 v0.06
 - Added conversion of Calories (kCal) to kilojoules (kJ) on the Calories In/Out page
 
-2020/31/01 v0.05
+2020/01/31 v0.05
 - Added configurable Sleep Goal (see the chapter Setings in README.md for instructions)
 
-2020/31/01 v0.04
+2020/01/31 v0.04
 - Minor cosmetic changes and adjustments
 - Added a fix for a GC bug displaying wrong values for Floors Per Minute on the Floor
   Climbing activity pages (added division by 60, and rounding to two decimals)
 
-2020/30/01 v0.03
+2020/00/30 v0.03
 - Identification (incl. the version number) of GCOverrides added to the GC header
 
-2020/30/01 v0.02
+2020/01/30 v0.02
 - Overrides for the zoomed graphs on Activity pages, adding missing labels for overlays
 
-2020/30/01 v0.01
+2020/01/30 v0.01
 - First test with overrides for the Weigt page adding the missing 6 Months tab with
   separate nodes for each weight entry (unlike the 12 Months tab with a single node
   per mont)
