@@ -4,7 +4,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 
 *The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect is being presented to the local user of the given Chrome instance.*
 
-## Current Features (v1.01)
+## Current Features (v1.02)
 * **Weight - 6 Months Report** - brings back the 6 Months report plotting all weight data within the 6 motnhs period (not only monthly averages like the 12 Months report does)
 * **Activity Overlays bugfix** - adds missing overlays, their labels and titles, on zoomed graphs on the Activity pages
 * **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
@@ -30,7 +30,7 @@ For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GC
 1. Close the DevTools or go back to the Chrome browser and load (or reload) the Garmin Connect website. If you see, at the center of the top of the website, a gray label **GCOverrides**, the installation was successfull, and the bugfixes and additional features of GCO shoud be active
 
 ## Settings
-Some GCO features allow the user to customize certain parameters. Since the version 0.05, it is for example the sleeping goal. Since GCO has no access to your device, to your disk, or to your GC account settings, the custom settings need to be stored in one of the override files. For editing the parameters, please open the override folder **GCO-master** and navigate to the file **GCO-master\connect.garmin.com\gco.js**. Open the file in a text editor, like for example the Notepad, in the section "GCOverrides SETTINGS", edit the values to adjust the parameters.
+Some GCO features allow the user to customize certain parameters. Since the version 0.05, it is for example the sleeping goal. Since GCO has no access to your device, to your disk, or to your GC account settings, the custom settings need to be stored in one of the override files. For editing the parameters, please open the override folder **GCO-master** and navigate to the file **GCO-master\sso.garmin.com\sso\js\gauth-widget.js**. Open the file in a text editor, like for example the Notepad, search the section "GCOverrides SETTINGS", and edit the values to adjust the parameters.
 
 **Important:** Please note that the assignment of the value **must end with a semicolon**! Accidental deleting of the semicolon would prevent the override script from working.
 

@@ -3,6 +3,10 @@ GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa
 =========================================================================================
 CHANGELOG
 
+2020/02/01 v1.02
+- yet another home location for the override scripts, since the the root html page 
+  changes, and it would be necessary having to override and maintain too many of them
+
 2020/02/01 v1.01
 - GCOverrides moved from the original home of utag.js to an independent file gco.js 
   gco.js is called directly from the main the HTML page 'modern' (also overriden)
