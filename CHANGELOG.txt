@@ -3,6 +3,10 @@ GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa
 =========================================================================================
 CHANGELOG
 
+2020/02/09 v1.03
+- Calories conversion function rewritten to work with the frequently changing class names
+- Sleep Goal function rewritten to work with the frequently changing class names
+
 2020/02/01 v1.02
 - yet another home location for the override scripts, since the the root html page 
   changes, and it would be necessary having to override and maintain too many of them

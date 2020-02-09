@@ -3,13 +3,13 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.02;
-var gcoVerTm = '2020/02/01';
+var gcoVer = 1.03;
+var gcoVerTm = '2020/02/09';
 
 // === GCOverrides SETTINGS ============================================
-var gcoSleepH = 8;      // enter the number of hours (without minutes) of your sleep goal
+var gcoSleepH = 7;      // enter the number of hours (without minutes) of your sleep goal
 var gcoSleepM = 0;      // enter the remaining number of minutes of your sleep goal
-var gcoUseKJ = false;   // change false to true to enable the conversion of kcal to kJoules
+var gcoUseKJ = true;   // change false to true to enable the conversion of kcal to kJoules
 // === end of GCO settings =============================================
 
 var gcoInitDone = false;
@@ -115,18 +115,20 @@ function gcoFloorsPerMin() {
 // Adjusting the Sleep Goal
 // ---------------------------------------------------------------------
 function gcoSleepGoalFix() {
-    var gcSleepGoal = document.getElementsByClassName("SleepGauge_secondText__Padqp");
+    var gcSleepGoal = document.querySelectorAll("div[class^='SleepGauge_secondText']");
      
-    if (gcSleepGoal && gcSleepGoal[1] && !(gcoSleepH==8 && gcoSleepM==0)) {
-        gcSleepGoal[1].innerText = parseInt(gcoSleepH) +"h "+ (gcoSleepM? parseInt(gcoSleepM)+"m " : "") +"Goal";
+    if (gcSleepGoal && gcSleepGoal[0] && !(gcoSleepH==8 && gcoSleepM==0)) {
+        gcSleepGoal[0].innerText = parseInt(gcoSleepH) +"h "+ (gcoSleepM? parseInt(gcoSleepM)+"m " : "") +"Goal";
 
-        var gcSleepTm = document.getElementsByClassName("SleepGauge_mainText__1TB0t");
+        var gcSleepTm = document.querySelectorAll("div[class^='SleepGauge_mainText']");
         if (gcSleepTm && gcSleepTm[0]) {
             sleepTm = gcSleepTm[0].innerText.match(/\d+/g).map(Number);
             if (sleepTm[0]>gcoSleepH || sleepTm[0]==gcoSleepH && sleepTm[1]>=gcoSleepM) {
-                var gcGoalMet = document.getElementsByClassName("SleepGauge_goalNotMet__1XU5S");
-                if (gcGoalMet && gcGoalMet[0])
-                    gcGoalMet[0].className = "SleepGauge_goalMet__2fMsJ";
+                var gcGoalMet = document.querySelectorAll("div[class^='SleepGauge_goalNotMet']");
+                if (gcGoalMet && gcGoalMet[0]) {
+                    gcGoalMet[0].className = "goalMet";
+                    gcGoalMet[0].style.color = "#72EA24";
+                }
             }
         }
     }
@@ -139,23 +141,18 @@ function gcoSleepGoalFix() {
 function gcoKCalToKJoule() {
     if (gcoUseKJ) {
         var gcCalBox = null;
-        var gcCalTitle = document.getElementsByClassName("DailySummaryPageCardTitle_cardTitle__2Hwgo");
+        var gcCalTitle = document.getElementsByClassName("icon-calories");
         if (gcCalTitle) {
-            for (i=0; i<gcCalTitle.length; i++) {
-                if (gcCalTitle[i].innerText.toUpperCase().trim() == 'CALORIES' || gcCalTitle[i].innerText.toUpperCase().includes("KILOJOULES")) {
-                    gcCalTitle[i].innerText = "Energy Burned [kiloJoules]";
-                    gcCalBox = gcCalTitle[i].parentElement.parentElement.parentElement.parentElement;
-                }
-            }
+            gcCalBox = gcCalTitle[0].parentElement.parentElement.parentElement.parentElement.parentElement;
         }
 
         if (gcCalBox) {
             // Calories In/Out pane in Daily Summary
-            gcoElementsKC2KJ(gcCalBox,"span.DailySummaryCardMainValue_mainValue__1zUSs");
-            gcoElementsKC2KJ(gcCalBox,"span.DailySummaryCardDataBlock_dataValue__43rJX");
-            gcoElementsKC2KJ(gcCalBox,"div.CaloriesChart_dataBit__3nL6F");
-            gcoElementsKC2KJ(gcCalBox,"div.CaloriesInfo_dataBit__wg_D4");
-            gcoGoalKC2KJ(gcCalBox, "div.CaloriesCardContent_centeredText__2MlU7 > h5");
+            gcoElementsKC2KJ(gcCalBox,"span[class^='DailySummaryCardMainValue_mainValue']");
+            gcoElementsKC2KJ(gcCalBox,"span[class^='DailySummaryCardDataBlock_dataValue']");
+            gcoElementsKC2KJ(gcCalBox,"div[class^='CaloriesChart_dataBit']");
+            gcoElementsKC2KJ(gcCalBox,"div[class^='CaloriesInfo_dataBit']");
+            gcoGoalKC2KJ(gcCalBox, "div[class^='CaloriesCardContent_centeredText'] > h5");
             gcoLabelsKC2KJ(gcCalBox);
         }
 
@@ -190,7 +187,7 @@ function gcoLabelsKC2KJ(container) {
 // ---------------------------------------------------------------------
 function gcoGoalKC2KJ(rootObj, elemType) {
     var goal = rootObj.querySelectorAll(elemType);
-    if (goal && goal[0].childNodes[3] && !goal[0].childNodes[3].textContent.includes('kJ')) {
+    if (goal && goal[0].childNodes[3] && !goal[0].childNodes[3].textContent.includes('kJ')) { 
         goal[0].childNodes[3].textContent = gcoKC2KJ(goal[0].childNodes[3].textContent) + " kJ";
         goal[0].style.color = "green";
     } else if (goal && goal[0].childNodes[0].textContent.includes("%") && !goal[0].childNodes[0].textContent.includes('kJ')) {
