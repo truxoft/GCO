@@ -3,9 +3,13 @@ GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa
 =========================================================================================
 CHANGELOG
 
+2020/02/09 v1.05
+- EXPERIMENTAL - Panning of Graphs - the user can press the Shift key and drag the mouse 
+  in order to pan a zoomed graph (same limitations as at v1.04)
+
 2020/02/09 v1.04
-- EXPERIMENTAL: Adjustable Y-axis on Graphs (EXPERIMENTAL) - turns the majority of graphs 
-  to have adjustable Y-Axis (with the help of selecting a rectangle of the current graph). 
+- EXPERIMENTAL: Adjustable Y-axis on Graphs - turns the majority of graphs to have 
+  adjustable Y-Axis (with the help of selecting a rectangle of the current graph). 
   Please note, that due to the compression of JavaScript files and the use of numeric 
   chunks in GC, this feature may require frequent updates, and/or may not work for everyone. 
   Searching for a more stable hack.

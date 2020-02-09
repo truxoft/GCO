@@ -8861,7 +8861,9 @@
                             spacingBottom: this.spacingBottom,
                             marginTop: 9,
                             marginBottom: this.getMarginBottom(),
-                            zoomType: "xy",
+                            zoomType: "xy",     // TX GCOverrides
+                            panning: true,      // TX GCOverrides
+                            panKey: 'shift',    // TX GCOverrides
                             resetZoomButton: {
                                 theme: {
                                     display: "none"
@@ -10419,7 +10421,9 @@
                             trigger: !0
                         })
                     }
-                }) : e.chart.zoomType = "xy",
+                }) : e.chart.zoomType = "xy",    // TX GCOverrides
+                     e.chart.panning = true,     // TX GCOverrides
+                     e.chart.panKey = 'shift',   // TX GCOverrides
                 e
             },
             setCategories: function() {
@@ -17338,7 +17342,9 @@
                             spacing: [10, 80, 30, 0],
                             marginLeft: 120,
                             marginRight: 155,
-                            zoomType: "xy",
+                            zoomType: "xy",     // TX GCOverrides
+                            panning: true,      // TX GCOverrides
+                            panKey: 'shift',    // TX GCOverrides
                             alignTicks: !1,
                             resetZoomButton: {
                                 theme: {
