@@ -3,13 +3,13 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.05;
-var gcoVerTm = '2020/02/09';
+var gcoVer = 1.07;
+var gcoVerTm = '2020/02/12';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;      // enter the number of hours (without minutes) of your sleep goal
 var gcoSleepM = 0;      // enter the remaining number of minutes of your sleep goal
-var gcoUseKJ = false;   // change false to true to enable the conversion of kcal to kJoules
+var gcoUseKJ = true;   // change false to true to enable the conversion of kcal to kJoules
 // === end of GCO settings =============================================
 
 var gcoInitDone = false;

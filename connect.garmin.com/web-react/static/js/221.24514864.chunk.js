@@ -7296,6 +7296,7 @@
                     label: "label_heart_rate",
                     unit_key: s.a.getHeartRateUnitKey(),
                     defaultChartType: "line",
+//                    defaultChartType: "column",                         // TX GCOverrides
                     primaryChartMin: n.a.partial(d.a.prototype.getLowerRange, 2, !0),
                     primaryChartMax: n.a.partial(d.a.prototype.getUpperRange, 0, !0),
                     expandedMin: n.a.partial(d.a.prototype.getLowerRange, 0),
@@ -7305,6 +7306,13 @@
                         return this.activityDetails.hasGForceData() && o && o.y ? this.formattingFunction(o.y) + " " + a : this.formattingFunction(i) + " " + a
                     },
                     formattingFunction: n.a.bind(s.a.personalizeHeartRate, s.a),
+                    colorMapper: function(e) {                          // TX GCOverrides - use HR zones here !!!
+                        return e < 100 ? "rgba(  0, 64,255, .4)" : 
+                               e < 125 ? "rgba(  0,255,  0, .4)" : 
+                               e < 145 ? "rgba(255,255,  0, .4)" : 
+                               e < 165 ? "rgba(255,127, 80, .4)" : 
+                                         "rgba(255,  0,  0, .4)"
+                    },
                     workoutTargetTypes: ["HEART_RATE", "HEART_RATE_LAP"]
                 },
                 HeartRateLapSwimming: {
@@ -17243,7 +17251,8 @@
                     this.highChartObj.xAxis[0].setExtremes(e, t)
                 },
                 resetZoom: function() {
-                    this.highChartObj.xAxis[0].setExtremes(null, null)
+                    this.highChartObj.xAxis[0].setExtremes(null, null);
+                    this.highChartObj.yAxis[0].setExtremes(null, null); // TX GCOverrides
                 },
                 xAxisLabelFormatter: function(e) {
                     return e.xAxisType == u.a.Distance ? this.value : l.a.personalizeDuration(this.value)
@@ -17407,6 +17416,13 @@
                                     }
                                 }
                             },
+                            column: {                       // TX GCOverrides !!!
+                                borderWidth: 0,             // TX GCOverrides
+                                pointWidth: null,           // TX GCOverrides
+                                maxPointWidth: undefined,   // TX GCOverrides
+                                pointPadding: 0,            // TX GCOverrides
+                                groupPadding: 0             // TX GCOverrides
+                            },                              // TX GCOverrides
                             scatter: {
                                 marker: {
                                     radius: 3,
@@ -17422,8 +17438,9 @@
                         },
                         series: t,
                         exporting: {
-                            enabled: !1
+                            enabled: !0         // TX GCOverrides (originally !1)
                         }
+
                     })
                 },
                 formatToolTipRow: function(e, t) {
@@ -17446,15 +17463,14 @@
                 createChartSeries: function(e, t) {
                     var i, a = e.defaultChartType, n = e.colorMapper, r = "scatter" == e.defaultChartType ? null : p.a.mapSeriesType(e), s = "scatter" == e.defaultChartType ? 0 : 2;
                     if (0 == t) {
-                        if (this.getSeriesCount() > 1 && this.backgroundSeries.length < 2)
+                        if (this.getSeriesCount() > 1 && this.backgroundSeries.length < 2) {
                             s = 0,
                             "scatter" !== e.defaultChartType ? (a = "area",
                             r = "#6D8595",
                             i = .25) : n = function(e) {
                                 return "rgba(109,133,149, .5)"
                             }
-                            ;
-                        else if ("scatter" == e.defaultChartType && !e.colorMapper) {
+                        } else if ("scatter" == e.defaultChartType && !e.colorMapper) {
                             var o = p.a.mapSeriesType(e);
                             n = function(e) {
                                 return o
@@ -17465,7 +17481,8 @@
                         n = function() {
                             return l
                         }
-                    }
+                    } 
+// TX !!!                    
                     var c = e.generateData(n, !0);
                     return {
                         turboThreshold: this.turboThreshold,

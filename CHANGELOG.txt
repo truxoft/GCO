@@ -3,6 +3,12 @@ GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa
 =========================================================================================
 CHANGELOG
 
+2020/02/12 v1.07
+- added Export context emnu to zoomed graphs (exporting graphs as images or PDF)
+
+2020/02/10 v1.06
+- Reset Zoom in zoomed graphs now resets also the Y-Axis
+
 2020/02/09 v1.05
 - EXPERIMENTAL - Panning of Graphs - the user can press the Shift key and drag the mouse 
   in order to pan a zoomed graph (same limitations as at v1.04)

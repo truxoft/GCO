@@ -4,14 +4,15 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 
 *The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect is being presented to the local user of the given Chrome instance.*
 
-## Current Features (v1.05)
+## Current Features (v1.07)
 * **Weight - 6 Months Report** - brings back the 6 Months report plotting all weight data within the 6 motnhs period (not only monthly averages like the 12 Months report does)
 * **Activity Overlays bugfix** - adds missing overlays, their labels and titles, on zoomed graphs on the Activity pages
 * **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
 * **Custom Sleep Goal** - the default fixed 8h sleep goal can be now adjusted in the [GCO Settings](#Settings)
 * **Conversion of Calories to kilojoules** on the Calories In/Out page and on the Dashboard; needs to be enabled in the [GCO Settings](#Settings)
-* **Adjustable Y-axis on Graphs (EXPERIMENTAL)** - turns the majority of graphs to have adjustable Y-Axis (with the help of selecting a rectangle of the current graph). Please note, that due to the compression of JavaScript files and the use of numeric chunks in GC, this feature may require frequent updates, and/or may not work for everyone. Searching for a more stable hack.
-* **Panning of Graphs (EXPERIMENTAL)** - the user can press the Shift key and drag the mouse in order to pan a zoomed graph (same limitations as at the previous feature)
+* **Adjustable Y-axis on Graphs** - turns the majority of graphs to have adjustable Y-Axis (with the help of selecting a rectangle of the current graph). Please note, that due to the compression of JavaScript files and the use of numeric chunks in GC, this feature may require frequent updates, and/or may not work for everyone. Searching for a more stable hack.
+* **Panning of Graphs** - the user can press the Shift key and drag the mouse in order to pan a zoomed graph (same limitations as at the previous feature)
+* **Exportable Graphs** - additional Export menu at zoomed graphs allowing the export of graphs as images or PDF
 * ... more to come
 
 For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GCO/blob/master/CHANGELOG.txt)
