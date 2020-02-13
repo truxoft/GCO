@@ -30,12 +30,12 @@ For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GC
 1. Click **Select folder for overrides** and choose the folder **GCO-master** in the location you used for unzipping the installtion package
 1. Click **Allow** on the pop-up bar at the top of DevTools that will appear!
 1. Verify that the checkbox **Enable Local Overrides** in the bar above the folder name is checked
-1. Close the DevTools or go back to the Chrome browser and load (or reload) the Garmin Connect website. If you see, at the center of the top of the website, a gray label **GCOverrides**, the installation was successfull, and the bugfixes and additional features of GCO shoud be active
+1. Detach and minimize the DevTools pane, or go back to the Chrome browser and load (or reload) the Garmin Connect website. If you see, at the center of the top of the website, a gray label **GCOverrides**, the installation was successfull, and the bugfixes and additional features of GCO shoud be active
 
 **Note:** The DevTools pane **must stay open** to keep the Local Overrides working. You can detach the DevTools pane from the browser, and minimize it (see the context menu under the tripple dot symbol in the upper right corner of the DevTools for the detachment option). Keep also on mind, that the DevTools are only active on the browser tab, where they were started. If you open another tab with Garmin Connect, you need to start the DevTools with Ctrl+Shift+i on that tab, too.
 
 ## Settings
-Some GCO features allow the user to customize certain parameters. Since the version 0.05, it is for example the sleeping goal. Since GCO has no access to your device, to your disk, or to your GC account settings, the custom settings need to be stored in one of the override files. For editing the parameters, please open the override folder **GCO-master** and navigate to the file **GCO-master\sso.garmin.com\sso\js\gauth-widget.js**. Open the file in a text editor, like for example the Notepad, search the section "GCOverrides SETTINGS", and edit the values to adjust the parameters.
+Some GCO features allow the user to customize certain parameters. Since the version 0.05, it is for example the sleeping goal. Since GCO has no access to your device, to your disk, or to your GC account settings, the custom settings need to be stored in one of the override files. For editing the parameters, please open the override folder **GCO-master** and navigate to the file **GCO-master\sso.garmin.com\sso\js\gauth-widget.js**. Open the file in the DevTools pane, or in a text editor, like for example the Notepad, search the section "GCOverrides SETTINGS", and edit the values to adjust the parameters.
 
 **Important:** Please note that the assignment of the value **must end with a semicolon**! Accidental deleting of the semicolon would prevent the override script from working.
 
