@@ -3,8 +3,8 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.07;
-var gcoVerTm = '2020/02/12';
+var gcoVer = 1.09;
+var gcoVerTm = '2020/02/18';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;      // enter the number of hours (without minutes) of your sleep goal
@@ -100,7 +100,7 @@ function gcoActivityOverlays() {
 var floorFixDone = false;
 function gcoFloorsPerMin() {
     var gcFloorClimb = document.getElementById("react-activitySmallStats");
-    if (gcFloorClimb) {
+    if (gcFloorClimb && gcFloorClimb.children[0] && gcFloorClimb.children[0].children[0]) {
         var gcFloorsMin = gcFloorClimb.children[0].children[0].children[3].children[0].children[0];
         var val = parseFloat(gcFloorsMin.innerText);
         if (val > 0 && !floorFixDone) {
@@ -210,4 +210,23 @@ function gcoElementsKC2KJ(rootObj, elemType) {
     }
 }
 
+
+// ---------------------------------------------------------------------
+// Stringify dump for a circular object - for analysius / debugging only
+// ---------------------------------------------------------------------
+function gcoDump(tag, obj) {
+// TX !!! DEBUG    
+    var cache = [];
+    console.log("DEBUG " + tag + ": " + JSON.stringify(obj, function(key, value) {
+        if (typeof value === 'object' && value !== null) {
+            if (cache.indexOf(value) !== -1) return;
+            cache.push(value);
+        }
+        return value;
+    }));
+    cache = null; 
+// TX !!! DEBUG    
+}
+
 // TX end ==============================================================
+

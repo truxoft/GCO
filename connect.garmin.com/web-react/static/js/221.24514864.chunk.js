@@ -7296,7 +7296,7 @@
                     label: "label_heart_rate",
                     unit_key: s.a.getHeartRateUnitKey(),
                     defaultChartType: "line",
-//                    defaultChartType: "column",                         // TX GCOverrides
+//                    defaultChartType: "column",                         // TX GCOverrides for HR zone overrides (not finished!)
                     primaryChartMin: n.a.partial(d.a.prototype.getLowerRange, 2, !0),
                     primaryChartMax: n.a.partial(d.a.prototype.getUpperRange, 0, !0),
                     expandedMin: n.a.partial(d.a.prototype.getLowerRange, 0),
@@ -8573,13 +8573,16 @@
                         return l.a.personalizeDuration(this.value)
                     }
                 },
-                formatXAxisPlotLineLabel: function(e) {
+                formatXAxisPlotLineLabel: function(e, dist) {                                   // TX !!! black tooltip label with the Time or Distance
+                    dist = o.a.localize("chart_x_plotline_distance_label",                                                 // TX GCOverrides
+                                        l.a.formatDistance(dist, this.activitySummary.getActivityTypeKey()),               // TX GCOverrides
+                                        o.a.localize(l.a.getDistanceUnitKey(this.activitySummary.getActivityTypeKey())));  // TX GCOverrides
                     switch (this.xAxisType) {
                     case x.XAxisTypes.Distance:
-                        return o.a.localize("chart_x_plotline_distance_label", l.a.formatDistance(e, this.activitySummary.getActivityTypeKey()), this.xAxisUnit(this));
+                        return dist;
                     case x.XAxisTypes.Duration:
                     case x.XAxisTypes.SwimDuration:
-                        return l.a.personalizeDuration(e);
+                        return l.a.personalizeDuration(e) + " / " + dist;
                     case x.XAxisTypes.SwimLengths:
                         return l.a.formatWholeNumber(e + 1);
                     case x.XAxisTypes.SwimDistance:
@@ -8799,8 +8802,9 @@
                 },
                 renderXAxisPlotLineLabel: function() {
                     if (this.showXAxisPlotLineLabel && 0 != this.highChartObj.xAxis[0].plotLinesAndBands.length && this.highChartObj.xAxis[0].plotLinesAndBands[0].svgElem) {
+                        var dist = this.currentPlotLinePoint.series.chart.userOptions.series[0].data[this.currentPlotLinePoint.index].dist;   // TX GCOverrides
                         var e = this.currentPlotLinePoint && this.currentPlotLinePoint.x ? this.currentPlotLinePoint.x : ""
-                          , t = this.formatXAxisPlotLineLabel(e)
+                          , t = this.formatXAxisPlotLineLabel(e, dist)           // TX GCOverrides (added second argument - distance)                        
                           , i = this.highChartObj.renderer.label(t, this.highChartObj.plotLeft, this.highChartObj.plotTop).css({
                             color: "#000000",
                             zIndex: 999
@@ -8835,6 +8839,13 @@
                     i && (this.extremesSetProgramatically = !1),
                     this.highChartObj.xAxis[0].setExtremes(e, t, !0, !1))
                 },
+                setExtremesY: function(e, t, i) {           // TX GCOverrides (whole block) - resetting also the Y axis
+                    this.minY = e,
+                    this.maxY = t,
+                    this.highChartObj && (this.extremesSetProgramatically = !0,
+                    i && (this.extremesSetProgramatically = !1),
+                    this.highChartObj.yAxis[0].setExtremes(e, t, !0, !1))
+                },
                 getExtremes: function() {
                     return this.highChartObj.xAxis[0].getExtremes()
                 },
@@ -8849,7 +8860,8 @@
                     return e >= t ? e : t
                 },
                 resetZoom: function() {
-                    this.setExtremes(null, null)
+                    this.setExtremes(null, null),
+                    this.setExtremesY(null, null)           // TX GCOverrides - resetting also the Y axis
                 },
                 createAnnotations: function() {
                     return [{
@@ -8869,7 +8881,7 @@
                             spacingBottom: this.spacingBottom,
                             marginTop: 9,
                             marginBottom: this.getMarginBottom(),
-                            zoomType: "xy",     // TX GCOverrides
+                            zoomType: "xy",     // TX GCOverrides for small graphs on Activity page
                             panning: true,      // TX GCOverrides
                             panKey: 'shift',    // TX GCOverrides
                             resetZoomButton: {
@@ -13379,10 +13391,11 @@
             hasData: function(e) {
                 return !!this.get(e)
             },
-            getData: function(e, t, i, a) {
-                t || (t = "sumDuration");
+            getData: function(e, t, i, a) {         // TX !!! bookmark - graph data array building
+                t  || (t = "sumDuration");
                 var r = this.get(e)
-                  , s = this.get(t);
+                  , s = this.get(t)
+                  , d = this.get("sumDistance");   // TX GCOverrides
                 if (!r || !s)
                     return null;
                 r.length != s.length && console.log("Number of datapoints for elevation and timestamps do not match!");
@@ -13390,7 +13403,7 @@
                 i || (i = n.a.identity),
                 a || (a = n.a.identity);
                 for (var l = [], c = 0, h = 0; h < o; h++)
-                    null !== s[h] && (l[c] = [a(s[h]), i(r[h])],
+                    null !== s[h] && (l[c] = [a(s[h]), i(r[h]), a(d[h])],  // TX GCOverrides
                     c++);
                 return l
             },
@@ -13548,7 +13561,7 @@
             hasData: function() {
                 return this.activityDetails.hasData(this.seriesKey)
             },
-            buildData: function(e, t) {
+            buildData: function(e, t) {         // TX !!! bookmark - buidling the graph data array
                 for (var i, a, n = [], r = 0, s = this.data.length; r < s; r++)
                     this.data[r] && (i = this.data[r][0],
                     this.xAxisType === p.a.Distance && (i = o.a.convertDistance(i, this.activitySummary.getActivityTypeKey())),
@@ -13556,6 +13569,7 @@
                     n[r] = {
                         x: i,
                         y: null === a ? null : this.conversionFunction(a, this.measurementSystem()),
+                        dist: o.a.convertDistance(this.data[r][2], this.activitySummary.getActivityTypeKey()),     // TX GCOverrides - distance added (always)
                         color: e.call(this, a)
                     });
                 return n
@@ -17270,10 +17284,13 @@
                       , i = this.point || this.points[0];
                     if (i) {
                         var a = i.x;
-                        if (e.backgroundSeries && n.a.each(e.backgroundSeries, function(i) {
+                        var dist = i.series.chart.userOptions.series[0].data[i.series.chart.hoverPoints[0].index].dist;  // TX GCOverrides                         
+                        dist = l.a.formatDistance(dist, e.activitySummary.getActivityTypeKey())                          // TX GCOverrides
+                           + " " + o.a.localize(l.a.getDistanceUnitKey(e.activitySummary.getActivityTypeKey()));         // TX GCOverrides
+
+                        if (e.backgroundSeries && n.a.each(e.backgroundSeries, function(i) { 
                             var n = i.getClosestPoint(a).data;
-                            n && null !== n.y && (t.push(i.formatToolTipRow(i, null, n.y, e.yUnit(i), null, null, null)),
-                            t.push("<br/>"))
+                            n && null !== n.y && (t.push("<b>" + i.formatToolTipRow(i, null, n.y, e.yUnit(i), null, null, null) + "</b><br/>")) // TX GCOverrides (formatting)
                         }, this),
                         e.workoutSeries && e.showWorkoutSeries) {
                             var r = e.workoutSeries
@@ -17297,7 +17314,14 @@
                             null !== n.y && (t.push(i.formatToolTipRow(i, null, n.y, e.yUnit(i), null, null, null)),
                             t.push("<br/>"))
                         }),
-                        e.xAxisType === u.a.Distance ? t.push(l.a.formatDistance(i.x, e.activitySummary.getActivityTypeKey()) + " " + o.a.localize(l.a.getDistanceUnitKey(e.activitySummary.getActivityTypeKey()))) : e.xAxisType === u.a.Duration ? t.push(l.a.personalizeDuration(i.x) + " " + o.a.localize(l.a.getDurationUnitKey())) : e.xAxisType === v.XAxisTypes.SwimLengths ? t.push(o.a.localize("swim_length_num", Math.floor(i.x) + 1)) : e.xAxisType === v.XAxisTypes.SwimDistance ? t.push(l.a.personalizeDistance(i.x, e.activitySummary.getActivityTypeKey(), e.activitySummary.get("unitOfPoolLength")) + " " + o.a.localize(l.a.getDistanceUnitKey(e.activitySummary.getActivityTypeKey(), null, e.activitySummary.get("unitOfPoolLength")))) : t.push(l.a.personalizeDuration(i.x) + " " + o.a.localize(l.a.getDurationUnitKey()))
+                        e.xAxisType === u.a.Distance ?                  // TX !!! GCOverrides - zoomed graph tooltip
+                            t.push(dist) : 
+                            e.xAxisType === u.a.Duration ? 
+                                t.push(l.a.personalizeDuration(i.x) + " " + o.a.localize(l.a.getDurationUnitKey()) + "<br/>" + dist) : 
+                                e.xAxisType === v.XAxisTypes.SwimLengths ? 
+                                    t.push(o.a.localize("swim_length_num", Math.floor(i.x) + 1)) : 
+                                    e.xAxisType === v.XAxisTypes.SwimDistance ? 
+                                        t.push(l.a.personalizeDistance(i.x, e.activitySummary.getActivityTypeKey(), e.activitySummary.get("unitOfPoolLength")) + " " + o.a.localize(l.a.getDistanceUnitKey(e.activitySummary.getActivityTypeKey(), null, e.activitySummary.get("unitOfPoolLength")))) : t.push(l.a.personalizeDuration(i.x) + " " + o.a.localize(l.a.getDurationUnitKey()))
                     }
                     return t.join("")
                 },
@@ -17327,12 +17351,12 @@
                     this.chartHeaderView.render();
                     var i = this.getSeriesYAxisOptions(this.backgroundSeries, 0)
                       , a = this;
-                    this.highChartObj = new h.a.Chart({
+                    this.highChartObj = new h.a.Chart({                             // TX GCOverrides - zoomed graph tooltip
                         tooltip: {
                             backgroundColor: "rgba(255, 255, 255, 0.85)",
-                            borderWidth: 0,
+                            borderWidth: 1,                                         // TX GCOverrides 0 » 1
                             borderRadius: 0,
-                            shadow: !1,
+                            shadow: !0,                                             // TX GCOverrides !1 » !0
                             crosshairs: {
                                 color: "#222222"
                             },
@@ -17482,7 +17506,7 @@
                             return l
                         }
                     } 
-// TX !!!                    
+// TX !!!  just a bookmark to the zoomed graph plotting section                  
                     var c = e.generateData(n, !0);
                     return {
                         turboThreshold: this.turboThreshold,

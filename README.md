@@ -4,7 +4,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 
 *The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect is being presented to the local user of the given Chrome instance.*
 
-## Current Features (v1.07)
+## Current Features (v1.09)
 * **Weight - 6 Months Report** - brings back the 6 Months report plotting all weight data within the 6 motnhs period (not only monthly averages like the 12 Months report does)
 * **Activity Overlays bugfix** - adds missing overlays, their labels and titles, on zoomed graphs on the Activity pages
 * **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
@@ -13,6 +13,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 * **Adjustable Y-axis on Graphs** - turns the majority of graphs to have adjustable Y-Axis (with the help of selecting a rectangle of the current graph). Please note, that due to the compression of JavaScript files and the use of numeric chunks in GC, this feature may require frequent updates, and/or may not work for everyone. Searching for a more stable hack.
 * **Panning of Graphs** - the user can press the Shift key and drag the mouse in order to pan a zoomed graph (same limitations as at the previous feature)
 * **Exportable Graphs** - additional Export menu at zoomed graphs allowing the export of graphs as images or PDF
+* **Enhanced Graph Tooltips** - Distance added to all time-based activity graph tootips; improved formatting of tooltips on zoomed versions
 * ... more to come
 
 For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GCO/blob/master/CHANGELOG.txt)
@@ -53,10 +54,9 @@ in future, if the functionality of the original website no more requires the ove
 
 ## Wish List
 Some of the following wishes may be implemented in future, but some may be complicated or impossible to develop with the currently available means.
-* Titles on full-size activity graphs
-* Adjustable Y-axis of activity graphs
-* Exporting/saving graphs as images
 * HR Zones overlays on activity graphs
+* Assign gear by sport subcategory
+* Graphs for a selected lap
 
 ## Legal Notes
 Garmin, Garmin Connect, and any other registered trademarks or copyrighted terms are the property of their owners, and all rights may be reserved. 
