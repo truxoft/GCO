@@ -3,13 +3,14 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.09;
+var gcoVer = 1.10;
 var gcoVerTm = '2020/02/18';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;      // enter the number of hours (without minutes) of your sleep goal
 var gcoSleepM = 0;      // enter the remaining number of minutes of your sleep goal
 var gcoUseKJ = false;   // change false to true to enable the conversion of kcal to kJoules
+var gcoNoGolf = false;  // hide Golf from menu and gear
 // === end of GCO settings =============================================
 
 var gcoInitDone = false;
@@ -22,6 +23,14 @@ function gcoInit() {
     if (!gcoInitDone && gcControls && gcControls[0]) {
         gcControls[0].insertAdjacentHTML("afterend", '<span style="color:#ccc; font-size:12pt;">GCOverrides <span style="font-size:7pt;">v'+gcoVer+'</span></span>');
         gcoInitDone = true;
+    }
+        
+    // hiding Golf
+    if (gcoNoGolf) {
+        var gcGolfMenu = document.getElementsByClassName("icon-activity-golf");
+        var gcGolfGear = document.querySelectorAll("a[href^='#golf-gear-tab']");
+        if (gcGolfMenu) gcGolfMenu[0].parentElement.parentElement.style.display = "none";
+        if (gcGolfGear) gcGolfGear[0].parentElement.style.display = "none";
     }
 }
 

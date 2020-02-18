@@ -14,6 +14,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 * **Panning of Graphs** - the user can press the Shift key and drag the mouse in order to pan a zoomed graph (same limitations as at the previous feature)
 * **Exportable Graphs** - additional Export menu at zoomed graphs allowing the export of graphs as images or PDF
 * **Enhanced Graph Tooltips** - Distance added to all time-based activity graph tootips; improved formatting of tooltips on zoomed versions
+* **Hiding Golf** - optional hiding of Golf from the Side Menu and from the Gear Menu; needs to be enabled in the [GCO Settings](#Settings)
 * ... more to come
 
 For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GCO/blob/master/CHANGELOG.txt)
@@ -56,7 +57,9 @@ in future, if the functionality of the original website no more requires the ove
 Some of the following wishes may be implemented in future, but some may be complicated or impossible to develop with the currently available means.
 * HR Zones overlays on activity graphs
 * Assign gear by sport subcategory
-* Graphs for a selected lap
+* Graphs and averages for a selected lap of an activity
+* Averages and totals for a selection of an activity graph
+ 
 
 ## Legal Notes
 Garmin, Garmin Connect, and any other registered trademarks or copyrighted terms are the property of their owners, and all rights may be reserved. 

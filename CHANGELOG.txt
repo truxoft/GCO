@@ -3,6 +3,9 @@ GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa
 =========================================================================================
 CHANGELOG
 
+2020/02/18 v1.10
+- added optional hiding of Golf 
+
 2020/02/18 v1.09
 - distance on tooltips of all time-based activity graphs
 
