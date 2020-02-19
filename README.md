@@ -4,7 +4,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 
 *The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect is being presented to the local user of the given Chrome instance.*
 
-## Current Features (v1.09)
+## Current Features (v1.11)
 * **Weight - 6 Months Report** - brings back the 6 Months report plotting all weight data within the 6 motnhs period (not only monthly averages like the 12 Months report does)
 * **Activity Overlays bugfix** - adds missing overlays, their labels and titles, on zoomed graphs on the Activity pages
 * **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
@@ -15,6 +15,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 * **Exportable Graphs** - additional Export menu at zoomed graphs allowing the export of graphs as images or PDF
 * **Enhanced Graph Tooltips** - Distance added to all time-based activity graph tootips; improved formatting of tooltips on zoomed versions
 * **Hiding Golf** - optional hiding of Golf from the Side Menu and from the Gear Menu; needs to be enabled in the [GCO Settings](#Settings)
+* **Hiding Model-Based Badges** - badges designed only for exclusive watches may be hidden from the list of available badges ([configurable](#Settings))
 * ... more to come
 
 For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GCO/blob/master/CHANGELOG.txt)
@@ -38,6 +39,8 @@ For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GC
 
 ## Settings
 Some GCO features allow the user to customize certain parameters. Since the version 0.05, it is for example the sleeping goal. Since GCO has no access to your device, to your disk, or to your GC account settings, the custom settings need to be stored in one of the override files. For editing the parameters, please open the override folder **GCO-master** and navigate to the file **GCO-master\sso.garmin.com\sso\js\gauth-widget.js**. Open the file in the DevTools pane, or in a text editor, like for example the Notepad, search the section "GCOverrides SETTINGS", and edit the values to adjust the parameters.
+
+Many parameters take the values 'false' or 'true' only. The parameter 'gcoHideBadges' contains a list of several international variants of the word 'watch' for excluding the watch-based models from the available list. Add your own translation (if not included yet), or any addtional keywords from the description of badges you want to exclude. Keep the parameter 'gcoHideBadges' empty, if you do not wish to hide any available badges.
 
 **Important:** Please note that the assignment of the value **must end with a semicolon**! Accidental deleting of the semicolon would prevent the override script from working.
 

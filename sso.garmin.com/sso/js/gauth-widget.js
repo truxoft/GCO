@@ -3,14 +3,16 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.10;
-var gcoVerTm = '2020/02/18';
+var gcoVer = 1.11;
+var gcoVerTm = '2020/02/19';
 
 // === GCOverrides SETTINGS ============================================
-var gcoSleepH = 8;      // enter the number of hours (without minutes) of your sleep goal
-var gcoSleepM = 0;      // enter the remaining number of minutes of your sleep goal
-var gcoUseKJ = false;   // change false to true to enable the conversion of kcal to kJoules
-var gcoNoGolf = false;  // hide Golf from menu and gear
+var gcoSleepH = 8;            // enter the number of hours (without minutes) of your sleep goal
+var gcoSleepM = 0;            // enter the remaining number of minutes of your sleep goal
+var gcoUseKJ = false;         // change false to true to enable the conversion of kcal to kJoules
+var gcoNoGolf = false;        // hide Golf from menu and gear
+// below: hide avilable badges containing this string (regex) in the description 
+var gcoHideBadges = " watch| montre|-Uhr| reloj| hodink";  
 // === end of GCO settings =============================================
 
 var gcoInitDone = false;
@@ -30,7 +32,7 @@ function gcoInit() {
         var gcGolfMenu = document.getElementsByClassName("icon-activity-golf");
         var gcGolfGear = document.querySelectorAll("a[href^='#golf-gear-tab']");
         if (gcGolfMenu) gcGolfMenu[0].parentElement.parentElement.style.display = "none";
-        if (gcGolfGear) gcGolfGear[0].parentElement.style.display = "none";
+        if (gcGolfGear) gcGolfGear[0].parentElement.style.display = "none"; 
     }
 }
 
@@ -48,6 +50,7 @@ setInterval(function(){
     gcoFloorsPerMin(); 
     gcoSleepGoalFix();
     gcoKCalToKJoule();
+    gcoHideWatchBadges();
 },1000);
 
 
@@ -140,6 +143,25 @@ function gcoSleepGoalFix() {
                 }
             }
         }
+    }
+} 
+
+
+// ---------------------------------------------------------------------
+// Hiding available watch-model-based badges
+// ---------------------------------------------------------------------
+function gcoHideWatchBadges() {
+    if (gcoHideBadges) {
+        var regex = new RegExp(gcoHideBadges, 'g');
+        var gcBadges = document.getElementsByClassName("badge-criteria");
+        if (gcBadges && gcBadges[0] && gcBadges[0].parentElement) {
+            for(let badge of gcBadges) { 
+                if (badge.innerText.match(regex)) {
+                    badge.parentElement.parentElement.parentElement.style.display = "none";
+                }
+            }
+        }
+
     }
 } 
 
