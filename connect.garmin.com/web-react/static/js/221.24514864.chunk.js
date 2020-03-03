@@ -17508,6 +17508,17 @@
                     } 
 // TX !!!  just a bookmark to the zoomed graph plotting section                  
                     var c = e.generateData(n, !0);
+// TX !!! DEBUG
+    var cache = [];
+    console.log("DEBUG createChartSeries this: " + JSON.stringify(this, function(key, value) {
+        if (typeof value === 'object' && value !== null) {
+            if (cache.indexOf(value) !== -1) return;
+            cache.push(value);
+        }
+        return value;
+    }));
+    cache = null; 
+// TX !!! DEBUG    
                     return {
                         turboThreshold: this.turboThreshold,
                         type: a,
@@ -50445,6 +50456,17 @@
                 this
             },
             onModelSynchronizerSynchronized: function() {
+// TX !!! DEBUG    
+    var cache = [];
+    console.log("DEBUG 4922 this: " + JSON.stringify(this, function(key, value) {
+        if (typeof value === 'object' && value !== null) {
+            if (cache.indexOf(value) !== -1) return;
+            cache.push(value);
+        }
+        return value;
+    }));
+    cache = null; 
+// TX !!! DEBUG    
                 if (this.$el.empty(),
                 this.hrTimeInZones && this.hrTimeInZones.models.length > 0) {
                     this.calculatePercentage(this.hrTimeInZones);
@@ -50951,6 +50973,7 @@
                 this.hasIntensityIntervals = e.hasIntensityIntervals,
                 this.canViewIntervals = e.canViewIntervals,
                 this.hasTypedSplits = e.hasTypedSplits
+               ,this.onTimeInZoneTabClicked(null);          // TX GCOverrides
             },
             setData: function(e, t, i, a, n, r, s, o, l, c) {
                 this.segmentCount = e,
@@ -51001,7 +51024,7 @@
                 this.remove()
             },
             onTimeInZoneTabClicked: function(e) {
-                e.preventDefault(),
+                if (e) e.preventDefault();  // TX GCOverrides
                 0 === this.timeInZonesTabClickCount && (this.activityTimeInZones = new y({
                     el: "#tab-time-in-zones",
                     activityId: this.activityId,

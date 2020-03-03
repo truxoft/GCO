@@ -4,7 +4,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 
 *The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect is being presented to the local user of the given Chrome instance.*
 
-## Current Features (v1.11)
+## Current Features (v1.12)
 * **Weight - 6 Months Report** - brings back the 6 Months report plotting all weight data within the 6 motnhs period (not only monthly averages like the 12 Months report does)
 * **Activity Overlays bugfix** - adds missing overlays, their labels and titles, on zoomed graphs on the Activity pages
 * **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
@@ -16,6 +16,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 * **Enhanced Graph Tooltips** - Distance added to all time-based activity graph tootips; improved formatting of tooltips on zoomed versions
 * **Hiding Golf** - optional hiding of Golf from the Side Menu and from the Gear Menu; needs to be enabled in the [GCO Settings](#Settings)
 * **Hiding Model-Based Badges** - badges designed only for exclusive watches may be hidden from the list of available badges ([configurable](#Settings))
+* **Enabling manual date input in Reports** - in the native version, on the Progress Summary page of Reports, the date can only be picked from the Calendar. Now you can enter it manually.
 * ... more to come
 
 For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GCO/blob/master/CHANGELOG.txt)
@@ -62,12 +63,14 @@ Some of the following wishes may be implemented in future, but some may be compl
 * Assign gear by sport subcategory
 * Graphs and averages for a selected lap of an activity
 * Averages and totals for a selection of an activity graph
+* Configurable default Elevation Correction
+* Center Courses map to the current detected location
  
 
 ## Legal Notes
 Garmin, Garmin Connect, and any other registered trademarks or copyrighted terms are the property of their owners, and all rights may be reserved. 
 
-We are in **no affiliation with Garmin** (except of owning Garmin devices, and being regular users of Garmin Connect). By installing the overrides you may be bypassing some of the default functionality of the original website. Although we try avoding any conflicts, and try preserving the original functionality as much as possible, the overrides may, in some exceptional cases, cause inexpected or undocumented behaviour. When in doubts, you can disable the overrides instantly by simply unchecking the Overrides in Chrome Dev Tools (on the same place you enabled them during the installation), or by deleting the folder **GCO-master**. 
+We are in **no affiliation with Garmin** (except of owning Garmin devices, and being regular users of Garmin Connect). By installing the overrides you may be bypassing some of the default functionality of the original website. Although we try avoding any conflicts, and try preserving the original functionality as much as possible, the overrides may, in some exceptional cases, cause inexpected or undocumented behaviour. When in doubts, you can disable the overrides instantly by simply closing the DevTools pane of the browser. 
 
 GCOverrides are released under the [GPL v3 license](https://github.com/truxoft/GCO/blob/master/LICENSE)
 

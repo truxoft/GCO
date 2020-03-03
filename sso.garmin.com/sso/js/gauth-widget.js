@@ -3,15 +3,15 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.11;
-var gcoVerTm = '2020/02/19';
+var gcoVer = 1.12;
+var gcoVerTm = '2020/03/02';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;            // enter the number of hours (without minutes) of your sleep goal
 var gcoSleepM = 0;            // enter the remaining number of minutes of your sleep goal
 var gcoUseKJ = false;         // change false to true to enable the conversion of kcal to kJoules
 var gcoNoGolf = false;        // hide Golf from menu and gear
-// below: hide avilable badges containing this string (regex) in the description 
+// below: hide available badges containing this string (regex) in the description 
 var gcoHideBadges = " watch| montre|-Uhr| reloj| hodink";  
 // === end of GCO settings =============================================
 
@@ -31,8 +31,8 @@ function gcoInit() {
     if (gcoNoGolf) {
         var gcGolfMenu = document.getElementsByClassName("icon-activity-golf");
         var gcGolfGear = document.querySelectorAll("a[href^='#golf-gear-tab']");
-        if (gcGolfMenu) gcGolfMenu[0].parentElement.parentElement.style.display = "none";
-        if (gcGolfGear) gcGolfGear[0].parentElement.style.display = "none"; 
+        if (gcGolfMenu && gcGolfMenu[0]) gcGolfMenu[0].parentElement.parentElement.style.display = "none";
+        if (gcGolfGear && gcGolfGear[0]) gcGolfGear[0].parentElement.style.display = "none"; 
     }
 }
 
@@ -41,8 +41,8 @@ function gcoInit() {
 // some GCO functions need to be re-applied periodically
 // ---------------------------------------------------------------------
 // Note: using setInterval() is a temporary quick & dirty hack; 
-//       properly it should be done by overriding events or classes
-//       in some cases one-time call in document.onload would be sufficient 
+//       properly it should be done by overriding events or classes.
+//       In some cases, a one-time call in document.onload would be sufficient 
 setInterval(function(){
     gcoInit();
     gcoWeight6m();
@@ -51,7 +51,20 @@ setInterval(function(){
     gcoSleepGoalFix();
     gcoKCalToKJoule();
     gcoHideWatchBadges();
+    gcoRemoveInputEvent(); 
 },1000);
+
+
+// ---------------------------------------------------------------------
+// Removing the input event handler at fromDate / toDate input fields
+// ---------------------------------------------------------------------
+function gcoRemoveInputEvent() {
+    var fromDate = document.getElementsByClassName("fromDate");
+    if (fromDate) {
+        // capturing and cancelling the input event handler
+        window.addEventListener("input", function(event) {event.stopPropagation();}, true);        
+    }
+}
 
 
 // ---------------------------------------------------------------------
