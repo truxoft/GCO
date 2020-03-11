@@ -3,6 +3,9 @@ GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa
 =========================================================================================
 CHANGELOG
 
+2020/03/11 v1.13
+- added the direct distance between the entry and exit locations of a dive
+
 2020/03/02 v1.12
 - enabling of manual editing of dates (i.e. for the custom date range in the Progress-Summary Reports)
 

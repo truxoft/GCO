@@ -52,6 +52,7 @@ setInterval(function(){
     gcoKCalToKJoule();
     gcoHideWatchBadges();
     gcoRemoveInputEvent(); 
+    gcoDiveDistance();
 },1000);
 
 
@@ -65,6 +66,27 @@ function gcoRemoveInputEvent() {
         window.addEventListener("input", function(event) {event.stopPropagation();}, true);        
     }
 }
+
+
+// ---------------------------------------------------------------------
+// Injecting entry-exit distance at dives
+// ---------------------------------------------------------------------
+function rad(deg) {return deg*Math.PI/180;}
+function gcoDiveDistance() {
+    var exitPoints = document.querySelectorAll('[id^="diveEntryExit_"]');
+    if (exitPoints && exitPoints.length > 1 && !exitPoints[1].innerHTML.includes("(")) {
+        var p0   = exitPoints[0].innerHTML.replace(" ","").split(",");
+        var p1   = exitPoints[1].innerHTML.replace(" ","").split(",");
+        if (p0 && p1) {
+            var dLat = rad(p1[0]-p0[0]);     
+            var dLon = rad(p1[1]-p0[1]); 
+            var a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(rad(p0[0]))*Math.cos(rad(p1[0]))* Math.sin(dLon/2)*Math.sin(dLon/2); 
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+            var d = Math.round(6371000 * c);   // Radius of the earth in m » Distance in m
+            exitPoints[1].innerHTML = exitPoints[1].innerHTML + "\n(distance "+d+"m from entry)";
+        }
+    }
+} 
 
 
 // ---------------------------------------------------------------------
@@ -125,7 +147,7 @@ function gcoActivityOverlays() {
 var floorFixDone = false;
 function gcoFloorsPerMin() {
     var gcFloorClimb = document.getElementById("react-activitySmallStats");
-    if (gcFloorClimb && gcFloorClimb.children[0] && gcFloorClimb.children[0].children[0]) {
+    if (gcFloorClimb && gcFloorClimb.children[0] && gcFloorClimb.children[0].children[0] && gcFloorClimb.children[0].children[0].children[3]) {
         var gcFloorsMin = gcFloorClimb.children[0].children[0].children[3].children[0].children[0];
         var val = parseFloat(gcFloorsMin.innerText);
         if (val > 0 && !floorFixDone) {

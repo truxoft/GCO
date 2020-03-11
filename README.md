@@ -4,7 +4,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 
 *The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect is being presented to the local user of the given Chrome instance.*
 
-## Current Features (v1.12)
+## Current Features (v1.13)
 * **Weight - 6 Months Report** - brings back the 6 Months report plotting all weight data within the 6 motnhs period (not only monthly averages like the 12 Months report does)
 * **Activity Overlays bugfix** - adds missing overlays, their labels and titles, on zoomed graphs on the Activity pages
 * **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
@@ -17,6 +17,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 * **Hiding Golf** - optional hiding of Golf from the Side Menu and from the Gear Menu; needs to be enabled in the [GCO Settings](#Settings)
 * **Hiding Model-Based Badges** - badges designed only for exclusive watches may be hidden from the list of available badges ([configurable](#Settings))
 * **Enabling manual date input in Reports** - in the native version, on the Progress Summary page of Reports, the date can only be picked from the Calendar. Now you can enter it manually.
+* **Diving Distance** - information about the direct distance between the entry and the exit locations of a dive
 * ... more to come
 
 For details, please have a look at the [CHANGELOG](https://github.com/truxoft/GCO/blob/master/CHANGELOG.txt)
