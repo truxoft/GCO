@@ -8578,11 +8578,11 @@
                                         l.a.formatDistance(dist, this.activitySummary.getActivityTypeKey()),               // TX GCOverrides
                                         o.a.localize(l.a.getDistanceUnitKey(this.activitySummary.getActivityTypeKey())));  // TX GCOverrides
                     switch (this.xAxisType) {
-                    case x.XAxisTypes.Distance:
-                        return dist;
+                    case x.XAxisTypes.Distance:                                                 // TX GCOverrides
+                        return dist;                                                            // TX GCOverrides
                     case x.XAxisTypes.Duration:
                     case x.XAxisTypes.SwimDuration:
-                        return l.a.personalizeDuration(e) + " / " + dist;
+                        return l.a.personalizeDuration(e) + " / " + dist;                       // TX GCOverrides
                     case x.XAxisTypes.SwimLengths:
                         return l.a.formatWholeNumber(e + 1);
                     case x.XAxisTypes.SwimDistance:

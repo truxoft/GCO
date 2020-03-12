@@ -8575,11 +8575,11 @@
                                         l.a.formatDistance(dist, this.activitySummary.getActivityTypeKey()),               // TX GCOverrides
                                         o.a.localize(l.a.getDistanceUnitKey(this.activitySummary.getActivityTypeKey())));  // TX GCOverrides
                     switch (this.xAxisType) {
-                    case x.XAxisTypes.Distance:
-                        return o.a.localize("chart_x_plotline_distance_label", l.a.formatDistance(e, this.activitySummary.getActivityTypeKey()), this.xAxisUnit(this));
+                    case x.XAxisTypes.Distance:                                                 // TX GCOverrides
+                        return dist;                                                            // TX GCOverrides
                     case x.XAxisTypes.Duration:
                     case x.XAxisTypes.SwimDuration:
-                        return l.a.personalizeDuration(e);
+                        return l.a.personalizeDuration(e) + " / " + dist;                       // TX GCOverrides
                     case x.XAxisTypes.SwimLengths:
                         return l.a.formatWholeNumber(e + 1);
                     case x.XAxisTypes.SwimDistance:
