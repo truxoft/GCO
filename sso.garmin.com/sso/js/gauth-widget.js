@@ -3,14 +3,14 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.13;
-var gcoVerTm = '2020/03/11';
+var gcoVer = 1.14;
+var gcoVerTm = '2020/03/12';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;            // enter the number of hours (without minutes) of your sleep goal
 var gcoSleepM = 0;            // enter the remaining number of minutes of your sleep goal
-var gcoUseKJ = false;         // change false to true to enable the conversion of kcal to kJoules
-var gcoNoGolf = false;        // hide Golf from menu and gear
+var gcoUseKJ = true;         // change false to true to enable the conversion of kcal to kJoules
+var gcoNoGolf = true;        // hide Golf from menu and gear
 // below: hide available badges containing this string (regex) in the description 
 var gcoHideBadges = " watch| montre|-Uhr| reloj| hodink";  
 // === end of GCO settings =============================================

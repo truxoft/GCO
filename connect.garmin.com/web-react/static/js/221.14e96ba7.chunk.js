@@ -1,8 +1,8 @@
 (window.webpackJsonp = window.webpackJsonp || []).push([[221, 2, 6, 8, 9, 11, 12, 22, 42], {
-    1213: function(e, t, i) {
-        (t = e.exports = i(32)(!0)).push([e.i, "/* breakpoints */\n/* Using .9375 on the max-widths prevents overlap at the breakpoint pixel. 1em by default equals 16px, .9375 is 15/16ths */", "", {
+    1217: function(e, t, i) {
+        (t = e.exports = i(33)(!0)).push([e.i, "/* breakpoints */\n/* Using .9375 on the max-widths prevents overlap at the breakpoint pixel. 1em by default equals 16px, .9375 is 15/16ths */", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/node_modules/ui-connect/styles/variables.module.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/node_modules/ui-connect/styles/variables.module.css"],
             names: [],
             mappings: "AAMA,iBAAgB;AAChB,2HAA0H",
             file: "variables.module.css",
@@ -23,7 +23,7 @@
             startLG: "75em"
         }
     },
-    1217: function(e, t, i) {
+    1221: function(e, t, i) {
         !function(e) {
             "use strict";
             var t = Object.freeze;
@@ -173,8 +173,8 @@
                 requestAnimFrame: S,
                 cancelAnimFrame: T
             });
-            function P() {}
-            P.extend = function(e) {
+            function k() {}
+            k.extend = function(e) {
                 var t = function() {
                     this.initialize && this.initialize.apply(this, arguments),
                     this.callInitHooks()
@@ -211,17 +211,17 @@
                 t
             }
             ,
-            P.include = function(e) {
+            k.include = function(e) {
                 return i(this.prototype, e),
                 this
             }
             ,
-            P.mergeOptions = function(e) {
+            k.mergeOptions = function(e) {
                 return i(this.prototype.options, e),
                 this
             }
             ,
-            P.addInitHook = function(e) {
+            k.addInitHook = function(e) {
                 var t = Array.prototype.slice.call(arguments, 1)
                   , i = "function" === typeof e ? e : function() {
                     this[e].apply(this, t)
@@ -232,7 +232,7 @@
                 this
             }
             ;
-            var k = {
+            var P = {
                 on: function(e, t, i) {
                     if ("object" === typeof e)
                         for (var a in e)
@@ -353,12 +353,12 @@
                         }, e), !0)
                 }
             };
-            k.addEventListener = k.on,
-            k.removeEventListener = k.clearAllEventListeners = k.off,
-            k.addOneTimeEventListener = k.once,
-            k.fireEvent = k.fire,
-            k.hasEventListeners = k.listens;
-            var z = P.extend(k);
+            P.addEventListener = P.on,
+            P.removeEventListener = P.clearAllEventListeners = P.off,
+            P.addOneTimeEventListener = P.once,
+            P.fireEvent = P.fire,
+            P.hasEventListeners = P.listens;
+            var z = k.extend(P);
             function I(e, t, i) {
                 this.x = i ? Math.round(e) : e,
                 this.y = i ? Math.round(t) : t
@@ -367,16 +367,16 @@
                 return e > 0 ? Math.floor(e) : Math.ceil(e)
             }
             ;
-            function B(e, t, i) {
+            function M(e, t, i) {
                 return e instanceof I ? e : v(e) ? new I(e[0],e[1]) : void 0 === e || null === e ? e : "object" === typeof e && "x"in e && "y"in e ? new I(e.x,e.y) : new I(e,t,i)
             }
-            function M(e, t) {
+            function B(e, t) {
                 if (e)
                     for (var i = t ? [e, t] : e, a = 0, n = i.length; a < n; a++)
                         this.extend(i[a])
             }
             function O(e, t) {
-                return !e || e instanceof M ? e : new M(e,t)
+                return !e || e instanceof B ? e : new B(e,t)
             }
             function R(e, t) {
                 if (e)
@@ -401,7 +401,7 @@
                     return new I(this.x,this.y)
                 },
                 add: function(e) {
-                    return this.clone()._add(B(e))
+                    return this.clone()._add(M(e))
                 },
                 _add: function(e) {
                     return this.x += e.x,
@@ -409,7 +409,7 @@
                     this
                 },
                 subtract: function(e) {
-                    return this.clone()._subtract(B(e))
+                    return this.clone()._subtract(M(e))
                 },
                 _subtract: function(e) {
                     return this.x -= e.x,
@@ -471,24 +471,24 @@
                     this
                 },
                 distanceTo: function(e) {
-                    var t = (e = B(e)).x - this.x
+                    var t = (e = M(e)).x - this.x
                       , i = e.y - this.y;
                     return Math.sqrt(t * t + i * i)
                 },
                 equals: function(e) {
-                    return (e = B(e)).x === this.x && e.y === this.y
+                    return (e = M(e)).x === this.x && e.y === this.y
                 },
                 contains: function(e) {
-                    return e = B(e),
+                    return e = M(e),
                     Math.abs(e.x) <= Math.abs(this.x) && Math.abs(e.y) <= Math.abs(this.y)
                 },
                 toString: function() {
                     return "Point(" + h(this.x) + ", " + h(this.y) + ")"
                 }
             },
-            M.prototype = {
+            B.prototype = {
                 extend: function(e) {
-                    return e = B(e),
+                    return e = M(e),
                     this.min || this.max ? (this.min.x = Math.min(e.x, this.min.x),
                     this.max.x = Math.max(e.x, this.max.x),
                     this.min.y = Math.min(e.y, this.min.y),
@@ -516,7 +516,7 @@
                 },
                 contains: function(e) {
                     var t, i;
-                    return (e = "number" === typeof e[0] || e instanceof I ? B(e) : O(e))instanceof M ? (t = e.min,
+                    return (e = "number" === typeof e[0] || e instanceof I ? M(e) : O(e))instanceof B ? (t = e.min,
                     i = e.max) : t = i = e,
                     t.x >= this.min.x && i.x <= this.max.x && t.y >= this.min.y && i.y <= this.max.y
                 },
@@ -693,7 +693,7 @@
                       , i = this.scale(e)
                       , a = this.transformation.transform(t.min, i)
                       , n = this.transformation.transform(t.max, i);
-                    return new M(a,n)
+                    return new B(a,n)
                 },
                 infinite: !1,
                 wrapLatLng: function(e) {
@@ -746,7 +746,7 @@
                 },
                 bounds: function() {
                     var e = 6378137 * Math.PI;
-                    return new M([-e, -e],[e, e])
+                    return new B([-e, -e],[e, e])
                 }()
             };
             function Q(e, t, i, a) {
@@ -850,7 +850,7 @@
             function Le(e) {
                 return navigator.userAgent.toLowerCase().indexOf(e) >= 0
             }
-            var Pe = (Object.freeze || Object)({
+            var ke = (Object.freeze || Object)({
                 ie: q,
                 ielt9: X,
                 edge: J,
@@ -882,27 +882,27 @@
                 svg: Te,
                 vml: Ee
             })
-              , ke = Ae ? "MSPointerDown" : "pointerdown"
+              , Pe = Ae ? "MSPointerDown" : "pointerdown"
               , ze = Ae ? "MSPointerMove" : "pointermove"
               , Ie = Ae ? "MSPointerUp" : "pointerup"
               , De = Ae ? "MSPointerCancel" : "pointercancel"
-              , Be = ["INPUT", "SELECT", "OPTION"]
-              , Me = {}
+              , Me = ["INPUT", "SELECT", "OPTION"]
+              , Be = {}
               , Oe = !1
               , Re = 0;
             function Ne(e, t, i, a) {
                 return "touchstart" === t ? function(e, t, i) {
                     var a = n(function(e) {
                         if ("mouse" !== e.pointerType && e.MSPOINTER_TYPE_MOUSE && e.pointerType !== e.MSPOINTER_TYPE_MOUSE) {
-                            if (!(Be.indexOf(e.target.tagName) < 0))
+                            if (!(Me.indexOf(e.target.tagName) < 0))
                                 return;
-                            Mt(e)
+                            Bt(e)
                         }
                         He(e, t)
                     });
                     e["_leaflet_touchstart" + i] = a,
-                    e.addEventListener(ke, a, !1),
-                    Oe || (document.documentElement.addEventListener(ke, Ve, !0),
+                    e.addEventListener(Pe, a, !1),
+                    Oe || (document.documentElement.addEventListener(Pe, Ve, !0),
                     document.documentElement.addEventListener(ze, Fe, !0),
                     document.documentElement.addEventListener(Ie, Ge, !0),
                     document.documentElement.addEventListener(De, Ge, !0),
@@ -924,20 +924,20 @@
                 this
             }
             function Ve(e) {
-                Me[e.pointerId] = e,
+                Be[e.pointerId] = e,
                 Re++
             }
             function Fe(e) {
-                Me[e.pointerId] && (Me[e.pointerId] = e)
+                Be[e.pointerId] && (Be[e.pointerId] = e)
             }
             function Ge(e) {
-                delete Me[e.pointerId],
+                delete Be[e.pointerId],
                 Re--
             }
             function He(e, t) {
                 for (var i in e.touches = [],
-                Me)
-                    e.touches.push(Me[i]);
+                Be)
+                    e.touches.push(Be[i]);
                 e.changedTouches = [e],
                 t(e)
             }
@@ -1090,11 +1090,11 @@
             }
             if ("onselectstart"in document)
                 je = function() {
-                    Et(window, "selectstart", Mt)
+                    Et(window, "selectstart", Bt)
                 }
                 ,
                 $e = function() {
-                    Pt(window, "selectstart", Mt)
+                    kt(window, "selectstart", Bt)
                 }
                 ;
             else {
@@ -1113,10 +1113,10 @@
                 }
             }
             function _t() {
-                Et(window, "dragstart", Mt)
+                Et(window, "dragstart", Bt)
             }
             function bt() {
-                Pt(window, "dragstart", Mt)
+                kt(window, "dragstart", Bt)
             }
             function Ct(e) {
                 for (; -1 === e.tabIndex; )
@@ -1131,7 +1131,7 @@
                 qe && (qe.style.outline = Xe,
                 qe = void 0,
                 Xe = void 0,
-                Pt(window, "keydown", wt))
+                kt(window, "keydown", wt))
             }
             function xt(e) {
                 do {
@@ -1179,16 +1179,16 @@
             function Et(e, t, i, a) {
                 if ("object" === typeof t)
                     for (var n in t)
-                        kt(e, n, t[n], i);
+                        Pt(e, n, t[n], i);
                 else {
                     t = p(t);
                     for (var r = 0, s = t.length; r < s; r++)
-                        kt(e, t[r], i, a)
+                        Pt(e, t[r], i, a)
                 }
                 return this
             }
             var Lt = "_leaflet_events";
-            function Pt(e, t, i, a) {
+            function kt(e, t, i, a) {
                 if ("object" === typeof t)
                     for (var n in t)
                         zt(e, n, t[n], i);
@@ -1203,7 +1203,7 @@
                 }
                 return this
             }
-            function kt(e, t, i, a) {
+            function Pt(e, t, i, a) {
                 var n = t + s(i) + (a ? "_" + s(a) : "");
                 if (e[Lt] && e[Lt][n])
                     return this;
@@ -1236,7 +1236,7 @@
                     return this;
                 _e && 0 === t.indexOf("touch") ? function(e, t, i) {
                     var a = e["_leaflet_" + t + i];
-                    "touchstart" === t ? e.removeEventListener(ke, a, !1) : "touchmove" === t ? e.removeEventListener(ze, a, !1) : "touchend" === t && (e.removeEventListener(Ie, a, !1),
+                    "touchstart" === t ? e.removeEventListener(Pe, a, !1) : "touchmove" === t ? e.removeEventListener(ze, a, !1) : "touchend" === t && (e.removeEventListener(Ie, a, !1),
                     e.removeEventListener(De, a, !1))
                 }(e, t, n) : !be || "dblclick" !== t || !Ye || _e && se ? "removeEventListener"in e ? "mousewheel" === t ? e.removeEventListener("onwheel"in e ? "wheel" : "mousewheel", r, !1) : e.removeEventListener("mouseenter" === t ? "mouseover" : "mouseleave" === t ? "mouseout" : t, r, !1) : "detachEvent"in e && e.detachEvent("on" + t, r) : Ye(e, n),
                 e[Lt][n] = null
@@ -1247,20 +1247,20 @@
                 this
             }
             function Dt(e) {
-                return kt(e, "mousewheel", It),
-                this
-            }
-            function Bt(e) {
-                return Et(e, "mousedown touchstart dblclick", It),
-                kt(e, "click", Ht),
+                return Pt(e, "mousewheel", It),
                 this
             }
             function Mt(e) {
+                return Et(e, "mousedown touchstart dblclick", It),
+                Pt(e, "click", Ht),
+                this
+            }
+            function Bt(e) {
                 return e.preventDefault ? e.preventDefault() : e.returnValue = !1,
                 this
             }
             function Ot(e) {
-                return Mt(e),
+                return Bt(e),
                 It(e),
                 this
             }
@@ -1298,11 +1298,11 @@
             }
             var Kt = (Object.freeze || Object)({
                 on: Et,
-                off: Pt,
+                off: kt,
                 stopPropagation: It,
                 disableScrollPropagation: Dt,
-                disableClickPropagation: Bt,
-                preventDefault: Mt,
+                disableClickPropagation: Mt,
+                preventDefault: Bt,
                 stop: Ot,
                 getMousePosition: Rt,
                 getWheelDelta: Vt,
@@ -1310,7 +1310,7 @@
                 skipped: Ut,
                 isExternalTarget: Qt,
                 addListener: Et,
-                removeListener: Pt
+                removeListener: kt
             })
               , Wt = z.extend({
                 run: function(e, t, i, a) {
@@ -1442,8 +1442,8 @@
                 _getBoundsCenterZoom: function(e, t) {
                     t = t || {},
                     e = e.getBounds ? e.getBounds() : N(e);
-                    var i = B(t.paddingTopLeft || t.padding || [0, 0])
-                      , a = B(t.paddingBottomRight || t.padding || [0, 0])
+                    var i = M(t.paddingTopLeft || t.padding || [0, 0])
+                      , a = M(t.paddingBottomRight || t.padding || [0, 0])
                       , n = this.getBoundsZoom(e, !1, i.add(a));
                     if ((n = "number" === typeof t.maxZoom ? Math.min(t.maxZoom, n) : n) === 1 / 0)
                         return {
@@ -1474,7 +1474,7 @@
                     })
                 },
                 panBy: function(e, t) {
-                    if (e = B(e).round(),
+                    if (e = M(e).round(),
                     t = t || {},
                     !e.x && !e.y)
                         return this.fire("moveend");
@@ -1583,8 +1583,8 @@
                     this
                 },
                 panInside: function(e, t) {
-                    var i = B((t = t || {}).paddingTopLeft || t.padding || [0, 0])
-                      , a = B(t.paddingBottomRight || t.padding || [0, 0])
+                    var i = M((t = t || {}).paddingTopLeft || t.padding || [0, 0])
+                      , a = M(t.paddingBottomRight || t.padding || [0, 0])
                       , n = this.getCenter()
                       , r = this.project(n)
                       , s = this.project(e)
@@ -1594,7 +1594,7 @@
                     if (!c.contains(s)) {
                         this._enforcingBounds = !0;
                         var h = r.subtract(s)
-                          , d = B(s.x + h.x, s.y + h.y);
+                          , d = M(s.x + h.x, s.y + h.y);
                         (s.x < c.min.x || s.x > c.max.x) && (d.x = r.x - h.x,
                         h.x > 0 ? d.x += l.x - i.x : d.x -= l.x - a.x),
                         (s.y < c.min.y || s.y > c.max.y) && (d.y = r.y - h.y,
@@ -1748,7 +1748,7 @@
                 },
                 getBoundsZoom: function(e, t, i) {
                     e = N(e),
-                    i = B(i || [0, 0]);
+                    i = M(i || [0, 0]);
                     var a = this.getZoom() || 0
                       , n = this.getMinZoom()
                       , r = this.getMaxZoom()
@@ -1772,7 +1772,7 @@
                 },
                 getPixelBounds: function(e, t) {
                     var i = this._getTopLeftPoint(e, t);
-                    return new M(i,i.add(this.getSize()))
+                    return new B(i,i.add(this.getSize()))
                 },
                 getPixelOrigin: function() {
                     return this._checkIfLoaded(),
@@ -1807,10 +1807,10 @@
                 },
                 unproject: function(e, t) {
                     return t = void 0 === t ? this._zoom : t,
-                    this.options.crs.pointToLatLng(B(e), t)
+                    this.options.crs.pointToLatLng(M(e), t)
                 },
                 layerPointToLatLng: function(e) {
-                    var t = B(e).add(this.getPixelOrigin());
+                    var t = M(e).add(this.getPixelOrigin());
                     return this.unproject(t)
                 },
                 latLngToLayerPoint: function(e) {
@@ -1827,13 +1827,13 @@
                     return this.options.crs.distance(F(e), F(t))
                 },
                 containerPointToLayerPoint: function(e) {
-                    return B(e).subtract(this._getMapPanePos())
+                    return M(e).subtract(this._getMapPanePos())
                 },
                 layerPointToContainerPoint: function(e) {
-                    return B(e).add(this._getMapPanePos())
+                    return M(e).add(this._getMapPanePos())
                 },
                 containerPointToLatLng: function(e) {
-                    var t = this.containerPointToLayerPoint(B(e));
+                    var t = this.containerPointToLayerPoint(M(e));
                     return this.layerPointToLatLng(t)
                 },
                 latLngToContainerPoint: function(e) {
@@ -1930,7 +1930,7 @@
                 _initEvents: function(e) {
                     this._targets = {},
                     this._targets[s(this._container)] = this;
-                    var t = e ? Pt : Et;
+                    var t = e ? kt : Et;
                     t(this._container, "click dblclick mousedown mouseup mouseover mouseout mousemove contextmenu keypress keydown keyup", this._handleDOMEvent, this),
                     this.options.trackResize && t(window, "resize", this._onResize, this),
                     ge && this.options.transform3DLimit && (e ? this.off : this.on).call(this, "moveend", this._onMoveEnd)
@@ -1987,7 +1987,7 @@
                     }
                     if (!e._stopped && (a = (a || []).concat(this._findEventTargets(e, t))).length) {
                         var r = a[0];
-                        "contextmenu" === t && r.listens(t, !0) && Mt(e);
+                        "contextmenu" === t && r.listens(t, !0) && Bt(e);
                         var s = {
                             originalEvent: e
                         };
@@ -2050,7 +2050,7 @@
                         return e;
                     var a = this.project(e, t)
                       , n = this.getSize().divideBy(2)
-                      , r = new M(a.subtract(n),a.add(n))
+                      , r = new B(a.subtract(n),a.add(n))
                       , s = this._getBoundsOffset(r, i, t);
                     return s.round().equals([0, 0]) ? e : this.unproject(a.add(s), t)
                 },
@@ -2058,7 +2058,7 @@
                     if (!t)
                         return e;
                     var i = this.getPixelBounds()
-                      , a = new M(i.min.add(e),i.max.add(e));
+                      , a = new B(i.min.add(e),i.max.add(e));
                     return e.add(this._getBoundsOffset(a, t))
                 },
                 _getBoundsOffset: function(e, t, i) {
@@ -2151,7 +2151,7 @@
                     }, this))
                 }
             })
-              , jt = P.extend({
+              , jt = k.extend({
                 options: {
                     position: "topright"
                 },
@@ -2298,7 +2298,7 @@
                       , t = this._container = nt("div", e)
                       , i = this.options.collapsed;
                     t.setAttribute("aria-haspopup", !0),
-                    Bt(t),
+                    Mt(t),
                     Dt(t);
                     var a = this._section = nt("section", e + "-list");
                     i && (this._map.on("click", this.collapse, this),
@@ -2460,7 +2460,7 @@
                     r.title = t,
                     r.setAttribute("role", "button"),
                     r.setAttribute("aria-label", t),
-                    Bt(r),
+                    Mt(r),
                     Et(r, "click", Ot),
                     Et(r, "click", n, this),
                     Et(r, "click", this._refocusOnMap, this),
@@ -2548,7 +2548,7 @@
                 onAdd: function(e) {
                     for (var t in e.attributionControl = this,
                     this._container = nt("div", "leaflet-control-attribution"),
-                    Bt(this._container),
+                    Mt(this._container),
                     e._layers)
                         e._layers[t].getAttribution && this.addAttribution(e._layers[t].getAttribution());
                     return this._update(),
@@ -2608,7 +2608,7 @@
                 return new Jt(e)
             }
             ;
-            var ei = P.extend({
+            var ei = k.extend({
                 initialize: function(e) {
                     this._map = e
                 },
@@ -2632,7 +2632,7 @@
             }
             ;
             var ti, ii = {
-                Events: k
+                Events: P
             }, ai = be ? "touchstart mousedown" : "mousedown", ni = {
                 mousedown: "mouseup",
                 touchstart: "touchend",
@@ -2659,7 +2659,7 @@
                 },
                 disable: function() {
                     this._enabled && (si._dragging === this && this.finishDrag(),
-                    Pt(this._dragStartTarget, ai, this._onDown, this),
+                    kt(this._dragStartTarget, ai, this._onDown, this),
                     this._enabled = !1,
                     this._moved = !1)
                 },
@@ -2688,7 +2688,7 @@
                               , i = new I(t.clientX,t.clientY)._subtract(this._startPoint);
                             (i.x || i.y) && (Math.abs(i.x) + Math.abs(i.y) < this.options.clickTolerance || (i.x /= this._parentScale.x,
                             i.y /= this._parentScale.y,
-                            Mt(e),
+                            Bt(e),
                             this._moved || (this.fire("dragstart"),
                             this._moved = !0,
                             this._startPos = yt(this._element).subtract(i),
@@ -2719,8 +2719,8 @@
                     this._lastTarget && (dt(this._lastTarget, "leaflet-drag-target"),
                     this._lastTarget = null),
                     ri)
-                        Pt(document, ri[e], this._onMove, this),
-                        Pt(document, ni[e], this._onUp, this);
+                        kt(document, ri[e], this._onMove, this),
+                        kt(document, ni[e], this._onUp, this);
                     bt(),
                     $e(),
                     this._moved && this._moving && (T(this._animRequest),
@@ -2857,12 +2857,12 @@
                 unproject: function(e) {
                     return new V(e.y,e.x)
                 },
-                bounds: new M([-180, -90],[180, 90])
+                bounds: new B([-180, -90],[180, 90])
             }
               , _i = {
                 R: 6378137,
                 R_MINOR: 6356752.314245179,
-                bounds: new M([-20037508.34279, -15496570.73972],[20037508.34279, 18764656.23138]),
+                bounds: new B([-20037508.34279, -15496570.73972],[20037508.34279, 18764656.23138]),
                 project: function(e) {
                     var t = Math.PI / 180
                       , i = this.R
@@ -3130,7 +3130,7 @@
                     return e
                 }
             })
-              , Li = P.extend({
+              , Li = k.extend({
                 options: {
                     popupAnchor: [0, 0],
                     tooltipAnchor: [0, 0]
@@ -3159,8 +3159,8 @@
                     var i = this.options
                       , a = i[t + "Size"];
                     "number" === typeof a && (a = [a, a]);
-                    var n = B(a)
-                      , r = B("shadow" === t && i.shadowAnchor || i.iconAnchor || n && n.divideBy(2, !0));
+                    var n = M(a)
+                      , r = M("shadow" === t && i.shadowAnchor || i.iconAnchor || n && n.divideBy(2, !0));
                     e.className = "leaflet-marker-" + t + " " + (i.className || ""),
                     r && (e.style.marginLeft = -r.x + "px",
                     e.style.marginTop = -r.y + "px"),
@@ -3175,7 +3175,7 @@
                     return xe && this.options[e + "RetinaUrl"] || this.options[e + "Url"]
                 }
             })
-              , Pi = Li.extend({
+              , ki = Li.extend({
                 options: {
                     iconUrl: "marker-icon.png",
                     iconRetinaUrl: "marker-icon-2x.png",
@@ -3187,8 +3187,8 @@
                     shadowSize: [41, 41]
                 },
                 _getIconUrl: function(e) {
-                    return Pi.imagePath || (Pi.imagePath = this._detectIconPath()),
-                    (this.options.imagePath || Pi.imagePath) + Li.prototype._getIconUrl.call(this, e)
+                    return ki.imagePath || (ki.imagePath = this._detectIconPath()),
+                    (this.options.imagePath || ki.imagePath) + Li.prototype._getIconUrl.call(this, e)
                 },
                 _detectIconPath: function() {
                     var e = nt("div", "leaflet-default-icon-path", document.body)
@@ -3197,7 +3197,7 @@
                     t = null === t || 0 !== t.indexOf("url") ? "" : t.replace(/^url\(["']?/, "").replace(/marker-icon\.png["']?\)$/, "")
                 }
             })
-              , ki = ei.extend({
+              , Pi = ei.extend({
                 initialize: function(e) {
                     this._marker = e
                 },
@@ -3234,7 +3234,7 @@
                       , o = i.getPixelOrigin()
                       , l = O(s.min._subtract(o).add(n), s.max._subtract(o).subtract(n));
                     if (!l.contains(r)) {
-                        var c = B((Math.max(l.max.x, r.x) - l.max.x) / (s.max.x - l.max.x) - (Math.min(l.min.x, r.x) - l.min.x) / (s.min.x - l.min.x), (Math.max(l.max.y, r.y) - l.max.y) / (s.max.y - l.max.y) - (Math.min(l.min.y, r.y) - l.min.y) / (s.min.y - l.min.y)).multiplyBy(a);
+                        var c = M((Math.max(l.max.x, r.x) - l.max.x) / (s.max.x - l.max.x) - (Math.min(l.min.x, r.x) - l.min.x) / (s.min.x - l.min.x), (Math.max(l.max.y, r.y) - l.max.y) / (s.max.y - l.max.y) - (Math.min(l.min.y, r.y) - l.min.y) / (s.min.y - l.min.y)).multiplyBy(a);
                         i.panBy(c, {
                             animate: !1
                         }),
@@ -3272,7 +3272,7 @@
             })
               , zi = Si.extend({
                 options: {
-                    icon: new Pi,
+                    icon: new ki,
                     interactive: !0,
                     keyboard: !0,
                     title: "",
@@ -3406,11 +3406,11 @@
                 _initInteraction: function() {
                     if (this.options.interactive && (ht(this._icon, "leaflet-interactive"),
                     this.addInteractiveTarget(this._icon),
-                    ki)) {
+                    Pi)) {
                         var e = this.options.draggable;
                         this.dragging && (e = this.dragging.enabled(),
                         this.dragging.disable()),
-                        this.dragging = new ki(this),
+                        this.dragging = new Pi(this),
                         e && this.dragging.enable()
                     }
                 },
@@ -3536,7 +3536,7 @@
                       , t = this._radiusY || e
                       , i = this._clickTolerance()
                       , a = [e + i, t + i];
-                    this._pxBounds = new M(this._point.subtract(a),this._point.add(a))
+                    this._pxBounds = new B(this._point.subtract(a),this._point.add(a))
                 },
                 _update: function() {
                     this._map && this._updatePath()
@@ -3551,7 +3551,7 @@
                     return e.distanceTo(this._point) <= this._radius + this._clickTolerance()
                 }
             })
-              , Bi = Di.extend({
+              , Mi = Di.extend({
                 initialize: function(e, t, a) {
                     if ("number" === typeof t && (t = i({}, a, {
                         radius: t
@@ -3599,7 +3599,7 @@
                     this._updateBounds()
                 }
             })
-              , Mi = Ii.extend({
+              , Bi = Ii.extend({
                 options: {
                     smoothFactor: 1,
                     noClip: !1
@@ -3674,7 +3674,7 @@
                     return t
                 },
                 _project: function() {
-                    var e = new M;
+                    var e = new B;
                     this._rings = [],
                     this._projectLatlngs(this._latlngs, this._rings, e),
                     this._bounds.isValid() && e.isValid() && (this._rawPxBounds = e,
@@ -3683,7 +3683,7 @@
                 _updateBounds: function() {
                     var e = this._clickTolerance()
                       , t = new I(e,e);
-                    this._pxBounds = new M([this._rawPxBounds.min.subtract(t), this._rawPxBounds.max.add(t)])
+                    this._pxBounds = new B([this._rawPxBounds.min.subtract(t), this._rawPxBounds.max.add(t)])
                 },
                 _projectLatlngs: function(e, t, i) {
                     var a, n, r = e[0]instanceof V, s = e.length;
@@ -3744,8 +3744,8 @@
                     return !1
                 }
             });
-            Mi._flat = gi;
-            var Oi = Mi.extend({
+            Bi._flat = gi;
+            var Oi = Bi.extend({
                 options: {
                     fill: !0
                 },
@@ -3771,13 +3771,13 @@
                     this._map.layerPointToLatLng(l)
                 },
                 _convertLatLngs: function(e) {
-                    var t = Mi.prototype._convertLatLngs.call(this, e)
+                    var t = Bi.prototype._convertLatLngs.call(this, e)
                       , i = t.length;
                     return i >= 2 && t[0]instanceof V && t[0].equals(t[i - 1]) && t.pop(),
                     t
                 },
                 _setLatLngs: function(e) {
-                    Mi.prototype._setLatLngs.call(this, e),
+                    Bi.prototype._setLatLngs.call(this, e),
                     mi(this._latlngs) && (this._latlngs = [this._latlngs])
                 },
                 _defaultShape: function() {
@@ -3787,7 +3787,7 @@
                     var e = this._renderer._bounds
                       , t = this.options.weight
                       , i = new I(t,t);
-                    if (e = new M(e.min.subtract(i),e.max.add(i)),
+                    if (e = new B(e.min.subtract(i),e.max.add(i)),
                     this._parts = [],
                     this._pxBounds && this._pxBounds.intersects(e))
                         if (this.options.noClip)
@@ -3812,7 +3812,7 @@
                             i = t[r],
                             a = t[s],
                             i.y > e.y !== a.y > e.y && e.x < (a.x - i.x) * (e.y - i.y) / (a.y - i.y) + i.x && (c = !c);
-                    return c || Mi.prototype._containsPoint.call(this, e, !0)
+                    return c || Bi.prototype._containsPoint.call(this, e, !0)
                 }
             })
               , Ri = Ei.extend({
@@ -3871,7 +3871,7 @@
                 case "LineString":
                 case "MultiLineString":
                     return a = Fi(o, "LineString" === s.type ? 0 : 1, h),
-                    new Mi(a,t);
+                    new Bi(a,t);
                 case "Polygon":
                 case "MultiPolygon":
                     return a = Fi(o, "Polygon" === s.type ? 1 : 2, h),
@@ -3934,9 +3934,9 @@
                 return new Ri(e,t)
             }
             zi.include(Ki),
-            Bi.include(Ki),
+            Mi.include(Ki),
             Di.include(Ki),
-            Mi.include({
+            Bi.include({
                 toGeoJSON: function(e) {
                     var t = !mi(this._latlngs)
                       , i = Hi(this._latlngs, t ? 1 : 0, !1, e);
@@ -4091,7 +4091,7 @@
                 },
                 _reset: function() {
                     var e = this._image
-                      , t = new M(this._map.latLngToLayerPoint(this._bounds.getNorthWest()),this._map.latLngToLayerPoint(this._bounds.getSouthEast()))
+                      , t = new B(this._map.latLngToLayerPoint(this._bounds.getNorthWest()),this._map.latLngToLayerPoint(this._bounds.getSouthEast()))
                       , i = t.getSize();
                     vt(e, t.min),
                     e.style.width = i.x + "px",
@@ -4258,7 +4258,7 @@
                 _updatePosition: function() {
                     if (this._map) {
                         var e = this._map.latLngToLayerPoint(this._latlng)
-                          , t = B(this.options.offset)
+                          , t = M(this.options.offset)
                           , i = this._getAnchor();
                         this._zoomAnimated ? vt(this._container, e.add(i)) : t = t.add(e).add(i);
                         var a = this._containerBottom = -t.y
@@ -4324,7 +4324,7 @@
                       , t = this._container = nt("div", e + " " + (this.options.className || "") + " leaflet-zoom-animated")
                       , i = this._wrapper = nt("div", e + "-content-wrapper", t);
                     if (this._contentNode = nt("div", e + "-content", i),
-                    Bt(i),
+                    Mt(i),
                     Dt(this._contentNode),
                     Et(i, "contextmenu", It),
                     this._tipContainer = nt("div", e + "-tip-container", t),
@@ -4368,9 +4368,9 @@
                           , n = new I(this._containerLeft,-i - this._containerBottom);
                         n._add(yt(this._container));
                         var r = e.layerPointToContainerPoint(n)
-                          , s = B(this.options.autoPanPadding)
-                          , o = B(this.options.autoPanPaddingTopLeft || s)
-                          , l = B(this.options.autoPanPaddingBottomRight || s)
+                          , s = M(this.options.autoPanPadding)
+                          , o = M(this.options.autoPanPaddingTopLeft || s)
+                          , l = M(this.options.autoPanPaddingBottomRight || s)
                           , c = e.getSize()
                           , h = 0
                           , d = 0;
@@ -4386,7 +4386,7 @@
                     Ot(e)
                 },
                 _getAnchor: function() {
-                    return B(this._source && this._source._getPopupAnchor ? this._source._getPopupAnchor() : [0, 0])
+                    return M(this._source && this._source._getPopupAnchor ? this._source._getPopupAnchor() : [0, 0])
                 }
             });
             Yt.mergeOptions({
@@ -4519,11 +4519,11 @@
                       , r = this.options.direction
                       , s = i.offsetWidth
                       , o = i.offsetHeight
-                      , l = B(this.options.offset)
+                      , l = M(this.options.offset)
                       , c = this._getAnchor();
-                    "top" === r ? e = e.add(B(-s / 2 + l.x, -o + l.y + c.y, !0)) : "bottom" === r ? e = e.subtract(B(s / 2 - l.x, -l.y, !0)) : "center" === r ? e = e.subtract(B(s / 2 + l.x, o / 2 - c.y + l.y, !0)) : "right" === r || "auto" === r && n.x < a.x ? (r = "right",
-                    e = e.add(B(l.x + c.x, c.y - o / 2 + l.y, !0))) : (r = "left",
-                    e = e.subtract(B(s + c.x - l.x, o / 2 - c.y - l.y, !0))),
+                    "top" === r ? e = e.add(M(-s / 2 + l.x, -o + l.y + c.y, !0)) : "bottom" === r ? e = e.subtract(M(s / 2 - l.x, -l.y, !0)) : "center" === r ? e = e.subtract(M(s / 2 + l.x, o / 2 - c.y + l.y, !0)) : "right" === r || "auto" === r && n.x < a.x ? (r = "right",
+                    e = e.add(M(l.x + c.x, c.y - o / 2 + l.y, !0))) : (r = "left",
+                    e = e.subtract(M(s + c.x - l.x, o / 2 - c.y - l.y, !0))),
                     dt(i, "leaflet-tooltip-right"),
                     dt(i, "leaflet-tooltip-left"),
                     dt(i, "leaflet-tooltip-top"),
@@ -4544,7 +4544,7 @@
                     this._setPosition(t)
                 },
                 _getAnchor: function() {
-                    return B(this._source && this._source._getTooltipAnchor && !this.options.sticky ? this._source._getTooltipAnchor() : [0, 0])
+                    return M(this._source && this._source._getTooltipAnchor && !this.options.sticky ? this._source._getTooltipAnchor() : [0, 0])
                 }
             });
             Yt.include({
@@ -4641,7 +4641,7 @@
                     if (i.html instanceof Element ? (st(t),
                     t.appendChild(i.html)) : t.innerHTML = !1 !== i.html ? i.html : "",
                     i.bgPos) {
-                        var a = B(i.bgPos);
+                        var a = M(i.bgPos);
                         t.style.backgroundPosition = -a.x + "px " + -a.y + "px"
                     }
                     return this._setIconStyles(t, "icon"),
@@ -4651,7 +4651,7 @@
                     return null
                 }
             });
-            Li.Default = Pi;
+            Li.Default = ki;
             var ta = Si.extend({
                 options: {
                     tileSize: 256,
@@ -4912,7 +4912,7 @@
                       , a = t.getZoomScale(i, this._tileZoom)
                       , n = t.project(e, this._tileZoom).floor()
                       , r = t.getSize().divideBy(2 * a);
-                    return new M(n.subtract(r),n.add(r))
+                    return new B(n.subtract(r),n.add(r))
                 },
                 _update: function(e) {
                     var t = this._map;
@@ -4925,7 +4925,7 @@
                               , r = n.getCenter()
                               , s = []
                               , o = this.options.keepBuffer
-                              , l = new M(n.getBottomLeft().subtract([o, -o]),n.getTopRight().add([o, -o]));
+                              , l = new B(n.getBottomLeft().subtract([o, -o]),n.getTopRight().add([o, -o]));
                             if (!(isFinite(n.min.x) && isFinite(n.min.y) && isFinite(n.max.x) && isFinite(n.max.y)))
                                 throw new Error("Attempted to load an infinite number of tiles");
                             for (var c in this._tiles) {
@@ -5066,7 +5066,7 @@
                 },
                 _pxBoundsToTileRange: function(e) {
                     var t = this.getTileSize();
-                    return new M(e.min.unscaleBy(t).floor(),e.max.unscaleBy(t).ceil().subtract([1, 1]))
+                    return new B(e.min.unscaleBy(t).floor(),e.max.unscaleBy(t).ceil().subtract([1, 1]))
                 },
                 _noTilesToLoad: function() {
                     for (var e in this._tiles)
@@ -5292,7 +5292,7 @@
                     var e = this.options.padding
                       , t = this._map.getSize()
                       , i = this._map.containerPointToLayerPoint(t.multiplyBy(-e)).round();
-                    this._bounds = new M(i,i.add(t.multiplyBy(1 + 2 * e)).round()),
+                    this._bounds = new B(i,i.add(t.multiplyBy(1 + 2 * e)).round()),
                     this._center = this._map.getCenter(),
                     this._zoom = this._map.getZoom()
                 }
@@ -5321,7 +5321,7 @@
                     T(this._redrawRequest),
                     delete this._ctx,
                     rt(this._container),
-                    Pt(this._container),
+                    kt(this._container),
                     delete this._container
                 },
                 _updatePaths: function() {
@@ -5409,7 +5409,7 @@
                 _extendRedrawBounds: function(e) {
                     if (e._pxBounds) {
                         var t = (e.options.weight || 0) + 1;
-                        this._redrawBounds = this._redrawBounds || new M,
+                        this._redrawBounds = this._redrawBounds || new B,
                         this._redrawBounds.extend(e._pxBounds.min.subtract([t, t])),
                         this._redrawBounds.extend(e._pxBounds.max.add([t, t]))
                     }
@@ -5644,7 +5644,7 @@
                 },
                 _destroyContainer: function() {
                     rt(this._container),
-                    Pt(this._container),
+                    kt(this._container),
                     delete this._container,
                     delete this._rootGroup,
                     delete this._svgSize
@@ -5782,7 +5782,7 @@
                     Et(this._container, "mousedown", this._onMouseDown, this)
                 },
                 removeHooks: function() {
-                    Pt(this._container, "mousedown", this._onMouseDown, this)
+                    kt(this._container, "mousedown", this._onMouseDown, this)
                 },
                 moved: function() {
                     return this._moved
@@ -5820,7 +5820,7 @@
                     ht(this._container, "leaflet-crosshair"),
                     this._map.fire("boxzoomstart")),
                     this._point = this._map.mouseEventToContainerPoint(e);
-                    var t = new M(this._point,this._startPoint)
+                    var t = new B(this._point,this._startPoint)
                       , i = t.getSize();
                     vt(this._box, t.min),
                     this._box.style.width = i.x + "px",
@@ -5831,7 +5831,7 @@
                     dt(this._container, "leaflet-crosshair")),
                     $e(),
                     bt(),
-                    Pt(document, {
+                    kt(document, {
                         contextmenu: Ot,
                         mousemove: this._onMouseMove,
                         mouseup: this._onMouseUp,
@@ -6036,7 +6036,7 @@
                 },
                 removeHooks: function() {
                     this._removeHooks(),
-                    Pt(this._map._container, {
+                    kt(this._map._container, {
                         focus: this._onFocus,
                         blur: this._onBlur,
                         mousedown: this._onMouseDown
@@ -6092,14 +6092,14 @@
                     Et(document, "keydown", this._onKeyDown, this)
                 },
                 _removeHooks: function() {
-                    Pt(document, "keydown", this._onKeyDown, this)
+                    kt(document, "keydown", this._onKeyDown, this)
                 },
                 _onKeyDown: function(e) {
                     if (!(e.altKey || e.ctrlKey || e.metaKey)) {
                         var t, i = e.keyCode, a = this._map;
                         if (i in this._panKeys)
                             a._panAnim && a._panAnim._inProgress || (t = this._panKeys[i],
-                            e.shiftKey && (t = B(t).multiplyBy(3)),
+                            e.shiftKey && (t = M(t).multiplyBy(3)),
                             a.panBy(t),
                             a.options.maxBounds && a.panInsideBounds(a.options.maxBounds));
                         else if (i in this._zoomKeys)
@@ -6125,7 +6125,7 @@
                     this._delta = 0
                 },
                 removeHooks: function() {
-                    Pt(this._map._container, "mousewheel", this._onWheelScroll, this)
+                    kt(this._map._container, "mousewheel", this._onWheelScroll, this)
                 },
                 _onWheelScroll: function(e) {
                     var t = Vt(e)
@@ -6162,11 +6162,11 @@
                     Et(this._map._container, "touchstart", this._onDown, this)
                 },
                 removeHooks: function() {
-                    Pt(this._map._container, "touchstart", this._onDown, this)
+                    kt(this._map._container, "touchstart", this._onDown, this)
                 },
                 _onDown: function(e) {
                     if (e.touches) {
-                        if (Mt(e),
+                        if (Bt(e),
                         this._fireClick = !0,
                         e.touches.length > 1)
                             return this._fireClick = !1,
@@ -6189,7 +6189,7 @@
                 },
                 _onUp: function(e) {
                     if (clearTimeout(this._holdTimeout),
-                    Pt(document, {
+                    kt(document, {
                         touchmove: this._onMove,
                         touchend: this._onUp
                     }, this),
@@ -6229,7 +6229,7 @@
                 },
                 removeHooks: function() {
                     dt(this._map._container, "leaflet-touch-zoom"),
-                    Pt(this._map._container, "touchstart", this._onTouchStart, this)
+                    kt(this._map._container, "touchstart", this._onTouchStart, this)
                 },
                 _onTouchStart: function(e) {
                     var t = this._map;
@@ -6246,7 +6246,7 @@
                         t._stop(),
                         Et(document, "touchmove", this._onTouchMove, this),
                         Et(document, "touchend", this._onTouchEnd, this),
-                        Mt(e)
+                        Bt(e)
                     }
                 },
                 _onTouchMove: function(e) {
@@ -6275,14 +6275,14 @@
                             round: !1
                         });
                         this._animRequest = S(o, this, !0),
-                        Mt(e)
+                        Bt(e)
                     }
                 },
                 _onTouchEnd: function() {
                     this._moved && this._zooming ? (this._zooming = !1,
                     T(this._animRequest),
-                    Pt(document, "touchmove", this._onTouchMove),
-                    Pt(document, "touchend", this._onTouchEnd),
+                    kt(document, "touchmove", this._onTouchMove),
+                    kt(document, "touchend", this._onTouchEnd),
                     this._map.options.zoomAnimation ? this._map._animateZoom(this._center, this._map._limitZoom(this._zoom), !0, this._map.options.zoomSnap) : this._map._resetView(this._center, this._map._limitZoom(this._zoom))) : this._zooming = !1
                 }
             });
@@ -6298,11 +6298,11 @@
             e.version = "1.5.1+build.2e3e0ffb",
             e.Control = jt,
             e.control = $t,
-            e.Browser = Pe,
+            e.Browser = ke,
             e.Evented = z,
             e.Mixin = ii,
             e.Util = E,
-            e.Class = P,
+            e.Class = k,
             e.Handler = ei,
             e.extend = i,
             e.bind = n,
@@ -6315,8 +6315,8 @@
             e.LineUtil = fi,
             e.PolyUtil = yi,
             e.Point = I,
-            e.point = B,
-            e.Bounds = M,
+            e.point = M,
+            e.Bounds = B,
             e.bounds = O,
             e.Transformation = Q,
             e.transformation = K,
@@ -6399,14 +6399,14 @@
                 return new Di(e,t)
             }
             ,
-            e.Circle = Bi,
+            e.Circle = Mi,
             e.circle = function(e, t, i) {
-                return new Bi(e,t,i)
+                return new Mi(e,t,i)
             }
             ,
-            e.Polyline = Mi,
+            e.Polyline = Bi,
             e.polyline = function(e, t) {
-                return new Mi(e,t)
+                return new Bi(e,t)
             }
             ,
             e.Polygon = Oi,
@@ -6433,10 +6433,10 @@
             window.L = e
         }(t)
     },
-    1218: function(e, t, i) {
+    1222: function(e, t, i) {
         "use strict";
-        var a = i(1235)
-          , n = i(44)
+        var a = i(1239)
+          , n = i(45)
           , r = {
             red: "#ff0035",
             royalRed: "#f6192e",
@@ -6553,7 +6553,7 @@
                 case a.a.Grit.prototype.name:
                     return r.gritPurple;
                 case a.a.Stress.prototype.name:
-                    return n.color_613;
+                    return n.orange_light_1;
                 case a.a.TankPressure.prototype.name:
                     return n.teal_dark_3;
                 default:
@@ -6768,9 +6768,9 @@
         s.Colors = r,
         t.a = s
     },
-    1232: function(e, t, i) {
+    1236: function(e, t, i) {
         "use strict";
-        var a = i(1251)
+        var a = i(1257)
           , n = function() {
             return this
         };
@@ -6915,7 +6915,7 @@
         ;
         t.a = n
     },
-    1233: function(e, t, i) {
+    1237: function(e, t, i) {
         "use strict";
         (function(e) {
             t.a = {
@@ -7083,9 +7083,9 @@
                 }
             }
         }
-        ).call(this, i(1238))
+        ).call(this, i(1242))
     },
-    1235: function(e, t, i) {
+    1239: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -7094,26 +7094,25 @@
               , s = i(13)
               , o = i(18)
               , l = i.n(o)
-              , c = i(81)
-              , h = i(1325)
-              , d = i(1360)
-              , p = i(1301)
-              , u = i(1339)
-              , m = i(98)
-              , g = i(1326)
-              , f = i(1258)
-              , v = i(1218)
-              , y = i(1268)
-              , A = i(1375)
-              , _ = i(1377)
-              , b = i(1302)
-              , C = i(1279)
-              , w = (i(1363),
+              , c = i(82)
+              , h = i(1330)
+              , d = i(1365)
+              , p = i(1308)
+              , u = i(1344)
+              , m = i(64)
+              , g = i(1331)
+              , f = i(1254)
+              , v = i(1222)
+              , y = i(1276)
+              , A = i(1380)
+              , _ = i(1255)
+              , b = i(1286)
+              , C = (i(1368),
             new h.a)
-              , x = function(e) {
+              , w = function(e) {
                 return e && e.activitySummary.get("activityTypeDTO") && e.activitySummary.get("activityTypeDTO").typeKey ? e.activitySummary.get("activityTypeDTO").typeKey : ""
             }
-              , S = {
+              , x = {
                 RunCadence: {
                     name: "RunCadence",
                     seriesKey: "directDoubleCadence",
@@ -7156,11 +7155,11 @@
                         return s.a.isFlyingActivity(e) ? s.a.getSpeedTypeLabelKey(s.a.SpeedTypes.Flying) : d.a.prototype.getLabel.call(this)
                     },
                     unit_key: function() {
-                        return s.a.getSpeedUnitKey(x(this))
+                        return s.a.getSpeedUnitKey(w(this))
                     },
                     defaultChartType: "line",
                     conversionFunction: function(e, t) {
-                        return s.a.convertSpeed(e, t, x(this))
+                        return s.a.convertSpeed(e, t, w(this))
                     },
                     formatToolTipRow: function(e, t, i, a, n, r, s, o) {
                         return this.activityDetails.hasGForceData() && o && o.y ? this.formattingFunction(o.y) + " " + a : this.formattingFunction(i) + " " + a
@@ -7178,19 +7177,14 @@
                     seriesKey: "directSpeed",
                     label: "label_pace",
                     unit_key: function() {
-                        return s.a.getPaceUnitKey(x(this))
+                        return s.a.getPaceUnitKey(w(this))
                     },
                     defaultChartType: "line",
                     conversionFunction: function(e, t) {
-                        return "rowing" !== x(this) && "indoor_rowing" !== x(this) ? s.a.convertFractionalPace(e) : s.a.convertRowingPace(e)
+                        return "rowing" !== w(this) && "indoor_rowing" !== w(this) ? s.a.convertFractionalPace(e) : s.a.convertRowingPace(e)
                     },
                     formattingFunction: n.a.bind(s.a.formatPace, s.a),
                     avgValueKey: "averageSpeed",
-                    chartSelector: _.a,
-                    canShowChartSelector: function() {
-                        var e = this.props.canShowChartSelector;
-                        return e
-                    },
                     primaryChartMin: n.a.partial(d.a.prototype.getLowerRange, 0),
                     primaryChartMax: n.a.partial(d.a.prototype.getUpperRange, 2),
                     expandedMin: n.a.partial(d.a.prototype.getLowerRange, 0),
@@ -7202,9 +7196,9 @@
                 LapAveragePace: {
                     name: "Lap Average Pace",
                     seriesKey: "directSpeed",
-                    label: "label_pace",
+                    label: "pace_chart_lap_avg",
                     unit_key: function() {
-                        return s.a.getPaceUnitKey(x(this))
+                        return s.a.getPaceUnitKey(w(this))
                     },
                     defaultChartType: "line",
                     conversionFunction: function(e, t) {
@@ -7212,11 +7206,6 @@
                     },
                     formattingFunction: n.a.bind(s.a.formatPace, s.a),
                     avgValueKey: "averageSpeed",
-                    chartSelector: _.a,
-                    canShowChartSelector: function() {
-                        var e = this.props.canShowChartSelector;
-                        return e
-                    },
                     primaryChartMin: n.a.partial(d.a.prototype.getLowerRange, 0),
                     primaryChartMax: n.a.partial(d.a.prototype.getUpperRange, 2),
                     expandedMin: n.a.partial(d.a.prototype.getLowerRange, 0),
@@ -7230,10 +7219,10 @@
                         var i, a, n, r, o, l, h = this, d = this.activitySplits.get("lapDTOs"), p = [];
                         return d.forEach(function(e, t) {
                             if (i = c.a.parseISOUTC(e.startTimeGMT).getTime(),
-                            n = C.a.findClosest(h.activityDetails.get("directTimestamp"), i),
+                            n = b.a.findClosest(h.activityDetails.get("directTimestamp"), i),
                             l = h.conversionFunction(e.averageSpeed, h.measurementSystem()),
                             t === h.activitySplits.get("lapDTOs").length - 1 ? r = h.activityDetails.get("directTimestamp").length : (a = c.a.parseISOUTC(h.activitySplits.get("lapDTOs")[t + 1].startTimeGMT).getTime(),
-                            r = C.a.findClosest(h.activityDetails.get("directTimestamp"), a)),
+                            r = b.a.findClosest(h.activityDetails.get("directTimestamp"), a)),
                             o = r - n,
                             "sumDuration" === h.xAxisType)
                                 for (var d = 0; d < o; d++)
@@ -7440,6 +7429,14 @@
                             })
                         }),
                         t
+                    },
+                    getAvgValue: function(e) {
+                        var t = this.activitySplitSummaries.find({
+                            splitType: f.b.CLIMB_ACTIVE
+                        })
+                          , i = t ? t.get("averageElevationGain") : void 0;
+                        if (void 0 !== i && null !== i)
+                            return this.conversionFunction(i, e || this.measurementSystem())
                     },
                     hasAvgValue: function() {
                         return !0
@@ -8054,11 +8051,11 @@
                     expandedMin: n.a.partial(d.a.prototype.getLowerRange, 0),
                     expandedMax: n.a.partial(d.a.prototype.getUpperRange, 0),
                     unit_key: function() {
-                        return "rowing" !== x(this) ? s.a.getDistancePerStrokeUnitKey() : "distance.meter"
+                        return "rowing" !== w(this) ? s.a.getDistancePerStrokeUnitKey() : "distance.meter"
                     },
                     formattingFunction: n.a.bind(s.a.formatDistancePerStroke, s.a),
                     conversionFunction: function(e, t) {
-                        return "rowing" !== x(this) ? s.a.convertDistancePerStroke(e) : e
+                        return "rowing" !== w(this) ? s.a.convertDistancePerStroke(e) : e
                     },
                     yAxisFormattingFunction: function(e, t) {
                         return t !== s.a.MeasurementSystems.METRIC && (e = s.a.convertDistancePerStroke(e)),
@@ -8152,7 +8149,7 @@
                     seriesKey: "directVerticalSpeed",
                     label: "label_pace",
                     unit_key: function() {
-                        return s.a.getPaceUnitKey(x(this))
+                        return s.a.getPaceUnitKey(w(this))
                     },
                     defaultChartType: "line",
                     buildData: function(e, t) {
@@ -8307,7 +8304,7 @@
                     buildSecondSeriesData: function() {
                         for (var e = [], t = 0, i = 0, a = this.activityDetails.getData("directWindYawAngle", this.getXAxisKey()), n = 0, r = a.length; n < r; n += 1)
                             a[n] && (t = a[n][1],
-                            i = w.getDegreeFromRadian(t),
+                            i = C.getDegreeFromRadian(t),
                             e.push({
                                 x: a[n][0],
                                 value: this.data[0].y,
@@ -8390,35 +8387,35 @@
                     expandedMax: n.a.partial(d.a.prototype.getUpperRange, 0, !0),
                     tickInterval: 25,
                     formatToolTipRow: function(e, t, i, a, n, r, s, o) {
-                        return "".concat(i, " (").concat(b.c.getStressQualification(i), ")")
+                        return "".concat(i, " (").concat(Object(_.f)(i), ")")
                     }
                 }
             };
-            for (var T in S)
-                if (S.hasOwnProperty(T)) {
-                    var E = S[T];
-                    S[T] = d.a.extend(E)
+            for (var S in x)
+                if (x.hasOwnProperty(S)) {
+                    var T = x[S];
+                    x[S] = d.a.extend(T)
                 }
-            t.a = S
+            t.a = x
         }
         ).call(this, i(10))
     },
-    1240: function(e, t, i) {
+    1244: function(e, t, i) {
         "use strict";
-        var a = i(79)
-          , n = i(80)
-          , r = i(97)
-          , s = i(95)
-          , o = i(96)
+        var a = i(80)
+          , n = i(81)
+          , r = i(99)
+          , s = i(97)
+          , o = i(98)
           , l = i(11)
           , c = i.n(l)
-          , h = i(1223)
+          , h = i(1227)
           , d = i.n(h)
-          , p = i(1263)
+          , p = i(1270)
           , u = i.n(p)
-          , m = i(1248)
+          , m = i(1253)
           , g = i.n(m)
-          , f = i(1244)
+          , f = i(1249)
           , v = i.n(f);
         g()(d.a),
         v()(d.a);
@@ -8445,7 +8442,7 @@
         }(c.a.Component);
         t.a = y
     },
-    1242: function(e, t, i) {
+    1246: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -8454,19 +8451,19 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(1268)
-              , h = i(1409)
-              , d = i(1408)
-              , p = i(1218)
-              , u = i(1327)
-              , m = i(1351)
-              , g = i(2184)
+              , c = i(1276)
+              , h = i(1410)
+              , d = i(1409)
+              , p = i(1222)
+              , u = i(1332)
+              , m = i(2201)
+              , g = i(2202)
               , f = i.n(g)
-              , v = i(1223)
+              , v = i(1227)
               , y = i.n(v)
-              , A = i(1517)
+              , A = i(1576)
               , _ = i.n(A)
-              , b = i(1731);
+              , b = i(1737);
             y.a.Annotation || _()(y.a);
             var C = 0
               , w = {
@@ -8579,10 +8576,10 @@
                                         o.a.localize(l.a.getDistanceUnitKey(this.activitySummary.getActivityTypeKey())));  // TX GCOverrides
                     switch (this.xAxisType) {
                     case x.XAxisTypes.Distance:
-                        return dist;
+                        return o.a.localize("chart_x_plotline_distance_label", l.a.formatDistance(e, this.activitySummary.getActivityTypeKey()), this.xAxisUnit(this));
                     case x.XAxisTypes.Duration:
                     case x.XAxisTypes.SwimDuration:
-                        return l.a.personalizeDuration(e) + " / " + dist;
+                        return l.a.personalizeDuration(e);
                     case x.XAxisTypes.SwimLengths:
                         return l.a.formatWholeNumber(e + 1);
                     case x.XAxisTypes.SwimDistance:
@@ -9318,7 +9315,7 @@
         }
         ).call(this, i(10))
     },
-    1244: function(e, t, i) {
+    1249: function(e, t, i) {
         var a, n;
         n = function(e) {
             !function(e) {
@@ -9442,7 +9439,7 @@
         }
         .call(t, i, t, e)) || (e.exports = a)
     },
-    1247: function(e, t, i) {
+    1252: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -9451,8 +9448,8 @@
           , o = i(4)
           , l = i(13)
           , c = i(17)
-          , h = (i(59),
-        i(1265))
+          , h = (i(60),
+        i(1273))
           , d = i.n(h)
           , p = {
             CHANGE: "CHANGE",
@@ -9556,14 +9553,79 @@
         A.Events = p,
         t.a = A
     },
-    1251: function(e, t, i) {
+    1254: function(e, t, i) {
+        "use strict";
+        i.d(t, "b", function() {
+            return n
+        }),
+        i.d(t, "a", function() {
+            return r
+        }),
+        i.d(t, "d", function() {
+            return s
+        }),
+        i.d(t, "c", function() {
+            return o
+        }),
+        i.d(t, "e", function() {
+            return l
+        });
+        var a = i(2)
+          , n = {
+            CLIMB_ACTIVE: "CLIMB_ACTIVE",
+            CLIMB_REST: "CLIMB_REST"
+        }
+          , r = {
+            CLIMB_COMPLETED: "CLIMB_COMPLETED",
+            CLIMB_ATTEMPTED: "CLIMB_ATTEMPTED"
+        }
+          , s = function(e) {
+            var t = {
+                sends: 0,
+                completed: 0,
+                attempted: 0,
+                gradeValue: {}
+            }
+              , i = {};
+            return e.forEach(function(e) {
+                if (e.type === n.CLIMB_ACTIVE) {
+                    var r = i[e.gradeValue.valueKey];
+                    switch (r || (r = Object(a.a)({}, t)),
+                    e.status) {
+                    case "CLIMB_ATTEMPTED":
+                        r.attempted++;
+                        break;
+                    case "CLIMB_COMPLETED":
+                    default:
+                        e.climbSend ? r.sends++ : r.completed++
+                    }
+                    i[e.gradeValue.valueKey] = Object(a.a)({}, r, {
+                        gradeValue: e.gradeValue
+                    })
+                }
+            }),
+            Object.values(i).sort(function(e, t) {
+                return e.gradeValue.sortOrder - t.gradeValue.sortOrder
+            })
+        }
+          , o = function(e, t, i) {
+            return i && i[e] && i[e][t] ? i[e][t].value : null
+        }
+          , l = function(e) {
+            return e.reduce(function(e, t) {
+                return e[t.splitType] = t,
+                e
+            }, {})
+        }
+    },
+    1257: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(8)
           , o = i.n(s)
-          , l = i(1255)
+          , l = i(1262)
           , c = i.n(l)
           , h = {
             Small: "relative bottom",
@@ -9686,10 +9748,10 @@
         p.AlertType = d,
         t.a = p
     },
-    1254: function(e, t, i) {
+    1261: function(e, t, i) {
         "use strict";
         (function(e) {
-            var a = i(1233)
+            var a = i(1237)
               , n = {
                 openAgent: function(e) {
                     null != e && "undefined" != typeof e || ("undefined" !== typeof console && console.log && this.log("A device id wasn't passed into GCSyncUtil.openAgent()"),
@@ -9711,77 +9773,10 @@
         }
         ).call(this, i(10))
     },
-    1255: function(e, t) {
+    1262: function(e, t) {
         e.exports = '<%= Localizer.localize(message, args) %>\n<a href="#" id="alert"><%- Localizer.localize(\'course_map_alert_dismiss\') %></a>'
     },
-    1258: function(e, t, i) {
-        "use strict";
-        i.d(t, "b", function() {
-            return n
-        }),
-        i.d(t, "a", function() {
-            return r
-        }),
-        i.d(t, "d", function() {
-            return s
-        }),
-        i.d(t, "c", function() {
-            return o
-        }),
-        i.d(t, "e", function() {
-            return l
-        });
-        var a = i(2)
-          , n = {
-            CLIMB_ACTIVE: "CLIMB_ACTIVE",
-            CLIMB_REST: "CLIMB_REST",
-            CLIMB_ACTIVE_TYPE: "9",
-            CLIMB_REST_TYPE: "10"
-        }
-          , r = {
-            CLIMB_COMPLETED: "CLIMB_COMPLETED",
-            CLIMB_ATTEMPTED: "CLIMB_ATTEMPTED"
-        }
-          , s = function(e) {
-            var t = {
-                sends: 0,
-                completed: 0,
-                attempted: 0,
-                gradeValue: {}
-            }
-              , i = {};
-            return e.forEach(function(e) {
-                if (e.type === n.CLIMB_ACTIVE) {
-                    var r = i[e.gradeValue.valueKey];
-                    switch (r || (r = Object(a.a)({}, t)),
-                    e.status) {
-                    case "CLIMB_ATTEMPTED":
-                        r.attempted++;
-                        break;
-                    case "CLIMB_COMPLETED":
-                    default:
-                        e.climbSend ? r.sends++ : r.completed++
-                    }
-                    i[e.gradeValue.valueKey] = Object(a.a)({}, r, {
-                        gradeValue: e.gradeValue
-                    })
-                }
-            }),
-            Object.values(i).sort(function(e, t) {
-                return e.gradeValue.sortOrder - t.gradeValue.sortOrder
-            })
-        }
-          , o = function(e, t, i) {
-            return i[e] ? i[e][t].value : null
-        }
-          , l = function(e) {
-            return e.reduce(function(e, t) {
-                return t.hasOwnProperty("splitType") ? e[t.splitType] = t : e[t.type] = t,
-                e
-            }, {})
-        }
-    },
-    1263: function(e, t, i) {
+    1270: function(e, t, i) {
         var a;
         "undefined" != typeof self && self,
         e.exports = (a = i(11),
@@ -9932,7 +9927,7 @@
         }
         ]))
     },
-    1264: function(e, t, i) {
+    1271: function(e, t, i) {
         "use strict";
         t.a = {
             SportTypes: {
@@ -10012,10 +10007,14 @@
             }
         }
     },
-    1265: function(e, t) {
+    1272: function(e, t, i) {
+        "use strict";
+        e.exports = i(1878)
+    },
+    1273: function(e, t) {
         e.exports = '<<%- tag %> href="<%- url %>" class="inline-edit-target <%- customClasses %>" title="<%- value %>"><%- value %>\n<% if (label) {     %>\n<%- label %>\n<% }                %>\n</<%- tag %>>\n\n<% if(disableEditBtn) { %>\n    <span class="js-disable-edit" >\n        <button disabled>\n            <i class="icon-pencil"></i>\n        </button>\n    </span>\n<% } else { %>\n    <button class="inline-edit-trigger modal-trigger" aria-label="<%-\xa0Localizer.localize(\'edit\')\xa0%>">\n        <i class="icon-pencil"></i>\n    </button>\n\n    <div class="inline-edit-editable">\n        <div class="inline-edit-editable-text" style="min-width: 15px;" contenteditable="true"><%- value %></div>\n        <span class="inline-edit-actions">\n            <button class="inline-edit-save icon-checkmark"></button>\n            <button class="inline-edit-cancel icon-close"></button>\n        </span>\n    </div>\n<% } %>\n    \n\n'
     },
-    1268: function(e, t, i) {
+    1276: function(e, t, i) {
         "use strict";
         t.a = {
             Duration: "sumDuration",
@@ -10025,11 +10024,7 @@
             SwimDistance: "cumulativeDistance"
         }
     },
-    1270: function(e, t, i) {
-        "use strict";
-        e.exports = i(1874)
-    },
-    1274: function(e, t, i) {
+    1279: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -10038,7 +10033,7 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(1296)
+              , c = i(1303)
               , h = i.n(c)
               , d = {
                 CHANGE: "CHANGE"
@@ -10110,8 +10105,8 @@
         }
         ).call(this, i(10))
     },
-    1275: function(e, t, i) {
-        var a = i(1909);
+    1280: function(e, t, i) {
+        var a = i(1914);
         "string" === typeof a && (a = [[e.i, a, ""]]);
         var n = {
             hmr: !0,
@@ -10121,15 +10116,15 @@
         i(35)(a, n);
         a.locals && (e.exports = a.locals)
     },
-    1277: function(e, t, i) {
+    1283: function(e, t, i) {
         "use strict";
-        var a = i(1217)
+        var a = i(1221)
           , n = i.n(a)
           , r = i(25)
-          , s = (i(1396),
-        i(1417),
-        i(1418),
-        i(1456))
+          , s = (i(1399),
+        i(1422),
+        i(1423),
+        i(1460))
           , o = function() {};
         o.MaxDistance = 999,
         o.Radius = {
@@ -10267,7 +10262,7 @@
         ,
         t.a = o
     },
-    1282: function(e, t, i) {
+    1285: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -10275,14 +10270,14 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(13)
-          , c = i(1300)
-          , h = i(81)
-          , d = i(209)
-          , p = i(1223)
+          , c = i(1307)
+          , h = i(82)
+          , d = i(213)
+          , p = i(1227)
           , u = i.n(p)
-          , m = i(1248)
+          , m = i(1253)
           , g = i.n(m)
-          , f = i(1400)
+          , f = i(1403)
           , v = i.n(f);
         g()(u.a),
         v()(u.a);
@@ -10591,10 +10586,10 @@
             }
         })
     },
-    1283: function(e, t, i) {
+    1289: function(e, t, i) {
         "use strict";
-        var a, n, r = i(7), s = i.n(r), o = i(8), l = i.n(o), c = i(4), h = i(214), d = i(1358), p = i(10), u = i.n(p), m = i(1217), g = i.n(m), f = (i(1913),
-        i(1497)), v = i.n(f), y = i(56), A = i(1305), _ = (i(2342),
+        var a, n, r = i(7), s = i.n(r), o = i(8), l = i.n(o), c = i(4), h = i(218), d = i(1363), p = i(10), u = i.n(p), m = i(1221), g = i.n(m), f = (i(1918),
+        i(1500)), v = i.n(f), y = i(57), A = i(1310), _ = (i(2359),
         g.a.Marker.extend({
             initialize: function(e, t) {
                 g.a.Marker.prototype.initialize.call(this, e, t),
@@ -10614,7 +10609,7 @@
             setPosition: function(e) {
                 this.setLatLng(e)
             }
-        })), b = i(1416), C = b.a.extend({
+        })), b = i(1421), C = b.a.extend({
             getHeatMapUrl: function(e) {
                 return "undefined" != typeof e && null != e ? e[0] : ""
             }
@@ -10676,7 +10671,7 @@
                 this._stopLoadingImages(t),
                 clearTimeout(this._clearBgBufferTimer)
             }
-        }), T = i(1638), E = i(1232), L = g.a.Circle.extend({
+        }), T = i(1644), E = i(1236), L = g.a.Circle.extend({
             onAdd: function(e) {
                 if (g.a.Circle.prototype.onAdd.call(this, e),
                 this.options.draggable) {
@@ -10709,7 +10704,7 @@
             setCenter: function(e) {
                 this.setLatLng(e)
             }
-        }), P = g.a.Rectangle.extend({
+        }), k = g.a.Rectangle.extend({
             onAdd: function(e) {
                 g.a.Rectangle.prototype.onAdd.call(this, e);
                 var t = this
@@ -10752,13 +10747,13 @@
                     ne: h.a.getStandardizedPoint(e.getNorthEast())
                 }
             }
-        }), k = i(1238), z = i.n(k), I = i(126), D = i.n(I), B = (i(2343),
-        i(1914),
+        }), P = i(1242), z = i.n(P), I = i(128), D = i.n(I), M = (i(2360),
+        i(1919),
         {
             ON_MAP_READY: "ON_MAP_READY",
             ON_MAP_PROVIDER_CHANGED: "ON_MAP_PROVIDER_CHANGED",
             ON_VISIBLE_TILES_LOADED: "ON_VISIBLE_TILES_LOADED"
-        }), M = {
+        }), B = {
             road: "ROADMAP",
             satellite: "SATELLITE",
             terrain: "TERRAIN",
@@ -10817,10 +10812,10 @@
             loadMap: function() {
                 var e = this;
                 this.mapProvider === z.a.Map.Utils.PROVIDER_TYPE_BAIDU ? D()(["https://api.map.baidu.com/getscript?v=2.0&ak=KQMz9KcIzBwWNUgbHWUHZGSD&services=", "https://sapi.map.baidu.com/api?v=2.0&ak=KQMz9KcIzBwWNUgbHWUHZGSD&s=1&callback="], function() {
-                    var t = i.e(71).then(i.t.bind(null, 4660, 7))
-                      , n = i.e(245).then(i.bind(null, 2253))
-                      , r = i.e(246).then(i.bind(null, 5044))
-                      , s = i.e(72).then(i.t.bind(null, 4661, 7));
+                    var t = i.e(71).then(i.t.bind(null, 4687, 7))
+                      , n = i.e(245).then(i.bind(null, 2272))
+                      , r = i.e(246).then(i.bind(null, 5071))
+                      , s = i.e(72).then(i.t.bind(null, 4688, 7));
                     Promise.all([t, n, r, s]).then(function(t) {
                         var i = Object(d.a)(t, 3)
                           , n = (i[1],
@@ -10851,17 +10846,17 @@
                 var e, t, a;
                 switch (this.mapProvider) {
                 case "google":
-                    e = i.e(247).then(i.bind(null, 1406)),
-                    t = i.e(248).then(i.bind(null, 2549)),
-                    a = i.e(249).then(i.bind(null, 5045));
+                    e = i.e(247).then(i.bind(null, 131)),
+                    t = i.e(248).then(i.bind(null, 2569)),
+                    a = i.e(249).then(i.bind(null, 5072));
                     break;
                 case "here":
-                    e = i.e(250).then(i.t.bind(null, 1820, 7)),
-                    t = i.e(251).then(i.bind(null, 2485));
+                    e = i.e(250).then(i.t.bind(null, 1824, 7)),
+                    t = i.e(251).then(i.bind(null, 2505));
                     break;
                 case "osm":
-                    e = i.e(252).then(i.t.bind(null, 2484, 7)),
-                    t = i.e(253).then(i.bind(null, 5051))
+                    e = i.e(252).then(i.t.bind(null, 2504, 7)),
+                    t = i.e(253).then(i.bind(null, 5078))
                 }
                 return [e, t, a]
             },
@@ -10883,7 +10878,7 @@
                 this.configureMap(),
                 this.changeMapStyle(this.mapStyle || "road"),
                 this.mapHasBeenInitialized = !0,
-                this.trigger(B.ON_MAP_READY),
+                this.trigger(M.ON_MAP_READY),
                 this.setupEvents())
             },
             getLeafletOptions: function() {
@@ -10903,7 +10898,7 @@
             },
             setupEvents: function() {
                 this.currentLayer.on("load", function() {
-                    this.trigger(B.ON_VISIBLE_TILES_LOADED),
+                    this.trigger(M.ON_VISIBLE_TILES_LOADED),
                     this.map.invalidateSize()
                 }
                 .bind(this))
@@ -10915,7 +10910,7 @@
                     h.a.userInChina() ? (this.map.options.crs = g.a.CRS.BEPSG3857,
                     this.currentLayer = new g.a.GarminBaidu(H[e]),
                     this.map.addLayer(this.currentLayer)) : this.mapProvider === this.providers.GOOGLE ? (this.googleLayer = new g.a.GridLayer.GoogleMutant({
-                        maptype: M[e],
+                        maptype: B[e],
                         maxZoom: this.zoomLimits.max
                     }),
                     this.currentLayer = this.googleLayer,
@@ -10937,7 +10932,7 @@
             },
             changeMapProvider: function(e) {
                 this.mapProvider !== e && (this.mapProvider = e,
-                this.trigger(B.ON_MAP_PROVIDER_CHANGED, e))
+                this.trigger(M.ON_MAP_PROVIDER_CHANGED, e))
             },
             zoomIn: function() {
                 this.map.zoomIn(),
@@ -10995,7 +10990,7 @@
                 });
                 var a = g.a.polyline(e, i);
                 return this.map.addLayer(a).on("load", function() {
-                    this.trigger(B.ON_VISIBLE_TILES_LOADED)
+                    this.trigger(M.ON_VISIBLE_TILES_LOADED)
                 }
                 .bind(this)),
                 a
@@ -11164,7 +11159,7 @@
                   , t = new g.a.Point(e.x - 100,e.y + 100)
                   , i = new g.a.Point(e.x + 100,e.y - 100)
                   , a = new g.a.latLngBounds(this.map.layerPointToLatLng(t),this.map.layerPointToLatLng(i));
-                return this.selectionRect = new P(a,{
+                return this.selectionRect = new k(a,{
                     color: "#000",
                     weight: 2,
                     opacity: .4,
@@ -11350,7 +11345,7 @@
                 this.$el.css("cursor", e)
             }
         });
-        U.Events = B;
+        U.Events = M;
         var Q = U
           , K = {
             ON_MAP_READY: "ON_MAP_READY",
@@ -11655,7 +11650,7 @@
         j.Events = K;
         t.a = j
     },
-    1285: function(e, t, i) {
+    1291: function(e, t, i) {
         "use strict";
         function a(e, t, i, a, n, r, s) {
             try {
@@ -11687,12 +11682,12 @@
             return n
         })
     },
-    1286: function(e, t, i) {
+    1292: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
-          , r = i(214)
-          , s = i(1232)
+          , r = i(218)
+          , s = i(1236)
           , o = i(17)
           , l = {
             public: {
@@ -11726,7 +11721,7 @@
         c.RulesDTO = l,
         t.a = c
     },
-    1293: function(e, t, i) {
+    1299: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -11757,27 +11752,61 @@
         });
         t.a = o
     },
-    1294: function(e, t, i) {
+    1300: function(e, t, i) {
+        "use strict";
+        i.d(t, "a", function() {
+            return a
+        }),
+        i.d(t, "b", function() {
+            return n
+        }),
+        i.d(t, "d", function() {
+            return r
+        }),
+        i.d(t, "c", function() {
+            return s
+        });
+        var a = function(e) {
+            e = e.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, function(e, t, i, a) {
+                return t + t + i + i + a + a
+            });
+            var t = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e);
+            return t ? [parseInt(t[1], 16), parseInt(t[2], 16), parseInt(t[3], 16)] : null
+        }
+          , n = function(e) {
+            var t = a(e);
+            return "rgba(".concat(t[0], ", ").concat(t[1], ", ").concat(t[2], ", 1)")
+        }
+          , r = function(e, t, i) {
+            return "#" + ((1 << 24) + (e << 16) + (t << 8) + i).toString(16).slice(1)
+        }
+          , s = function(e, t, i) {
+            var a = (2 * (1 - i) - 1 + 1) / 2
+              , n = 1 - a;
+            return [Math.round(e[0] * a + t[0] * n), Math.round(e[1] * a + t[1] * n), Math.round(e[2] * a + t[2] * n)]
+        }
+    },
+    1301: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(8)
               , r = i.n(n)
-              , s = i(184)
+              , s = i(188)
               , o = i(26)
-              , l = i(1254)
-              , c = i(209)
-              , h = i(101)
-              , d = i(478)
-              , p = i(477)
-              , u = i(51)
+              , l = i(1261)
+              , c = i(213)
+              , h = i(102)
+              , d = i(482)
+              , p = i(481)
+              , u = i(53)
               , m = i(4)
-              , g = i(1892)
+              , g = i(1896)
               , f = i.n(g)
-              , v = i(1893)
+              , v = i(1897)
               , y = i.n(v)
-              , A = i(214)
-              , _ = i(1232)
-              , b = i(1233)
+              , A = i(218)
+              , _ = i(1236)
+              , b = i(1237)
               , C = {
                 WORKOUT_CAPABLE: "workoutCapable",
                 RUNNING_WORKOUT_CAPABLE: "runningWorkoutCapable",
@@ -12128,7 +12157,7 @@
         }
         ).call(this, i(7), i(10))
     },
-    1295: function(e, t, i) {
+    1302: function(e, t, i) {
         "use strict";
         i.d(t, "a", function() {
             return a
@@ -12137,12 +12166,12 @@
             return e && t || i && a
         }
     },
-    1296: function(e, t) {
+    1303: function(e, t) {
         e.exports = '<div class="dropdown <%- dropdownClass %>">\n    <button data-toggle="dropdown" data-value="<%- selectedItem.value %>">\n        <span class="<%- formatClass %>"><%- selectedItem.name || Localizer.localize(selectedItem.nameKey) %></span>\n        <i class="icon-pointer-down"></i>\n    </button>\n    <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu">\n\n        <% for (var i = 0; i < items.length; i++) {         %>\n        <% var item = items[i];                             %>\n            <li data-value="<%- item.value %>"><a tabindex="-1" href="#"><%- item.name || Localizer.localize(item.nameKey) %></a></li>\n            <% if (typeof item.children != \'undefined\') {              %>\n                <% for (var j = 0; j < item.children.length; j++) { %>\n                <%  var childItem = item.children[j];               %>\n                    <li data-value="<%- childItem.value %>"><a tabindex="-1" href="#" class="dropdown-tier"><%- childItem.name || Localizer.localize(childItem.nameKey) %></a></li>\n                <% }                                                %>\n            <% }                                                %>\n\n            <% if (includeDivider) { %> \n                <li class="divider"></li>\n            <% } %>\n        <% }                                                %>\n    </ul>\n</div>\n'
     },
-    1297: function(e, t, i) {
+    1304: function(e, t, i) {
         "use strict";
-        var a = i(56).a.extend({
+        var a = i(57).a.extend({
             defaults: {
                 mapType: "road",
                 terrain: !1,
@@ -12205,7 +12234,7 @@
         });
         t.a = a
     },
-    1301: function(e, t, i) {
+    1308: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -12232,7 +12261,7 @@
         },
         t.a = s
     },
-    1304: function(e, t, i) {
+    1309: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(4)
@@ -12264,7 +12293,7 @@
         }
         ).call(this, i(7), i(10))
     },
-    1305: function(e, t, i) {
+    1310: function(e, t, i) {
         "use strict";
         t.a = {
             googleUrl: "//maps.googleapis.com/maps/api/js?sensor=true",
@@ -12275,39 +12304,12 @@
             HereAppGeocoderUrl: "https://geocoder.api.here.com/6.2/geocode.json"
         }
     },
-    1316: function(e, t, i) {
-        "use strict";
-        i.d(t, "a", function() {
-            return a
-        }),
-        i.d(t, "c", function() {
-            return n
-        }),
-        i.d(t, "b", function() {
-            return r
-        });
-        var a = function(e) {
-            e = e.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, function(e, t, i, a) {
-                return t + t + i + i + a + a
-            });
-            var t = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(e);
-            return t ? [parseInt(t[1], 16), parseInt(t[2], 16), parseInt(t[3], 16)] : null
-        }
-          , n = function(e, t, i) {
-            return "#" + ((1 << 24) + (e << 16) + (t << 8) + i).toString(16).slice(1)
-        }
-          , r = function(e, t, i) {
-            var a = (2 * (1 - i) - 1 + 1) / 2
-              , n = 1 - a;
-            return [Math.round(e[0] * a + t[0] * n), Math.round(e[1] * a + t[1] * n), Math.round(e[2] * a + t[2] * n)]
-        }
-    },
-    1317: function(e, t, i) {
+    1322: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(8)
               , n = i.n(a)
-              , r = i(1330)
+              , r = i(1335)
               , s = i.n(r)
               , o = n.a.View.extend({
                 template: e.template(s.a),
@@ -12330,7 +12332,7 @@
         }
         ).call(this, i(7))
     },
-    1320: function(e, t, i) {
+    1325: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -12345,16 +12347,16 @@
         },
         t.a = n
     },
-    1322: function(e, t, i) {
+    1327: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(13)
           , s = (i(25),
-        i(1337),
-        i(1346),
-        i(1347))
-          , o = i(1277)
+        i(1342),
+        i(1351),
+        i(1352))
+          , o = i(1283)
           , l = ["north", "south", "east", "west"]
           , c = {
             getElevationGainThreshold: function() {
@@ -12655,7 +12657,7 @@
         };
         t.a = c
     },
-    1323: function(e, t, i) {
+    1328: function(e, t, i) {
         "use strict";
         i.r(t);
         var a = i(7)
@@ -12716,9 +12718,9 @@
                 }
             }
         }
-          , l = i(1231)
-          , c = i(98)
-          , h = (i(1275),
+          , l = i(1234)
+          , c = i(64)
+          , h = (i(1280),
         s.a.Model.extend({
             idAttribute: "activityId",
             url: function() {
@@ -12900,7 +12902,7 @@
         }));
         t.default = h
     },
-    1327: function(e, t, i) {
+    1332: function(e, t, i) {
         "use strict";
         i(7);
         var a = i(8)
@@ -12926,10 +12928,10 @@
         },
         t.a = n
     },
-    1330: function(e, t) {
+    1335: function(e, t) {
         e.exports = "<% if(title) { %>\n    <div><h5><%- title %></h5></div>\n<% } %>\n<div><%= content %></div>"
     },
-    1331: function(e, t, i) {
+    1336: function(e, t, i) {
         "use strict";
         t.a = {
             out: function(e) {
@@ -12946,11 +12948,11 @@
             }
         }
     },
-    1343: function(e, t, i) {
+    1348: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1348)
-          , r = i(1320)
+          , n = i(1353)
+          , r = i(1325)
           , s = i(13)
           , o = {
             getPersonalizerFunction: function(e) {
@@ -13061,7 +13063,7 @@
         };
         t.a = o
     },
-    1347: function(e, t, i) {
+    1352: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a);
@@ -13110,7 +13112,7 @@
             }
         })
     },
-    1348: function(e, t, i) {
+    1353: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
@@ -13250,34 +13252,14 @@
         l.GetSortOrder = o;
         t.a = l
     },
-    1351: function(e, t, i) {
-        "use strict";
-        var a = i(8)
-          , n = i.n(a)
-          , r = i(4)
-          , s = n.a.View.extend({
-            initialize: function(e) {},
-            render: function() {
-                this.$el.addClass(this.customClasses),
-                this.$el.html(this.template({
-                    Localizer: r.a
-                })),
-                this.$el.show()
-            }
-        });
-        s.Events = {
-            OnChartToggle: "OnChartToggle"
-        },
-        t.a = s
-    },
-    1352: function(e, t, i) {
+    1357: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = i(25)
-          , l = (i(1275),
+          , l = (i(1280),
         s.a.Model.extend({
             url: function() {
                 return this.isLapSwimming ? "/proxy/activity-service/activity/" + this.get("activityId") + "/swimDetails?maxChartSize=" + this.maxChartSize : "/proxy/activity-service/activity/" + this.get("activityId") + "/details?maxChartSize=" + this.maxChartSize + "&maxPolylineSize=" + this.maxPolylineSize
@@ -13392,9 +13374,9 @@
                 return !!this.get(e)
             },
             getData: function(e, t, i, a) {         // TX !!! bookmark - graph data array building
-                t  || (t = "sumDuration");
+                t || (t = "sumDuration");
                 var r = this.get(e)
-                  , s = this.get(t)
+                  , s = this.get(t)                // TX GCOverrides
                   , d = this.get("sumDistance");   // TX GCOverrides
                 if (!r || !s)
                     return null;
@@ -13489,7 +13471,7 @@
         }));
         t.a = l
     },
-    1360: function(e, t, i) {
+    1365: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -13499,8 +13481,8 @@
           , l = i(4)
           , c = i(18)
           , h = i.n(c)
-          , d = i(1279)
-          , p = i(1268)
+          , d = i(1286)
+          , p = i(1276)
           , u = function(e) {
             this.activitySummary = e.activitySummary,
             this.activityDetails = e.activityDetails,
@@ -13856,7 +13838,7 @@
         u.extend = s.a.Model.extend,
         t.a = u
     },
-    1361: function(e, t, i) {
+    1366: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -13890,7 +13872,7 @@
         });
         t.a = n
     },
-    1362: function(e, t, i) {
+    1367: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
@@ -13928,12 +13910,12 @@
         };
         t.a = r
     },
-    1363: function(e, t, i) {
+    1368: function(e, t, i) {
         "use strict";
         i.d(t, "a", function() {
             return n
         });
-        var a = i(79)
+        var a = i(80)
           , n = function e(t) {
             Object(a.a)(this, e),
             this.findByTypeId = function(e) {
@@ -13970,17 +13952,17 @@
             this.idMap = null
         }
     },
-    1370: function(e, t, i) {
+    1375: function(e, t, i) {
         "use strict";
         var a = i(2)
-          , n = i(79)
-          , r = i(80)
-          , s = i(97)
-          , o = i(95)
-          , l = i(96)
+          , n = i(80)
+          , r = i(81)
+          , s = i(99)
+          , o = i(97)
+          , l = i(98)
           , c = i(11)
           , h = i.n(c)
-          , d = i(1580)
+          , d = i(1585)
           , p = i.n(d)
           , u = function(e) {
             function t(e) {
@@ -14042,7 +14024,7 @@
         },
         t.a = u
     },
-    1372: function(e, t, i) {
+    1377: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -14085,7 +14067,7 @@
                 this
             }
         })
-          , c = i(214)
+          , c = i(218)
           , h = s.a.Collection.extend({
             model: l,
             url: function() {
@@ -14157,8 +14139,8 @@
         }
         ;
         var p = d
-          , u = i(1455)
-          , m = i(1232)
+          , u = i(1459)
+          , m = i(1236)
           , g = s.a.Collection.extend({
             model: u.a,
             urlRoot: "/proxy/course-service/course/popularRoutes",
@@ -14195,7 +14177,7 @@
                 }
             }
         })
-          , f = i(1277)
+          , f = i(1283)
           , v = function() {};
         v.prototype.fetch = function(e, t) {
             var i, a, n, r = e.courseType && m.a.PopularityRouteTypes[e.courseType.toUpperCase()] || m.a.PopularityRouteTypes.ROAD_CYCLING, s = new g({
@@ -14230,7 +14212,7 @@
         }
         ;
         var y = v
-          , A = i(1563)
+          , A = i(1566)
           , _ = function() {
             return this.name = null,
             this.directionService = null,
@@ -14278,19 +14260,19 @@
         ;
         t.a = _
     },
-    1375: function(e, t, i) {
+    1380: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(7)
               , r = i.n(n)
               , s = i(4)
-              , o = i(1361)
-              , l = i(81)
-              , c = i(1216)
-              , h = i(210)
-              , d = i(1327)
-              , p = i(1362)
-              , u = i(1376)
+              , o = i(1366)
+              , l = i(82)
+              , c = i(1220)
+              , h = i(214)
+              , d = i(1332)
+              , p = i(1367)
+              , u = i(1381)
               , m = i.n(u)
               , g = d.a.extend({
                 events: {
@@ -14428,55 +14410,14 @@
         }
         ).call(this, i(10), i(10))
     },
-    1376: function(e, t) {
+    1381: function(e, t) {
         e.exports = '<div class="dropdown">\n    <button class="dropdown-toggle chart-header-item" data-toggle="dropdown">\n        <%- Localizer.localize(\'avg_power_max_avg\', Localizer.localize(\'avg_power_range_none\')) %><i class="icon-pointer-down"></i>\n    </button>\n    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">\n        <li data-timerange="-1" class="active range-item"><a tabindex="-1" href="#"><%- Localizer.localize(\'avg_power_range_none\') %></a></li>\n        <li data-timerange="5" class="range-item"><a tabindex="-1" href="#"><%- Localizer.localize(\'avg_power_range_customsec\', 5) %></a></li>\n        <li data-timerange="60" class="range-item"><a tabindex="-1" href="#"><%- Localizer.localize(\'avg_power_range_custommin\', 1) %></a></li>\n        <li data-timerange="300" class="range-item"><a tabindex="-1" href="#"><%- Localizer.localize(\'avg_power_range_custommin\', 5) %></a></li>\n        <li data-timerange="1200" class="range-item"><a tabindex="-1" href="#"><%- Localizer.localize(\'avg_power_range_custommin\', 20) %></a></li>\n        <li class="divider"></li>\n        <li class="range-item-custom">\n            <a tabindex="-1" href="#" class="custom-max-avg-power-toggle"><%- Localizer.localize(\'avg_power_range_custom\') %></a>\n            <div class="custom-max-avg-power" style="display: none;">\n                <input type="text" class="input-mini time-input-field" maxlength="3">\n                <select class="input-small min-sec-selection">\n                    <option value="min"><%- Localizer.localize(\'avg_power_range_unit_min\') %></option>\n                    <option value="sec"><%- Localizer.localize(\'avg_power_range_unit_sec\') %></option>\n                </select>\n                <div id="power-go-btn" class="btn btn-form"><%- Localizer.localize(\'avg_power_calculate_btn\') %></div>\n            </div>\n        </li>\n    </ul>\n    <span id="avg-power-range-selector-value" class="chart-max-avg-power-detail"><%- avgValue %></span>\n</div>'
     },
-    1377: function(e, t, i) {
-        "use strict";
-        var a = i(7)
-          , n = i.n(a)
-          , r = i(4)
-          , s = i(1351)
-          , o = (i(98),
-        i(1378))
-          , l = i.n(o)
-          , c = {
-            1: "pace_chart_normal",
-            2: "pace_chart_lap_avg"
-        }
-          , h = s.a.extend({
-            events: {
-                "click .pace-toggle-item": "onToggleChartSelector"
-            },
-            template: n.a.template(l.a),
-            customClasses: "chart-lap-avg-pace",
-            onToggleChartSelector: function(e) {
-                e.preventDefault();
-                var t = +this.$(e.currentTarget).attr("data-chart-type");
-                this.trigger(s.a.Events.OnChartToggle, t)
-            },
-            setActiveChartLabel: function(e) {
-                this.$(".chart-header-item").html(e + '<i class="icon-pointer-down"></i>')
-            },
-            setActiveChart: function(e) {
-                if (e) {
-                    var t = c[e];
-                    t ? this.setActiveChartLabel(r.a.localize(t)) : this.setActiveChartLabel(r.a.localize(c[1])),
-                    this.$("li").removeClass("active"),
-                    this.$("ul").find("[data-chart-type='".concat(e, "']")).addClass("active")
-                }
-            }
-        });
-        t.a = h
-    },
-    1378: function(e, t) {
-        e.exports = '<div class="dropdown">\n    <button class="dropdown-toggle chart-header-item" data-toggle="dropdown">\n        <%- Localizer.localize(\'pace_chart_normal\') %> <i class="icon-pointer-down"></i>\n    </button>\n    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">\n        <li data-chart-type="1" class="active pace-toggle-item"><a tabindex="-1" href="#"><%- Localizer.localize(\'pace_chart_normal\') %></a></li>\n        <li data-chart-type="2" class="pace-toggle-item"><a tabindex="-1" href="#"><%- Localizer.localize(\'pace_chart_lap_avg\') %></a></li>\n    </ul>\n</div>'
-    },
-    1384: function(e, t, i) {
+    1387: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
-          , r = i(1574)
+          , r = i(1579)
           , s = n.a.Model.extend({
             idAttribute: "workoutId",
             url: function() {
@@ -14544,7 +14485,7 @@
         });
         t.a = s
     },
-    1386: function(e, t, i) {
+    1389: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -14587,13 +14528,13 @@
             }
         })
     },
-    1395: function(e, t, i) {
+    1398: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
-          , o = i(1304)
+          , o = i(1309)
           , l = i(353);
         function c(e, t) {
             if (function(e) {
@@ -14618,7 +14559,7 @@
         });
         t.a = h
     },
-    1397: function(e, t, i) {
+    1400: function(e, t, i) {
         "use strict";
         var a = function() {
             return this
@@ -14627,7 +14568,7 @@
         ,
         t.a = a
     },
-    1400: function(e, t, i) {
+    1403: function(e, t, i) {
         var a, n;
         n = function(e) {
             !function(e) {
@@ -15085,37 +15026,37 @@
         }
         .call(t, i, t, e)) || (e.exports = a)
     },
-    1408: function(e, t, i) {
+    1409: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = i(4)
-          , l = i(36)
-          , c = i(98)
-          , h = i(1699)
+          , l = i(37)
+          , c = i(64)
+          , h = i(1705)
           , d = i.n(h)
-          , p = i(1700)
+          , p = i(1706)
           , u = i.n(p)
-          , m = i(1701)
+          , m = i(1707)
           , g = i.n(m)
-          , f = i(1702)
+          , f = i(1708)
           , v = i.n(f)
-          , y = i(1703)
+          , y = i(1709)
           , A = i.n(y)
-          , _ = i(1704)
+          , _ = i(1710)
           , b = i.n(_)
-          , C = i(1705)
+          , C = i(1711)
           , w = i.n(C)
-          , x = i(1706)
+          , x = i(1712)
           , S = i.n(x)
-          , T = i(1707)
+          , T = i(1713)
           , E = i.n(T)
-          , L = i(1708)
-          , P = i.n(L)
-          , k = i(1709)
-          , z = i.n(k)
+          , L = i(1714)
+          , k = i.n(L)
+          , P = i(1715)
+          , z = i.n(P)
           , I = s.a.View.extend({
             initialize: function(e) {
                 this.template = n.a.template(e.templateHtml),
@@ -15163,7 +15104,7 @@
                     return S.a;
                 case "directGrit":
                     return this.additionalData.ActivitiesUtil = c.a,
-                    P.a;
+                    k.a;
                 case "directRespirationRate":
                     return E.a;
                 case "directFlow":
@@ -15202,7 +15143,7 @@
         });
         t.a = D
     },
-    1409: function(e, t, i) {
+    1410: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = {
@@ -15293,7 +15234,7 @@
         r.Modes = n,
         t.a = r
     },
-    1415: function(e, t, i) {
+    1420: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -15443,10 +15384,10 @@
         l.Events = o,
         t.a = l
     },
-    1416: function(e, t, i) {
+    1421: function(e, t, i) {
         "use strict";
         (function(e) {
-            var a = i(1217)
+            var a = i(1221)
               , n = i.n(a).a.TileLayer.extend({
                 getTileUrl: function(t) {
                     var i = e.Map.Utils.getHeatMapUrls(t.x, t.y, t.z);
@@ -15456,11 +15397,11 @@
             });
             t.a = n
         }
-        ).call(this, i(1238))
+        ).call(this, i(1242))
     },
-    1419: function(e, t, i) {
+    1424: function(e, t, i) {
         "use strict";
-        var a = i(1232)
+        var a = i(1236)
           , n = function(e) {
             return this.transitMode = null,
             this.updateTransitionMode(e.transitMode || null),
@@ -15474,14 +15415,22 @@
         ,
         t.a = n
     },
-    1429: function(e, t, i) {
+    1425: function(e, t, i) {
+        "use strict";
+        var a = i(8)
+          , n = i.n(a);
+        t.a = n.a.Model.extend({
+            url: "/web-data/climb-difficulty/climb-difficulty-master.json"
+        })
+    },
+    1434: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
               , n = i.n(a)
               , r = i(8)
               , s = i.n(r)
-              , o = i(278)
+              , o = i(129)
               , l = {
                 LACTATE_THRESHOLD: "LACTATE_THRESHOLD",
                 HR_RESERVE: "HR_RESERVE",
@@ -15631,15 +15580,15 @@
         }
         ).call(this, i(10))
     },
-    1430: function(e, t, i) {
+    1435: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = (i(4),
-        i(100))
-          , l = i(1515)
+        i(101))
+          , l = i(1518)
           , c = i.n(l);
         t.a = s.a.View.extend({
             template: n.a.template(c.a),
@@ -15663,17 +15612,17 @@
             }
         })
     },
-    1439: function(e, t, i) {
+    1444: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(8)
               , r = i.n(n)
               , s = i(4)
-              , o = i(279)
-              , l = i(1540)
-              , c = i(1593)
-              , h = i(162)
-              , d = i(1735)
+              , o = i(280)
+              , l = i(1542)
+              , c = i(1598)
+              , h = i(165)
+              , d = i(1741)
               , p = i.n(d)
               , u = {
                 ON_RENDERED: "ON_RENDERED",
@@ -15784,7 +15733,7 @@
         }
         ).call(this, i(7), i(10))
     },
-    1449: function(e, t, i) {
+    1454: function(e, t, i) {
         "use strict";
         var a = {
             determineMETS: function(e, t) {
@@ -15891,13 +15840,13 @@
         };
         t.a = a
     },
-    1454: function(e, t, i) {
+    1458: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(8)
               , n = i.n(a)
               , r = i(4)
-              , s = i(1495)
+              , s = i(1498)
               , o = n.a.Collection.extend({
                 model: s.a,
                 url: "/proxy/activity-service/activity/eventTypes",
@@ -15925,7 +15874,7 @@
         }
         ).call(this, i(7))
     },
-    1455: function(e, t, i) {
+    1459: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a);
@@ -15946,7 +15895,7 @@
             }
         })
     },
-    1457: function(e, t, i) {
+    1461: function(e, t, i) {
         "use strict";
         (function(e, a, n) {
             var r = i(7)
@@ -15954,9 +15903,9 @@
               , o = i(8)
               , l = i.n(o)
               , c = i(4)
-              , h = i(56)
-              , d = i(1283)
-              , p = i(1499)
+              , h = i(57)
+              , d = i(1289)
+              , p = i(1502)
               , u = i.n(p)
               , m = {
                 ON_MAP_PROVIDER_CHANGED: "ON_MAP_PROVIDER_CHANGED",
@@ -16174,9 +16123,9 @@
             g.Events = m,
             t.a = g
         }
-        ).call(this, i(1238), i(10), i(10))
+        ).call(this, i(1242), i(10), i(10))
     },
-    1458: function(e, t, i) {
+    1462: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -16184,7 +16133,7 @@
               , r = i(8)
               , s = i.n(r)
               , o = i(4)
-              , l = i(1643)
+              , l = i(1649)
               , c = i.n(l)
               , h = {
                 CHANGE: "CHANGE"
@@ -16237,8 +16186,8 @@
         }
         ).call(this, i(10))
     },
-    1459: function(e, t, i) {
-        var a = i(1502);
+    1463: function(e, t, i) {
+        var a = i(1505);
         "string" === typeof a && (a = [[e.i, a, ""]]);
         var n = {
             hmr: !0,
@@ -16248,13 +16197,13 @@
         i(35)(a, n);
         a.locals && (e.exports = a.locals)
     },
-    1480: function(e, t, i) {
+    1486: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
-          , o = i(1455)
+          , o = i(1459)
           , l = s.a.Collection.extend({
             model: o.a,
             url: function() {
@@ -16292,9 +16241,9 @@
                 }
             }
         })
-          , c = i(1232)
-          , h = i(1277)
-          , d = i(1419)
+          , c = i(1236)
+          , h = i(1283)
+          , d = i(1424)
           , p = function(e) {
             return d.a.call(this, e),
             this
@@ -16339,7 +16288,7 @@
         ;
         t.a = p
     },
-    1495: function(e, t, i) {
+    1498: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -16347,11 +16296,11 @@
         });
         t.a = n
     },
-    1498: function(e, t, i) {
+    1501: function(e, t, i) {
         "use strict";
-        var a = i(1305)
-          , n = i(1397)
-          , r = i(126)
+        var a = i(1310)
+          , n = i(1400)
+          , r = i(128)
           , s = i.n(r)
           , o = function(e) {
             return n.a.apply(this, e),
@@ -16390,19 +16339,19 @@
         ,
         t.a = o
     },
-    1499: function(e, t) {
+    1502: function(e, t) {
         e.exports = '<button class="zoomIn map-control-item" aria-label="<%-\xa0Localizer.localize(\'zoom_in\')\xa0%>" xmlns="http://www.w3.org/1999/html">\n    <i class="icon-add"></i>\n</button>\n<button class="zoomOut map-control-item" aria-label="<%-\xa0Localizer.localize(\'zoom_out\')\xa0%>">\n    <i class="icon-minus"></i>\n</button>\n\n\n<div class="dropdown map-control-item">\n    <button class="dropdown-trigger" data-toggle="dropdown" aria-label="<%-\xa0Localizer.localize(\'map.control.layers\')\xa0%>">\n        <i class="icon-layers"></i>\n    </button>\n    <ul class="dropdown-menu">\n        <li class="map-provider-google"><a href="#"><%- Localizer.localize(\'map.control.google\') %></a></li>\n        <li class="map-provider-here"><a href="#"><%- Localizer.localize(\'map.control.here\') %></a></li>\n        <li class="map-provider-osm"><a href="#"><%- Localizer.localize(\'map.control.osm\') %></a></li>\n        <li class="map-provider-BAIDU_V_1_4" style="display: none;"><a href="#"><%- Localizer.localize(\'map.control.baidu\') %></a></li>\n        <li class="divider"></li>\n        <li class="map-type-road"><a href="#"><%- Localizer.localize(\'map.control.road\') %></a></li>\n        <li class="map-type-satellite"><a href="#"><%- Localizer.localize(\'map.control.satellite\') %></a></li>\n        <li class="divider"></li>\n        <% if (additionalMapLayers.length > 0) { %>\n            <% for (var i = 0; i < additionalMapLayers.length; i++) { %>\n                <li data-layer-name="<%- additionalMapLayers[i].value %>" class="additional-layers <%- additionalMapLayers[i].selected ? \'active\' : \'\' %>"><a href="#"><%- additionalMapLayers[i].text %></a></li>\n            <% } %>\n            <li class="divider"></li>\n        <% } %>\n        <li class="map-layer-terrain">\n            <label>\n                <input type="checkbox" style="display: none"><%- Localizer.localize(\'map.control.terrain\') %></input>\n            </label>\n        </li>\n        <li class="map-layer-trails">\n            <label>\n                <input type="checkbox" style="display: none"><%- Localizer.localize(\'map.control.trails\') %></input>\n            </label>\n        </li>\n        <li class="map-layer-labels">\n            <label>\n                <input type="checkbox" style="display: none"><%- Localizer.localize(\'map.control.labels\') %></input>\n            </label>\n        </li>\n        <% if (!hideHeatMaps) { %>\n        <li class="divider"></li>\n        <li class="map-layer-running-heatmap">\n            <label>\n                <input type="checkbox" style="display: none"><%- Localizer.localize(\'map.control.heatmap.running.heatmap\') %></input>\n            </label>\n        </li>\n        <li class="map-layer-cycling-heatmap">\n            <label>\n                <input type="checkbox" style="display: none"><%- Localizer.localize(\'map.control.heatmap.cycling.heatmap\') %></input>\n            </label>\n        </li>\n        <% } %>\n        <li class="map-coordinate-system" style="display: none">\n            <a href="#"><%- Localizer.localize(\'map.control.map_match\') %></a>\n        </li>\n    </ul>\n</div>\n'
     },
-    1500: function(e, t, i) {
+    1503: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
-          , s = i(1216)
-          , o = i(210)
-          , l = (i(1256),
-        i(1247))
-          , c = i(1501)
+          , s = i(1220)
+          , o = i(214)
+          , l = (i(1263),
+        i(1252))
+          , c = i(1504)
           , h = i.n(c)
           , d = {
             CHANGE: "CHANGE"
@@ -16455,13 +16404,13 @@
         p.Events = d,
         t.a = p
     },
-    1501: function(e, t) {
+    1504: function(e, t) {
         e.exports = '<<%- tag %> href="<%- url %>" class="inline-edit-target" title="<%- value %>">\n    <%- Localizer.localize(\'dive_number_label\') + \' \' + diveNumber + \': \' + value %>\n</<%- tag %>>\n\n<button class="inline-edit-trigger modal-trigger">\n    <i class="icon-pencil"></i>\n</button>\n\n<div class="inline-edit-editable">\n    <div class="edit-dive-activity-dive-label"><%- Localizer.localize(\'dive_number_label\') %></div>\n    <div id="inlineEditDiveNumber"  class="inline-edit-editable-text dive-number" style="min-width: 15px;" contenteditable="true"><%- diveNumber %></div>\n    <div id="inlineEditText" class="inline-edit-editable-text dive-name" style="min-width: 15px;" contenteditable="true"><%- value %></div>\n    <span class="inline-edit-actions">\n        <button class="inline-edit-save icon-checkmark"></button>\n        <button class="inline-edit-cancel icon-close"></button>\n    </span>\n</div>\n'
     },
-    1502: function(e, t, i) {
-        (e.exports = i(32)(!0)).push([e.i, "/*  ======================\n      Gear Page\n      ======================  */\n    .page.gear .gear-item {\n        position: relative;\n    }\n    .page.gear .gear-item .avatar {\n        width: 163px;\n        height: 163px;\n        box-shadow: 0px 0px 0px 3px #fff, 0px 0px 0px 4px #eaeaea;\n    }\n    .page.gear .gear-item i.avatar {\n        font-size: 130px;\n        text-align: center;\n        background: #6e8594;\n        color: #2d4352;\n        line-height: 163px;\n        display: inline-block;\n    }\n    .page.gear .gear-item .gear-body {\n        width: 260px;\n        min-height: 200px;\n        margin: 0 20px 0 10px;\n        position: relative;\n    }\n    .page.gear .gear-item .gear-name {\n        margin-bottom: 11px;\n    }\n    .page.gear .gear-item .gear-name .gear-name-truncate {\n        display: inline-block;\n        max-width: calc(100% - 25px);\n        overflow: hidden;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n        vertical-align: top;\n    }\n    .page.gear .gear-item .dropdown-trigger {\n        height: 16px;\n        vertical-align: middle;\n        line-height: 16px;\n    }\n    .page.gear .gear-item .gear-max {\n        margin-top: 11px;\n        margin-bottom: 0;\n    }\n    .page.gear .gear-item .gear-max.warning {\n        color: #ff9e0d;\n    }\n    .page.gear .gear-item.warning .gear-max {\n        color: #ed7e00;\n    }\n    .page.gear .gear-item.over .gear-max {\n        color: #bf0f24;\n    }\n    .page.gear .gear-item .gear-max-progress {\n        width: 60%;\n        background: #ddd;\n        border-radius: 5px;\n        overflow: hidden;\n        margin-top: 5px;\n    }\n    .page.gear .gear-item .gear-max-progress-value {\n        background: #11a9ed;\n        height: 8px;\n    }\n    .page.gear .gear-item.warning .gear-max-progress-value {\n        background: #ed7e00;\n    }\n    .page.gear .gear-item.over .gear-max-progress-value {\n        background: #bf0f24;\n    }\n    .page.gear #retired-gear-tab .gear-item .gear-max-progress-value {\n        background: #aaa;\n    }\n    .page.gear .photo-editor {\n        border: 1px solid #ddd;\n        border-radius: 10px;\n        width: 218px;\n        height: 218px;\n        overflow: hidden;\n    }\n    .page.gear .photo-editor [class*='icon-'] {\n        font-size: 170px;\n        width: 218px;\n        color: #ddd;\n        height: 218px;\n        line-height: 175px;\n        text-align: center;\n\n        background: #6e8594;\n        margin-top: 0;\n        vertical-align: top;\n        color: #2d4352;\n    }\n    .page.gear .photo-editor .icon-gear {\n        font-size: 130px;\n        line-height: 178px;\n    }\n    .page.gear .typeahead.dropdown-menu {\n        min-width: 218px;\n    }\n    /*  ======================\n      Gear Widget\n      ======================  */\n    .widget-gear .widget-view-title {\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        margin-top: -11px;\n        margin-bottom: -8px;\n        line-height: 44px;\n    }\n    .widget-gear .chart-gauge-gear {\n        height: 165px;\n    }\n    .widget-gear .gear-chart-icon {\n        font-size: 90px;\n        width: 110px;\n        height: 110px;\n        line-height: 110px;\n    }\n    .widget-gear .avatar {\n        margin: 10px 10px 0 3px;\n    }\n    .widget-sheet-gear-activity-list .activity-list td:first-child a {\n        width: 80px;\n    }\n    /*  ======================\n      Activities Widget and Activity Detail page - Gear List\n      ======================  */\n    .gear-list {\n        margin: 0 0 11px;\n        padding: 0;\n        list-style: none;\n    }\n    .gear-list li {\n        border-bottom: 1px solid #ddd;\n        padding: 8px 5px 8px 0;\n        cursor: pointer;\n        width: calc(100% - 5px);\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n    }\n    .gear-list li:hover {\n        background-color: #f5f5f5;\n    }\n    .gear-list li:last-child {\n        border-bottom: none;\n    }\n    .gear-list .gear-type {\n        margin-right: 10px;\n        font-size: 18px;\n        width: 18px;\n        height: 18px;\n        vertical-align: middle;\n    }\n    .gear-list .gear-status {\n        font-family: 'connect-icons';\n        speak: none;\n        font-style: normal;\n        font-weight: normal;\n        -webkit-font-feature-settings: normal;\n                font-feature-settings: normal;\n        font-variant: normal;\n        text-transform: none;\n\n        /* Better Font Rendering =========== */\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n\n        /* Custom CSS to overwrite Bootstrap */\n        background-image: none;\n        display: inline-block;\n        margin: 0 10px;\n        position: relative;\n    }\n    .gear-list .gear-status:after,\n    .gear-list .active:hover .gear-status:after {\n        width: 18px;\n        height: 18px;\n        line-height: 18px;\n        border-radius: 50%;\n        display: inline-block;\n        color: transparent;\n        text-align: center;\n        content: '\\E005'; /* plus icon */\n        background: #e6e6e6;\n        color: #fff;\n        font-size: 10px;\n        vertical-align: middle;\n        margin-top: -2px;\n    }\n    .gear-list li:hover .gear-status:after {\n        background: #50b012; /* green */\n    }\n    .gear-list .active .gear-status:after {\n        content: '\\2714'; /* checkmark icon */\n        background: #11a9ed; /* blue */\n        color: #fff;\n        font-size: 14px;\n    }\n    .gear-list .active:hover .gear-status:after {\n        content: '\\E60C'; /* minus icon */\n        background: #ff0035; /* red */\n    }\n    .gear-list .saving .gear-status:after,\n    .gear-list .saving:hover .gear-status:after {\n        background: transparent;\n        color: transparent;\n    }\n    .gear-list .spinner {\n        display: none;\n    }\n    .gear-list .saving .spinner {\n        display: inline-block;\n        position: absolute;\n        top: 5px;\n    }\n    /*  ======================\n      Activity Detail Page\n      ======================  */\n    .page.activity-detail .gear-images .avatar {\n        display: inline-block;\n        vertical-align: middle;\n    }\n    .page.activity-detail .gear-names {\n        margin: 11px 0 0 0;\n        padding: 0;\n        list-style: none;\n    }\n    .page.activity-detail .gear-indicator {\n        margin-right: 10px;\n    }\n", "", {
+    1505: function(e, t, i) {
+        (e.exports = i(33)(!0)).push([e.i, "/*  ======================\n      Gear Page\n      ======================  */\n    .page.gear .gear-item {\n        position: relative;\n    }\n    .page.gear .gear-item .avatar {\n        width: 163px;\n        height: 163px;\n        box-shadow: 0px 0px 0px 3px #fff, 0px 0px 0px 4px #eaeaea;\n    }\n    .page.gear .gear-item i.avatar {\n        font-size: 130px;\n        text-align: center;\n        background: #6e8594;\n        color: #2d4352;\n        line-height: 163px;\n        display: inline-block;\n    }\n    .page.gear .gear-item .gear-body {\n        width: 260px;\n        min-height: 200px;\n        margin: 0 20px 0 10px;\n        position: relative;\n    }\n    .page.gear .gear-item .gear-name {\n        margin-bottom: 11px;\n    }\n    .page.gear .gear-item .gear-name .gear-name-truncate {\n        display: inline-block;\n        max-width: calc(100% - 25px);\n        overflow: hidden;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n        vertical-align: top;\n    }\n    .page.gear .gear-item .dropdown-trigger {\n        height: 16px;\n        vertical-align: middle;\n        line-height: 16px;\n    }\n    .page.gear .gear-item .gear-max {\n        margin-top: 11px;\n        margin-bottom: 0;\n    }\n    .page.gear .gear-item .gear-max.warning {\n        color: #ff9e0d;\n    }\n    .page.gear .gear-item.warning .gear-max {\n        color: #ed7e00;\n    }\n    .page.gear .gear-item.over .gear-max {\n        color: #bf0f24;\n    }\n    .page.gear .gear-item .gear-max-progress {\n        width: 60%;\n        background: #ddd;\n        border-radius: 5px;\n        overflow: hidden;\n        margin-top: 5px;\n    }\n    .page.gear .gear-item .gear-max-progress-value {\n        background: #11a9ed;\n        height: 8px;\n    }\n    .page.gear .gear-item.warning .gear-max-progress-value {\n        background: #ed7e00;\n    }\n    .page.gear .gear-item.over .gear-max-progress-value {\n        background: #bf0f24;\n    }\n    .page.gear #retired-gear-tab .gear-item .gear-max-progress-value {\n        background: #aaa;\n    }\n    .page.gear .photo-editor {\n        border: 1px solid #ddd;\n        border-radius: 10px;\n        width: 218px;\n        height: 218px;\n        overflow: hidden;\n    }\n    .page.gear .photo-editor [class*='icon-'] {\n        font-size: 170px;\n        width: 218px;\n        color: #ddd;\n        height: 218px;\n        line-height: 175px;\n        text-align: center;\n\n        background: #6e8594;\n        margin-top: 0;\n        vertical-align: top;\n        color: #2d4352;\n    }\n    .page.gear .photo-editor .icon-gear {\n        font-size: 130px;\n        line-height: 178px;\n    }\n    .page.gear .typeahead.dropdown-menu {\n        min-width: 218px;\n    }\n    /*  ======================\n      Gear Widget\n      ======================  */\n    .widget-gear .widget-view-title {\n        white-space: nowrap;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        margin-top: -11px;\n        margin-bottom: -8px;\n        line-height: 44px;\n    }\n    .widget-gear .chart-gauge-gear {\n        height: 165px;\n    }\n    .widget-gear .gear-chart-icon {\n        font-size: 90px;\n        width: 110px;\n        height: 110px;\n        line-height: 110px;\n    }\n    .widget-gear .avatar {\n        margin: 10px 10px 0 3px;\n    }\n    .widget-sheet-gear-activity-list .activity-list td:first-child a {\n        width: 80px;\n    }\n    /*  ======================\n      Activities Widget and Activity Detail page - Gear List\n      ======================  */\n    .gear-list {\n        margin: 0 0 11px;\n        padding: 0;\n        list-style: none;\n    }\n    .gear-list li {\n        border-bottom: 1px solid #ddd;\n        padding: 8px 5px 8px 0;\n        cursor: pointer;\n        width: calc(100% - 5px);\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n    }\n    .gear-list li:hover {\n        background-color: #f5f5f5;\n    }\n    .gear-list li:last-child {\n        border-bottom: none;\n    }\n    .gear-list .gear-type {\n        margin-right: 10px;\n        font-size: 18px;\n        width: 18px;\n        height: 18px;\n        vertical-align: middle;\n    }\n    .gear-list .gear-status {\n        font-family: 'connect-icons';\n        speak: none;\n        font-style: normal;\n        font-weight: normal;\n        -webkit-font-feature-settings: normal;\n                font-feature-settings: normal;\n        font-variant: normal;\n        text-transform: none;\n\n        /* Better Font Rendering =========== */\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n\n        /* Custom CSS to overwrite Bootstrap */\n        background-image: none;\n        display: inline-block;\n        margin: 0 10px;\n        position: relative;\n    }\n    .gear-list .gear-status:after,\n    .gear-list .active:hover .gear-status:after {\n        width: 18px;\n        height: 18px;\n        line-height: 18px;\n        border-radius: 50%;\n        display: inline-block;\n        color: transparent;\n        text-align: center;\n        content: '\\E005'; /* plus icon */\n        background: #e6e6e6;\n        color: #fff;\n        font-size: 10px;\n        vertical-align: middle;\n        margin-top: -2px;\n    }\n    .gear-list li:hover .gear-status:after {\n        background: #50b012; /* green */\n    }\n    .gear-list .active .gear-status:after {\n        content: '\\2714'; /* checkmark icon */\n        background: #11a9ed; /* blue */\n        color: #fff;\n        font-size: 14px;\n    }\n    .gear-list .active:hover .gear-status:after {\n        content: '\\E60C'; /* minus icon */\n        background: #ff0035; /* red */\n    }\n    .gear-list .saving .gear-status:after,\n    .gear-list .saving:hover .gear-status:after {\n        background: transparent;\n        color: transparent;\n    }\n    .gear-list .spinner {\n        display: none;\n    }\n    .gear-list .saving .spinner {\n        display: inline-block;\n        position: absolute;\n        top: 5px;\n    }\n    /*  ======================\n      Activity Detail Page\n      ======================  */\n    .page.activity-detail .gear-images .avatar {\n        display: inline-block;\n        vertical-align: middle;\n    }\n    .page.activity-detail .gear-names {\n        margin: 11px 0 0 0;\n        padding: 0;\n        list-style: none;\n    }\n    .page.activity-detail .gear-indicator {\n        margin-right: 10px;\n    }\n", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/src/styles/gear.page.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/src/styles/gear.page.css"],
             names: [],
             mappings: "AACI;;gCAE2B;IAC3B;QACI,mBAAkB;KACtB;IACA;QACI,aAAY;QACZ,cAAa;QACb,0DAAyD;KAC7D;IACA;QACI,iBAAgB;QAChB,mBAAkB;QAClB,oBAAmB;QACnB,eAAc;QACd,mBAAkB;QAClB,sBAAqB;KACzB;IACA;QACI,aAAY;QACZ,kBAAiB;QACjB,sBAAqB;QACrB,mBAAkB;KACtB;IACA;QACI,oBAAmB;KACvB;IACA;QACI,sBAAqB;QACrB,6BAA4B;QAC5B,iBAAgB;QAChB,oBAAmB;QACnB,wBAAuB;QACvB,oBAAmB;KACvB;IACA;QACI,aAAY;QACZ,uBAAsB;QACtB,kBAAiB;KACrB;IACA;QACI,iBAAgB;QAChB,iBAAgB;KACpB;IACA;QACI,eAAc;KAClB;IACA;QACI,eAAc;KAClB;IACA;QACI,eAAc;KAClB;IACA;QACI,WAAU;QACV,iBAAgB;QAChB,mBAAkB;QAClB,iBAAgB;QAChB,gBAAe;KACnB;IACA;QACI,oBAAmB;QACnB,YAAW;KACf;IACA;QACI,oBAAmB;KACvB;IACA;QACI,oBAAmB;KACvB;IACA;QACI,iBAAgB;KACpB;IACA;QACI,uBAAsB;QACtB,oBAAmB;QACnB,aAAY;QACZ,cAAa;QACb,iBAAgB;KACpB;IACA;QACI,iBAAgB;QAChB,aAAY;QACZ,YAAW;QACX,cAAa;QACb,mBAAkB;QAClB,mBAAkB;;QAElB,oBAAmB;QACnB,cAAa;QACb,oBAAmB;QACnB,eAAc;KAClB;IACA;QACI,iBAAgB;QAChB,mBAAkB;KACtB;IACA;QACI,iBAAgB;KACpB;IAEA;;gCAE2B;IAC3B;QACI,oBAAmB;QACnB,iBAAgB;QAChB,wBAAuB;QACvB,kBAAiB;QACjB,oBAAmB;QACnB,kBAAiB;KACrB;IACA;QACI,cAAa;KACjB;IACA;QACI,gBAAe;QACf,aAAY;QACZ,cAAa;QACb,mBAAkB;KACtB;IACA;QACI,wBAAuB;KAC3B;IACA;QACI,YAAW;KACf;IAEA;;gCAE2B;IAE3B;QACI,iBAAgB;QAChB,WAAU;QACV,iBAAgB;KACpB;IACA;QACI,8BAA6B;QAC7B,uBAAsB;QACtB,gBAAe;QACf,wBAAuB;QACvB,iBAAgB;QAChB,wBAAuB;QACvB,oBAAmB;KACvB;IACA;QACI,0BAAyB;KAC7B;IACA;QACI,oBAAmB;KACvB;IACA;QACI,mBAAkB;QAClB,gBAAe;QACf,YAAW;QACX,aAAY;QACZ,uBAAsB;KAC1B;IACA;QACI,6BAA4B;QAC5B,YAAW;QACX,mBAAkB;QAClB,oBAAmB;QACnB,sCAAoB;gBAApB,8BAAoB;QAApB,qBAAoB;QACpB,qBAAoB;;QAEpB,uCAAsC;QACtC,oCAAmC;QACnC,mCAAkC;;QAElC,uCAAsC;QACtC,uBAAsB;QACtB,sBAAqB;QACrB,eAAc;QACd,mBAAkB;KACtB;IACA;;QAEI,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,mBAAkB;QAClB,sBAAqB;QACrB,mBAAkB;QAClB,mBAAkB;QAClB,iBAAgB,CAAE,eAAc;QAChC,oBAAmB;QACnB,YAAW;QACX,gBAAe;QACf,uBAAsB;QACtB,iBAAgB;KACpB;IACA;QACI,oBAAmB,CAAE,WAAU;KACnC;IACA;QACI,iBAAgB,CAAE,oBAAmB;QACrC,oBAAmB,CAAE,UAAS;QAC9B,YAAW;QACX,gBAAe;KACnB;IACA;QACI,iBAAgB,CAAE,gBAAe;QACjC,oBAAmB,CAAE,SAAQ;KACjC;IACA;;QAEI,wBAAuB;QACvB,mBAAkB;KACtB;IACA;QACI,cAAa;KACjB;IACA;QACI,sBAAqB;QACrB,mBAAkB;QAClB,SAAQ;KACZ;IAEA;;gCAE2B;IAE3B;QACI,sBAAqB;QACrB,uBAAsB;KAC1B;IACA;QACI,mBAAkB;QAClB,WAAU;QACV,iBAAgB;KACpB;IACA;QACI,mBAAkB;KACtB",
             file: "gear.page.css",
@@ -16469,10 +16418,795 @@
             sourceRoot: ""
         }])
     },
-    1515: function(e, t) {
+    1518: function(e, t) {
         e.exports = '<span class="react-placeholder <%- additionalClasses %>"></span>'
     },
-    1517: function(e, t, i) {
+    1537: function(e, t, i) {
+        "use strict";
+        var a = i(7)
+          , n = i.n(a)
+          , r = i(4)
+          , s = i(1279)
+          , o = i(1734)
+          , l = i.n(o)
+          , c = s.a.extend({
+            template: n.a.template(l.a),
+            events: {
+                "click li": "onInlineSelectionChanged",
+                "change select[name=activityType]": "onActivityTypeChanged"
+            },
+            initialize: function(e) {
+                this.useSelect = e.useSelect,
+                this.className = e.className || "",
+                e.options && !0 === e.options.showTypeAll && e.items.unshift({
+                    name: r.a.localize("any_activity_type"),
+                    value: "all",
+                    children: []
+                }),
+                s.a.prototype.initialize.call(this, e),
+                this.value = e.value,
+                this.$("[data-value=" + this.value + "]").addClass("active")
+            },
+            onActivityTypeChanged: function(e) {
+                e.preventDefault(),
+                this.$(".active").removeClass("active");
+                var t = this.$("select[name=activityType]").val();
+                this.$("[data-value=" + t + "]").addClass("active"),
+                this.trigger(s.a.Events.CHANGE, t)
+            },
+            setActivityType: function(e) {
+                this.value = e
+            }
+        });
+        t.a = c
+    },
+    1540: function(e, t, i) {
+        var a = i(2194);
+        "string" === typeof a && (a = [[e.i, a, ""]]);
+        var n = {
+            hmr: !0,
+            transform: void 0,
+            insertInto: void 0
+        };
+        i(35)(a, n);
+        a.locals && (e.exports = a.locals)
+    },
+    1541: function(e, t, i) {
+        "use strict";
+        (function(e) {
+            var a = i(7)
+              , n = i.n(a)
+              , r = i(8)
+              , s = i.n(r)
+              , o = i(4)
+              , l = i(13)
+              , c = i(1227)
+              , h = i.n(c)
+              , d = i(2197)
+              , p = i(1222)
+              , u = i(1276)
+              , m = i(2199)
+              , g = i.n(m)
+              , f = {
+                AxisTypeChanged: "AxisTypeChanged"
+            }
+              , v = s.a.View.extend({
+                step: !1,
+                threshold: 9999,
+                template: n.a.template(g.a),
+                events: {
+                    "change .x-axis-value": "onAxisSelected"
+                },
+                initialize: function(e) {
+                    if (!e.backgroundSeries)
+                        throw "BackgroundSeriesType required for ExpandedChartView";
+                    this.series = e.series,
+                    this.speedType = e.speedType,
+                    this.primarySeries = null,
+                    this.secondarySeries = null,
+                    this.workoutSeries = null,
+                    this.showWorkoutSeries = !1,
+                    this.xAxisType = e.xAxisType || this.defaultXAxisType(),
+                    this.activitySummary = e.activitySummary,
+                    this.backgroundSeries = e.backgroundSeries,
+                    this.turboThreshold = e.turboThreshold ? e.turboThreshold : 4e3,
+                    this.zeroThreshold = e.zeroThreshold,
+                    this.hideAxisTypes = e.hideAxisTypes || !1
+                },
+                measurementSystem: function() {
+                    return l.a.measurementSystem
+                },
+                defaultXAxisType: function() {
+                    return u.a.Duration
+                },
+                getXAxisTypes: function() {
+                    return this.hideAxisTypes ? [] : [{
+                        name: u.a.Duration,
+                        label: o.a.localize("over_time")
+                    }, {
+                        name: u.a.Distance,
+                        label: o.a.localize("over_distance")
+                    }]
+                },
+                onPrimaryChanged: function() {
+                    this.chartHeaderView.secondarySeries && !this.chartHeaderView.primarySeries && (this.chartHeaderView.primarySeries = this.chartHeaderView.secondarySeries,
+                    this.chartHeaderView.secondarySeries = null),
+                    this.updateSeries(),
+                    this.chartHeaderView.shouldShowWorkoutTarget(this.showWorkoutSeries),
+                    this.chartHeaderView.render()
+                },
+                onSecondaryChanged: function() {
+                    this.updateSeries()
+                },
+                getSingleSeriesMin: function(e) {
+                    var t;
+                    return "undefined" != typeof e.expandedMin && (t = "function" == typeof e.expandedMin ? e.expandedMin.call(e) : e.expandedMin),
+                    t
+                },
+                getSeriesMin: function(e) {
+                    var t, i = !1;
+                    return n.a.each(e, function(e) {
+                        "undefined" != typeof e.expandedMin && (i || (t = 9999999,
+                        i = !0),
+                        t = Math.min(t, this.getSingleSeriesMin(e)))
+                    }, this),
+                    t
+                },
+                getWorkoutDataMin: function() {
+                    var e = 99999999;
+                    return n.a.each(this.workoutData, function(t) {
+                        t[1] < e && (e = t[1])
+                    }),
+                    e
+                },
+                getSingleSeriesMax: function(e) {
+                    var t;
+                    return "undefined" != typeof e.expandedMax && (t = "function" == typeof e.expandedMax ? e.expandedMax.call(e) : e.expandedMax),
+                    t
+                },
+                getSeriesMax: function(e) {
+                    var t, i = !1;
+                    return n.a.each(e, function(e) {
+                        "undefined" != typeof e.expandedMax && (i || (t = -9999999,
+                        i = !0),
+                        t = Math.max(t, this.getSingleSeriesMax(e)))
+                    }, this),
+                    t
+                },
+                getWorkoutDataMax: function() {
+                    var e = -99999999;
+                    return n.a.each(this.workoutData, function(t) {
+                        t[1] > e && (e = t[1])
+                    }),
+                    e
+                },
+                getSeriesAxisOptions: function(e, t) {
+                    var i = this.getSeriesMin(e)
+                      , a = this.getSeriesMax(e);
+                    if (this.showWorkoutSeries) {
+                        var r = this.getWorkoutDataMin()
+                          , s = this.getWorkoutDataMax();
+                        i = i <= r ? i : r,
+                        a = a >= s ? a : s
+                    }
+                    var o = p.a.mapSeriesType(e[0]);
+                    0 == t && this.getSeriesCount() > 1 && 1 == e.length && (o = "#6D8595");
+                    var l = {
+                        gridLineColor: "#dddddd",
+                        title: {
+                            text: null
+                        },
+                        labels: {
+                            formatter: n.a.partial(this.yAxisLabelFormatter, this, t),
+                            style: {
+                                color: o,
+                                fontSize: "12px"
+                            },
+                            step: 1
+                        },
+                        min: i,
+                        max: a,
+                        reversed: e[0].reversed,
+                        plotLines: e[0].plotLines,
+                        tickInterval: e[0].tickInterval,
+                        opposite: t > 0
+                    };
+                    return t > 0 && (l.gridLineWidth = 0),
+                    l
+                },
+                getSeriesYAxisOptions: function(e, t) {
+                    return this.getSeriesAxisOptions(e, t)
+                },
+                getSeriesXAxisOptions: function() {
+                    return {
+                        labels: {
+                            formatter: n.a.partial(this.xAxisLabelFormatter, this),
+                            style: {
+                                color: "#888888",
+                                fontSize: "12px"
+                            },
+                            y: 20
+                        },
+                        tickLength: 0,
+                        tickPixelInterval: 200,
+                        maxPadding: 0
+                    }
+                },
+                updateSeries: function() {
+                    this.removeAllSeries(),
+                    this.addAllSeries(),
+                    this.highChartObj.redraw()
+                },
+                addBackgroundSeries: function() {
+                    var e = [];
+                    n.a.each(this.backgroundSeries, function(t) {
+                        this.workoutSeries = this.createWorkoutChartSeries(t, 0),
+                        this.chartHeaderView.primarySeries && (this.workoutSeries = null,
+                        this.showWorkoutSeries = !1),
+                        this.workoutSeries && (e.push(this.workoutSeries),
+                        this.showWorkoutSeries = !0),
+                        e.push(this.createChartSeries(t, 0))
+                    }, this),
+                    this.highChartObj.addAxis(this.getSeriesAxisOptions(this.backgroundSeries, 0), !1, !1, !1),
+                    n.a.each(e, function(e) {
+                        this.highChartObj.addSeries(e, !1)
+                    }, this)
+                },
+                addPrimarySeries: function(e) {
+                    var t = [];
+                    n.a.each(e, function(e) {
+                        t.push(this.createChartSeries(e, 1))
+                    }, this),
+                    this.highChartObj.addAxis(this.getSeriesAxisOptions(e, 1), !1, !1, !1),
+                    n.a.each(t, function(e) {
+                        this.highChartObj.addSeries(e, !1)
+                    }, this),
+                    this.primarySeries = e
+                },
+                addSecondarySeries: function(e) {
+                    var t = [];
+                    n.a.each(e, function(e) {
+                        t.push(this.createChartSeries(e, 2))
+                    }, this),
+                    this.highChartObj.addAxis(this.getSeriesAxisOptions(e, 2), !1, !1, !1),
+                    n.a.each(t, function(e) {
+                        this.highChartObj.addSeries(e, !1)
+                    }, this),
+                    this.secondarySeries = e
+                },
+                onZoomReset: function() {
+                    this.resetZoom()
+                },
+                onRangeSelected: function(e, t) {
+                    this.setExtremes(e, t)
+                },
+                setExtremes: function(e, t) {
+                    this.highChartObj.xAxis[0].setExtremes(e, t)
+                },
+                resetZoom: function() {
+                    this.highChartObj.xAxis[0].setExtremes(null, null)
+                    this.highChartObj.yAxis[0].setExtremes(null, null); // TX GCOverrides
+                },
+                xAxisLabelFormatter: function(e) {
+                    return e.xAxisType == u.a.Distance ? this.value : l.a.personalizeDuration(this.value)
+                },
+                yAxisLabelFormatter: function(e, t) {
+                    var i = null;
+                    return 0 == t ? i = e.backgroundSeries : 1 == t && e.primarySeries ? i = e.primarySeries : e.secondarySeries && (i = e.secondarySeries),
+                    null == i || 0 == i.length ? "" : (i = i[0]).yAxisFormattingFunction ? i.yAxisFormattingFunction(this.value, e.measurementSystem()) : i.formattingFunction(this.value, e.measurementSystem())
+                },
+                yUnit: function(e) {
+                    return e.unit_key ? o.a.localize(n.a.result(e, "unit_key")) : ""
+                },
+                tooltipFormatter: function(e) {
+                    var t = []
+                      , i = this.point || this.points[0];
+                    if (i) {
+                        var a = i.x;
+                        var dist = i.series.chart.userOptions.series[0].data[i.series.chart.hoverPoints[0].index].dist;  // TX GCOverrides                         
+                        dist = l.a.formatDistance(dist, e.activitySummary.getActivityTypeKey())                          // TX GCOverrides
+                           + " " + o.a.localize(l.a.getDistanceUnitKey(e.activitySummary.getActivityTypeKey()));         // TX GCOverrides
+                           
+                        if (e.backgroundSeries && n.a.each(e.backgroundSeries, function(i) {
+                            var n = i.getClosestPoint(a).data;
+                            n && null !== n.y && (t.push("<b>" + i.formatToolTipRow(i, null, n.y, e.yUnit(i), null, null, null) + "</b><br/>")) // TX GCOverrides (formatting)
+                        }, this),
+                        e.workoutSeries && e.showWorkoutSeries) {
+                            var r = e.workoutSeries
+                              , s = e.backgroundSeries[0].getClosestPoint(a)
+                              , c = r.data[s.index][1];
+                            if (null !== c) {
+                                var h = e.yUnit(e.backgroundSeries[0]);
+                                0 === c ? (c = "--",
+                                t.push(c + " " + h),
+                                t.push("<br/>")) : (t.push(e.backgroundSeries[0].formatToolTipRow(r, null, c, h, null, null, null)),
+                                t.push("<br/>"))
+                            }
+                        }
+                        e.primarySeries && n.a.each(e.primarySeries, function(i) {
+                            var n = i.getClosestPoint(a).data;
+                            n && null !== n.y && (t.push(i.formatToolTipRow(i, null, n.y, e.yUnit(i), null, null, null)),
+                            t.push("<br/>"))
+                        }),
+                        e.secondarySeries && n.a.each(e.secondarySeries, function(i) {
+                            var n = i.getClosestPoint(a).data;
+                            null !== n.y && (t.push(i.formatToolTipRow(i, null, n.y, e.yUnit(i), null, null, null)),
+                            t.push("<br/>"))
+                        }),
+                        e.xAxisType === u.a.Distance ?                  // TX !!! GCOverrides - (whole block) zoomed graph tooltip
+                            t.push(dist) : 
+                            e.xAxisType === u.a.Duration ? 
+                                t.push(l.a.personalizeDuration(i.x) + " " + o.a.localize(l.a.getDurationUnitKey()) + "<br/>" + dist) : 
+                                e.xAxisType === v.XAxisTypes.SwimLengths ? 
+                                    t.push(o.a.localize("swim_length_num", Math.floor(i.x) + 1)) : 
+                                    e.xAxisType === v.XAxisTypes.SwimDistance ? 
+                                        t.push(l.a.personalizeDistance(i.x, e.activitySummary.getActivityTypeKey(), e.activitySummary.get("unitOfPoolLength")) + " " + o.a.localize(l.a.getDistanceUnitKey(e.activitySummary.getActivityTypeKey(), null, e.activitySummary.get("unitOfPoolLength")))) : t.push(l.a.personalizeDuration(i.x) + " " + o.a.localize(l.a.getDurationUnitKey()))
+                    }
+                    return t.join("")
+                },
+                render: function() {
+                    var e = this.template({
+                        Localizer: o.a,
+                        Personalizer: l.a,
+                        series: this.getAvailableSeries(),
+                        xAxisTypes: this.getXAxisTypes()
+                    });
+                    this.$el.html(e),
+                    this.$(".x-axis-value").val(this.xAxisType),
+                    this.chartHeaderView = new d.a({
+                        el: this.$("#chart-header-placeholder"),
+                        backgroundSeries: this.backgroundSeries,
+                        availableSeries: this.getAvailableSeries(),
+                        activitySummary: this.activitySummary,
+                        activityDetails: this.model,
+                        xAxisType: this.xAxisType
+                    }),
+                    this.chartHeaderView.on(d.a.Events.PrimaryChanged, this.onPrimaryChanged, this),
+                    this.chartHeaderView.on(d.a.Events.SecondaryChanged, this.onSecondaryChanged, this),
+                    this.chartHeaderView.on(d.a.Events.ZoomReset, this.onZoomReset, this),
+                    this.chartHeaderView.on(d.a.Events.RangeSelected, this.onRangeSelected, this);
+                    var t = this.getSeries();
+                    this.chartHeaderView.shouldShowWorkoutTarget(this.showWorkoutSeries),
+                    this.chartHeaderView.render();
+                    var i = this.getSeriesYAxisOptions(this.backgroundSeries, 0)
+                      , a = this;
+                    this.highChartObj = new h.a.Chart({                             // TX GCOverrides - zoomed graph tooltip
+                        tooltip: {
+                            backgroundColor: "rgba(255, 255, 255, 0.85)",
+                            borderWidth: 1,                                         // TX GCOverrides 0 » 1
+                            borderRadius: 0,
+                            shadow: !0,                                             // TX GCOverrides !1 » !0
+                            crosshairs: {
+                                color: "#222222"
+                            },
+                            style: {
+                                color: "#222222",
+                                fontSize: "16px",
+                                padding: 10
+                            },
+                            formatter: n.a.partial(this.tooltipFormatter, this),
+                            shared: !0,
+                            useHTML: !0
+                        },
+                        chart: {
+                            renderTo: this.$(".zoomed-chart").get(0),
+                            backgroundColor: "transparent",
+                            spacing: [10, 80, 30, 0],
+                            marginLeft: 120,
+                            marginRight: 155,
+                            zoomType: "xy",     // TX GCOverrides
+                            panning: true,      // TX GCOverrides
+                            panKey: 'shift',    // TX GCOverrides
+                            alignTicks: !1,
+                            resetZoomButton: {
+                                theme: {
+                                    display: "none"
+                                }
+                            },
+                            style: {
+                                cursor: "crosshair"
+                            },
+                            events: {
+                                selection: function(e) {
+                                    e.xAxis && a.chartHeaderView.showZoomButton()
+                                }
+                            }
+                        },
+                        credits: {
+                            enabled: !1
+                        },
+                        title: {
+                            text: null
+                        },
+                        yAxis: [i],
+                        xAxis: this.getSeriesXAxisOptions(),
+                        plotOptions: {
+                            area: {
+                                fillOpacity: .25,
+                                marker: {
+                                    enabled: !1,
+                                    symbol: "circle",
+                                    states: {
+                                        hover: {
+                                            fillColor: "#222222",
+                                            lineWidth: 1,
+                                            lineColor: "#222222",
+                                            radius: 4
+                                        }
+                                    }
+                                }
+                            },
+                            series: {
+                                states: {
+                                    hover: {
+                                        lineWidth: 2
+                                    }
+                                },
+                                step: this.step,
+                                animation: !1
+                            },
+                            line: {
+                                marker: {
+                                    enabled: !1,
+                                    symbol: "circle",
+                                    states: {
+                                        hover: {
+                                            fillColor: "#222222",
+                                            lineWidth: 1,
+                                            lineColor: "#222222",
+                                            radius: 4
+                                        }
+                                    }
+                                }
+                            },
+                            column: {                       // TX GCOverrides !!!
+                                borderWidth: 0,             // TX GCOverrides
+                                pointWidth: null,           // TX GCOverrides
+                                maxPointWidth: undefined,   // TX GCOverrides
+                                pointPadding: 0,            // TX GCOverrides
+                                groupPadding: 0             // TX GCOverrides
+                            },                              // TX GCOverrides
+                            scatter: {
+                                marker: {
+                                    radius: 3,
+                                    symbol: "circle",
+                                    enabled: !0
+                                },
+                                color: "#ff0000",
+                                lineWidth: void 0
+                            }
+                        },
+                        legend: {
+                            enabled: !1
+                        },
+                        series: t,
+                        exporting: {
+                            enabled: !0         // TX GCOverrides (originally !1)
+                        }
+                    })
+                },
+                formatToolTipRow: function(e, t) {
+                    if (e.formatValue)
+                        return e.formatValue(null, t) + "<br>";
+                    var i = this.measurementSystem();
+                    return (t = e.formattingFunction(t, i)) + " " + o.a.localize(l.a.getSwimPaceUnitKey(i)) + "<br>"
+                },
+                getSeries: function() {
+                    var e = [];
+                    return n.a.each(this.backgroundSeries, function(t) {
+                        e.push(this.createChartSeries(t, 0)),
+                        this.workoutSeries = this.createWorkoutChartSeries(t, 0),
+                        this.showWorkoutSeries = !1,
+                        this.workoutSeries && (e.push(this.workoutSeries),
+                        this.showWorkoutSeries = !0)
+                    }, this),
+                    e
+                },
+                createChartSeries: function(e, t) {
+                    var i, a = e.defaultChartType, n = e.colorMapper, r = "scatter" == e.defaultChartType ? null : p.a.mapSeriesType(e), s = "scatter" == e.defaultChartType ? 0 : 2;
+                    if (0 == t) {
+                        if (this.getSeriesCount() > 1 && this.backgroundSeries.length < 2)
+                            s = 0,
+                            "scatter" !== e.defaultChartType ? (a = "area",
+                            r = "#6D8595",
+                            i = .25) : n = function(e) {
+                                return "rgba(109,133,149, .5)"
+                            }
+                            ;
+                        else if ("scatter" == e.defaultChartType && !e.colorMapper) {
+                            var o = p.a.mapSeriesType(e);
+                            n = function(e) {
+                                return o
+                            }
+                        }
+                    } else if (t > 0 && "scatter" == e.defaultChartType) {
+                        var l = p.a.mapSeriesType(e);
+                        n = function() {
+                            return l
+                        }
+                    }
+// TX !!!  just a bookmark to the zoomed graph plotting section                  
+                    var c = e.generateData(n, !0);
+// TX !!! DEBUG
+    var cache = [];
+    console.log("DEBUG createChartSeries this: " + JSON.stringify(this, function(key, value) {
+        if (typeof value === 'object' && value !== null) {
+            if (cache.indexOf(value) !== -1) return;
+            cache.push(value);
+        }
+        return value;
+    }));
+    cache = null; 
+// TX !!! DEBUG    
+                    return {
+                        turboThreshold: this.turboThreshold,
+                        type: a,
+                        yAxis: t,
+                        color: r,
+                        data: c,
+                        threshold: this.zeroThreshold ? 0 : e.reversed ? this.threshold : null,
+                        fillOpacity: i,
+                        lineWidth: s
+                    }
+                },
+                createWorkoutChartSeries: function(e, t) {
+                    var i = p.a.Colors.workoutTargetGray;
+                    if (this.workoutInfo = e.generateWorkoutData(),
+                    this.workoutData = this.workoutInfo.workoutData,
+                    this.workoutData && this.workoutData.length > 0)
+                        return {
+                            turboThreshold: this.turboThreshold,
+                            type: "area",
+                            yAxis: t,
+                            color: i,
+                            data: this.workoutData,
+                            threshold: this.zeroThreshold ? 0 : e.reversed ? this.threshold : null,
+                            fillOpacity: .45,
+                            lineWidth: 1
+                        }
+                },
+                getAvailableSeries: function() {
+                    return this.series
+                },
+                onAxisSelected: function(t) {
+                    this.xAxisType = e(t.currentTarget).val(),
+                    n.a.each(this.series, function(e) {
+                        n.a.each(e, function(e) {
+                            e.setXAxisType(this.xAxisType)
+                        }, this)
+                    }, this),
+                    this.removeAllSeries(),
+                    this.addAllSeries(),
+                    this.highChartObj.redraw(),
+                    this.resetZoom(),
+                    this.trigger(f.AxisTypeChanged, this.xAxisType),
+                    this.chartHeaderView.xAxisType = this.xAxisType,
+                    this.chartHeaderView.render()
+                },
+                removeAllSeries: function() {
+                    this.highChartObj.series[2] && this.highChartObj.series[2].remove(!1),
+                    this.highChartObj.series[1] && this.highChartObj.series[1].remove(!1),
+                    this.highChartObj.series[0] && this.highChartObj.series[0].remove(!1),
+                    this.highChartObj.yAxis[2] && this.highChartObj.yAxis[2].remove(!1),
+                    this.highChartObj.yAxis[1] && this.highChartObj.yAxis[1].remove(!1),
+                    this.highChartObj.yAxis[0] && this.highChartObj.yAxis[0].remove(!1),
+                    this.primarySeries = null,
+                    this.secondarySeries = null
+                },
+                addAllSeries: function() {
+                    this.addBackgroundSeries(),
+                    this.chartHeaderView.primarySeries && this.addPrimarySeries(this.chartHeaderView.primarySeries),
+                    this.chartHeaderView.secondarySeries && this.addSecondarySeries(this.chartHeaderView.secondarySeries)
+                },
+                getSeriesCount: function() {
+                    var e = 1;
+                    return this.chartHeaderView.primarySeries && e++,
+                    this.chartHeaderView.secondarySeries && e++,
+                    e
+                },
+                getScatterCount: function() {
+                    var e = 0;
+                    return "scatter" == this.backgroundSeries.defaultChartType && e++,
+                    this.chartHeaderView.primarySeries && "scatter" == this.chartHeaderView.primarySeries.defaultChartType && e++,
+                    this.chartHeaderView.secondarySeries && "scatter" == this.chartHeaderView.secondarySeries.defaultChartType && e++,
+                    e
+                }
+            });
+            v.XAxisTypes = u.a,
+            v.Events = f,
+            t.a = v
+        }
+        ).call(this, i(10))
+    },
+    1542: function(e, t, i) {
+        "use strict";
+        (function(e) {
+            var a = i(7)
+              , n = i.n(a)
+              , r = i(8)
+              , s = i.n(r)
+              , o = i(4)
+              , l = i(186)
+              , c = i(438)
+              , h = i(19)
+              , d = i(1739)
+              , p = i.n(d)
+              , u = {
+                COMMENT_ADDED: "COMMENT_ADDED"
+            }
+              , m = s.a.View.extend({
+                template: n.a.template(p.a),
+                events: {
+                    "click .add-comment-button": "onAddCommentClicked",
+                    "focus .add-comment-textarea": "onTextareaFocus",
+                    "blur .add-comment-textarea": "onTextareaBlur",
+                    "click a.profile": "onProfileClicked"
+                },
+                initialize: function(e) {
+                    this.initializeAddCommentView(e)
+                },
+                initializeAddCommentView: function(e) {
+                    this.resourceType = e.resourceType,
+                    this.resourceId = e.resourceId,
+                    this.conversation = e.conversation,
+                    this.maxLength = 1e3
+                },
+                onAddCommentClicked: function() {
+                    this.conversation.isNew() ? (this.conversation.once("sync", this.addComment, this),
+                    this.conversation.save()) : this.addComment()
+                },
+                addComment: function() {
+                    var t = this.$(".add-comment-textarea")
+                      , i = e.trim(t.val());
+                    if (0 !== i.length) {
+                        var a = this.createComment(i);
+                        a.once("sync", this.onCommentSaved, this),
+                        a.save(),
+                        t.val(""),
+                        t.removeClass("active"),
+                        this.$(".add-comment-button-wrapper").hide()
+                    }
+                },
+                createComment: function(e) {
+                    var t = this.conversation.get("numberOfComments");
+                    return this.conversation.set("numberOfComments", ++t),
+                    "VIVOKID_ADHOC_CHALLENGE" === this.resourceType || "VIVOKID_TEAM_CHALLENGE" === this.resourceType ? new c.a({
+                        conversationUuid: this.conversation.get("conversationUuid"),
+                        conversationCommentUuid: null,
+                        body: e,
+                        numberOfLikes: 0
+                    }) : new l.a({
+                        conversationUuid: this.conversation.get("conversationUuid"),
+                        conversationCommentUuid: null,
+                        body: e,
+                        numberOfLikes: 0
+                    })
+                },
+                onCommentSaved: function(e) {
+                    this.trigger(u.COMMENT_ADDED, e)
+                },
+                render: function() {
+                    var e = (new Date).getMilliseconds();
+                    this.$el.html(this.template({
+                        Localizer: o.a,
+                        maxLength: this.maxLength,
+                        socialProfile: h.a.toJSON(),
+                        elementId: e
+                    }))
+                },
+                onTextareaFocus: function(t) {
+                    e(t.currentTarget).addClass("active"),
+                    this.$(".add-comment-button-wrapper").show()
+                },
+                onTextareaBlur: function(t) {
+                    var i = e(t.currentTarget);
+                    i.val().length || (i.removeClass("active"),
+                    this.$(".add-comment-button-wrapper").hide())
+                },
+                onProfileClicked: function(e) {
+                    e.preventDefault(),
+                    e.stopPropagation();
+                    var t = "/profile/" + h.a.get("displayName");
+                    s.a.history.navigate(t, {
+                        trigger: !0
+                    })
+                }
+            });
+            m.Events = u,
+            t.a = m
+        }
+        ).call(this, i(10))
+    },
+    1553: function(e, t, i) {
+        "use strict";
+        var a = i(8)
+          , n = i.n(a)
+          , r = n.a.Model.extend({
+            initialize: function() {}
+        })
+          , s = i(82);
+        t.a = n.a.Collection.extend({
+            model: r,
+            url: function() {
+                return "/proxy/activity-service/activity/" + this.activityId + "/clips"
+            },
+            initialize: function(e, t) {
+                if ("undefined" === typeof t.activityId)
+                    throw "ActivitySplits requires an activity ID";
+                this.activityId = t.activityId
+            },
+            getHighlightedTimeRanges: function() {
+                var e = [];
+                return this.forEach(function(t) {
+                    e.push({
+                        start: s.a.parseISOUTC(t.get("startTimeGMT")).getTime(),
+                        end: s.a.parseISOUTC(t.get("endTimeGMT")).getTime()
+                    })
+                }),
+                e
+            }
+        })
+    },
+    1566: function(e, t, i) {
+        "use strict";
+        var a = function() {
+            return this
+        };
+        a.prototype.fetch = function() {}
+        ,
+        t.a = a
+    },
+    1574: function(e, t, i) {
+        "use strict";
+        var a = i(8)
+          , n = i.n(a).a.Model.extend({
+            initialize: function(e) {
+                this.latestDate = e ? e.latestDate : new Date
+            },
+            url: function() {
+                if (0 === this.latestDate.length)
+                    throw new Error("Date must be given.");
+                return "/proxy/weight-service/weight/latest?date=" + this.latestDate + "&ignorePriority=true"
+            },
+            setLatestDate: function(e) {
+                this.latestDate = e
+            }
+        });
+        t.a = n
+    },
+    1575: function(e, t, i) {
+        "use strict";
+        (function(e) {
+            var a = i(8)
+              , n = i.n(a)
+              , r = (i(18),
+            i(28),
+            n.a.Model.extend({
+                initialize: function(e) {},
+                url: function() {
+                    var e = "/proxy/weight-service/weight";
+                    return "undefined" != typeof this.get("isFirst") && (e += "/first"),
+                    e
+                },
+                destroy: function(t) {
+                    var i = "/proxy/biometric-service/biometric/" + this.get("date")
+                      , a = e.extend({
+                        url: i
+                    }, t || {});
+                    return n.a.Model.prototype.destroy.call(this, a)
+                },
+                save: function(t, i) {
+                    var a = e.extend({
+                        url: "/proxy/weight-service/user-weight"
+                    }, i || {});
+                    return n.a.Model.prototype.save.call(this, t, a)
+                }
+            }));
+            t.a = r
+        }
+        ).call(this, i(7))
+    },
+    1576: function(e, t, i) {
         var a, n;
         n = function(e) {
             !function(e) {
@@ -17002,792 +17736,7 @@
         }
         .call(t, i, t, e)) || (e.exports = a)
     },
-    1535: function(e, t, i) {
-        "use strict";
-        var a = i(7)
-          , n = i.n(a)
-          , r = i(4)
-          , s = i(1274)
-          , o = i(1728)
-          , l = i.n(o)
-          , c = s.a.extend({
-            template: n.a.template(l.a),
-            events: {
-                "click li": "onInlineSelectionChanged",
-                "change select[name=activityType]": "onActivityTypeChanged"
-            },
-            initialize: function(e) {
-                this.useSelect = e.useSelect,
-                this.className = e.className || "",
-                e.options && !0 === e.options.showTypeAll && e.items.unshift({
-                    name: r.a.localize("any_activity_type"),
-                    value: "all",
-                    children: []
-                }),
-                s.a.prototype.initialize.call(this, e),
-                this.value = e.value,
-                this.$("[data-value=" + this.value + "]").addClass("active")
-            },
-            onActivityTypeChanged: function(e) {
-                e.preventDefault(),
-                this.$(".active").removeClass("active");
-                var t = this.$("select[name=activityType]").val();
-                this.$("[data-value=" + t + "]").addClass("active"),
-                this.trigger(s.a.Events.CHANGE, t)
-            },
-            setActivityType: function(e) {
-                this.value = e
-            }
-        });
-        t.a = c
-    },
-    1538: function(e, t, i) {
-        var a = i(2177);
-        "string" === typeof a && (a = [[e.i, a, ""]]);
-        var n = {
-            hmr: !0,
-            transform: void 0,
-            insertInto: void 0
-        };
-        i(35)(a, n);
-        a.locals && (e.exports = a.locals)
-    },
-    1539: function(e, t, i) {
-        "use strict";
-        (function(e) {
-            var a = i(7)
-              , n = i.n(a)
-              , r = i(8)
-              , s = i.n(r)
-              , o = i(4)
-              , l = i(13)
-              , c = i(1223)
-              , h = i.n(c)
-              , d = i(2180)
-              , p = i(1218)
-              , u = i(1268)
-              , m = i(2182)
-              , g = i.n(m)
-              , f = {
-                AxisTypeChanged: "AxisTypeChanged"
-            }
-              , v = s.a.View.extend({
-                step: !1,
-                threshold: 9999,
-                template: n.a.template(g.a),
-                events: {
-                    "change .x-axis-value": "onAxisSelected"
-                },
-                initialize: function(e) {
-                    if (!e.backgroundSeries)
-                        throw "BackgroundSeriesType required for ExpandedChartView";
-                    this.series = e.series,
-                    this.speedType = e.speedType,
-                    this.primarySeries = null,
-                    this.secondarySeries = null,
-                    this.workoutSeries = null,
-                    this.showWorkoutSeries = !1,
-                    this.xAxisType = e.xAxisType || this.defaultXAxisType(),
-                    this.activitySummary = e.activitySummary,
-                    this.backgroundSeries = e.backgroundSeries,
-                    this.turboThreshold = e.turboThreshold ? e.turboThreshold : 4e3,
-                    this.zeroThreshold = e.zeroThreshold,
-                    this.hideAxisTypes = e.hideAxisTypes || !1
-                },
-                measurementSystem: function() {
-                    return l.a.measurementSystem
-                },
-                defaultXAxisType: function() {
-                    return u.a.Duration
-                },
-                getXAxisTypes: function() {
-                    return this.hideAxisTypes ? [] : [{
-                        name: u.a.Duration,
-                        label: o.a.localize("over_time")
-                    }, {
-                        name: u.a.Distance,
-                        label: o.a.localize("over_distance")
-                    }]
-                },
-                onPrimaryChanged: function() {
-                    this.chartHeaderView.secondarySeries && !this.chartHeaderView.primarySeries && (this.chartHeaderView.primarySeries = this.chartHeaderView.secondarySeries,
-                    this.chartHeaderView.secondarySeries = null),
-                    this.updateSeries(),
-                    this.chartHeaderView.shouldShowWorkoutTarget(this.showWorkoutSeries),
-                    this.chartHeaderView.render()
-                },
-                onSecondaryChanged: function() {
-                    this.updateSeries()
-                },
-                getSingleSeriesMin: function(e) {
-                    var t;
-                    return "undefined" != typeof e.expandedMin && (t = "function" == typeof e.expandedMin ? e.expandedMin.call(e) : e.expandedMin),
-                    t
-                },
-                getSeriesMin: function(e) {
-                    var t, i = !1;
-                    return n.a.each(e, function(e) {
-                        "undefined" != typeof e.expandedMin && (i || (t = 9999999,
-                        i = !0),
-                        t = Math.min(t, this.getSingleSeriesMin(e)))
-                    }, this),
-                    t
-                },
-                getWorkoutDataMin: function() {
-                    var e = 99999999;
-                    return n.a.each(this.workoutData, function(t) {
-                        t[1] < e && (e = t[1])
-                    }),
-                    e
-                },
-                getSingleSeriesMax: function(e) {
-                    var t;
-                    return "undefined" != typeof e.expandedMax && (t = "function" == typeof e.expandedMax ? e.expandedMax.call(e) : e.expandedMax),
-                    t
-                },
-                getSeriesMax: function(e) {
-                    var t, i = !1;
-                    return n.a.each(e, function(e) {
-                        "undefined" != typeof e.expandedMax && (i || (t = -9999999,
-                        i = !0),
-                        t = Math.max(t, this.getSingleSeriesMax(e)))
-                    }, this),
-                    t
-                },
-                getWorkoutDataMax: function() {
-                    var e = -99999999;
-                    return n.a.each(this.workoutData, function(t) {
-                        t[1] > e && (e = t[1])
-                    }),
-                    e
-                },
-                getSeriesAxisOptions: function(e, t) {
-                    var i = this.getSeriesMin(e)
-                      , a = this.getSeriesMax(e);
-                    if (this.showWorkoutSeries) {
-                        var r = this.getWorkoutDataMin()
-                          , s = this.getWorkoutDataMax();
-                        i = i <= r ? i : r,
-                        a = a >= s ? a : s
-                    }
-                    var o = p.a.mapSeriesType(e[0]);
-                    0 == t && this.getSeriesCount() > 1 && 1 == e.length && (o = "#6D8595");
-                    var l = {
-                        gridLineColor: "#dddddd",
-                        title: {
-                            text: null
-                        },
-                        labels: {
-                            formatter: n.a.partial(this.yAxisLabelFormatter, this, t),
-                            style: {
-                                color: o,
-                                fontSize: "12px"
-                            },
-                            step: 1
-                        },
-                        min: i,
-                        max: a,
-                        reversed: e[0].reversed,
-                        plotLines: e[0].plotLines,
-                        tickInterval: e[0].tickInterval,
-                        opposite: t > 0
-                    };
-                    return t > 0 && (l.gridLineWidth = 0),
-                    l
-                },
-                getSeriesYAxisOptions: function(e, t) {
-                    return this.getSeriesAxisOptions(e, t)
-                },
-                getSeriesXAxisOptions: function() {
-                    return {
-                        labels: {
-                            formatter: n.a.partial(this.xAxisLabelFormatter, this),
-                            style: {
-                                color: "#888888",
-                                fontSize: "12px"
-                            },
-                            y: 20
-                        },
-                        tickLength: 0,
-                        tickPixelInterval: 200,
-                        maxPadding: 0
-                    }
-                },
-                updateSeries: function() {
-                    this.removeAllSeries(),
-                    this.addAllSeries(),
-                    this.highChartObj.redraw()
-                },
-                addBackgroundSeries: function() {
-                    var e = [];
-                    n.a.each(this.backgroundSeries, function(t) {
-                        this.workoutSeries = this.createWorkoutChartSeries(t, 0),
-                        this.chartHeaderView.primarySeries && (this.workoutSeries = null,
-                        this.showWorkoutSeries = !1),
-                        this.workoutSeries && (e.push(this.workoutSeries),
-                        this.showWorkoutSeries = !0),
-                        e.push(this.createChartSeries(t, 0))
-                    }, this),
-                    this.highChartObj.addAxis(this.getSeriesAxisOptions(this.backgroundSeries, 0), !1, !1, !1),
-                    n.a.each(e, function(e) {
-                        this.highChartObj.addSeries(e, !1)
-                    }, this)
-                },
-                addPrimarySeries: function(e) {
-                    var t = [];
-                    n.a.each(e, function(e) {
-                        t.push(this.createChartSeries(e, 1))
-                    }, this),
-                    this.highChartObj.addAxis(this.getSeriesAxisOptions(e, 1), !1, !1, !1),
-                    n.a.each(t, function(e) {
-                        this.highChartObj.addSeries(e, !1)
-                    }, this),
-                    this.primarySeries = e
-                },
-                addSecondarySeries: function(e) {
-                    var t = [];
-                    n.a.each(e, function(e) {
-                        t.push(this.createChartSeries(e, 2))
-                    }, this),
-                    this.highChartObj.addAxis(this.getSeriesAxisOptions(e, 2), !1, !1, !1),
-                    n.a.each(t, function(e) {
-                        this.highChartObj.addSeries(e, !1)
-                    }, this),
-                    this.secondarySeries = e
-                },
-                onZoomReset: function() {
-                    this.resetZoom()
-                },
-                onRangeSelected: function(e, t) {
-                    this.setExtremes(e, t)
-                },
-                setExtremes: function(e, t) {
-                    this.highChartObj.xAxis[0].setExtremes(e, t)
-                },
-                resetZoom: function() {
-                    this.highChartObj.xAxis[0].setExtremes(null, null);
-                    this.highChartObj.yAxis[0].setExtremes(null, null); // TX GCOverrides
-                },
-                xAxisLabelFormatter: function(e) {
-                    return e.xAxisType == u.a.Distance ? this.value : l.a.personalizeDuration(this.value)
-                },
-                yAxisLabelFormatter: function(e, t) {
-                    var i = null;
-                    return 0 == t ? i = e.backgroundSeries : 1 == t && e.primarySeries ? i = e.primarySeries : e.secondarySeries && (i = e.secondarySeries),
-                    null == i || 0 == i.length ? "" : (i = i[0]).yAxisFormattingFunction ? i.yAxisFormattingFunction(this.value, e.measurementSystem()) : i.formattingFunction(this.value, e.measurementSystem())
-                },
-                yUnit: function(e) {
-                    return e.unit_key ? o.a.localize(n.a.result(e, "unit_key")) : ""
-                },
-                tooltipFormatter: function(e) {
-                    var t = []
-                      , i = this.point || this.points[0];
-                    if (i) {
-                        var a = i.x;
-                        var dist = i.series.chart.userOptions.series[0].data[i.series.chart.hoverPoints[0].index].dist;  // TX GCOverrides                         
-                        dist = l.a.formatDistance(dist, e.activitySummary.getActivityTypeKey())                          // TX GCOverrides
-                           + " " + o.a.localize(l.a.getDistanceUnitKey(e.activitySummary.getActivityTypeKey()));         // TX GCOverrides
-
-                        if (e.backgroundSeries && n.a.each(e.backgroundSeries, function(i) { 
-                            var n = i.getClosestPoint(a).data;
-                            n && null !== n.y && (t.push("<b>" + i.formatToolTipRow(i, null, n.y, e.yUnit(i), null, null, null) + "</b><br/>")) // TX GCOverrides (formatting)
-                        }, this),
-                        e.workoutSeries && e.showWorkoutSeries) {
-                            var r = e.workoutSeries
-                              , s = e.backgroundSeries[0].getClosestPoint(a)
-                              , c = r.data[s.index][1];
-                            if (null !== c) {
-                                var h = e.yUnit(e.backgroundSeries[0]);
-                                0 === c ? (c = "--",
-                                t.push(c + " " + h),
-                                t.push("<br/>")) : (t.push(e.backgroundSeries[0].formatToolTipRow(r, null, c, h, null, null, null)),
-                                t.push("<br/>"))
-                            }
-                        }
-                        e.primarySeries && n.a.each(e.primarySeries, function(i) {
-                            var n = i.getClosestPoint(a).data;
-                            n && null !== n.y && (t.push(i.formatToolTipRow(i, null, n.y, e.yUnit(i), null, null, null)),
-                            t.push("<br/>"))
-                        }),
-                        e.secondarySeries && n.a.each(e.secondarySeries, function(i) {
-                            var n = i.getClosestPoint(a).data;
-                            null !== n.y && (t.push(i.formatToolTipRow(i, null, n.y, e.yUnit(i), null, null, null)),
-                            t.push("<br/>"))
-                        }),
-                        e.xAxisType === u.a.Distance ?                  // TX !!! GCOverrides - (whole block) zoomed graph tooltip
-                            t.push(dist) : 
-                            e.xAxisType === u.a.Duration ? 
-                                t.push(l.a.personalizeDuration(i.x) + " " + o.a.localize(l.a.getDurationUnitKey()) + "<br/>" + dist) : 
-                                e.xAxisType === v.XAxisTypes.SwimLengths ? 
-                                    t.push(o.a.localize("swim_length_num", Math.floor(i.x) + 1)) : 
-                                    e.xAxisType === v.XAxisTypes.SwimDistance ? 
-                                        t.push(l.a.personalizeDistance(i.x, e.activitySummary.getActivityTypeKey(), e.activitySummary.get("unitOfPoolLength")) + " " + o.a.localize(l.a.getDistanceUnitKey(e.activitySummary.getActivityTypeKey(), null, e.activitySummary.get("unitOfPoolLength")))) : t.push(l.a.personalizeDuration(i.x) + " " + o.a.localize(l.a.getDurationUnitKey()))
-                    }
-                    return t.join("")
-                },
-                render: function() {
-                    var e = this.template({
-                        Localizer: o.a,
-                        Personalizer: l.a,
-                        series: this.getAvailableSeries(),
-                        xAxisTypes: this.getXAxisTypes()
-                    });
-                    this.$el.html(e),
-                    this.$(".x-axis-value").val(this.xAxisType),
-                    this.chartHeaderView = new d.a({
-                        el: this.$("#chart-header-placeholder"),
-                        backgroundSeries: this.backgroundSeries,
-                        availableSeries: this.getAvailableSeries(),
-                        activitySummary: this.activitySummary,
-                        activityDetails: this.model,
-                        xAxisType: this.xAxisType
-                    }),
-                    this.chartHeaderView.on(d.a.Events.PrimaryChanged, this.onPrimaryChanged, this),
-                    this.chartHeaderView.on(d.a.Events.SecondaryChanged, this.onSecondaryChanged, this),
-                    this.chartHeaderView.on(d.a.Events.ZoomReset, this.onZoomReset, this),
-                    this.chartHeaderView.on(d.a.Events.RangeSelected, this.onRangeSelected, this);
-                    var t = this.getSeries();
-                    this.chartHeaderView.shouldShowWorkoutTarget(this.showWorkoutSeries),
-                    this.chartHeaderView.render();
-                    var i = this.getSeriesYAxisOptions(this.backgroundSeries, 0)
-                      , a = this;
-                    this.highChartObj = new h.a.Chart({                             // TX GCOverrides - zoomed graph tooltip
-                        tooltip: {
-                            backgroundColor: "rgba(255, 255, 255, 0.85)",
-                            borderWidth: 1,                                         // TX GCOverrides 0 » 1
-                            borderRadius: 0,
-                            shadow: !0,                                             // TX GCOverrides !1 » !0
-                            crosshairs: {
-                                color: "#222222"
-                            },
-                            style: {
-                                color: "#222222",
-                                fontSize: "16px",
-                                padding: 10
-                            },
-                            formatter: n.a.partial(this.tooltipFormatter, this),
-                            shared: !0,
-                            useHTML: !0
-                        },
-                        chart: {
-                            renderTo: this.$(".zoomed-chart").get(0),
-                            backgroundColor: "transparent",
-                            spacing: [10, 80, 30, 0],
-                            marginLeft: 120,
-                            marginRight: 155,
-                            zoomType: "xy",     // TX GCOverrides
-                            panning: true,      // TX GCOverrides
-                            panKey: 'shift',    // TX GCOverrides
-                            alignTicks: !1,
-                            resetZoomButton: {
-                                theme: {
-                                    display: "none"
-                                }
-                            },
-                            style: {
-                                cursor: "crosshair"
-                            },
-                            events: {
-                                selection: function(e) {
-                                    e.xAxis && a.chartHeaderView.showZoomButton()
-                                }
-                            }
-                        },
-                        credits: {
-                            enabled: !1
-                        },
-                        title: {
-                            text: null
-                        },
-                        yAxis: [i],
-                        xAxis: this.getSeriesXAxisOptions(),
-                        plotOptions: {
-                            area: {
-                                fillOpacity: .25,
-                                marker: {
-                                    enabled: !1,
-                                    symbol: "circle",
-                                    states: {
-                                        hover: {
-                                            fillColor: "#222222",
-                                            lineWidth: 1,
-                                            lineColor: "#222222",
-                                            radius: 4
-                                        }
-                                    }
-                                }
-                            },
-                            series: {
-                                states: {
-                                    hover: {
-                                        lineWidth: 2
-                                    }
-                                },
-                                step: this.step,
-                                animation: !1
-                            },
-                            line: {
-                                marker: {
-                                    enabled: !1,
-                                    symbol: "circle",
-                                    states: {
-                                        hover: {
-                                            fillColor: "#222222",
-                                            lineWidth: 1,
-                                            lineColor: "#222222",
-                                            radius: 4
-                                        }
-                                    }
-                                }
-                            },
-                            column: {                       // TX GCOverrides !!!
-                                borderWidth: 0,             // TX GCOverrides
-                                pointWidth: null,           // TX GCOverrides
-                                maxPointWidth: undefined,   // TX GCOverrides
-                                pointPadding: 0,            // TX GCOverrides
-                                groupPadding: 0             // TX GCOverrides
-                            },                              // TX GCOverrides
-                            scatter: {
-                                marker: {
-                                    radius: 3,
-                                    symbol: "circle",
-                                    enabled: !0
-                                },
-                                color: "#ff0000",
-                                lineWidth: void 0
-                            }
-                        },
-                        legend: {
-                            enabled: !1
-                        },
-                        series: t,
-                        exporting: {
-                            enabled: !0         // TX GCOverrides (originally !1)
-                        }
-
-                    })
-                },
-                formatToolTipRow: function(e, t) {
-                    if (e.formatValue)
-                        return e.formatValue(null, t) + "<br>";
-                    var i = this.measurementSystem();
-                    return (t = e.formattingFunction(t, i)) + " " + o.a.localize(l.a.getSwimPaceUnitKey(i)) + "<br>"
-                },
-                getSeries: function() {
-                    var e = [];
-                    return n.a.each(this.backgroundSeries, function(t) {
-                        e.push(this.createChartSeries(t, 0)),
-                        this.workoutSeries = this.createWorkoutChartSeries(t, 0),
-                        this.showWorkoutSeries = !1,
-                        this.workoutSeries && (e.push(this.workoutSeries),
-                        this.showWorkoutSeries = !0)
-                    }, this),
-                    e
-                },
-                createChartSeries: function(e, t) {
-                    var i, a = e.defaultChartType, n = e.colorMapper, r = "scatter" == e.defaultChartType ? null : p.a.mapSeriesType(e), s = "scatter" == e.defaultChartType ? 0 : 2;
-                    if (0 == t) {
-                        if (this.getSeriesCount() > 1 && this.backgroundSeries.length < 2) {
-                            s = 0,
-                            "scatter" !== e.defaultChartType ? (a = "area",
-                            r = "#6D8595",
-                            i = .25) : n = function(e) {
-                                return "rgba(109,133,149, .5)"
-                            }
-                        } else if ("scatter" == e.defaultChartType && !e.colorMapper) {
-                            var o = p.a.mapSeriesType(e);
-                            n = function(e) {
-                                return o
-                            }
-                        }
-                    } else if (t > 0 && "scatter" == e.defaultChartType) {
-                        var l = p.a.mapSeriesType(e);
-                        n = function() {
-                            return l
-                        }
-                    } 
-// TX !!!  just a bookmark to the zoomed graph plotting section                  
-                    var c = e.generateData(n, !0);
-// TX !!! DEBUG
-    var cache = [];
-    console.log("DEBUG createChartSeries this: " + JSON.stringify(this, function(key, value) {
-        if (typeof value === 'object' && value !== null) {
-            if (cache.indexOf(value) !== -1) return;
-            cache.push(value);
-        }
-        return value;
-    }));
-    cache = null; 
-// TX !!! DEBUG    
-                    return {
-                        turboThreshold: this.turboThreshold,
-                        type: a,
-                        yAxis: t,
-                        color: r,
-                        data: c,
-                        threshold: this.zeroThreshold ? 0 : e.reversed ? this.threshold : null,
-                        fillOpacity: i,
-                        lineWidth: s
-                    }
-                },
-                createWorkoutChartSeries: function(e, t) {
-                    var i = p.a.Colors.workoutTargetGray;
-                    if (this.workoutInfo = e.generateWorkoutData(),
-                    this.workoutData = this.workoutInfo.workoutData,
-                    this.workoutData && this.workoutData.length > 0)
-                        return {
-                            turboThreshold: this.turboThreshold,
-                            type: "area",
-                            yAxis: t,
-                            color: i,
-                            data: this.workoutData,
-                            threshold: this.zeroThreshold ? 0 : e.reversed ? this.threshold : null,
-                            fillOpacity: .45,
-                            lineWidth: 1
-                        }
-                },
-                getAvailableSeries: function() {
-                    return this.series
-                },
-                onAxisSelected: function(t) {
-                    this.xAxisType = e(t.currentTarget).val(),
-                    n.a.each(this.series, function(e) {
-                        n.a.each(e, function(e) {
-                            e.setXAxisType(this.xAxisType)
-                        }, this)
-                    }, this),
-                    this.removeAllSeries(),
-                    this.addAllSeries(),
-                    this.highChartObj.redraw(),
-                    this.resetZoom(),
-                    this.trigger(f.AxisTypeChanged, this.xAxisType),
-                    this.chartHeaderView.xAxisType = this.xAxisType,
-                    this.chartHeaderView.render()
-                },
-                removeAllSeries: function() {
-                    this.highChartObj.series[2] && this.highChartObj.series[2].remove(!1),
-                    this.highChartObj.series[1] && this.highChartObj.series[1].remove(!1),
-                    this.highChartObj.series[0] && this.highChartObj.series[0].remove(!1),
-                    this.highChartObj.yAxis[2] && this.highChartObj.yAxis[2].remove(!1),
-                    this.highChartObj.yAxis[1] && this.highChartObj.yAxis[1].remove(!1),
-                    this.highChartObj.yAxis[0] && this.highChartObj.yAxis[0].remove(!1),
-                    this.primarySeries = null,
-                    this.secondarySeries = null
-                },
-                addAllSeries: function() {
-                    this.addBackgroundSeries(),
-                    this.chartHeaderView.primarySeries && this.addPrimarySeries(this.chartHeaderView.primarySeries),
-                    this.chartHeaderView.secondarySeries && this.addSecondarySeries(this.chartHeaderView.secondarySeries)
-                },
-                getSeriesCount: function() {
-                    var e = 1;
-                    return this.chartHeaderView.primarySeries && e++,
-                    this.chartHeaderView.secondarySeries && e++,
-                    e
-                },
-                getScatterCount: function() {
-                    var e = 0;
-                    return "scatter" == this.backgroundSeries.defaultChartType && e++,
-                    this.chartHeaderView.primarySeries && "scatter" == this.chartHeaderView.primarySeries.defaultChartType && e++,
-                    this.chartHeaderView.secondarySeries && "scatter" == this.chartHeaderView.secondarySeries.defaultChartType && e++,
-                    e
-                }
-            });
-            v.XAxisTypes = u.a,
-            v.Events = f,
-            t.a = v
-        }
-        ).call(this, i(10))
-    },
-    1540: function(e, t, i) {
-        "use strict";
-        (function(e) {
-            var a = i(7)
-              , n = i.n(a)
-              , r = i(8)
-              , s = i.n(r)
-              , o = i(4)
-              , l = i(182)
-              , c = i(437)
-              , h = i(19)
-              , d = i(1733)
-              , p = i.n(d)
-              , u = {
-                COMMENT_ADDED: "COMMENT_ADDED"
-            }
-              , m = s.a.View.extend({
-                template: n.a.template(p.a),
-                events: {
-                    "click .add-comment-button": "onAddCommentClicked",
-                    "focus .add-comment-textarea": "onTextareaFocus",
-                    "blur .add-comment-textarea": "onTextareaBlur",
-                    "click a.profile": "onProfileClicked"
-                },
-                initialize: function(e) {
-                    this.initializeAddCommentView(e)
-                },
-                initializeAddCommentView: function(e) {
-                    this.resourceType = e.resourceType,
-                    this.resourceId = e.resourceId,
-                    this.conversation = e.conversation,
-                    this.maxLength = 1e3
-                },
-                onAddCommentClicked: function() {
-                    this.conversation.isNew() ? (this.conversation.once("sync", this.addComment, this),
-                    this.conversation.save()) : this.addComment()
-                },
-                addComment: function() {
-                    var t = this.$(".add-comment-textarea")
-                      , i = e.trim(t.val());
-                    if (0 !== i.length) {
-                        var a = this.createComment(i);
-                        a.once("sync", this.onCommentSaved, this),
-                        a.save(),
-                        t.val(""),
-                        t.removeClass("active"),
-                        this.$(".add-comment-button-wrapper").hide()
-                    }
-                },
-                createComment: function(e) {
-                    var t = this.conversation.get("numberOfComments");
-                    return this.conversation.set("numberOfComments", ++t),
-                    "VIVOKID_ADHOC_CHALLENGE" === this.resourceType || "VIVOKID_TEAM_CHALLENGE" === this.resourceType ? new c.a({
-                        conversationUuid: this.conversation.get("conversationUuid"),
-                        conversationCommentUuid: null,
-                        body: e,
-                        numberOfLikes: 0
-                    }) : new l.a({
-                        conversationUuid: this.conversation.get("conversationUuid"),
-                        conversationCommentUuid: null,
-                        body: e,
-                        numberOfLikes: 0
-                    })
-                },
-                onCommentSaved: function(e) {
-                    this.trigger(u.COMMENT_ADDED, e)
-                },
-                render: function() {
-                    var e = (new Date).getMilliseconds();
-                    this.$el.html(this.template({
-                        Localizer: o.a,
-                        maxLength: this.maxLength,
-                        socialProfile: h.a.toJSON(),
-                        elementId: e
-                    }))
-                },
-                onTextareaFocus: function(t) {
-                    e(t.currentTarget).addClass("active"),
-                    this.$(".add-comment-button-wrapper").show()
-                },
-                onTextareaBlur: function(t) {
-                    var i = e(t.currentTarget);
-                    i.val().length || (i.removeClass("active"),
-                    this.$(".add-comment-button-wrapper").hide())
-                },
-                onProfileClicked: function(e) {
-                    e.preventDefault(),
-                    e.stopPropagation();
-                    var t = "/profile/" + h.a.get("displayName");
-                    s.a.history.navigate(t, {
-                        trigger: !0
-                    })
-                }
-            });
-            m.Events = u,
-            t.a = m
-        }
-        ).call(this, i(10))
-    },
-    1551: function(e, t, i) {
-        "use strict";
-        var a = i(8)
-          , n = i.n(a)
-          , r = n.a.Model.extend({
-            initialize: function() {}
-        })
-          , s = i(81);
-        t.a = n.a.Collection.extend({
-            model: r,
-            url: function() {
-                return "/proxy/activity-service/activity/" + this.activityId + "/clips"
-            },
-            initialize: function(e, t) {
-                if ("undefined" === typeof t.activityId)
-                    throw "ActivitySplits requires an activity ID";
-                this.activityId = t.activityId
-            },
-            getHighlightedTimeRanges: function() {
-                var e = [];
-                return this.forEach(function(t) {
-                    e.push({
-                        start: s.a.parseISOUTC(t.get("startTimeGMT")).getTime(),
-                        end: s.a.parseISOUTC(t.get("endTimeGMT")).getTime()
-                    })
-                }),
-                e
-            }
-        })
-    },
-    1563: function(e, t, i) {
-        "use strict";
-        var a = function() {
-            return this
-        };
-        a.prototype.fetch = function() {}
-        ,
-        t.a = a
-    },
-    1570: function(e, t, i) {
-        "use strict";
-        var a = i(8)
-          , n = i.n(a).a.Model.extend({
-            initialize: function(e) {
-                this.latestDate = e ? e.latestDate : new Date
-            },
-            url: function() {
-                if (0 === this.latestDate.length)
-                    throw new Error("Date must be given.");
-                return "/proxy/weight-service/weight/latest?date=" + this.latestDate + "&ignorePriority=true"
-            },
-            setLatestDate: function(e) {
-                this.latestDate = e
-            }
-        });
-        t.a = n
-    },
-    1571: function(e, t, i) {
-        "use strict";
-        (function(e) {
-            var a = i(8)
-              , n = i.n(a)
-              , r = (i(18),
-            i(29),
-            n.a.Model.extend({
-                initialize: function(e) {},
-                url: function() {
-                    var e = "/proxy/weight-service/weight";
-                    return "undefined" != typeof this.get("isFirst") && (e += "/first"),
-                    e
-                },
-                destroy: function(t) {
-                    var i = "/proxy/biometric-service/biometric/" + this.get("date")
-                      , a = e.extend({
-                        url: i
-                    }, t || {});
-                    return n.a.Model.prototype.destroy.call(this, a)
-                },
-                save: function(t, i) {
-                    var a = e.extend({
-                        url: "/proxy/weight-service/user-weight"
-                    }, i || {});
-                    return n.a.Model.prototype.save.call(this, t, a)
-                }
-            }));
-            t.a = r
-        }
-        ).call(this, i(7))
-    },
-    1574: function(e, t, i) {
+    1579: function(e, t, i) {
         "use strict";
         t.a = {
             "BENCH_PRESS/BARBELL_BENCH_PRESS": "Ex66",
@@ -18139,7 +18088,7 @@
             "WARM_UP/OPPOSITE_ARM_AND_LEG_BALANCE": "Ex691"
         }
     },
-    1579: function(e, t, i) {
+    1583: function(e, t, i) {
         "use strict";
         i.d(t, "a", function() {
             return a
@@ -18153,33 +18102,40 @@
               , o = '","'
               , l = '"\r\n"'
               , c = '"';
-            i.length && (c += p(i.map(u))),
+            if (i.length && (c += u(i.map(m))),
             a.length && (i.length && (c += l),
-            c += p(a.map(u))),
+            c += u(a.map(m))),
             n.length && (c += l,
-            c += p(n.map(u))),
-            c += '"';
-            var h = "data:application/csv;charset=utf-8," + encodeURIComponent(c)
-              , d = document.createElement("a");
-            function p(e) {
+            c += u(n.map(m))),
+            c += '"',
+            navigator.msSaveBlob) {
+                var h = new Blob([c],{
+                    type: "text/csv;charset=utf-8;"
+                });
+                navigator.msSaveBlob(h, t)
+            } else {
+                var d = "data:application/csv;charset=utf-8," + encodeURIComponent(c)
+                  , p = document.createElement("a");
+                p.href = d,
+                p.download = t,
+                p.click()
+            }
+            function u(e) {
                 return e.join(s).split(s).join(l).split(r).map(function(e) {
                     return e.trim()
                 }).join(o)
             }
-            function u(e) {
+            function m(e) {
                 var t = e.getElementsByTagName("td");
                 return t.length || (t = e.getElementsByTagName("th")),
-                Array.prototype.slice.call(t).map(m).join(r)
+                Array.prototype.slice.call(t).map(g).join(r)
             }
-            function m(e) {
+            function g(e) {
                 return e.innerText.replace('"', '""')
             }
-            d.href = h,
-            d.download = t,
-            d.click()
         }
     },
-    1580: function(module, exports, __webpack_require__) {
+    1585: function(module, exports, __webpack_require__) {
         var __WEBPACK_AMD_DEFINE_RESULT__, root, factory;
         "undefined" !== typeof navigator && (root = window || {},
         factory = function(window) {
@@ -18555,8 +18511,8 @@
                       , T = f[9]
                       , E = f[10]
                       , L = f[11]
-                      , P = f[12]
-                      , k = f[13]
+                      , k = f[12]
+                      , P = f[13]
                       , z = f[14]
                       , I = f[15];
                     return f[0] = v * e + y * n + A * l + _ * p,
@@ -18571,10 +18527,10 @@
                     f[9] = S * t + T * r + E * c + L * u,
                     f[10] = S * i + T * s + E * h + L * m,
                     f[11] = S * a + T * o + E * d + L * g,
-                    f[12] = P * e + k * n + z * l + I * p,
-                    f[13] = P * t + k * r + z * c + I * u,
-                    f[14] = P * i + k * s + z * h + I * m,
-                    f[15] = P * a + k * o + z * d + I * g,
+                    f[12] = k * e + P * n + z * l + I * p,
+                    f[13] = k * t + P * r + z * c + I * u,
+                    f[14] = k * i + P * s + z * h + I * m,
+                    f[15] = k * a + P * o + z * d + I * g,
                     this._identityCalculated = !1,
                     this
                 }
@@ -18667,19 +18623,19 @@
                     var i = this.props;
                     return Math.round(100 * (e * i[0] + t * i[4] + i[12])) / 100 + "," + Math.round(100 * (e * i[1] + t * i[5] + i[13])) / 100
                 }
-                function P() {
+                function k() {
                     for (var e = 0, t = this.props, i = "matrix3d("; e < 16; )
                         i += a(1e4 * t[e]) / 1e4,
                         i += 15 === e ? ")" : ",",
                         e += 1;
                     return i
                 }
-                function k(e) {
+                function P(e) {
                     return e < 1e-6 && e > 0 || e > -1e-6 && e < 0 ? a(1e4 * e) / 1e4 : e
                 }
                 function z() {
                     var e = this.props;
-                    return "matrix(" + k(e[0]) + "," + k(e[1]) + "," + k(e[4]) + "," + k(e[5]) + "," + k(e[12]) + "," + k(e[13]) + ")"
+                    return "matrix(" + P(e[0]) + "," + P(e[1]) + "," + P(e[4]) + "," + P(e[5]) + "," + P(e[12]) + "," + P(e[13]) + ")"
                 }
                 return function() {
                     this.reset = n,
@@ -18701,7 +18657,7 @@
                     this.applyToPointArray = E,
                     this.applyToTriplePoints = T,
                     this.applyToPointStringified = L,
-                    this.toCSS = P,
+                    this.toCSS = k,
                     this.to2dCSS = z,
                     this.clone = y,
                     this.cloneFromProps = A,
@@ -18997,12 +18953,12 @@
                         a
                     },
                     getNewSegment: function(e, t, i, a, n, o, l) {
-                        var c, h = r(n = n < 0 ? 0 : n > 1 ? 1 : n, l), d = r(o = o > 1 ? 1 : o, l), p = e.length, u = 1 - h, m = 1 - d, g = u * u * u, f = h * u * u * 3, v = h * h * u * 3, y = h * h * h, A = u * u * m, _ = h * u * m + u * h * m + u * u * d, b = h * h * m + u * h * d + h * u * d, C = h * h * d, w = u * m * m, x = h * m * m + u * d * m + u * m * d, S = h * d * m + u * d * d + h * m * d, T = h * d * d, E = m * m * m, L = d * m * m + m * d * m + m * m * d, P = d * d * m + m * d * d + d * m * d, k = d * d * d;
+                        var c, h = r(n = n < 0 ? 0 : n > 1 ? 1 : n, l), d = r(o = o > 1 ? 1 : o, l), p = e.length, u = 1 - h, m = 1 - d, g = u * u * u, f = h * u * u * 3, v = h * h * u * 3, y = h * h * h, A = u * u * m, _ = h * u * m + u * h * m + u * u * d, b = h * h * m + u * h * d + h * u * d, C = h * h * d, w = u * m * m, x = h * m * m + u * d * m + u * m * d, S = h * d * m + u * d * d + h * m * d, T = h * d * d, E = m * m * m, L = d * m * m + m * d * m + m * m * d, k = d * d * m + m * d * d + d * m * d, P = d * d * d;
                         for (c = 0; c < p; c += 1)
                             s[4 * c] = Math.round(1e3 * (g * e[c] + f * i[c] + v * a[c] + y * t[c])) / 1e3,
                             s[4 * c + 1] = Math.round(1e3 * (A * e[c] + _ * i[c] + b * a[c] + C * t[c])) / 1e3,
                             s[4 * c + 2] = Math.round(1e3 * (w * e[c] + x * i[c] + S * a[c] + T * t[c])) / 1e3,
-                            s[4 * c + 3] = Math.round(1e3 * (E * e[c] + L * i[c] + P * a[c] + k * t[c])) / 1e3;
+                            s[4 * c + 3] = Math.round(1e3 * (E * e[c] + L * i[c] + k * a[c] + P * t[c])) / 1e3;
                         return s
                     },
                     getPointInSegment: function(e, t, i, a, n, s) {
@@ -19484,7 +19440,7 @@
                             t._lastKeyframeIndex = m
                         }
                     } else {
-                        var S, T, E, L, P;
+                        var S, T, E, L, k;
                         if (g = r.s.length,
                         v = s.s || r.e,
                         this.sh && 1 !== r.h)
@@ -19543,8 +19499,8 @@
                                 r.__fnct = p),
                                 c = p((e - A) / (y - A)))),
                                 v = s.s || r.e,
-                                P = 1 === r.h ? r.s[m] : r.s[m] + (v[m] - r.s[m]) * c,
-                                1 === g ? i = P : i[m] = P
+                                k = 1 === r.h ? r.s[m] : r.s[m] + (v[m] - r.s[m]) * c,
+                                1 === g ? i = k : i[m] = k
                     }
                     return t.lastIndex = u,
                     i
@@ -21221,21 +21177,21 @@
                     if (this._hasMaskedPath) {
                         if (_ = this._pathData.m,
                         !this._pathData.n || this._pathData._mdf) {
-                            var L, P = _.v;
-                            for (this._pathData.r && (P = P.reverse()),
+                            var L, k = _.v;
+                            for (this._pathData.r && (k = k.reverse()),
                             s = {
                                 tLength: 0,
                                 segments: []
                             },
-                            r = P._length - 1,
+                            r = k._length - 1,
                             v = 0,
                             n = 0; n < r; n += 1)
-                                L = bez.buildBezierData(P.v[n], P.v[n + 1], [P.o[n][0] - P.v[n][0], P.o[n][1] - P.v[n][1]], [P.i[n + 1][0] - P.v[n + 1][0], P.i[n + 1][1] - P.v[n + 1][1]]),
+                                L = bez.buildBezierData(k.v[n], k.v[n + 1], [k.o[n][0] - k.v[n][0], k.o[n][1] - k.v[n][1]], [k.i[n + 1][0] - k.v[n + 1][0], k.i[n + 1][1] - k.v[n + 1][1]]),
                                 s.tLength += L.segmentLength,
                                 s.segments.push(L),
                                 v += L.segmentLength;
                             n = r,
-                            _.v.c && (L = bez.buildBezierData(P.v[n], P.v[0], [P.o[n][0] - P.v[n][0], P.o[n][1] - P.v[n][1]], [P.i[0][0] - P.v[0][0], P.i[0][1] - P.v[0][1]]),
+                            _.v.c && (L = bez.buildBezierData(k.v[n], k.v[0], [k.o[n][0] - k.v[n][0], k.o[n][1] - k.v[n][1]], [k.i[0][0] - k.v[0][0], k.i[0][1] - k.v[0][1]]),
                             s.tLength += L.segmentLength,
                             s.segments.push(L),
                             v += L.segmentLength),
@@ -21259,7 +21215,7 @@
                     r = E.length,
                     i = 0,
                     a = 0;
-                    var k, z, I, D, B = 1.2 * e.finalSize * .714, M = !0;
+                    var P, z, I, D, M = 1.2 * e.finalSize * .714, B = !0;
                     I = C.length;
                     var O, R, N, V, F, G, H, U, Q, K, W, Y, j, $ = -1, Z = o, q = p, X = d, J = -1, ee = "", te = this.defaultPropsArray;
                     if (2 === e.j || 1 === e.j) {
@@ -21277,8 +21233,8 @@
                                 se = !0
                             } else {
                                 for (z = 0; z < I; z += 1)
-                                    (k = C[z].a).t.propType && (se && 2 === e.j && (ae += k.t.v * ne),
-                                    (O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? ie += k.t.v * O[0] * ne : ie += k.t.v * O * ne);
+                                    (P = C[z].a).t.propType && (se && 2 === e.j && (ae += P.t.v * ne),
+                                    (O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? ie += P.t.v * O[0] * ne : ie += P.t.v * O * ne);
                                 se = !1
                             }
                         for (ie && (ie += ae); re < n; )
@@ -21291,9 +21247,9 @@
                         E[n].n)
                             i = 0,
                             a += e.yOffset,
-                            a += M ? 1 : 0,
+                            a += B ? 1 : 0,
                             o = Z,
-                            M = !1,
+                            B = !1,
                             0,
                             this._hasMaskedPath && (d = X,
                             u = (m = g[p = q].points)[d - 1],
@@ -21319,13 +21275,13 @@
                                 o += b[0] * E[n].an / 200;
                                 var oe = 0;
                                 for (z = 0; z < I; z += 1)
-                                    (k = C[z].a).p.propType && ((O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? oe += k.p.v[0] * O[0] : oe += k.p.v[0] * O),
-                                    k.a.propType && ((O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? oe += k.a.v[0] * O[0] : oe += k.a.v[0] * O);
+                                    (P = C[z].a).p.propType && ((O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? oe += P.p.v[0] * O[0] : oe += P.p.v[0] * O),
+                                    P.a.propType && ((O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? oe += P.a.v[0] * O[0] : oe += P.a.v[0] * O);
                                 for (h = !0; h; )
                                     c + f >= o + oe || !m ? (y = (o + oe - c) / l.partialLength,
                                     N = u.point[0] + (l.point[0] - u.point[0]) * y,
                                     V = u.point[1] + (l.point[1] - u.point[1]) * y,
-                                    x.translate(-b[0] * E[n].an / 200, -b[1] * B / 100),
+                                    x.translate(-b[0] * E[n].an / 200, -b[1] * M / 100),
                                     h = !1) : m && (c += l.partialLength,
                                     (d += 1) >= m.length && (d = 0,
                                     g[p += 1] ? m = g[p].points : _.v.c ? (d = 0,
@@ -21338,49 +21294,49 @@
                             } else
                                 R = E[n].an / 2 - E[n].add,
                                 x.translate(-R, 0, 0),
-                                x.translate(-b[0] * E[n].an / 200, -b[1] * B / 100, 0);
+                                x.translate(-b[0] * E[n].an / 200, -b[1] * M / 100, 0);
                             for (E[n].l / 2,
                             z = 0; z < I; z += 1)
-                                (k = C[z].a).t.propType && (O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars),
-                                0 === i && 0 === e.j || (this._hasMaskedPath ? O.length ? o += k.t.v * O[0] : o += k.t.v * O : O.length ? i += k.t.v * O[0] : i += k.t.v * O));
+                                (P = C[z].a).t.propType && (O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars),
+                                0 === i && 0 === e.j || (this._hasMaskedPath ? O.length ? o += P.t.v * O[0] : o += P.t.v * O : O.length ? i += P.t.v * O[0] : i += P.t.v * O));
                             for (E[n].l / 2,
                             e.strokeWidthAnim && (H = e.sw || 0),
                             e.strokeColorAnim && (G = e.sc ? [e.sc[0], e.sc[1], e.sc[2]] : [0, 0, 0]),
                             e.fillColorAnim && e.fc && (U = [e.fc[0], e.fc[1], e.fc[2]]),
                             z = 0; z < I; z += 1)
-                                (k = C[z].a).a.propType && ((O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? x.translate(-k.a.v[0] * O[0], -k.a.v[1] * O[1], k.a.v[2] * O[2]) : x.translate(-k.a.v[0] * O, -k.a.v[1] * O, k.a.v[2] * O));
+                                (P = C[z].a).a.propType && ((O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? x.translate(-P.a.v[0] * O[0], -P.a.v[1] * O[1], P.a.v[2] * O[2]) : x.translate(-P.a.v[0] * O, -P.a.v[1] * O, P.a.v[2] * O));
                             for (z = 0; z < I; z += 1)
-                                (k = C[z].a).s.propType && ((O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? x.scale(1 + (k.s.v[0] - 1) * O[0], 1 + (k.s.v[1] - 1) * O[1], 1) : x.scale(1 + (k.s.v[0] - 1) * O, 1 + (k.s.v[1] - 1) * O, 1));
+                                (P = C[z].a).s.propType && ((O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars)).length ? x.scale(1 + (P.s.v[0] - 1) * O[0], 1 + (P.s.v[1] - 1) * O[1], 1) : x.scale(1 + (P.s.v[0] - 1) * O, 1 + (P.s.v[1] - 1) * O, 1));
                             for (z = 0; z < I; z += 1) {
-                                if (k = C[z].a,
+                                if (P = C[z].a,
                                 O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars),
-                                k.sk.propType && (O.length ? x.skewFromAxis(-k.sk.v * O[0], k.sa.v * O[1]) : x.skewFromAxis(-k.sk.v * O, k.sa.v * O)),
-                                k.r.propType && (O.length ? x.rotateZ(-k.r.v * O[2]) : x.rotateZ(-k.r.v * O)),
-                                k.ry.propType && (O.length ? x.rotateY(k.ry.v * O[1]) : x.rotateY(k.ry.v * O)),
-                                k.rx.propType && (O.length ? x.rotateX(k.rx.v * O[0]) : x.rotateX(k.rx.v * O)),
-                                k.o.propType && (O.length ? F += (k.o.v * O[0] - F) * O[0] : F += (k.o.v * O - F) * O),
-                                e.strokeWidthAnim && k.sw.propType && (O.length ? H += k.sw.v * O[0] : H += k.sw.v * O),
-                                e.strokeColorAnim && k.sc.propType)
+                                P.sk.propType && (O.length ? x.skewFromAxis(-P.sk.v * O[0], P.sa.v * O[1]) : x.skewFromAxis(-P.sk.v * O, P.sa.v * O)),
+                                P.r.propType && (O.length ? x.rotateZ(-P.r.v * O[2]) : x.rotateZ(-P.r.v * O)),
+                                P.ry.propType && (O.length ? x.rotateY(P.ry.v * O[1]) : x.rotateY(P.ry.v * O)),
+                                P.rx.propType && (O.length ? x.rotateX(P.rx.v * O[0]) : x.rotateX(P.rx.v * O)),
+                                P.o.propType && (O.length ? F += (P.o.v * O[0] - F) * O[0] : F += (P.o.v * O - F) * O),
+                                e.strokeWidthAnim && P.sw.propType && (O.length ? H += P.sw.v * O[0] : H += P.sw.v * O),
+                                e.strokeColorAnim && P.sc.propType)
                                     for (Q = 0; Q < 3; Q += 1)
-                                        O.length ? G[Q] = G[Q] + (k.sc.v[Q] - G[Q]) * O[0] : G[Q] = G[Q] + (k.sc.v[Q] - G[Q]) * O;
+                                        O.length ? G[Q] = G[Q] + (P.sc.v[Q] - G[Q]) * O[0] : G[Q] = G[Q] + (P.sc.v[Q] - G[Q]) * O;
                                 if (e.fillColorAnim && e.fc) {
-                                    if (k.fc.propType)
+                                    if (P.fc.propType)
                                         for (Q = 0; Q < 3; Q += 1)
-                                            O.length ? U[Q] = U[Q] + (k.fc.v[Q] - U[Q]) * O[0] : U[Q] = U[Q] + (k.fc.v[Q] - U[Q]) * O;
-                                    k.fh.propType && (U = O.length ? addHueToRGB(U, k.fh.v * O[0]) : addHueToRGB(U, k.fh.v * O)),
-                                    k.fs.propType && (U = O.length ? addSaturationToRGB(U, k.fs.v * O[0]) : addSaturationToRGB(U, k.fs.v * O)),
-                                    k.fb.propType && (U = O.length ? addBrightnessToRGB(U, k.fb.v * O[0]) : addBrightnessToRGB(U, k.fb.v * O))
+                                            O.length ? U[Q] = U[Q] + (P.fc.v[Q] - U[Q]) * O[0] : U[Q] = U[Q] + (P.fc.v[Q] - U[Q]) * O;
+                                    P.fh.propType && (U = O.length ? addHueToRGB(U, P.fh.v * O[0]) : addHueToRGB(U, P.fh.v * O)),
+                                    P.fs.propType && (U = O.length ? addSaturationToRGB(U, P.fs.v * O[0]) : addSaturationToRGB(U, P.fs.v * O)),
+                                    P.fb.propType && (U = O.length ? addBrightnessToRGB(U, P.fb.v * O[0]) : addBrightnessToRGB(U, P.fb.v * O))
                                 }
                             }
                             for (z = 0; z < I; z += 1)
-                                (k = C[z].a).p.propType && (O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars),
-                                this._hasMaskedPath ? O.length ? x.translate(0, k.p.v[1] * O[0], -k.p.v[2] * O[1]) : x.translate(0, k.p.v[1] * O, -k.p.v[2] * O) : O.length ? x.translate(k.p.v[0] * O[0], k.p.v[1] * O[1], -k.p.v[2] * O[2]) : x.translate(k.p.v[0] * O, k.p.v[1] * O, -k.p.v[2] * O));
+                                (P = C[z].a).p.propType && (O = C[z].s.getMult(E[n].anIndexes[z], w.a[z].s.totalChars),
+                                this._hasMaskedPath ? O.length ? x.translate(0, P.p.v[1] * O[0], -P.p.v[2] * O[1]) : x.translate(0, P.p.v[1] * O, -P.p.v[2] * O) : O.length ? x.translate(P.p.v[0] * O[0], P.p.v[1] * O[1], -P.p.v[2] * O[2]) : x.translate(P.p.v[0] * O, P.p.v[1] * O, -P.p.v[2] * O));
                             if (e.strokeWidthAnim && (K = H < 0 ? 0 : H),
                             e.strokeColorAnim && (W = "rgb(" + Math.round(255 * G[0]) + "," + Math.round(255 * G[1]) + "," + Math.round(255 * G[2]) + ")"),
                             e.fillColorAnim && e.fc && (Y = "rgb(" + Math.round(255 * U[0]) + "," + Math.round(255 * U[1]) + "," + Math.round(255 * U[2]) + ")"),
                             this._hasMaskedPath) {
                                 if (x.translate(0, -e.ls),
-                                x.translate(0, b[1] * B / 100 + a, 0),
+                                x.translate(0, b[1] * M / 100 + a, 0),
                                 w.p.p) {
                                     A = (l.point[1] - u.point[1]) / (l.point[0] - u.point[0]);
                                     var le = 180 * Math.atan(A) / Math.PI;
@@ -21403,7 +21359,7 @@
                                 }
                                 x.translate(0, -e.ls),
                                 x.translate(R, 0, 0),
-                                x.translate(b[0] * E[n].an / 200, b[1] * B / 100, 0),
+                                x.translate(b[0] * E[n].an / 200, b[1] * M / 100, 0),
                                 i += E[n].l + e.tr / 1e3 * e.finalSize
                             }
                             "html" === S ? ee = x.toCSS() : "svg" === S ? ee = x.to2dCSS() : te = [x.props[0], x.props[1], x.props[2], x.props[3], x.props[4], x.props[5], x.props[6], x.props[7], x.props[8], x.props[9], x.props[10], x.props[11], x.props[12], x.props[13], x.props[14], x.props[15]],
@@ -21554,7 +21510,7 @@
                 e.finalLineHeight = e.lh;
                 var x, S = e.tr / 1e3 * e.finalSize;
                 if (e.sz)
-                    for (var T, E, L = !0, P = e.sz[0], k = e.sz[1]; L; ) {
+                    for (var T, E, L = !0, k = e.sz[0], P = e.sz[1]; L; ) {
                         T = 0,
                         v = 0,
                         i = (E = this.buildFinalText(e.t)).length,
@@ -21568,14 +21524,14 @@
                             T += e.finalLineHeight || 1.2 * e.finalSize),
                             l.chars ? (o = l.getCharData(E[t], A.fStyle, A.fFamily),
                             _ = a ? 0 : o.w * e.finalSize / 100) : _ = l.measureText(E[t], e.f, e.finalSize),
-                            v + _ > P && " " !== E[t] ? (-1 === z ? i += 1 : t = z,
+                            v + _ > k && " " !== E[t] ? (-1 === z ? i += 1 : t = z,
                             T += e.finalLineHeight || 1.2 * e.finalSize,
                             E.splice(t, z === t ? 1 : 0, "\r"),
                             z = -1,
                             v = 0) : (v += _,
                             v += S);
                         T += A.ascent * e.finalSize / 100,
-                        this.canResize && e.finalSize > this.minimumFontSize && k < T ? (e.finalSize -= 1,
+                        this.canResize && e.finalSize > this.minimumFontSize && P < T ? (e.finalSize -= 1,
                         e.finalLineHeight = e.finalSize * e.lh / e.s) : (e.finalText = E,
                         i = e.finalText.length,
                         L = !1)
@@ -21652,26 +21608,26 @@
                         e.justifyOffset = 0
                     }
                 e.lineWidths = f;
-                var B, M, O = c.a;
+                var M, B, O = c.a;
                 s = O.length;
                 var R, N, V = [];
                 for (r = 0; r < s; r += 1) {
-                    for ((B = O[r]).a.sc && (e.strokeColorAnim = !0),
-                    B.a.sw && (e.strokeWidthAnim = !0),
-                    (B.a.fc || B.a.fh || B.a.fs || B.a.fb) && (e.fillColorAnim = !0),
+                    for ((M = O[r]).a.sc && (e.strokeColorAnim = !0),
+                    M.a.sw && (e.strokeWidthAnim = !0),
+                    (M.a.fc || M.a.fh || M.a.fs || M.a.fb) && (e.fillColorAnim = !0),
                     N = 0,
-                    R = B.s.b,
+                    R = M.s.b,
                     t = 0; t < i; t += 1)
-                        (M = h[t]).anIndexes[r] = N,
-                        (1 == R && "" !== M.val || 2 == R && "" !== M.val && "\xa0" !== M.val || 3 == R && (M.n || "\xa0" == M.val || t == i - 1) || 4 == R && (M.n || t == i - 1)) && (1 === B.s.rn && V.push(N),
+                        (B = h[t]).anIndexes[r] = N,
+                        (1 == R && "" !== B.val || 2 == R && "" !== B.val && "\xa0" !== B.val || 3 == R && (B.n || "\xa0" == B.val || t == i - 1) || 4 == R && (B.n || t == i - 1)) && (1 === M.s.rn && V.push(N),
                         N += 1);
                     c.a[r].s.totalChars = N;
                     var F, G = -1;
-                    if (1 === B.s.rn)
+                    if (1 === M.s.rn)
                         for (t = 0; t < i; t += 1)
-                            G != (M = h[t]).anIndexes[r] && (G = M.anIndexes[r],
+                            G != (B = h[t]).anIndexes[r] && (G = B.anIndexes[r],
                             F = V.splice(Math.floor(Math.random() * V.length), 1)[0]),
-                            M.anIndexes[r] = F
+                            B.anIndexes[r] = F
                 }
                 e.yOffset = e.finalLineHeight || 1.2 * e.finalSize,
                 e.ls = e.ls || 0,
@@ -27780,11 +27736,11 @@
         }
         .call(exports, __webpack_require__, exports, module)) || (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
     },
-    1582: function(e, t, i) {
+    1587: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
-          , r = i(1293);
+          , r = i(1299);
         t.a = r.a.extend({
             defaultSport: "CYCLING",
             maxPowerWatts: 2e3,
@@ -27854,7 +27810,7 @@
             }
         })
     },
-    1593: function(e, t, i) {
+    1598: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -27862,14 +27818,14 @@
           , s = i.n(r)
           , o = i(4)
           , l = (i(26),
-        i(209))
+        i(213))
           , c = i(17)
-          , h = i(221)
-          , d = (i(182),
+          , h = i(225)
+          , d = (i(186),
         i(19))
-          , p = (i(34),
-        i(163))
-          , u = i(1734)
+          , p = (i(36),
+        i(126))
+          , u = i(1740)
           , m = i.n(u)
           , g = s.a.View.extend({
             events: {
@@ -27932,14 +27888,15 @@
         },
         t.a = g
     },
-    1594: function(e, t, i) {
+    1599: function(e, t, i) {
         "use strict";
         var a = i(13)
           , n = i(4)
           , r = {
             running: "interval_active_type_running",
             cycling: "interval_active_type_cycling",
-            swimming: "interval_active_type_swimming"
+            swimming: "interval_active_type_swimming",
+            other: "interval_type_other"
         }
           , s = {
             INTERVAL_WARMUP: "interval_type_warmup",
@@ -28430,7 +28387,11 @@
                 c
             },
             getIntervalType: function(e, t) {
-                return this.isActiveInterval(e) ? n.a.localize(r[t]) || "--" : s[e] ? n.a.localize(s[e]) : "--"
+                if (this.isActiveInterval(e)) {
+                    var i = r[t];
+                    return i ? n.a.localize(i) : n.a.localize(r.other)
+                }
+                return s[e] ? n.a.localize(s[e]) : "--"
             },
             isActiveInterval: function(e) {
                 return -1 !== e.indexOf("ACTIVE")
@@ -28440,7 +28401,7 @@
             }
         }
     },
-    1636: function(e, t, i) {
+    1642: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -28464,7 +28425,7 @@
         });
         t.a = n
     },
-    1637: function(e, t, i) {
+    1643: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -28473,13 +28434,13 @@
         });
         t.a = n
     },
-    1638: function(e, t, i) {
+    1644: function(e, t, i) {
         "use strict";
         i(7);
-        var a = i(1232)
-          , n = i(1372)
-          , r = i(1480)
-          , s = i(1498)
+        var a = i(1236)
+          , n = i(1377)
+          , r = i(1486)
+          , s = i(1501)
           , o = {
             ROAD: "mapbox.streets",
             SATELLITE: "mapbox.satellite"
@@ -28514,7 +28475,7 @@
         c.TileLayer = l,
         t.a = c
     },
-    1639: function(e, t, i) {
+    1645: function(e, t, i) {
         "use strict";
         (function(e, a, n) {
             i(8);
@@ -28522,20 +28483,20 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = (i(1305),
+              , c = (i(1310),
             i(17))
-              , h = i(101)
-              , d = i(214)
-              , p = i(276)
-              , u = i(36)
-              , m = i(1640)
+              , h = i(102)
+              , d = i(218)
+              , p = i(278)
+              , u = i(37)
+              , m = i(1646)
               , g = i(19)
-              , f = i(1642)
+              , f = i(1648)
               , v = i.n(f)
-              , y = i(126)
+              , y = i(128)
               , A = i.n(y)
-              , _ = (i(1238),
-            i(1915),
+              , _ = (i(1242),
+            i(1920),
             "//static.garmincdn.com/com.garmin.connect/content/images/garmin-connect-fb2.gif")
               , b = {
                 Up: "up",
@@ -28846,9 +28807,9 @@
             T.SocialPlatorm = C,
             t.a = T
         }
-        ).call(this, i(10), i(10), i(1238))
+        ).call(this, i(10), i(10), i(1242))
     },
-    1640: function(e, t, i) {
+    1646: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -28856,7 +28817,7 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(17)
-          , c = i(1641)
+          , c = i(1647)
           , h = i.n(c);
         t.a = s.a.View.extend({
             template: n.a.template(h.a),
@@ -28893,16 +28854,16 @@
             }
         })
     },
-    1641: function(e, t) {
+    1647: function(e, t) {
         e.exports = '<input\n        type="text"\n        value="&lt;iframe src=\'<%- NavUtil.getHostUrl() + NavUtil.url(\'/activity/embed/\' + activityId) %>\' title=\'<%- activityName %>\' width=\'465\' height=\'<%- height %>\' frameborder=\'0\'&gt;&lt;/iframe&gt;"\n        class="embed-activity-input"\n        onclick="this.focus();this.select()"\n        readonly="readonly">\n\n<iframe\n        class="embed-activity-iframe"\n        width="465"\n        height="<%- height %>"\n        title="<%- activityName %>"\n        frameborder="0"\n        src="<%- NavUtil.getHostUrl() + NavUtil.url(\'/activity/embed/\' + activityId) %>">\n</iframe>'
     },
-    1642: function(e, t) {
+    1648: function(e, t) {
         e.exports = '<button class="dropdown-trigger" data-toggle="dropdown">\n    <i class="icon-share"/>\n</button>\n<ul class="dropdown-menu pull-right <%- directionClass %>">\n    <% if (showIcon) { %>\n    <li class="clearfix">\n        <i class="icon-share pull-right"></i>\n    </li>\n    <% } %> <% if (userInChina) { %>\n    <li>\n        <a class="addthis_button_baidu"><%- Localizer.localize(\'share_baidu\') %></a>\n    </li>\n    <li>\n        <a id="shareToWeiboFromShareStaticMapImageView" class="addthis_button_sinaweibo" title="Sina Weibo">\n            <span class="at-icon-wrapper" style="background-color: rgb(230, 22, 45); line-height: 16px; height: 16px; width: 16px;">\n                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"\n                     class="at-icon at-icon-sinaweibo" style="width: 16px; height: 16px;">\n                    <g>\n                    <path\n                            d="M14.24 23.808c-3.64.367-6.785-1.307-7.022-3.734-.236-2.43 2.525-4.693 6.164-5.06 3.642-.367 6.786 1.307 7.02 3.734.24 2.43-2.522 4.696-6.16 5.06m7.28-8.063c-.31-.096-.523-.157-.362-.57.352-.898.39-1.672.006-2.227-.713-1.036-2.667-.98-4.907-.028 0 0-.705.312-.523-.253.343-1.125.29-2.065-.243-2.61-1.214-1.238-4.446.045-7.216 2.86C6.205 15.023 5 17.26 5 19.192c0 3.694 4.664 5.942 9.226 5.942 5.98 0 9.96-3.53 9.96-6.333.003-1.695-1.402-2.657-2.665-3.055M25.494 8.983a5.76 5.76 0 0 0-5.542-1.823.855.855 0 0 0-.646 1.015.84.84 0 0 0 1 .657c1.398-.303 2.912.138 3.938 1.295a4.254 4.254 0 0 1 .865 4.113c-.144.45.1.93.542 1.076a.84.84 0 0 0 1.06-.55v-.002a5.973 5.973 0 0 0-1.218-5.78"></path><path d="M23.276 11.018a2.8 2.8 0 0 0-2.698-.885.74.74 0 0 0-.56.876c.086.396.472.65.86.563.467-.102.977.046 1.32.432.343.388.437.915.29 1.378a.742.742 0 0 0 .466.928.724.724 0 0 0 .913-.474c.3-.947.113-2.026-.59-2.818M14.44 19.41c-.126.223-.408.328-.627.235-.218-.09-.285-.34-.16-.555.127-.215.397-.32.612-.234.22.08.298.33.176.555m-1.16 1.512c-.353.57-1.11.82-1.676.558-.56-.26-.726-.922-.374-1.48.35-.555 1.078-.802 1.642-.56.57.25.753.905.407 1.482m1.322-4.04c-1.733-.46-3.69.42-4.443 1.97-.77 1.583-.025 3.34 1.723 3.914 1.815.595 3.95-.318 4.695-2.023.734-1.67-.182-3.39-1.976-3.86">\n                            </path></g></svg>\n            </span>\n            <%- Localizer.localize(\'share_sinaweibo\') %>\n        </a>\n    </li>\n    <li>\n        <a class="addthis_button_qzone"><%- Localizer.localize(\'share_qzone\') %></a>\n    </li>\n    <li>\n        <a class="addthis_button_email"><%- Localizer.localize(\'share_email\') %></a>\n    </li>\n    <li>\n        <a class="addthis_button_expanded"><%- Localizer.localize(\'share_more\') %></a>\n    </li>\n    <% } else { %>\n\n    <li>\n        <a id="shareToFacebookFromShareStaticMapImageView" class="at300b" title="<%- Localizer.localize(\'share.facebook\') %>" href="#">\n            <span class="at-icon-wrapper"\n                  style="line-height: 16px; height: 16px; width: 16px; background-color: rgb(59, 89, 152);">\n                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"\n                     class="at-icon at-icon-facebook" style="width: 16px; height: 16px;">\n                    <g>\n                    <path\n                            d="M22 5.16c-.406-.054-1.806-.16-3.43-.16-3.4 0-5.733 1.825-5.733 5.17v2.882H9v3.913h3.837V27h4.604V16.965h3.823l.587-3.913h-4.41v-2.5c0-1.123.347-1.903 2.198-1.903H22V5.16z"\n                            fill-rule="evenodd"></path></g></svg>\n            </span>\n            Facebook\n        </a>\n    </li>\n    <li>\n        <a id="shareToTwitterFromShareStaticMapImageView" class="at300b" title="<%- Localizer.localize(\'share.twitter\') %>" href="#">\n            <span class="at-icon-wrapper"\n                  style="line-height: 16px; height: 16px; width: 16px; background-color: rgb(29, 161, 242);">\n                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"\n                     class="at-icon at-icon-twitter" style="width: 16px; height: 16px;">\n                    <g>\n                    <path\n                            d="M27.996 10.116c-.81.36-1.68.602-2.592.71a4.526 4.526 0 0 0 1.984-2.496 9.037 9.037 0 0 1-2.866 1.095 4.513 4.513 0 0 0-7.69 4.116 12.81 12.81 0 0 1-9.3-4.715 4.49 4.49 0 0 0-.612 2.27 4.51 4.51 0 0 0 2.008 3.755 4.495 4.495 0 0 1-2.044-.564v.057a4.515 4.515 0 0 0 3.62 4.425 4.52 4.52 0 0 1-2.04.077 4.517 4.517 0 0 0 4.217 3.134 9.055 9.055 0 0 1-5.604 1.93A9.18 9.18 0 0 1 6 23.85a12.773 12.773 0 0 0 6.918 2.027c8.3 0 12.84-6.876 12.84-12.84 0-.195-.005-.39-.014-.583a9.172 9.172 0 0 0 2.252-2.336"\n                            fill-rule="evenodd"></path></g></svg>\n            </span>\n            Twitter\n        </a>\n    </li>\n    <li>\n        <a class="addthis_button_email at300b" id="shareToEmailFromShareStaticMapImageView" target="_blank" title="<%- Localizer.localize(\'share_email\') %>"\n           href="#">\n            <span class="at-icon-wrapper"\n                  style="line-height: 16px; height: 16px; width: 16px; background-color: rgb(132, 132, 132);">\n                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"\n                     class="at-icon at-icon-email" style="width: 16px; height: 16px;">\n                    <g>\n                    <g fill-rule="evenodd"></g>\n                    <path\n                            d="M27 22.757c0 1.24-.988 2.243-2.19 2.243H7.19C5.98 25 5 23.994 5 22.757V13.67c0-.556.39-.773.855-.496l8.78 5.238c.782.467 1.95.467 2.73 0l8.78-5.238c.472-.28.855-.063.855.495v9.087z"></path>\n                    <path\n                            d="M27 9.243C27 8.006 26.02 7 24.81 7H7.19C5.988 7 5 8.004 5 9.243v.465c0 .554.385 1.232.857 1.514l9.61 5.733c.267.16.8.16 1.067 0l9.61-5.733c.473-.283.856-.96.856-1.514v-.465z"></path></g></svg>\n            </span>\n            <%- Localizer.localize(\'share_email\') %>\n        </a>\n    </li>\n    <li>\n        <a class="addthis_button_expanded at300m" href="#" id="shareToMoreFromShareStaticMapImageView" target="_blank" title="View more services">\n            <span class="at-icon-wrapper"\n                  style="line-height: 16px; height: 16px; width: 16px; background-color: rgb(255, 101, 80);">\n                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"\n                     title="Expanded" alt="Expanded"\n                     class="at-icon at-icon-addthis" style="width: 16px; height: 16px;">\n                    <g>\n                    <path d="M18 14V8h-4v6H8v4h6v6h4v-6h6v-4h-6z" fill-rule="evenodd"></path></g></svg>\n            </span>\n            <%- Localizer.localize(\'share_more\') %>\n        </a>\n    </li>\n    <% } %>\n    <li class="divider"></li>\n    <li>\n        <a id="activity-detail-embed" href="#" data-toggle="modal"><%- Localizer.localize(\'embed\') %></a>\n    </li>\n</ul>\n'
     },
-    1643: function(e, t) {
+    1649: function(e, t) {
         e.exports = '<%\n    var privacyClasses = {\n        \'private\': \'icon-locked\',\n        \'subscribers\': \'icon-privacy-connections\',\n        \'groups\': \'icon-privacy-connections-and-groups\',\n        \'public\': \'icon-unlocked\'\n    };\n\n    var privacyIconClass = privacyClasses[privacy];\n%> \n\n\n    <button class="dropdown-trigger page-navigation-action" \n            data-toggle="dropdown"\n            aria-label="<%- Localizer.localize(\'privacy.alert.heading\') %>">\n        <i class="<%- privacyIconClass %> privacy-indicator"></i>\n    </button>\n    \n    <ul class="<%- customConsentClass %> dropdown-menu pull-right">\n        <li class="clearfix">\n            <i class="<%- privacyIconClass %> privacy-state-current pull-right"></i>\n        </li>\n        <li data-privacy="private">\n            <a href="#">\n                <i class="icon-locked"></i> <%- Localizer.localize(\'privacy.private.title\') %> <br/>\n                <% if(onlyMeConsent) { %>\n                    <span class="<%- customConsentClass %>"><%- onlyMeConsent %></span>\n                <% } %>\n            </a>\n        </li>\n        <li data-privacy="subscribers">\n            <a href="#">\n                <i class="icon-privacy-connections"></i> <%- Localizer.localize(\'privacy.connections.title\') %><br/>\n                <% if(connectionsConsent) { %>\n                    <span class="<%- customConsentClass %>"><%- connectionsConsent %></span>\n                <% } %>\n            </a>\n        </li>\n        <li data-privacy="groups">\n            <a href="#">\n                 <i class="icon-privacy-connections-and-groups"></i> <%- Localizer.localize(\'privacy.connections.and.groups.title\') %><br/>\n                <% if(groupsConsent) { %>\n                    <span class="<%- customConsentClass %>"><%- groupsConsent %></span>\n                <% } %>\n            </a>\n        </li>\n        <li data-privacy="public">\n            <a href="#">\n                <i class="icon-unlocked"></i> <%- Localizer.localize(\'privacy.public.title\') %> <br/>\n                <% if(everyoneConsent) { %>\n                    <span class="<%- customConsentClass %>"><%- everyoneConsent %></span>\n                <% } %>\n            </a>\n        </li>\n    </ul>\n'
     },
-    1644: function(e, t, i) {
+    1650: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -28912,11 +28873,11 @@
           , l = i(4)
           , c = i(18)
           , h = i.n(c)
-          , d = i(81)
-          , p = i(29)
-          , u = i(1645)
+          , d = i(82)
+          , p = i(28)
+          , u = i(1651)
           , m = i.n(u)
-          , g = i(1646)
+          , g = i(1652)
           , f = i.n(g)
           , v = {
             grayLineWidth: 4,
@@ -29096,17 +29057,17 @@
             }
         })
     },
-    1645: function(e, t) {
+    1651: function(e, t) {
         e.exports = '<div class="dive-log-stat <%- className %>-stat font-thin <%- additionalClasses %>">\n    <div class="<%- className %>-value dive-log-value">\n        <%- value %>\n    </div>\n    <span class="<%- className %>-label dive-log-label">\n        <%- label %>\n    </span>\n</div>'
     },
-    1646: function(e, t) {
+    1652: function(e, t) {
         e.exports = '<div class="dive-canvas">\n    <canvas id="canvas" class="canvas"></canvas>\n    \x3c!-- diveLogStatView.html --\x3e\n\n</div>\n'
     },
-    1655: function(e, t, i) {
+    1661: function(e, t, i) {
         "use strict";
-        var a = i(162)
+        var a = i(165)
           , n = i(19)
-          , r = i(1286)
+          , r = i(1292)
           , s = a.a.extend({
             totalCourses: 0,
             model: r.a,
@@ -29135,57 +29096,57 @@
         });
         t.a = s
     },
-    1694: function(e, t, i) {
+    1700: function(e, t, i) {
         "use strict";
-        var a = i(1386);
+        var a = i(1389);
         t.a = a.a.extend({
             url: "/web-data/exercises/Pilates.json"
         })
     },
-    1695: function(e, t, i) {
+    1701: function(e, t, i) {
         "use strict";
-        var a = i(1386);
+        var a = i(1389);
         t.a = a.a.extend({
             url: "/web-data/exercises/Yoga.json"
         })
     },
-    1696: function(e, t) {
+    1702: function(e, t) {
         e.exports = '<span class="dropdown-toggle" data-toggle="dropdown">\n    <%- label %>: <span class="type"><%- selectedItem.name %></span>\n    <i class="icon-pointer-down"></i>\n</span>\n<ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu">\n\n        <% for (var i = 0; i < items.length; i++) {         %>\n        <% var item = items[i];                             %>\n            <li data-value="<%- item.value %>"><a tabindex="-1" href="#"><%- item.name %></a></li>\n            <% if (typeof item.children != \'undefined\') {              %>\n                <% for (var j = 0; j < item.children.length; j++) { %>\n                <%  var childItem = item.children[j];               %>\n                    <li data-value="<%- childItem.value %>"><a tabindex="-1" href="#" class="dropdown-tier"><%- childItem.name %></a></li>\n                <% }                                                %>\n            <% }                                                %>\n\n        <% }                                                %>\n</ul>'
     },
-    1699: function(e, t) {
+    1705: function(e, t) {
         e.exports = "<p><%- Localizer.localize('help.running.dynamics.cadence.chart.label') %></p>\n<table class=\"table\">\n    <thead>\n    <tr>\n        <th><%- Localizer.localize('help.running.dynamics.color.zone') %></th>\n        <th><%- Localizer.localize('help.running.dynamics.percent.zone') %></th>\n        <th><%- Localizer.localize('help.running.dynamics.cadence.range') %></th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr>\n        <td><span class=\"rd-color background-61\"></span><%- Localizer.localize('color_purple') %></td>\n        <td>&gt; 95</td>\n        <td>&gt; 183 spm</td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-21\"></span><%- Localizer.localize('color_blue') %></td>\n        <td>70 \u2013 95</td>\n        <td>174 \u2013 183 spm</td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-40\"></span><%- Localizer.localize('color_green') %></td>\n        <td>30 - 69</td>\n        <td>164 - 173 spm</td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-70\"></span><%- Localizer.localize('color_orange') %></td>\n        <td>5 - 29</td>\n        <td>153 - 163 spm</td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-51\"></span><%- Localizer.localize('color_red') %></td>\n        <td>&lt; 5</td>\n        <td>&lt; 153 spm</td>\n    </tr>\n    </tbody>\n</table>\n<p><%- Localizer.localize('help.running.dynamics.cadence.chart.cadence.research') %></p>\n"
     },
-    1700: function(e, t) {
+    1706: function(e, t) {
         e.exports = "<p><%- Localizer.localize('help.running.dynamics.vert.oscillation.chart.label') %></p>\n<table class=\"table\">\n    <thead>\n    <tr>\n        <th><%- Localizer.localize('help.running.dynamics.color.zone') %></th>\n        <th><%- Localizer.localize('help.running.dynamics.percent.zone') %></th>\n        <th><%- Localizer.localize('help.running.dynamics.vo.range') %></th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr>\n        <td><span class=\"rd-color background-61\"></span><%- Localizer.localize('color_purple') %></td>\n        <td>&gt; <%- additionalData.Purple.zone %></td>\n        <td>&lt; <%- additionalData.Purple.range %> <%- Localizer.localize('vert_oscillation_unit') %></td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-21\"></span><%- Localizer.localize('color_blue') %></td>\n        <td><%- additionalData.Blue.zone %></td>\n        <td><%- additionalData.Blue.range %> <%- Localizer.localize('vert_oscillation_unit') %></td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-40\"></span><%- Localizer.localize('color_green') %></td>\n        <td><%- additionalData.Green.zone %></td>\n        <td><%- additionalData.Green.range %> <%- Localizer.localize('vert_oscillation_unit') %></td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-70\"></span><%- Localizer.localize('color_orange') %></td>\n        <td><%- additionalData.Orange.zone %></td>\n        <td><%- additionalData.Orange.range %> <%- Localizer.localize('vert_oscillation_unit') %></td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-51\"></span><%- Localizer.localize('color_red') %></td>\n        <td>&lt; <%- additionalData.Red.zone %></td>\n        <td>&gt; <%- additionalData.Red.range %> <%- Localizer.localize('vert_oscillation_unit') %></td>\n    </tr>\n    </tbody>\n</table>\n<p><%- Localizer.localize('help.running.dynamics.vert.oscillation.chart.research') %></p>\n"
     },
-    1701: function(e, t) {
+    1707: function(e, t) {
         e.exports = "<p><%- Localizer.localize('help.running.dynamics.ground.contact.chart.label') %></p>\n<table class=\"table\">\n    <thead>\n    <tr>\n        <th><%- Localizer.localize('help.running.dynamics.color.zone') %></th>\n        <th><%- Localizer.localize('help.running.dynamics.percent.zone') %></th>\n        <th><%- Localizer.localize('help.running.dynamics.gct.range') %></th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr>\n        <td><span class=\"rd-color background-61\"></span><%- Localizer.localize('color_purple') %></td>\n        <td>&gt; 95</td>\n        <td>&lt; 218 ms</td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-21\"></span><%- Localizer.localize('color_blue') %></td>\n        <td>70 \u2013 95</td>\n        <td>218-248 ms</td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-40\"></span><%- Localizer.localize('color_green') %></td>\n        <td>30 - 69</td>\n        <td>249 - 277 ms</td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-70\"></span><%- Localizer.localize('color_orange') %></td>\n        <td>5 - 29</td>\n        <td>278 - 308 ms</td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-51\"></span><%- Localizer.localize('color_red') %></td>\n        <td>&lt; 5</td>\n        <td>&gt; 308 ms</td>\n    </tr>\n    </tbody>\n</table>\n<p><%- Localizer.localize('help.running.dynamics.ground.contact.chart.research') %></p>\n"
     },
-    1702: function(e, t) {
+    1708: function(e, t) {
         e.exports = "<p><%- Localizer.localize('help.running.dynamics.gct.balance.label') %></p>\n    <table class=\"table\">\n        <thead>\n        <tr>\n            <th><%- Localizer.localize('help.running.dynamics.color.zone') %></th>\n            <th><%- Localizer.localize('help.running.dynamics.percent.zone') %></th>\n            <th><abbr title=\"<%- Localizer.localize('help.running.dynamics.gct') %>\"><%- Localizer.localize('help.running.dynamics.gct.abbr') %></abbr> <%- Localizer.localize('help.running.dynamics.balance.range') %></th>\n        </tr>\n        </thead>\n        <tbody>\n        <tr>\n            <td><span class=\"rd-color background-51\"></span><%- Localizer.localize('color_red') %></td>\n            <td>&gt; 95</td>\n            <td>&gt; <%- Localizer.localize('power_balance_right_format', 52.2) %></td>\n        </tr>\n        <tr>\n            <td><span class=\"rd-color background-70\"></span><%- Localizer.localize('color_orange') %></td>\n            <td>70 \u2013 95</td>\n            <td><%- Localizer.localize('power_balance_right_format', 50.8) %> - <%- Localizer.localize('power_balance_right_format', 52.2) %></td>\n        </tr>\n        <tr>\n            <td><span class=\"rd-color background-40\"></span><%- Localizer.localize('color_green') %></td>\n            <td>30 - 69</td>\n            <td><%- Localizer.localize('power_balance_right_format', 50.7) %> - <%- Localizer.localize('power_balance_left_format', 50.7) %></td>\n        </tr>\n        <tr>\n            <td><span class=\"rd-color background-70\"></span><%- Localizer.localize('color_orange') %></td>\n            <td>5 - 29</td>\n            <td><%- Localizer.localize('power_balance_left_format', 50.8) %> - <%- Localizer.localize('power_balance_left_format', 52.2) %></td>\n        </tr>\n        <tr>\n            <td><span class=\"rd-color background-51\"></span><%- Localizer.localize('color_red') %></td>\n            <td>&lt; 5</td>\n            <td>&gt; <%- Localizer.localize('power_balance_left_format', 52.2) %></td>\n        </tr>\n        </tbody>\n    </table>\n<p><%= Localizer.localize('help.running.dynamics.gct.balance.research') %></p>\n"
     },
-    1703: function(e, t) {
+    1709: function(e, t) {
         e.exports = "<p><%- Localizer.localize('help.running.dynamics.vert.ratio.chart.label') %></p>\n<table class=\"table\">\n    <thead>\n    <tr>\n        <th><%- Localizer.localize('help.running.dynamics.color.zone') %></th>\n        <th><%- Localizer.localize('help.running.dynamics.percent.zone') %></th>\n        <th><%- Localizer.localize('help.running.dynamics.vr.range') %></th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr>\n        <td><span class=\"rd-color background-61\"></span><%- Localizer.localize('color_purple') %></td>\n        <td>&gt; <%- additionalData.Purple.zone %></td>\n        <td>&lt; <%- additionalData.Purple.range %></td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-21\"></span><%- Localizer.localize('color_blue') %></td>\n        <td><%- additionalData.Blue.zone %></td>\n        <td><%- additionalData.Blue.range %></td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-40\"></span><%- Localizer.localize('color_green') %></td>\n        <td><%- additionalData.Green.zone %></td>\n        <td><%- additionalData.Green.range %></td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-70\"></span><%- Localizer.localize('color_orange') %></td>\n        <td><%- additionalData.Orange.zone %></td>\n        <td><%- additionalData.Orange.range %></td>\n    </tr>\n    <tr>\n        <td><span class=\"rd-color background-51\"></span><%- Localizer.localize('color_red') %></td>\n        <td>&lt; <%- additionalData.Red.zone %></td>\n        <td>&gt; <%- additionalData.Red.range %></td>\n    </tr>\n    </tbody>\n</table>\n<p><%- Localizer.localize('help.running.dynamics.vert.ratio.chart.research') %></p>\n"
     },
-    1704: function(e, t) {
+    1710: function(e, t) {
         e.exports = '<table class="table table-bordered table-condensed">\n    <thead>\n    <tr>\n        <th></th>\n        <th><%- Localizer.localize(\'training_desc\') %></th>\n        <th><%- Localizer.localize(\'training_freq\') %></th>\n        <th><%- Localizer.localize(\'training_duration\') %></th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr>\n        <th align="center">0</th>\n        <td><%- Localizer.localize(\'training_desc_1\') %></td>\n        <td>&nbsp;&nbsp;-</td>\n        <td>&nbsp;&nbsp;-</td>\n    </tr>\n\n    <tr>\n        <th align="center">1</th>\n        <td style="vertical-align:middle" rowspan="3"><%- Localizer.localize(\'training_desc_2\') %></td>\n        <td style="vertical-align:middle" rowspan="2"><%- Localizer.localize(\'training_freq_1\') %></td>\n        <td><%- Localizer.localize(\'training_duration_1\') %></td>\n    </tr>\n    <tr>\n        <th align="center">2</th>\n        <td><%- Localizer.localize(\'training_duration_2\') %></td>\n    </tr>\n    <tr>\n        <th align="center">3</th>\n        <td><%- Localizer.localize(\'training_freq_2\') %></td>\n        <td><%- Localizer.localize(\'training_duration_3\') %></td>\n    </tr>\n    <tr>\n        <th align="center">4</th>\n        <td style="vertical-align:middle" rowspan="4"><%- Localizer.localize(\'training_desc_3\') %></td>\n        <td style="vertical-align:middle" rowspan="3"><%- Localizer.localize(\'training_freq_3\') %></td>\n        <td><%- Localizer.localize(\'training_duration_4\') %></td>\n    </tr>\n\n    <tr>\n        <th align="center">5</th>\n        <td><%- Localizer.localize(\'training_duration_5\') %></td>\n    </tr>\n\n    <tr>\n        <th align="center">6</th>\n        <td><%- Localizer.localize(\'training_duration_6\') %></td>\n    </tr>\n\n    <tr>\n        <th align="center">7</th>\n        <td><%- Localizer.localize(\'training_freq_4\') %></td>\n        <td><%- Localizer.localize(\'training_duration_7\') %></td>\n    </tr>\n\n    <tr>\n        <th align="center">8</th>\n        <td style="vertical-align:middle" rowspan="3"><%- Localizer.localize(\'training_desc_4\') %></td>\n        <td><%- Localizer.localize(\'training_freq_5\') %></td>\n        <td><%- Localizer.localize(\'training_duration_8\') %></td>\n    </tr>\n\n    <tr>\n        <th align="center">9</th>\n        <td style="vertical-align:middle" rowspan="2"><%- Localizer.localize(\'training_freq_6\') %></td>\n        <td><%- Localizer.localize(\'training_duration_9\') %></td>\n    </tr>\n\n    <tr>\n        <th align="center">10</th>\n        <td><%- Localizer.localize(\'training_duration_10\') %></td>\n    </tr>\n\n    </tbody>\n</table>\n\n<p style="font-size:12px;"><%= Localizer.localize(\'activity_class_helper\') %></p>\n\n'
     },
-    1705: function(e, t) {
+    1711: function(e, t) {
         e.exports = "<p>\n    <%- Localizer.localize('help.performance.condition.description') %>\n</p>\n<table class=\"table\">\n    <thead>\n        <tr>\n            <th><%- Localizer.localize('help.performance.condition') %></th>\n            <th><%- Localizer.localize('help.performance.condition.score') %></th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td><%- Localizer.localize('help.performance.condition.rating.excellent') %></td>\n            <td><%- Localizer.localize('help.performance.condition.rating.excellent.score') %></td>\n        </tr>\n        <tr>\n            <td><%- Localizer.localize('help.performance.condition.rating.good') %></td>\n            <td><%- Localizer.localize('help.performance.condition.rating.good.score') %></td>\n        </tr>\n        <tr>\n            <td><%- Localizer.localize('help.performance.condition.rating.baseline') %></td>\n            <td><%- Localizer.localize('help.performance.condition.rating.baseline.score') %></td>\n        </tr>\n        <tr>\n            <td><%- Localizer.localize('help.performance.condition.rating.fair') %></td>\n            <td><%- Localizer.localize('help.performance.condition.rating.fair.score') %></td>\n        </tr>\n        <tr>\n            <td><%- Localizer.localize('help.performance.condition.rating.poor') %></td>\n            <td><%- Localizer.localize('help.performance.condition.rating.poor.score') %></td>\n        </tr>\n    </tbody>\n</table>"
     },
-    1706: function(e, t) {
+    1712: function(e, t) {
         e.exports = "<h4><%- Localizer.localize('help_vector_air_drag_cda') %></h4>\n    <div><%= Localizer.localize('help_vector_air_drag_cda_intro_paragraph') %></div>\n    <ul class=\"nav nav-tabs\">\n        <li class=\"active\"><a href=\"#drag-road\" data-toggle=\"tab\"><%- Localizer.localize('help_vector_air_drag_cda_road_cyclist_label') %></a></li>\n        <li><a href=\"#drag-tt\" data-toggle=\"tab\"><%- Localizer.localize('help_vector_air_drag_cda_time_trialist_tab_label') %></a></li>\n    </ul>\n\n    <div class=\"tab-content\">\n\n        \x3c!-- Road Cyclist tab --\x3e\n        <div class=\"tab-pane active\" id=\"drag-road\">\n            <h4 class=\"bottom-xs\"><%- Localizer.localize('help_vector_air_drag_cda_aerodynamic_zones_label') %></h4>\n\n            <table class=\"vo2-estimates-table table table-bordered\">\n                <tbody>\n                <tr>\n                    <th><%- Localizer.localize('help_vector_air_drag_cda_road_cyclist_label') %></th>\n                    <th><%- Localizer.localize('help_vector_air_drag_cda_percentile_label') %></th>\n                    <th><%- Localizer.localize('help_vector_air_drag_cda_cda_range') %></th>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-superior\"></span><%- Localizer.localize('help_vector_air_drag_cda_superior_label') %></td>\n                    <td>&gt; <%- additionalData.roadCyclist.Purple.zone %></td>\n                    <td>&lt; <%- additionalData.roadCyclist.Purple.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-excellent\"></span><%- Localizer.localize('help_vector_air_drag_cda_excellent_label') %></td>\n                    <td><%- additionalData.roadCyclist.Blue.zone %></td>\n                    <td><%- additionalData.roadCyclist.Blue.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-good\"></span><%- Localizer.localize('help_vector_air_drag_cda_good_label') %></td>\n                    <td><%- additionalData.roadCyclist.Green.zone %></td>\n                    <td><%- additionalData.roadCyclist.Green.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-fair\"></span><%- Localizer.localize('help_vector_air_drag_cda_fair_label') %></td>\n                    <td><%- additionalData.roadCyclist.Orange.zone %></td>\n                    <td><%- additionalData.roadCyclist.Orange.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-poor\"></span><%- Localizer.localize('help_vector_air_drag_cda_poor_label') %></td>\n                    <td>&lt; <%- additionalData.roadCyclist.Red.zone %></td>\n                    <td>&gt; <%- additionalData.roadCyclist.Red.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                </tbody>\n            </table>\n        </div>\n        \x3c!-- End: Road Cyclist tab --\x3e\n\n        \x3c!-- Time Trialist Cyclist tab --\x3e\n        <div class=\"tab-pane\" id=\"drag-tt\">\n            <h4 class=\"bottom-xs\"><%- Localizer.localize('help_vector_air_drag_cda_aerodynamic_zones_label') %></h4>\n\n            <table class=\"vo2-estimates-table table table-bordered\">\n                <tbody>\n                <tr>\n                    <th><%- Localizer.localize('help_vector_air_drag_cda_time_trial_cyclist') %></th>\n                    <th><%- Localizer.localize('help_vector_air_drag_cda_percentile_label') %></th>\n                    <th><%- Localizer.localize('help_vector_air_drag_cda_cda_range') %></th>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-superior\"></span><%- Localizer.localize('help_vector_air_drag_cda_superior_label') %></td>\n                    <td>&gt; <%- additionalData.timeTrialist.Purple.zone %></td>\n                    <td>&lt; <%- additionalData.timeTrialist.Purple.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-excellent\"></span><%- Localizer.localize('help_vector_air_drag_cda_excellent_label') %></td>\n                    <td><%- additionalData.timeTrialist.Blue.zone %></td>\n                    <td><%- additionalData.timeTrialist.Blue.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-good\"></span><%- Localizer.localize('help_vector_air_drag_cda_good_label') %></td>\n                    <td><%- additionalData.timeTrialist.Green.zone %></td>\n                    <td><%- additionalData.timeTrialist.Green.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-fair\"></span><%- Localizer.localize('help_vector_air_drag_cda_fair_label') %></td>\n                    <td><%- additionalData.timeTrialist.Orange.zone %></td>\n                    <td><%- additionalData.timeTrialist.Orange.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                <tr>\n                    <td><span class=\"vo2-poor\"></span><%- Localizer.localize('help_vector_air_drag_cda_poor_label') %></td>\n                    <td>&lt; <%- additionalData.timeTrialist.Red.zone %></td>\n                    <td>&gt; <%- additionalData.timeTrialist.Red.range %> <%- Localizer.localize('cda_unit') %></td>\n                </tr>\n\n                </tbody>\n            </table>\n        </div>\n        \x3c!-- End Balance tab --\x3e\n\n        <div><%- Localizer.localize('help_vector_air_drag_cda_footer_paragraph') %></div>\n    </div>"
     },
-    1707: function(e, t) {
+    1713: function(e, t) {
         e.exports = "<h4><%- Localizer.localize('label_respiration_rate') %></h4>\n\n<ul class=\"nav nav-tabs\">\n    <li class=\"active\"><a href=\"#tracking-respiration-rate\" data-toggle=\"tab\"><%- Localizer.localize('label_respiration_tracking') %></a></li>\n    <li><a href=\"#breathing-during-runs\" data-toggle=\"tab\"><%- Localizer.localize('label_breathing_during_runs') %></a></li>\n</ul>\n    \n<div class=\"tab-content\">\n    \x3c!-- Respiration Tracking tab --\x3e\n    <div class=\"tab-pane active\" id=\"tracking-respiration-rate\">\n       <h5><%- Localizer.localize('respiration_tracking_header_message1') %></h5>\n       <p><%- Localizer.localize('respiration_tracking_message1') %></p>\n       <h5><%- Localizer.localize('respiration_tracking_header_message2') %></h5>\n       <p><%- Localizer.localize('respiration_tracking_message2') %></p>\n       <h5><%- Localizer.localize('respiration_tracking_header_message3') %></h5>\n       <p><%- Localizer.localize('respiration_tracking_message3') %></p>\n    </div>\n    \x3c!-- End Respiration Tracking tab --\x3e\n\n    \x3c!-- Breathing During Runs tab --\x3e\n    <div class=\"tab-pane\" id=\"breathing-during-runs\">\n        <h5><%- Localizer.localize('breathing_header_message') %></h3>\n        <h5><%- Localizer.localize('breathing_category1') %></h5>\n        <p><%- Localizer.localize('breathing_message1') %></p>\n        <h5><%- Localizer.localize('breathing_category2') %></h5>\n        <p><%- Localizer.localize('breathing_message2') %></p>\n        <h5><%- Localizer.localize('breathing_category3') %></h5>\n        <p><%- Localizer.localize('breathing_message3') %></p>\n        <h5><%- Localizer.localize('breathing_category4') %></h5>\n        <p><%- Localizer.localize('breathing_message4') %></p>\n    </div>\n    \x3c!-- End Breathing During Runs tab --\x3e\n</div>\n    "
     },
-    1708: function(e, t) {
+    1714: function(e, t) {
         e.exports = "<h2><%- Localizer.localize('label_grit') %></h2>\n\n<h5><%- Localizer.localize('grit_help', additionalData.ActivitiesUtil.GritColorRanges.max_1, additionalData.ActivitiesUtil.GritColorRanges.max_3) %></h5>\n\n<table>\n    <tr>\n        <td><span class=\"chart-color-circle\" style=\"background-color: <%- additionalData.ActivitiesUtil.GritColorRanges.color_1 %>\"></span></td>\n        <td><%- Localizer.localize('grit_easy', additionalData.ActivitiesUtil.GritColorRanges.max_1 + '-' + additionalData.ActivitiesUtil.GritColorRanges.max_2) %></td>\n    </tr>\n    <tr>\n        <td><span class=\"chart-color-circle\" style=\"background-color: <%- additionalData.ActivitiesUtil.GritColorRanges.color_2 %>\"></span></td>\n        <td><%- Localizer.localize('grit_moderate', additionalData.ActivitiesUtil.GritColorRanges.max_2 + '-' + additionalData.ActivitiesUtil.GritColorRanges.max_3) %></td>\n    </tr>\n    <tr>\n        <td><span class=\"chart-color-circle\" style=\"background-color: <%- additionalData.ActivitiesUtil.GritColorRanges.color_3 %>\"></span></td>\n        <td><%- Localizer.localize('grit_hard', additionalData.ActivitiesUtil.GritColorRanges.max_3 + '+') %></td>\n    </tr>        \n</table>\n\n<p></p>\n<p><%- Localizer.localize('grit_help_2') %></p>\n\n<h4><%- Localizer.localize('label_grit_in_connect') %></h4>\n<p><%- Localizer.localize('grit_in_connect') %></p>"
     },
-    1709: function(e, t) {
+    1715: function(e, t) {
         e.exports = "<h2><%- Localizer.localize('label_flow') %></h2>\n\n<h5><%- Localizer.localize('flow_help') %></h5>\n\n<table>\n    <tr>\n        <td><span class=\"chart-color-circle\" style=\"background-color: <%- additionalData.ActivitiesUtil.FlowColorRanges.color_1 %>\"></span></td>\n        <td><%- Localizer.localize('flow_smooth', additionalData.ActivitiesUtil.FlowColorRanges.max_1 + '-' + additionalData.ActivitiesUtil.FlowColorRanges.max_2) %></td>\n    </tr>\n    <tr>\n        <td><span class=\"chart-color-circle\" style=\"background-color: <%- additionalData.ActivitiesUtil.FlowColorRanges.color_2 %>\"></span></td>\n        <td><%- Localizer.localize('flow_moderate', additionalData.ActivitiesUtil.FlowColorRanges.max_2 + '-' + additionalData.ActivitiesUtil.FlowColorRanges.max_3) %></td>\n    </tr>\n    <tr>\n        <td><span class=\"chart-color-circle\" style=\"background-color: <%- additionalData.ActivitiesUtil.FlowColorRanges.color_3 %>\"></span></td>\n        <td><%- Localizer.localize('flow_rough', additionalData.ActivitiesUtil.FlowColorRanges.max_3 + '+') %></td>\n    </tr>        \n</table>\n\n<p></p>\n<p><%- Localizer.localize('flow_help_2') %></p>\n\n<h4><%- Localizer.localize('label_flow_in_connect') %></h4>\n<p><%- Localizer.localize('flow_in_connect') %></p>"
     },
-    1717: function(e, t, i) {
+    1723: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -29193,7 +29154,7 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(13)
-          , c = i(1718)
+          , c = i(1724)
           , h = i.n(c);
         t.a = s.a.View.extend({
             template: n.a.template(h.a),
@@ -29214,10 +29175,10 @@
             }
         })
     },
-    1718: function(e, t) {
+    1724: function(e, t) {
         e.exports = '<div class="video-outer">\n    <iframe width="560" height="315" src="//www.youtube-nocookie.com/embed/<%- videoId %>?rel=0&amp;autohide=1&amp;showinfo=0&amp;modestbranding=1&amp;theme=light" frameborder="0" allowfullscreen=""></iframe>\n</div>'
     },
-    1719: function(e, t, i) {
+    1725: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(7)
@@ -29226,13 +29187,13 @@
               , o = i.n(s)
               , l = i(4)
               , c = i(13)
-              , h = i(1409)
-              , d = i(34)
-              , p = i(51)
-              , u = (i(29),
-            i(81))
-              , m = i(1720)
-              , g = i(1721)
+              , h = i(1410)
+              , d = i(36)
+              , p = i(53)
+              , u = (i(28),
+            i(82))
+              , m = i(1726)
+              , g = i(1727)
               , f = i.n(g)
               , v = o.a.View.extend({
                 template: r.a.template(f.a),
@@ -29364,7 +29325,7 @@
         }
         ).call(this, i(10), i(10))
     },
-    1720: function(e, t, i) {
+    1726: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(10)
@@ -29466,10 +29427,10 @@
         }
         ).call(this, i(7))
     },
-    1721: function(e, t) {
+    1727: function(e, t) {
         e.exports = '<div class="video-outer">\n    <div width="560" height="315" id="ytplayer"></div>\n</div>'
     },
-    1727: function(e, t, i) {
+    1733: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
@@ -29480,10 +29441,10 @@
         });
         t.a = s
     },
-    1728: function(e, t) {
+    1734: function(e, t) {
         e.exports = '<% if (useSelect) { %>\n<select name="activityType" id="activityType" class=<%- className %>>\n    <% for (var i = 0; i < items.length; i++) { %>\n    <% var item = items[i]; %>\n    <% if(options.showTypeUncategorized === false && item.value === \'uncategorized\') { continue; } %>\n\n    <% if(item.value !== this.value) { %>\n    <option value="<%- item.value %>"><%- item.name || Localizer.localize(item.nameKey) %></option>\n    <% } else { %>\n    <option value="<%- item.value %>" selected><%- item.name || Localizer.localize(item.nameKey) %></option>\n    <% } %>\n\n    <% if (typeof item.children !== \'undefined\') { %>\n        <optgroup label="">\n            <% for (var j = 0; j < item.children.length; j++) { %>\n                <% var childItem = item.children[j]; %>\n\n                <% if(childItem.value !== this.value) { %>\n                <option value="<%- childItem.value %>"><%- childItem.name || Localizer.localize(childItem.nameKey) %></option>\n                <% } else { %>\n                <option value="<%- childItem.value %>" selected><%- childItem.name || Localizer.localize(childItem.nameKey) %></option>\n                <% } %>\n            <% } %>\n        </optgroup>\n        <% if ((i+1) < items.length) { %>\n            <optgroup label="----------------------------------"></optgroup>\n        <% } %>\n    <% } %>\n\n    <% } %>\n</select>\n<% } else { %>\n<span class="dropdown">\n    <span class="dropdown-toggle" data-toggle="dropdown" data-value="<%- selectedItem.value %>">\n        <span class="type"><%- selectedItem.name || Localizer.localize(selectedItem.nameKey) %></span>\n        <i class="icon-pointer-down"></i>\n    </span>\n    <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu">\n\n        <% for (var i = 0; i < items.length; i++) { %>\n            <% var item = items[i]; %>\n            <% if(options.showTypeUncategorized === false && item.value === \'uncategorized\') { continue; } %>\n\n            <li data-value="<%- item.value %>"><a tabindex="-1" href="#"><%- item.name || Localizer.localize(item.nameKey) %></a></li>\n            <% if (typeof item.children !== \'undefined\') { %>\n                <% for (var j = 0; j < item.children.length; j++) { %>\n                    <% var childItem = item.children[j]; %>\n                    <li data-value="<%- childItem.value %>"><a tabindex="-1" href="#" class="dropdown-tier"><%- childItem.name || Localizer.localize(childItem.nameKey) %></a></li>\n                <% } %>\n            <% } %>\n            <% if ((i+1) < items.length) { %>\n                <li class="divider"></li>\n            <% } %>\n        <% } %>\n    </ul>\n</span>\n<% } %>\n'
     },
-    1731: function(e, t, i) {
+    1737: function(e, t, i) {
         "use strict";
         i.d(t, "a", function() {
             return h
@@ -29491,9 +29452,9 @@
         var a = i(2)
           , n = i(8)
           , r = i.n(n)
-          , s = i(81)
-          , o = i(1316)
-          , l = i(44)
+          , s = i(82)
+          , o = i(1300)
+          , l = i(45)
           , c = {
             data: null,
             compareData: null,
@@ -29583,11 +29544,11 @@
         }),
         t.b = d
     },
-    1732: function(e, t, i) {
+    1738: function(e, t, i) {
         "use strict";
-        var a = i(1242)
-          , n = i(1218)
-          , r = i(1235);
+        var a = i(1246)
+          , n = i(1222)
+          , r = i(1239);
         t.a = a.a.extend({
             initialize: function(e) {
                 this.fillColor = n.a.mapSeriesType(e.primarySeries[0]),
@@ -29605,28 +29566,20 @@
             }
         })
     },
-    1733: function(e, t) {
+    1739: function(e, t) {
         e.exports = '<%  var imageUrl = socialProfile.profileImageUrlSmall || \'//static.garmincdn.com/apps/connect/image/profile-pic-default_60.gif\' %>\n\x3c!--avatar--\x3e\n<div class="object-img pull-left">\n    <a class="profile" href="#">\n        <img \n            class="media-object avatar avatar-tiny" \n            data-src="holder.js/64x64" \n            title="" \n            role="presentation" \n            src="<%- imageUrl %>"\n        >\n    </a>\n</div>\n\n\x3c!--comment content--\x3e\n<div class="media-body">\n\n    <textarea placeholder="<%- Localizer.localize(\'enter_your_comment\') %>" class="add-comment-textarea" maxlength="<%- maxLength %>"></textarea>\n    <div class="add-comment-button-wrapper text-right bottom-xs ">\n        <button class="btn btn-small add-comment-button" type="submit"><%- Localizer.localize(\'save\') %></button>\n    </div>\n\n</div>\n\x3c!--end comment content--\x3e\n\n'
     },
-    1734: function(e, t) {
+    1740: function(e, t) {
         e.exports = '<%\n    var commentPicUrl = comment.authorImageUrl || \'//static.garmincdn.com/apps/connect/image/profile-pic-default_60.gif\';\n    var likeTextKey = comment.likedByUser ? \'unlike\' : \'like\';\n%>\n\n\x3c!--avatar--\x3e\n<div class="object-img pull-left">\n    <a href="<%- url(\'/profile/\' + comment.authorDisplayName) %>">\n        <img class="media-object avatar avatar-tiny" data-src="holder.js/64x64" title="<%- comment.nameDisplayValue %>" alt="<%- comment.authorDisplayName %>" src="<%- commentPicUrl %>">\n    </a>\n</div>\n\n\x3c!--comment content--\x3e\n<div class="media-body">\n\n    <p class="">\n        <% if (comment.authorPro) { %>\n            \x3c!-- per UX, PRO is not translated --\x3e\n            <span class="label-pro"><i class="icon-checkmark"></i>PRO</span>\n        <% } %>\n        <a class="colored" href="<%- url(\'/profile/\' + comment.authorDisplayName) %>"><%- comment.nameDisplayValue %></a>\n    </p>\n    <p class="comment-body-text"><%- comment.body %></p>\n\n    \x3c!-- Delete Comment --\x3e\n    <% if (comment.userProfilePk == viewerProfilePk || conversationOwnerPk == viewerProfilePk) { %>\n    <button class="delete delete-js" title="<%- Localizer.localize(\'button_delete\') %>">\n        <i class="icon-close"></i>\n    </button>\n    <% } %>            \n    \n    <div class="feed-item-footer">\n        \n        \x3c!--date stamp--\x3e\n        <span class="date-stamp pull-left"><%- dayDisplay %></span>\n        \n        \x3c!--Liking--\x3e\n        <span class="entry-like pull-right"></span>\n        \n    </div>\n    \n</div>\n\x3c!--end comment content--\x3e\n'
     },
-    1735: function(e, t) {
+    1741: function(e, t) {
         e.exports = '<div class="border-wrapper">\n\n    <% if (showHeader) { %>\n    <h5 class="bottom-xs"><%- Localizer.localize(\'comments\') %></h5>\n    <% } %>\n\n    <div class="show-previous-comments" style="display:none;">\n        <a href="#"><%- Localizer.localize(\'show_previous_comments\') %><a/>\n    </div>\n\n    \x3c!--comment set--\x3e\n    <div class="comment-item">\n    \n    </div>\n    \n    <div class="comment-fade-out" style="display:none;"></div>\n\n</div>\n\n\x3c!--add comment--\x3e\n<div class="media add comment background-3">\n    <% if (isChallengeCommentDisabled && showLockedText) {%>\n        <%- Localizer.localize(\'lock.comment\') %>\n    <% } %>\n</div>\n\n            \n\n'
     },
-    1736: function(e, t, i) {
+    1751: function(e, t, i) {
         "use strict";
-        var a = i(8)
-          , n = i.n(a);
-        t.a = n.a.Model.extend({
-            url: "/web-data/climb-difficulty/climb-difficulty-master.json"
-        })
-    },
-    1746: function(e, t, i) {
-        "use strict";
-        var a = i(79)
-          , n = i(80)
-          , r = i(139)
+        var a = i(80)
+          , n = i(81)
+          , r = i(142)
           , s = function() {
             function e() {
                 Object(a.a)(this, e)
@@ -29656,29 +29609,25 @@
             e
         }()
           , o = i(13)
-          , l = i(98)
+          , l = i(64)
           , c = i(4)
-          , h = i(1258);
+          , h = i(1254);
         i.d(t, "a", function() {
             return d
         });
         var d = function() {
-            function e(t, i, n, r, s) {
+            function e(t, i) {
                 Object(a.a)(this, e),
-                this.activity = t,
-                this.speedModel = i,
-                this.activityTypeKey = n,
-                this.repCountingActivity = r,
-                this.indoorClimbDifficulty = s,
-                l.a.isIndoorClimbingActivity(n) && (this.indoorClimbActivity = this.activity.splitSummaries ? Object(h.e)(this.activity.splitSummaries) : {})
+                this.speedModel = t,
+                this.topFiveMetrics = i
             }
             return Object(n.a)(e, [{
                 key: "getDistance",
                 value: function() {
-                    var e = this.activityTypeKey;
+                    var e = this.topFiveMetrics.activityTypeKey;
                     return {
-                        value: o.a.personalizeDistance(this.activity.distance, e, this.activity.unitOfPoolLength),
-                        unit: r.a.t("units:".concat(o.a.getDistanceUnitKey(e, this.activity.distance, this.activity.unitOfPoolLength))),
+                        value: o.a.personalizeDistance(this.topFiveMetrics.activity.distance, e, this.topFiveMetrics.activity.unitOfPoolLength),
+                        unit: r.a.t("units:".concat(o.a.getDistanceUnitKey(e, this.topFiveMetrics.activity.distance, this.topFiveMetrics.activity.unitOfPoolLength))),
                         label: r.a.t("units:label_distance"),
                         metricName: "distance"
                     }
@@ -29686,17 +29635,18 @@
             }, {
                 key: "getDuration",
                 value: function() {
+                    var e = this.topFiveMetrics.activityTypeKey;
                     return {
-                        value: o.a.personalizeDuration(this.activity.duration),
+                        value: o.a.personalizeDuration(this.topFiveMetrics.activity.duration),
                         unit: "",
-                        label: r.a.t("units:label_time"),
+                        label: r.a.t("units:".concat(o.a.getDurationLabelKey(e))),
                         metricName: "duration"
                     }
                 }
             }, {
                 key: "getAverageSpeedOrPace",
                 value: function() {
-                    this.activityTypeKey;
+                    this.topFiveMetrics.activityTypeKey;
                     return {
                         value: this.speedModel.avgSpeedOrPace,
                         unit: this.speedModel.avgSpeedOrPaceUnit,
@@ -29708,7 +29658,7 @@
                 key: "getAverageHR",
                 value: function() {
                     return {
-                        value: this.activity.averageHR ? o.a.personalizeHeartRate(this.activity.averageHR) : "--",
+                        value: this.topFiveMetrics.activity.averageHR ? o.a.personalizeHeartRate(this.topFiveMetrics.activity.averageHR) : "--",
                         unit: r.a.t("units:heart_rate_unit"),
                         label: r.a.t("units:label_avg_heart_rate"),
                         metricName: "averageHR"
@@ -29718,7 +29668,7 @@
                 key: "getMaxHR",
                 value: function() {
                     return {
-                        value: this.activity.maxHR ? o.a.personalizeHeartRate(this.activity.maxHR) : "--",
+                        value: this.topFiveMetrics.activity.maxHR ? o.a.personalizeHeartRate(this.topFiveMetrics.activity.maxHR) : "--",
                         unit: r.a.t("units:heart_rate_unit"),
                         label: r.a.t("units:label_max_heart_rate"),
                         metricName: "maxHR"
@@ -29728,7 +29678,7 @@
                 key: "getCalories",
                 value: function() {
                     return {
-                        value: o.a.formatWholeNumber(this.activity.calories),
+                        value: o.a.formatWholeNumber(this.topFiveMetrics.activity.calories),
                         unit: r.a.t("units:".concat(o.a.getCalorieUnitKey())),
                         label: r.a.t("units:label_calories"),
                         metricName: "calories"
@@ -29737,8 +29687,8 @@
             }, {
                 key: "getElevationGain",
                 value: function() {
-                    var e = this.activity.elevationGain
-                      , t = this.activityTypeKey;
+                    var e = this.topFiveMetrics.activity.elevationGain
+                      , t = this.topFiveMetrics.activityTypeKey;
                     return {
                         value: o.a.personalizeElevation(e),
                         unit: e ? r.a.t("units:".concat(o.a.getElevationUnitKey())) : "",
@@ -29749,8 +29699,8 @@
             }, {
                 key: "getElevationLoss",
                 value: function() {
-                    var e = this.activity.elevationLoss
-                      , t = this.activityTypeKey;
+                    var e = this.topFiveMetrics.activity.elevationLoss
+                      , t = this.topFiveMetrics.activityTypeKey;
                     return {
                         value: o.a.personalizeElevation(e),
                         unit: e ? r.a.t("units:".concat(o.a.getElevationUnitKey())) : "",
@@ -29762,7 +29712,7 @@
                 key: "getNumberOfRuns",
                 value: function() {
                     return {
-                        value: this.activity.lapCount,
+                        value: this.topFiveMetrics.activity.lapCount,
                         unit: "",
                         label: r.a.t("activity:number_of_runs"),
                         metricName: "runsLapCnt"
@@ -29771,17 +29721,18 @@
             }, {
                 key: "getMaxSpeed",
                 value: function() {
+                    var e = this.topFiveMetrics.activityTypeKey;
                     return {
                         value: this.speedModel.maxSpeedOrPace,
                         unit: this.speedModel.maxSpeedOrPaceUnit,
-                        label: r.a.t("units:label_max_speed"),
+                        label: r.a.t("units:".concat(o.a.getMaxSpeedLabelKey(e))),
                         metricName: "maxSpeed"
                     }
                 }
             }, {
                 key: "getStrokes",
                 value: function() {
-                    var e = this.activity.strokes;
+                    var e = this.topFiveMetrics.activity.strokes;
                     return {
                         value: e ? o.a.personalizeStrokes(e) : "--",
                         unit: "",
@@ -29792,7 +29743,7 @@
             }, {
                 key: "getGasType",
                 value: function() {
-                    var e = this.activity.summarizedDiveInfo
+                    var e = this.topFiveMetrics.activity.summarizedDiveInfo
                       , t = e && e.summarizedDiveGases && e.summarizedDiveGases.length > 0 ? e.summarizedDiveGases : null
                       , i = t ? t[0] : null
                       , a = i ? i.heliumContent : null
@@ -29809,8 +29760,8 @@
             }, {
                 key: "getWaterType",
                 value: function() {
-                    var e = this.activity.summarizedDiveInfo ? this.activity.summarizedDiveInfo.waterType : null
-                      , t = this.activity.summarizedDiveInfo ? this.activity.summarizedDiveInfo.waterDensity : null;
+                    var e = this.topFiveMetrics.activity.summarizedDiveInfo ? this.topFiveMetrics.activity.summarizedDiveInfo.waterType : null
+                      , t = this.topFiveMetrics.activity.summarizedDiveInfo ? this.topFiveMetrics.activity.summarizedDiveInfo.waterDensity : null;
                     return {
                         value: s.diveWaterType(e, t, o.a),
                         unit: "",
@@ -29821,11 +29772,11 @@
             }, {
                 key: "getMaxDepth",
                 value: function() {
-                    var e = this.activity.maxDepth / 100;
+                    var e = this.topFiveMetrics.activity.maxDepth / 100;
                     return {
                         value: o.a.personalizeDepth(e),
                         unit: r.a.t("units:".concat(o.a.getDepthUnitKey())),
-                        label: l.a.isApneaDiving(this.activityTypeKey) ? r.a.t("diving:deepest_dive") : r.a.t("diving:max_depth"),
+                        label: l.a.isApneaDiving(this.topFiveMetrics.activityTypeKey) ? r.a.t("diving:deepest_dive") : r.a.t("diving:max_depth"),
                         metricName: "maxDepth"
                     }
                 }
@@ -29833,7 +29784,7 @@
                 key: "getSessionBottomTime",
                 value: function() {
                     return {
-                        value: o.a.personalizeDuration(this.activity.bottomTime, !1),
+                        value: o.a.personalizeDuration(this.topFiveMetrics.activity.bottomTime, !1),
                         unit: "",
                         label: r.a.t("diving:session_bottom_time"),
                         metricName: "sessionBottomTime"
@@ -29842,7 +29793,7 @@
             }, {
                 key: "getTotalSurfaceTime",
                 value: function() {
-                    var e = this.activity.summarizedDiveInfo ? this.activity.summarizedDiveInfo.totalSurfaceTime : null;
+                    var e = this.topFiveMetrics.activity.summarizedDiveInfo ? this.topFiveMetrics.activity.summarizedDiveInfo.totalSurfaceTime : null;
                     return {
                         value: o.a.personalizeDuration(e, !1),
                         unit: "",
@@ -29854,7 +29805,7 @@
                 key: "getDiveSurfaceTime",
                 value: function() {
                     return {
-                        value: o.a.personalizeDuration(this.activity.totalSurfaceTime, !1),
+                        value: o.a.personalizeDuration(this.topFiveMetrics.activity.totalSurfaceTime, !1),
                         unit: "",
                         label: r.a.t("diving:total_surface_interval"),
                         metricName: "totalSurfaceTime"
@@ -29864,7 +29815,7 @@
                 key: "getNumberOfApneaDives",
                 value: function() {
                     return {
-                        value: o.a.personalizerNumberOfDives(this.activity.lapCount),
+                        value: o.a.personalizerNumberOfDives(this.topFiveMetrics.activity.lapCount),
                         unit: "",
                         label: r.a.t("units:label_num_dives"),
                         metricName: "lapCount"
@@ -29874,7 +29825,7 @@
                 key: "getDiveWaterType",
                 value: function() {
                     return {
-                        value: o.a.personalizeDiveWaterType(this.activity.diveSettings.waterType, this.activity.diveSettings.waterDensity, c.a),
+                        value: o.a.personalizeDiveWaterType(this.topFiveMetrics.activity.diveSettings.waterType, this.topFiveMetrics.activity.diveSettings.waterDensity, c.a),
                         unit: "",
                         label: r.a.t("diving:water_type"),
                         metricName: "waterDiveType"
@@ -29884,7 +29835,7 @@
                 key: "getDeepestDive",
                 value: function() {
                     return {
-                        value: o.a.personalizeDepth(this.activity.maxDepth),
+                        value: o.a.personalizeDepth(this.topFiveMetrics.activity.maxDepth),
                         unit: r.a.t("units:".concat(o.a.getDepthUnitKey())),
                         label: r.a.t("diving:deepest_dive"),
                         metricName: "maxDepthDive"
@@ -29894,7 +29845,7 @@
                 key: "getActiveSets",
                 value: function() {
                     return {
-                        value: this.activity.activeSets ? o.a.personalizeActiveSets(this.activity.activeSets) : 1,
+                        value: this.topFiveMetrics.activity.activeSets ? o.a.personalizeActiveSets(this.topFiveMetrics.activity.activeSets) : 1,
                         unit: "",
                         label: r.a.t("units:label_sets"),
                         metricName: "activeSets"
@@ -29904,7 +29855,7 @@
                 key: "getTotalStrengthTrainingTime",
                 value: function() {
                     return {
-                        value: o.a.personalizeDuration(this.activity.duration),
+                        value: o.a.personalizeDuration(this.topFiveMetrics.activity.duration),
                         unit: "",
                         label: r.a.t("units:label_time_total")
                     }
@@ -29913,9 +29864,9 @@
                 key: "getTotalWorkTime",
                 value: function() {
                     var e = 0;
-                    if (this.activity.summarizedExerciseSets && this.activity.summarizedExerciseSets.length > 0)
-                        for (var t = 0, i = this.activity.summarizedExerciseSets.length; t < i; t++)
-                            "REST" !== this.activity.summarizedExerciseSets[t].setType && (e += this.activity.summarizedExerciseSets[t].duration / 1e3);
+                    if (this.topFiveMetrics.activity.summarizedExerciseSets && this.topFiveMetrics.activity.summarizedExerciseSets.length > 0)
+                        for (var t = 0, i = this.topFiveMetrics.activity.summarizedExerciseSets.length; t < i; t++)
+                            "REST" !== this.topFiveMetrics.activity.summarizedExerciseSets[t].setType && (e += this.topFiveMetrics.activity.summarizedExerciseSets[t].duration / 1e3);
                     return {
                         value: o.a.personalizeDuration(e),
                         unit: "",
@@ -29927,7 +29878,7 @@
                 key: "getStrengthTotalTime",
                 value: function() {
                     return {
-                        value: this.activity.summarizedExerciseSets && this.activity.summarizedExerciseSets.length > 0 ? o.a.personalizeDuration(this.repCountingActivity.getTotalTime()) : o.a.personalizeDuration(this.activity.duration),
+                        value: this.topFiveMetrics.activity.summarizedExerciseSets && this.topFiveMetrics.activity.summarizedExerciseSets.length > 0 ? o.a.personalizeDuration(this.topFiveMetrics.repCountingActivity.getTotalTime()) : o.a.personalizeDuration(this.topFiveMetrics.activity.duration),
                         unit: "",
                         label: r.a.t("units:label_time_total"),
                         metricName: "strengthTotalTime"
@@ -29937,7 +29888,7 @@
                 key: "getWorkoutTime",
                 value: function() {
                     return {
-                        value: o.a.personalizeDuration(this.repCountingActivity.getWorkTime()),
+                        value: o.a.personalizeDuration(this.topFiveMetrics.repCountingActivity.getWorkTime()),
                         unit: "",
                         label: r.a.t("units:label_work_time"),
                         metricName: "workOutTime"
@@ -29956,7 +29907,7 @@
                 key: "getBestLapTime",
                 value: function() {
                     return {
-                        value: o.a.fromSecondsToDuration(this.activity.minActivityLapDuration),
+                        value: o.a.fromSecondsToDuration(this.topFiveMetrics.activity.minActivityLapDuration),
                         unit: "",
                         label: r.a.t("activity:marq_best_laptime"),
                         metricName: "bestLapTime"
@@ -29965,9 +29916,9 @@
             }, {
                 key: "getTotalTime",
                 value: function() {
-                    this.activityTypeKey;
+                    this.topFiveMetrics.activityTypeKey;
                     return {
-                        value: o.a.fromSecondsToDuration(this.activity.duration),
+                        value: o.a.fromSecondsToDuration(this.topFiveMetrics.activity.duration),
                         unit: "",
                         label: r.a.t("units:label_time_total"),
                         metricName: "totalTime"
@@ -29987,7 +29938,7 @@
                 key: "getNumberOfRaceLap",
                 value: function() {
                     return {
-                        value: this.activity.lapCount,
+                        value: this.topFiveMetrics.activity.lapCount,
                         unit: "",
                         label: r.a.t("activity:activity_map_laps"),
                         metricName: "raceLapCnt"
@@ -29997,7 +29948,7 @@
                 key: "getTotalDuration",
                 value: function() {
                     return {
-                        value: o.a.fromSecondsToDuration(this.activity.duration),
+                        value: o.a.fromSecondsToDuration(this.topFiveMetrics.activity.duration),
                         unit: "",
                         label: r.a.t("units:label_time_total"),
                         metricName: "raceTotalTime"
@@ -30007,7 +29958,7 @@
                 key: "getTime",
                 value: function() {
                     return {
-                        value: o.a.personalizeDuration(this.activity.duration),
+                        value: o.a.personalizeDuration(this.topFiveMetrics.activity.duration),
                         unit: "",
                         label: r.a.t("units:label_time"),
                         metricName: "time"
@@ -30017,7 +29968,7 @@
                 key: "getFloorsClimbed",
                 value: function() {
                     return {
-                        value: this.activity.floorsClimbed,
+                        value: this.topFiveMetrics.activity.floorsClimbed,
                         unit: "",
                         label: r.a.t("units:label_floors_climbed_unit"),
                         metricName: "floorsClimbed"
@@ -30027,7 +29978,7 @@
                 key: "getFloorsPerMin",
                 value: function() {
                     return {
-                        value: o.a.personalizeFloorClimbingPace(this.activity.avgVerticalSpeed),
+                        value: o.a.personalizeFloorClimbingPace(this.topFiveMetrics.activity.avgVerticalSpeed),
                         unit: "",
                         label: r.a.t("units:label_floors_per_minute"),
                         metricName: "floorsPerMin"
@@ -30036,18 +29987,18 @@
             }, {
                 key: "getAveragePower",
                 value: function() {
-                    return this.activity.averagePower ? {
-                        value: o.a.personalizePower(this.activity.averagePower),
+                    return {
+                        value: o.a.personalizePower(this.topFiveMetrics.activity.averagePower),
                         unit: r.a.t("units:".concat(o.a.getPowerUnitKey())),
                         label: r.a.t("units:label_avg_power"),
                         metricName: "averagePower"
-                    } : "--"
+                    }
                 }
             }, {
                 key: "getAvgPower",
                 value: function() {
                     return {
-                        value: this.activity.avgPower ? o.a.personalizePower(this.activity.avgPower) : "--",
+                        value: this.topFiveMetrics.activity.avgPower ? o.a.personalizePower(this.topFiveMetrics.activity.avgPower) : "--",
                         unit: r.a.t("units:".concat(o.a.getPowerUnitKey())),
                         label: r.a.t("units:label_avg_power"),
                         metricName: "avgPower"
@@ -30057,7 +30008,7 @@
                 key: "getTotalReps",
                 value: function() {
                     return {
-                        value: o.a.zeroDash(this.repCountingActivity.getTotalRepCount()),
+                        value: o.a.zeroDash(this.topFiveMetrics.repCountingActivity.getTotalRepCount()),
                         unit: "",
                         label: r.a.t("units:label_total_reps"),
                         metricName: "totalReps"
@@ -30067,7 +30018,7 @@
                 key: "getAvgRespirationRate",
                 value: function() {
                     return {
-                        value: o.a.personalizeRespiration(this.activity.avgRespirationRate),
+                        value: o.a.personalizeRespiration(this.topFiveMetrics.activity.avgRespirationRate),
                         unit: r.a.t("units:".concat(o.a.getRespirationUnitKey())),
                         label: r.a.t("units:label_avg_resp_abbr"),
                         metricName: "avgRespirationRate"
@@ -30077,7 +30028,7 @@
                 key: "getStressChange",
                 value: function() {
                     return {
-                        value: o.a.personalizeStress(this.activity.differenceStress),
+                        value: o.a.personalizeStress(this.topFiveMetrics.activity.differenceStress),
                         label: r.a.t("units:label_stress_change"),
                         metricName: "differenceStress"
                     }
@@ -30085,19 +30036,19 @@
             }, {
                 key: "getAverageSpeedPaceWidget",
                 value: function() {
-                    var e = this.activityTypeKey;
+                    var e = this.topFiveMetrics.activityTypeKey;
                     return {
                         value: this.speedModel.avgSpeedOrPace,
                         unit: "",
-                        label: r.a.t("units:".concat(o.a.getSpeedTypeLabelKey(e, null, !0))) + " (" + r.a.t("units:".concat(o.a.getSpeedTypeKey(e, this.activity.distance, this.activity.unitOfPoolLength))) + ")",
+                        label: r.a.t("units:".concat(o.a.getSpeedTypeLabelKey(e, null, !0))) + " (" + r.a.t("units:".concat(o.a.getSpeedTypeKey(e, this.topFiveMetrics.activity.distance, this.topFiveMetrics.activity.unitOfPoolLength))) + ")",
                         metricName: "averageSpeedWidget"
                     }
                 }
             }, {
                 key: "getElevationLossWidget",
                 value: function() {
-                    var e = this.activity.elevationLoss
-                      , t = this.activityTypeKey;
+                    var e = this.topFiveMetrics.activity.elevationLoss
+                      , t = this.topFiveMetrics.activityTypeKey;
                     return {
                         value: o.a.personalizeElevation(e),
                         unit: r.a.t("units:".concat(o.a.getElevationUnitKey())),
@@ -30108,8 +30059,8 @@
             }, {
                 key: "getElevationGainWidget",
                 value: function() {
-                    var e = this.activity.elevationGain
-                      , t = this.activityTypeKey;
+                    var e = this.topFiveMetrics.activity.elevationGain
+                      , t = this.topFiveMetrics.activityTypeKey;
                     return {
                         value: o.a.personalizeElevation(e),
                         unit: r.a.t("units:".concat(o.a.getElevationUnitKey())),
@@ -30121,7 +30072,7 @@
                 key: "getCaloriesWidget",
                 value: function() {
                     return {
-                        value: o.a.formatWholeNumber(this.activity.calories),
+                        value: o.a.formatWholeNumber(this.topFiveMetrics.activity.calories),
                         unit: "",
                         label: r.a.t("units:label_calories"),
                         metricName: "caloriesWidget"
@@ -30131,7 +30082,7 @@
                 key: "getActiveSetsWidget",
                 value: function() {
                     return {
-                        value: this.activity.activeSets ? o.a.personalizeActiveSets(this.activity.activeSets) : 1,
+                        value: this.topFiveMetrics.activity.activeSets ? o.a.personalizeActiveSets(this.topFiveMetrics.activity.activeSets) : 1,
                         unit: "",
                         label: r.a.t("units:label_total_sets"),
                         metricName: "activeSetsWidget"
@@ -30140,9 +30091,9 @@
             }, {
                 key: "getTotalTimeWidget",
                 value: function() {
-                    this.activityTypeKey;
+                    this.topFiveMetrics.activityTypeKey;
                     return {
-                        value: o.a.personalizeDuration(this.activity.duration) ? o.a.personalizeDuration(this.activity.duration) : "--",
+                        value: o.a.personalizeDuration(this.topFiveMetrics.activity.duration) ? o.a.personalizeDuration(this.topFiveMetrics.activity.duration) : "--",
                         unit: "",
                         label: r.a.t("units:label_time_total"),
                         metricName: "totalTime"
@@ -30152,7 +30103,7 @@
                 key: "getPilatesSets",
                 value: function() {
                     return {
-                        value: o.a.zeroDash(this.repCountingActivity.getActiveSetCount()),
+                        value: o.a.zeroDash(this.topFiveMetrics.repCountingActivity.getActiveSetCount()),
                         unit: "",
                         label: r.a.t("units:label_total_sets"),
                         metricName: "pilateSets"
@@ -30162,7 +30113,7 @@
                 key: "getYogaPoses",
                 value: function() {
                     return {
-                        value: o.a.personalizeActiveSets(this.activity.activeSets),
+                        value: o.a.personalizeActiveSets(this.topFiveMetrics.activity.activeSets),
                         unit: "",
                         label: r.a.t("units:label_total_poses"),
                         metricName: "yogaPoses"
@@ -30172,7 +30123,7 @@
                 key: "getDeepestDiveWidget",
                 value: function() {
                     return {
-                        value: o.a.personalizeDepth(this.activity.maxDepth / 100),
+                        value: o.a.personalizeDepth(this.topFiveMetrics.activity.maxDepth / 100),
                         unit: r.a.t("units:".concat(o.a.getDepthUnitKey())),
                         label: r.a.t("diving:deepest_dive"),
                         metricName: "maxDepthDive"
@@ -30181,10 +30132,10 @@
             }, {
                 key: "getTotalDistanceWidget",
                 value: function() {
-                    var e = this.activityTypeKey;
+                    var e = this.topFiveMetrics.activityTypeKey;
                     return {
-                        value: o.a.personalizeDistance(this.activity.distance, e),
-                        unit: r.a.t("units:".concat(o.a.getDistanceUnitKey(e, this.activity.distance))),
+                        value: o.a.personalizeDistance(this.topFiveMetrics.activity.distance, e),
+                        unit: r.a.t("units:".concat(o.a.getDistanceUnitKey(e, this.topFiveMetrics.activity.distance))),
                         label: r.a.t("units:label_distance_total"),
                         metricName: "TotalDistance"
                     }
@@ -30192,8 +30143,8 @@
             }, {
                 key: "getClimbTotalAscent",
                 value: function() {
-                    var e = Object.keys(this.indoorClimbActivity).length > 0 && this.indoorClimbActivity[h.b.CLIMB_ACTIVE_TYPE].totalAscent
-                      , t = this.activityTypeKey;
+                    var e = this.topFiveMetrics.splitSummaries && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE] && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE].totalAscent
+                      , t = this.topFiveMetrics.activityTypeKey;
                     return {
                         value: o.a.personalizeElevation(e),
                         unit: e ? r.a.t("units:".concat(o.a.getElevationUnitKey())) : "",
@@ -30204,8 +30155,8 @@
             }, {
                 key: "getClimbAscent",
                 value: function() {
-                    var e = Object.keys(this.indoorClimbActivity).length > 0 && this.indoorClimbActivity[h.b.CLIMB_ACTIVE].elevationGain
-                      , t = this.activityTypeKey;
+                    var e = this.topFiveMetrics.splitSummaries && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE] && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE].elevationGain
+                      , t = this.topFiveMetrics.activityTypeKey;
                     return {
                         value: o.a.personalizeElevation(e),
                         unit: e ? r.a.t("units:".concat(o.a.getElevationUnitKey())) : "",
@@ -30216,9 +30167,8 @@
             }, {
                 key: "getTotalClimbRoutes",
                 value: function() {
-                    var e;
-                    return Object.keys(this.indoorClimbActivity).length > 0 && (e = this.indoorClimbActivity[h.b.CLIMB_ACTIVE] ? this.indoorClimbActivity[h.b.CLIMB_ACTIVE].noOfSplits : this.indoorClimbActivity[h.b.CLIMB_ACTIVE_TYPE].noOfSplits),
-                    {
+                    var e = this.topFiveMetrics.splitSummaries && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE] && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE].noOfSplits;
+                    return {
                         value: e || "--",
                         unit: "",
                         label: r.a.t("activity:total_climb_routes"),
@@ -30228,9 +30178,8 @@
             }, {
                 key: "getNumberOfSends",
                 value: function() {
-                    var e;
-                    return Object.keys(this.indoorClimbActivity).length > 0 && (e = this.indoorClimbActivity[h.b.CLIMB_ACTIVE] ? this.indoorClimbActivity[h.b.CLIMB_ACTIVE].numClimbSends : this.indoorClimbActivity[h.b.CLIMB_ACTIVE_TYPE].numClimbSends),
-                    {
+                    var e = this.topFiveMetrics.splitSummaries && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE] && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE].numClimbSends;
+                    return {
                         value: e || "--",
                         unit: "",
                         label: r.a.t("activity:climb_sends"),
@@ -30240,23 +30189,33 @@
             }, {
                 key: "getMaxDifficulity",
                 value: function() {
-                    var e, t;
-                    Object.keys(this.indoorClimbActivity).length > 0 && (this.indoorClimbActivity[h.b.CLIMB_ACTIVE] ? (e = this.indoorClimbActivity[h.b.CLIMB_ACTIVE].maxGradeValue.valueKey,
-                    t = this.indoorClimbActivity[h.b.CLIMB_ACTIVE].maxGradeValue.scale) : (e = this.indoorClimbActivity[h.b.CLIMB_ACTIVE_TYPE].maxGradeValue.valueKey,
-                    t = this.indoorClimbActivity[h.b.CLIMB_ACTIVE_TYPE].maxGradeValue.scale));
-                    var i = Object(h.c)(t, e, this.indoorClimbDifficulty);
+                    var e = this.topFiveMetrics.splitSummaries && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE] && this.topFiveMetrics.splitSummaries[h.b.CLIMB_ACTIVE].maxGradeValue
+                      , t = e && e.valueKey
+                      , i = e && e.scale
+                      , a = Object(h.c)(i, t, this.topFiveMetrics.indoorClimbDifficulty);
                     return {
-                        value: i || "--",
+                        value: a || "--",
                         unit: "",
                         label: r.a.t("activity:label_max_difficulty"),
                         metricName: "difficulty"
+                    }
+                }
+            }, {
+                key: "getAverageCadence",
+                value: function() {
+                    var e = this.topFiveMetrics.activityTypeKey;
+                    return {
+                        value: o.a.personalizeCadence(this.topFiveMetrics.activity.averageBikeCadence, e),
+                        unit: r.a.t("units:".concat(o.a.getCadenceUnitKey(e))),
+                        label: r.a.t("units:".concat(o.a.getAvgCadenceTypeLabelKey(e))),
+                        metricName: "avgCadence"
                     }
                 }
             }]),
             e
         }()
     },
-    1788: function(e, t, i) {
+    1791: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -30265,14 +30224,14 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(34)
-              , h = i(1571)
-              , d = i(1216)
-              , p = i(38)
-              , u = i(210)
-              , m = i(278)
-              , g = i(213)
-              , f = i(1992)
+              , c = i(36)
+              , h = i(1575)
+              , d = i(1220)
+              , p = i(40)
+              , u = i(214)
+              , m = i(129)
+              , g = i(216)
+              , f = i(1997)
               , v = i.n(f)
               , y = {
                 WEIGHT_SUCCESS: "WEIGHT_SUCCESS",
@@ -30380,18 +30339,18 @@
         }
         ).call(this, i(10))
     },
-    1821: function(e, t, i) {
+    1825: function(e, t, i) {
         "use strict";
-        var a = i(79)
-          , n = i(80)
-          , r = i(97)
-          , s = i(95)
-          , o = i(96)
+        var a = i(80)
+          , n = i(81)
+          , r = i(99)
+          , s = i(97)
+          , o = i(98)
           , l = i(11)
           , c = i.n(l)
-          , h = i(161)
-          , d = i(275)
-          , p = i(1538)
+          , h = i(164)
+          , d = i(277)
+          , p = i(1540)
           , u = i.n(p)
           , m = function(e) {
             function t() {
@@ -30635,15 +30594,15 @@
         }(c.a.PureComponent);
         t.a = m
     },
-    1822: function(e, t, i) {
+    1826: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(13)
-          , o = i(1242)
-          , l = i(1218)
-          , c = i(1235)
+          , o = i(1246)
+          , l = i(1222)
+          , c = i(1239)
           , h = o.a.extend({
             fillColor: l.a.mapSeriesType(c.a.Elevation),
             primarySeriesType: c.a.Elevation,
@@ -30656,10 +30615,10 @@
         });
         t.a = h
     },
-    1823: function(e, t, i) {
+    1827: function(e, t, i) {
         "use strict";
         var a = i(13)
-          , n = i(1242);
+          , n = i(1246);
         t.a = n.a.extend({
             measurementSystem: function() {
                 var e = this.activitySummary.get("unitOfPoolLength").unitKey;
@@ -30689,7 +30648,7 @@
             }
         })
     },
-    1824: function(e, t, i) {
+    1828: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -30698,15 +30657,15 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(1395)
-              , h = i(1304)
-              , d = i(81)
-              , p = i(29)
-              , u = i(38)
+              , c = i(1398)
+              , h = i(1309)
+              , d = i(82)
+              , p = i(28)
+              , u = i(40)
               , m = i(17)
-              , g = i(2194)
+              , g = i(2212)
               , f = i.n(g);
-            i(1459);
+            i(1463);
             t.a = s.a.View.extend(u.a).extend({
                 template: n.a.template(f.a),
                 events: {
@@ -30821,7 +30780,7 @@
         }
         ).call(this, i(10))
     },
-    1874: function(e, t, i) {
+    1878: function(e, t, i) {
         "use strict";
         var a = i(285)
           , n = i(11);
@@ -30902,10 +30861,10 @@
         S[15] = 0;
         var E = /^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/
           , L = Object.prototype.hasOwnProperty
-          , P = {}
-          , k = {};
+          , k = {}
+          , P = {};
         function z(e) {
-            return !!L.call(k, e) || !L.call(P, e) && (E.test(e) ? k[e] = !0 : (P[e] = !0,
+            return !!L.call(P, e) || !L.call(k, e) && (E.test(e) ? P[e] = !0 : (k[e] = !0,
             !1))
         }
         function I(e, t, i, a, n, r) {
@@ -30946,20 +30905,20 @@
         ["rowSpan", "start"].forEach(function(e) {
             D[e] = new I(e,5,!1,e.toLowerCase(),null,!1)
         });
-        var B = /[\-:]([a-z])/g;
-        function M(e) {
+        var M = /[\-:]([a-z])/g;
+        function B(e) {
             return e[1].toUpperCase()
         }
         "accent-height alignment-baseline arabic-form baseline-shift cap-height clip-path clip-rule color-interpolation color-interpolation-filters color-profile color-rendering dominant-baseline enable-background fill-opacity fill-rule flood-color flood-opacity font-family font-size font-size-adjust font-stretch font-style font-variant font-weight glyph-name glyph-orientation-horizontal glyph-orientation-vertical horiz-adv-x horiz-origin-x image-rendering letter-spacing lighting-color marker-end marker-mid marker-start overline-position overline-thickness paint-order panose-1 pointer-events rendering-intent shape-rendering stop-color stop-opacity strikethrough-position strikethrough-thickness stroke-dasharray stroke-dashoffset stroke-linecap stroke-linejoin stroke-miterlimit stroke-opacity stroke-width text-anchor text-decoration text-rendering underline-position underline-thickness unicode-bidi unicode-range units-per-em v-alphabetic v-hanging v-ideographic v-mathematical vector-effect vert-adv-y vert-origin-x vert-origin-y word-spacing writing-mode xmlns:xlink x-height".split(" ").forEach(function(e) {
-            var t = e.replace(B, M);
+            var t = e.replace(M, B);
             D[t] = new I(t,1,!1,e,null,!1)
         }),
         "xlink:actuate xlink:arcrole xlink:role xlink:show xlink:title xlink:type".split(" ").forEach(function(e) {
-            var t = e.replace(B, M);
+            var t = e.replace(M, B);
             D[t] = new I(t,1,!1,e,"http://www.w3.org/1999/xlink",!1)
         }),
         ["xml:base", "xml:lang", "xml:space"].forEach(function(e) {
-            var t = e.replace(B, M);
+            var t = e.replace(M, B);
             D[t] = new I(t,1,!1,e,"http://www.w3.org/XML/1998/namespace",!1)
         }),
         ["tabIndex", "crossOrigin"].forEach(function(e) {
@@ -31904,19 +31863,19 @@
           , we = Ce && be || Ce;
         e.exports = we.default || we
     },
-    1892: function(e, t) {
+    1896: function(e, t) {
         e.exports = '    <div class="loading-mask" style="display: none;">\n        <div class="open-express">\n            <h3 class="bottom-m"><%- Localizer.localize(\'agent.connecting\') %></h3>\n            <p><%- Localizer.localize(\'agent.wait\') %></p>\n        </div>\n        <div class="still-waiting text-left alert alert-info bottom-none" style="display: none;">\n            <p><%- Localizer.localize(\'send.to.device.message\') %></p>\n            <p><%= Localizer.localize(\'send.to.device.message2\') %></p>\n        </div>\n    </div>\n\n    <div class="message message-error margin-small-all queue-error" style="display: none">\n        <p><%- Localizer.localize(\'queue.error\') %></p>\n    </div>\n\n    <% if (hasDevices) { %>\n        <div id="send-body">\n            <span class="header-content-placeholder"></span>\n            <span class="additional-content-placeholder"></span>\n\n            <% if (devices && devices.length > 0) { %>\n            <select class="bottom-l select selected-device" aria-label="<%- Localizer.localize(\'select.one\') %>">\n                <% for (var i = 0; i < devices.length; i++) { %>\n                <option value="<%- devices[i].get(\'deviceId\') %>"><%- devices[i].get(\'displayName\') %></option>\n                <% }; %>\n            </select>\n            <p><a href="#" class="btn btn-large device-selected"><%- Localizer.localize(\'queue.send.now\') %></a></p>\n            <% } else { %>\n            <div><%- Localizer.localize(\'no.devices.found\') %></div>\n            <% } %>\n\n\n            <div class="need-help">\n                <a href="#" class="colored need-help-link open-help"><%- Localizer.localize(\'agent.need.help\') %></a>\n                <a href="#" class="colored close-help" style="display: none;"><%- Localizer.localize(\'agent.close.help\') %></a>\n            </div>\n            <div class="send-help text-left" style="display: none;">\n                <h4><%- Localizer.localize(\'agent.help.title\') %></h4>\n                <p><%- Localizer.localize(\'agent.help.reason\') %></p>\n                <ul>\n                    <li><%- Localizer.localize(\'device.not.supported\') %></li>\n                    <li><%- Localizer.localize(\'device.not.setup\') %></li>\n                </ul>\n                <p><%= Localizer.localize(\'agent.download.info\') %></p>\n                <hr>\n                <h4><%- Localizer.localize(\'agent.help.title2\') %></h4>\n                <p><%- Localizer.localize(\'device.send.course.title\') %></p>\n                <ul>\n                    <li><%- Localizer.localize(\'device.send.course.info\') %></li>\n                    <li><%- Localizer.localize(\'device.send.course.info2\') %></li>\n                    <li><%- Localizer.localize(\'device.send.course.info3\') %></li>\n                </ul>\n\n            </div>\n        </div>\n\n    <% } else { %>\n\n    <div id="download-body">\n        <p><%- Localizer.localize(\'agent.additional.info\') %></p>\n        <div class="text-center">\n            <p><a href="/modern/activity-sync" class="btn btn-large"><%- Localizer.localize(\'agent.download\') %></a></p>\n        </div>\n        <div class="text-center get-started-overview top-m">\n            <div class="get-started-item">\n                <div class="get-started-img download"></div>\n                <span><%- Localizer.localize(\'agent.download.install\') %></span>\n            </div>\n            <div class="get-started-item">\n                <div class="get-started-img plug-in"></div>\n                <span><%- Localizer.localize(\'agent.plugin\') %></span>\n            </div>\n            <div class="get-started-item">\n                <div class="get-started-img link-device"></div>\n                <span><%- Localizer.localize(\'agent.link.device\') %></span>\n            </div>\n            <div class="get-started-item">\n                <div class="get-started-img connect"></div>\n                <span><%- Localizer.localize(\'gc\') %></span>\n            </div>\n        </div>\n    </div>\n    <% }  %>\n\n'
     },
-    1893: function(e, t) {
+    1897: function(e, t) {
         e.exports = "<div class=\"send-help text-left\">\n    <h4><%-Localizer.localize('agent.help.title')%></h4>\n    <p><%-Localizer.localize('agent.help.reason')%></p>\n    <ul>\n        <li><%-Localizer.localize('device.not.supported')%></li>\n        <li><%-Localizer.localize('device.not.setup')%></li>\n    </ul>\n    <p><%=Localizer.localize('agent.download.info')%></p>\n    <h4><%-Localizer.localize('agent.help.title2')%></h4>\n    <p><%-Localizer.localize('segment_send_to_device_what_does')%></p>\n</div>"
     },
-    1903: function(e, t, i) {
+    1908: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
-          , o = i(1904)
+          , o = i(1909)
           , l = i.n(o)
           , c = s.a.View.extend({
             template: n.a.template(l.a),
@@ -31943,15 +31902,15 @@
         c.Events = {},
         t.a = c
     },
-    1904: function(e, t) {
+    1909: function(e, t) {
         e.exports = '<video id="video" width="<%- width %>" crossorigin="anonymous"  controls controlslist="nodownload" preload="metadata" poster="<%- poster %>" >\n    <% sources.forEach(function(source) { %>\n        <source src="<%- source.src %>" type="<%- source.type %>">\n    <% }); %>\n    <% subtitles.forEach(function(track) { %>\n        <track label="<%- track.language %>" kind="subtitles" srclang="<%- track.srcLang %>" src="<%-track.src %>" <% if (track.default) { print(\'default\');} %>>\n    <% }); %>\n</video>'
     },
-    1909: function(e, t, i) {
-        (t = e.exports = i(32)(!0)).i(i(274), void 0),
-        t.i(i(1213), void 0),
-        t.push([e.i, ".page.activity-detail .activity-type-icon {\n        width: 60px;\n        height: 60px;\n        line-height: 60px;\n        margin-top: -4px;\n        margin-right: 11px;\n        font-size: 35px;\n        box-shadow: 0 0 0 2px #ccc;\n        text-align: center;\n        border-radius: 50%;\n        color: #888;\n        background: #fafafa;\n    }\n.page.activity-detail .page-header-content {\n        width: calc(100% - 50px);\n    }\n.page.activity-edit .page-header-content {\n        width: auto;\n    }\n.page.activity-detail .page-feature {\n        position: relative;\n    }\n.page.activity-edit .page-feature {\n        min-height: 22px;\n        height: auto;\n    }\n.page.activity-detail .page-header-content .page-title .data-bit {\n        margin-top: -4px;\n    }\n.page.activity-detail .page-header-content .page-title .inline-edit-editable,\n    .page.activity-detail .page-header-content .page-title .page-title-overflow {\n        max-width: calc(100% - 110px);\n    }\n.page.activity-detail .page-header-content .page-title .page-title-overflow {\n        display: inline-block;\n        overflow: hidden;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n    }\n.page.activity-detail .page-header-content .page-title .inline-edit-editable-text.page-title-overflow {\n        text-overflow: inherit;\n        max-width: 100%;\n    }\n.page.activity-detail .page-header-content .date-block {\n        margin-top: -36px;\n        position: relative;\n        z-index: 1;\n    }\n.page.activity-detail .activity-detail-title input {\n        margin-top: -4px;\n        line-height: 15px;\n        padding: 0 4px;\n        box-shadow: inset 0 2px #eee;\n    }\n.page.activity-detail .activity-title-time {\n        cursor: pointer;\n        border-bottom: 1px dotted #999;\n    }\n.page.activity-detail .icon-personal-records {\n        color: #ff9e0d;\n        vertical-align: middle;\n    }\n.page.activity-detail .page-title .icon-personal-records {\n        font-size: 18px;\n        height: 18px;\n        width: 18px;\n        line-height: 18px;\n        margin-top: -18px;\n        margin-left: 8px;\n    }\n.page.activity-detail .multisport-nav .icon-personal-records {\n        font-size: 16px;\n        height: 16px;\n        width: 16px;\n        line-height: 16px;\n        margin-top: -5px;\n        margin-left: 3px;\n    }\n.page.activity-detail .overflow-nav-container.overflow .multisport-nav {\n        padding-left: 30px;\n    }\n.page.activity-detail .multisport-nav > li:first-child {\n        position: relative;\n        margin-right: 20px;\n        margin-left: 10px;\n    }\n.page.activity-detail .multisport-nav > li:first-child:after {\n        content: '';\n        display: block;\n        border-left: 1px solid #eee;\n        padding: 0;\n        margin: 10px;\n        height: 75px;\n        width: 0;\n        position: absolute;\n        left: 100%;\n        top: 0;\n    }\n.page.activity-detail .multisport-nav > li:first-child a {\n        padding-left: 20px;\n        padding-right: 20px;\n    }\n.page.activity-detail .multisport-nav > li:first-child .time {\n        font-weight: 600;\n    }\n.page.activity-detail .event-type,\n    .page.activity-detail .course-type {\n        margin-right: 10px;\n    }\n.page.activity-detail .event-type .dropdown-menu {\n        z-index: 2;\n    }\n.page.activity-detail .stats .data-block {\n        margin-bottom: 11px;\n    }\n.page.activity-detail .stats h3 {\n        border-bottom: 1px solid #ddd;\n        font-size: 14px;\n        margin-bottom: 11px;\n    }\n.page.activity-detail .stats .stat-block {\n        margin-bottom: 33px;\n    }\n.modal .rd-color {\n        display: inline-block;\n        height: 20px;\n        width: 20px;\n        vertical-align: middle;\n        border-radius: 20px;\n        margin-right: 10px;\n        margin-top: -2px;\n    }\n.page.activity-detail .mtbStat .data-block {\n        display: inline-block;\n        margin-left: 20px;\n        margin-bottom: 20px;\n    }\n.page.activity-detail .mtbStat .trophy-container {\n        width: 20px;\n        height: 20px;\n        position: absolute;\n        margin-left: 30px;\n    }\n.page.activity-detail .has-tooltip.jump-icon {\n        margin-top: 7px;\n    }\n.page.activity-detail .mtbStat .trophy-container > .icon-personal-records {\n        color: black;\n    }\n.page.activity-detail .leaflet-popup.jump-map-tooltip {\n        opacity: 0.9 !important;\n    }\n.jump-tooltip-container {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: column;\n                flex-direction: column;\n        font-size: 12px;\n    }\n.jump-tooltip-container .tooltip-row {\n        text-align: left;\n    }\n.page.activity-detail .leaflet-popup-content-wrapper,\n    .leaflet-popup-content {\n        border-radius: 3px !important;\n    }\n/*  ======================\n        More about Training Effect\n        ====================== */\n.modal-training-effect .te-feedback {\n        float: left;\n        clear: right;\n        width: 330px;\n    }\n.modal-training-effect .te-score {\n        float: right;\n        width: 175px;\n    }\n.modal-training-effect hr {\n        clear: both;\n    }\n/*FIX OVERLAPPING PILLS ON SMALL WINDOWS AND SIDEBAR OPEN*/\n@media (max-width: 1540px) {\n        .page.activity-detail .stats .btn-group .btn-small {\n            padding: 3px 6px;\n            font-size: 10px;\n        }\n    }\n/*  ======================\n        Primary Stats\n        ====================== */\n.page.activity-detail .nav.multisport-nav {\n        margin-bottom: 26px;\n    }\n.page.activity-detail .stats-primary .data-block {\n        display: inline-block;\n        float: left;\n        box-sizing: border-box;\n        width: 50%;\n        padding-right: 20px;\n    }\n.page.activity-detail .stats-primary .data-label {\n        display: block;\n        margin-top: 6px;\n        line-height: 16px;\n    }\n@media (min-width: 992px) {\n         {\n        /* Detect 3 .data-block elements */\n        /* Detect 4 .data-block elements */\n        /* Detect 5 .data-block elements */\n}\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(3),\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(3) ~ .data-block {\n            width: 33%;\n        }\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(4),\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(4) ~ .data-block {\n            width: 25%;\n        }\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(5),\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(5) ~ .data-block {\n            width: 20%;\n        }\n    }\n@media (min-width: 992px) and (max-width: 1199px) {\n         {\n        /* Detect 5 .data-block elements */\n}\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(5) .data-bit,\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(5) ~ .data-block .data-bit {\n            font-size: 22px;\n            line-height: 24px;\n        }\n    }\n/*  ======================\n        Time in Zones\n        ====================== */\n.tab-time-in-zones .table-heart-rate-zones,\n    .tab-time-in-zones .table-power-zones {\n        width: 100%;\n    }\n.tab-time-in-zones * {\n        box-sizing: border-box;\n    }\n.tab-time-in-zones .stat-block > h3 {\n        margin-bottom: 10px;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-1 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-1 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-1 .zone-time {\n        background: #6d8594;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-2 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-2 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-2 .zone-time {\n        background: #39a9ec;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-3 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-3 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-3 .zone-time {\n        background: #50af12;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-4 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-4 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-4 .zone-time {\n        background: #f79d0c;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-5 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-5 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-5 .zone-time {\n        background: #f4253c;\n    }\n.tab-time-in-zones .power-zones .zone-1 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-1 .zone-name,\n    .tab-time-in-zones .power-zones .zone-1 .zone-time {\n        background: #6d8594; /*FAD117; */\n    }\n.tab-time-in-zones .power-zones .zone-2 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-2 .zone-name,\n    .tab-time-in-zones .power-zones .zone-2 .zone-time {\n        background: #39a9ec; /*8264DB; */\n    }\n.tab-time-in-zones .power-zones .zone-3 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-3 .zone-name,\n    .tab-time-in-zones .power-zones .zone-3 .zone-time {\n        background: #50af12; /*6D8594; */\n    }\n.tab-time-in-zones .power-zones .zone-4 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-4 .zone-name,\n    .tab-time-in-zones .power-zones .zone-4 .zone-time {\n        background: #fad117; /*39A9EC; */\n    }\n.tab-time-in-zones .power-zones .zone-5 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-5 .zone-name,\n    .tab-time-in-zones .power-zones .zone-5 .zone-time {\n        background: #f79d0c; /*50AF12; */\n    }\n.tab-time-in-zones .power-zones .zone-6 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-6 .zone-name,\n    .tab-time-in-zones .power-zones .zone-6 .zone-time {\n        background: #f4253c; /*F79D0C; */\n    }\n.tab-time-in-zones .power-zones .zone-7 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-7 .zone-name,\n    .tab-time-in-zones .power-zones .zone-7 .zone-time {\n        background: #8264db; /*F4253C; */\n    }\n.tab-time-in-zones .table-heart-rate-zones tr td,\n    .tab-time-in-zones .table-power-zones tr td {\n        border-right: 1px solid #fff;\n        border-bottom: 1px solid #fff;\n        padding: 0px;\n    }\n.tab-time-in-zones .table-heart-rate-zones td > div,\n    .tab-time-in-zones .table-power-zones td > div {\n        padding: 12px 20px;\n    }\n.tab-time-in-zones td.zone-name {\n        width: 30px;\n    }\n.tab-time-in-zones td.zone-name > div {\n        background: rgba(255, 255, 255, 0.6);\n        /*opacity: 20;*/\n        border: none;\n    }\n.tab-time-in-zones td.zone-time {\n        width: 30px;\n    }\n.tab-time-in-zones td.zone-time > div {\n        background: rgba(255, 255, 255, 0.6);\n        text-align: right;\n        border: none;\n        /*opacity: 20;*/\n    }\n.tab-time-in-zones td.zone-percent {\n        position: relative;\n    }\n.tab-time-in-zones td.zone-percent > div {\n        position: absolute;\n        top: 0px;\n        bottom: 0px;\n        padding: 12px 0px;\n    }\n.tab-time-in-zones td.zone-percent > div > span {\n        /*width: 700px;*/\n        display: block;\n        position: absolute;\n        left: 100%;\n        padding-left: 10px;\n    }\n.tab-time-in-zones .heart-rate-zones {\n        margin-bottom: 20px;\n    }\n/*  ======================\n        Charts\n        ======================  */\n.page.activity-detail .chart-header-item {\n        font-size: 14px;\n    }\n.page.activity-detail .chart-list-customize:hover {\n        color: inherit;\n        text-decoration: none;\n    }\n.page.activity-detail .chart-header .chart-zoom-toggle {\n        padding: 0 3px;\n        margin-left: 20px;\n        margin-right: 5px;\n        vertical-align: middle;\n    }\n.page.activity-detail .overlay-item {\n        float: left;\n        margin-left: 30px;\n    }\n.page.activity-detail .chart-name .chart-title {\n        margin-right: 10px;\n    }\n.page.activity-detail .chart-name,\n    .page.activity-detail .chart-max-avg-power,\n    .page.activity-detail .chart-lap-avg-pace {\n        display: inline-block;\n    }\n.page.activity-detail .chart-max-avg-power,\n    .page.activity-detail .chart-lap-avg-pace {\n        margin-left: 30px;\n    }\n.page.activity-detail .chart-max-avg-power .custom-max-avg-power {\n        padding: 0 20px;\n        white-space: nowrap;\n    }\n.page.activity-detail .chart-zoom .overlay-item button {\n        font-size: 18px;\n        font-weight: 100;\n    }\n.page.activity-detail .chart-toggle-options .time-toggle {\n        margin-right: -5px;\n        background-color: " + i(274).locals.blue_primary + ";\n        color: " + i(274).locals.textLight + ";\n        border-right: 0 transparent;\n        border-radius: 4px 0 0 4px;\n    }\n.page.activity-detail .chart-toggle-options .distance-toggle {\n        border-left: 0 transparent;\n        border-radius: 0 4px 4px 0;\n    }\n.page.activity-detail .chart-toggle-options .length-rests-toggle {\n        margin-right: -5px;\n        border-right: 0 transparent;\n        border-radius: 4px 0 0 4px;\n    }\n.page.activity-detail .activity-charts-container .btn-customize-charts {\n        background: transparent;\n        color: black;\n        box-shadow: none;\n        border: 1px solid #ccc;\n        padding: 5px 10px;\n    }\n.page.activity-detail .chart-toggle-options button,\n    .page.activity-detail .customize-charts-controls .reorder-widgets-set,\n    .page.activity-detail .customize-charts-controls .reorder-widgets-cancel {\n        border-radius: 2px;\n        border: 1px solid #ccc;\n        background: transparent;\n        color: black;\n        box-shadow: none;\n    }\n.page.activity-detail .customize-charts-controls .reorder-widgets-set {\n        background-color: #11a9ed;\n        color: #fff;\n    }\n.page.activity-detail .customize-charts-list {\n        top: -6px;\n        left: -1px;\n        min-width: 200px;\n        border-radius: 10px;\n        background: white;\n        padding-left: 20px;\n        padding-right: 10px;\n        padding-top: 10px;\n    }\n.page.activity-detail .customize-charts-header {\n        margin-top: -5px;\n        margin-left: -10px;\n    }\n.page.activity-detail .dropdown-menu label {\n        margin-bottom: 10px;\n    }\n.page.activity-detail .sortable-checkboxes .chart-off {\n        display: none;\n    }\n.page.activity-detail .sortable-checkboxes.sort-mode .sortable-checkbox:not(:checked) + .chart-off {\n        display: block;\n        top: 1px;\n    }\n.widget .heart-rate .chart-color-circle,\n    .page.activity-detail .chart-color-circle {\n        background-color: #e8e8e8;\n        border-radius: 50%;\n        height: 11px;\n        width: 11px;\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 5px;\n        margin-top: -3px;\n    }\n.page.activity-detail .no-overlay .chart-color-circle {\n        display: none;\n    }\n.page.activity-detail .chart-zoom .chart-color-circle {\n        height: 16px;\n        width: 16px;\n        margin-top: -4px;\n    }\n.page.activity-detail .stress .chart-color-circle {\n        background-color: #ff9e0d;\n    }\n.page.activity-detail .movement .chart-color-circle {\n        background-color: #b0e1f7;\n    }\n.page.activity-detail .speed .chart-color-circle {\n        background-color: #11a9ed;\n    }\n.page.activity-detail .elevation .chart-color-circle {\n        background-color: #4cb200;\n    }\n.page.activity-detail .breath-rate .chart-color-circle {\n        background-color: #5036a3;\n    }\n.widget .heart-rate .chart-color-circle,\n    .page.activity-detail .heart-rate .chart-color-circle {\n        background-color: #ff0035;\n    }\n.page.activity-detail .performance-condition .chart-color-circle {\n        background-color: #6e8594;\n    }\n.page.activity-detail .cadence .chart-color-circle,\n    .page.activity-detail .stride-length .chart-color-circle {\n        background-color: #ff9e0d;\n    }\n.page.activity-detail .power .chart-color-circle,\n    .page.activity-detail .power-balance .chart-color-circle {\n        background-color: #cf23b8;\n    }\n.page.activity-detail .power-phase-start .chart-color-circle {\n        background-color: #11a9ed;\n    }\n.page.activity-detail .power-phase-end .chart-color-circle {\n        background-color: #50b012;\n    }\n.page.activity-detail .pco-left .chart-color-circle {\n        background-color: #bf0f24;\n    }\n.page.activity-detail .pco-right .chart-color-circle {\n        background-color: #ed7e00;\n    }\n.page.activity-detail .temperature .chart-color-circle {\n        background-color: #6e8594;\n    }\n.page.activity-detail .vertical-o .chart-color-circle,\n    .page.activity-detail .vertical-r .chart-color-circle {\n        background-color: #cf25bb;\n    }\n.page.activity-detail .reset-zoom,\n    .page.activity-detail .chart-zoom .x-axis-value {\n        position: relative;\n        left: 50%;\n        -webkit-transform: translateX(-50%);\n        transform: translateX(-50%);\n    }\n/*  ======================\n        Swim Intervals\n        ======================  */\n.page.activity-detail .modal-body h2,\n    .page.activity-detail .modal-body h5 {\n        display: inline-block;\n    }\n.page.activity-detail .swim-interval .interval-title {\n        font-weight: 600;\n        margin: 22px 0 11px 0;\n    }\n.page.activity-detail .swim-interval .interval-title .distance,\n    .page.activity-detail .swim-interval .interval-title .time {\n        font-weight: 400;\n        font-size: 14px;\n        display: inline-block;\n        margin-left: 8px;\n    }\n.page.activity-detail .swim-length {\n        width: 110px;\n        height: 55px;\n        line-height: 40px;\n        float: left;\n        text-align: center;\n        background-color: #fafafa;\n        margin-right: -1px;\n        margin-bottom: 8px;\n        border: 1px solid #ddd;\n        overflow: hidden;\n    }\n.page.activity-detail .swim-length.first {\n        border-radius: 30px 0 0 30px;\n    }\n.page.activity-detail .swim-length.last {\n        border-radius: 0 30px 30px 0;\n        margin-right: 5px;\n    }\n.page.activity-detail .swim-length.first .type {\n        padding-left: 15px;\n    }\n.page.activity-detail .swim-length.last .type {\n        padding-right: 15px;\n    }\n.page.activity-detail .swim-length.first.last {\n        border-radius: 30px;\n    }\n.page.activity-detail .swim-length .type,\n    .page.activity-detail .swim-length .first.last .type {\n        height: 15px;\n        line-height: 15px;\n        font-size: 9px;\n        text-transform: uppercase;\n        color: rgba(255, 255, 255, 0.7);\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n        padding: 0 5px;\n    }\n.page.activity-detail .swim-length .number {\n        background: #ddd;\n        display: inline-block;\n        vertical-align: middle;\n        width: 22px;\n        height: 22px;\n        line-height: 22px;\n        font-size: 12px;\n        border-radius: 50%;\n        color: #444;\n        float: left;\n        margin-top: 10px;\n        margin-left: 15px;\n    }\n.page.activity-detail .swim-length .time {\n        font-weight: 100;\n        font-size: 18px;\n        color: #222;\n        float: right;\n        margin-right: 15px;\n    }\n.page.activity-detail .swim-length.freestyle .type {\n        background: #cf23b8;\n    }\n.page.activity-detail .swim-length.butterfly .type {\n        background: #11a9ed;\n    }\n.page.activity-detail .swim-length.backstroke .type {\n        background: #50b012;\n    }\n.page.activity-detail .swim-length.breaststroke .type {\n        background: #ff0035;\n    }\n.page.activity-detail .swim-length.drill .type {\n        background: #ed7e00;\n    }\n.page.activity-detail .swim-length.drill .number {\n        display: none;\n    }\n.page.activity-detail .swim-length.drill .time {\n        float: none;\n        margin-right: 0;\n    }\n.page.activity-detail .swim-length.mixed .type,\n    .page.activity-detail .swim-length.unknown .type {\n        background: #888;\n    }\n.page.activity-detail .swim-rest {\n        float: left;\n        margin-bottom: 8px;\n        line-height: 40px;\n        background: #ddd;\n        border-radius: 30px;\n        overflow: hidden;\n        width: 90px;\n        text-align: center;\n        border: 1px solid #ddd;\n    }\n.page.activity-detail .swim-rest .type {\n        height: 15px;\n        line-height: 15px;\n        font-size: 9px;\n        text-transform: uppercase;\n        color: #eee;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n        padding: 0 5px;\n        background: #bbb;\n    }\n.page.activity-detail .swim-rest .time {\n        font-size: 18px;\n        font-weight: 100;\n    }\n/*  ======================\n        Player\n        ======================  */\n.page.activity-detail .map-controls.player {\n        margin-left: calc(50% - 16px);\n        width: 33px;\n    }\n.page.activity-detail .map-controls button.disabled {\n        display: none;\n    }\n@media (max-width: 415px) {\n        .page.activity-detail #map-controls {\n            display: -webkit-flex;\n            display: flex;\n            -webkit-flex-direction: column;\n                    flex-direction: column;\n        }\n\n        .page.activity-detail #map-controls .map-control-item {\n            margin-bottom: 5px;\n        }\n    }\n/*  ======================\n        Laps checkbox\n        ======================  */\n.page.activity-detail .map-control-item.laps {\n        width: auto;\n        white-space: nowrap;\n    }\n.page.activity-detail .map-control-item.laps label {\n        line-height: 33px;\n        padding-right: 10px;\n    }\n.page.activity-detail .map-control-item.laps label input {\n        margin-top: 11px;\n        margin-right: 5px;\n        margin-left: 10px;\n    }\n/*  ======================\n        Mobile Scroll Toggle\n        ======================  */\n.page.activity-detail .map-control-item.scrolling {\n        clear: left;\n        width: auto;\n        margin-top: 6px;\n        padding-right: 10px;\n        padding-left: 10px;\n        white-space: nowrap;\n    }\n/*  ======================\n        Weather\n        ======================  */\n.page.activity-detail .weather *,\n    .page.activity-detail .weather.large * {\n        transition: 150ms cubic-bezier(0.175, 0.885, 0.305, 1.24);\n        -webkit-transform-style: preserve-3d;\n        transform-style: preserve-3d;\n    }\n.page.activity-detail .weather {\n        right: 10px;\n        left: auto;\n        cursor: pointer;\n        margin-bottom: 5px;\n    }\n.page.activity-detail .weather .map-control-item {\n        margin-right: 0;\n        width: auto;\n        padding: 0 5px;\n        overflow: hidden;\n    }\n.page.activity-detail .weather span {\n        display: inline-block;\n        vertical-align: middle;\n        position: relative;\n        margin: 0 2px;\n    }\n.page.activity-detail .weather .trigger {\n        top: 5px;\n        left: -4px;\n    }\n.page.activity-detail .weather .trigger i {\n        color: #888;\n        font-size: 11px;\n        height: 11px;\n        width: 11px;\n        line-height: 11px;\n        margin-top: 0;\n    }\n.page.activity-detail .weather .temperature {\n        font-size: 22px;\n        font-weight: 100;\n        line-height: 33px;\n    }\n.page.activity-detail .weather .humidity-percentage {\n        font-size: 22px;\n        font-weight: 100;\n        line-height: 33px;\n    }\n.page.activity-detail .weather .weather-icon {\n        margin-right: 5px;\n    }\n.page.activity-detail .weather .weather-icon img {\n        height: 31px;\n        width: 31px;\n    }\n.page.activity-detail .weather .wind {\n        width: 21px;\n        height: 21px;\n        line-height: 21px;\n        text-align: center;\n        font-size: 12px;\n        border: 1px solid #222;\n        border-radius: 50%;\n        margin-right: 0;\n    }\n.page.activity-detail .weather .wind:before {\n        content: '';\n        display: block;\n        width: 0;\n        height: 15px;\n        border-width: 7px 3px;\n        border-style: solid;\n        border-color: #222 transparent transparent transparent;\n        position: absolute;\n        top: -4px;\n        left: 8px;\n    }\n/*\n    .page.activity-detail .wind-n:before {\n        nothing needed - north is the default\n    }\n    */\n.page.activity-detail .wind-nne:before {\n        -webkit-transform: rotate(22.5deg);\n        transform: rotate(22.5deg);\n    }\n.page.activity-detail .wind-ne:before {\n        -webkit-transform: rotate(45deg);\n        transform: rotate(45deg);\n    }\n.page.activity-detail .wind-ene:before {\n        -webkit-transform: rotate(77.5deg);\n        transform: rotate(77.5deg);\n    }\n.page.activity-detail .wind-e:before {\n        -webkit-transform: rotate(90deg);\n        transform: rotate(90deg);\n    }\n.page.activity-detail .wind-ese:before {\n        -webkit-transform: rotate(112.5deg);\n        transform: rotate(112.5deg);\n    }\n.page.activity-detail .wind-se:before {\n        -webkit-transform: rotate(135deg);\n        transform: rotate(135deg);\n    }\n.page.activity-detail .wind-sse:before {\n        -webkit-transform: rotate(157.5deg);\n        transform: rotate(157.5deg);\n    }\n.page.activity-detail .wind-s:before {\n        -webkit-transform: rotate(180deg);\n        transform: rotate(180deg);\n    }\n.page.activity-detail .wind-ssw:before {\n        -webkit-transform: rotate(202.5deg);\n        transform: rotate(202.5deg);\n    }\n.page.activity-detail .wind-sw:before {\n        -webkit-transform: rotate(225deg);\n        transform: rotate(225deg);\n    }\n.page.activity-detail .wind-wsw:before {\n        -webkit-transform: rotate(247.5deg);\n        transform: rotate(247.5deg);\n    }\n.page.activity-detail .wind-w:before {\n        -webkit-transform: rotate(270deg);\n        transform: rotate(270deg);\n    }\n.page.activity-detail .wind-wnw:before {\n        -webkit-transform: rotate(292.5deg);\n        transform: rotate(292.5deg);\n    }\n.page.activity-detail .wind-nw:before {\n        -webkit-transform: rotate(315deg);\n        transform: rotate(315deg);\n    }\n.page.activity-detail .wind-nnw:before {\n        -webkit-transform: rotate(337.5deg);\n        transform: rotate(337.5deg);\n    }\n.page.activity-detail .weather .map-control-item .details {\n        display: none;\n    }\n.page.activity-detail .weather.weather-large .map-control-item {\n        height: 70px;\n        border-radius: 35px;\n        padding-right: 10px;\n    }\n.page.activity-detail .weather.weather-large .trigger {\n        top: -4px;\n        left: -3px;\n        -webkit-transform: rotate(180deg);\n        transform: rotate(180deg);\n    }\n.page.activity-detail .weather.weather-large .temperature {\n        font-size: 32px;\n        margin-left: 8px;\n    }\n.page.activity-detail .weather.weather-large .humidity-percentage {\n        font-size: 32px;\n        margin-left: 8px;\n    }\n.page.activity-detail .weather.weather-large .weather-icon img {\n        width: 70px;\n        height: 70px;\n    }\n.page.activity-detail .weather.weather-large .wind {\n        font-size: 18px;\n        width: 35px;\n        height: 35px;\n        line-height: 35px;\n        margin-left: 5px;\n        margin-right: 5px;\n    }\n.page.activity-detail .weather.weather-large .wind:before {\n        border-width: 11px 4px;\n        height: 25px;\n        left: 13px;\n        top: -6px;\n    }\n.page.activity-detail .weather.weather-large .details {\n        display: inline-block;\n        margin: 4px 8px 8px 0;\n    }\n.page.activity-detail .weather .details ul {\n        margin: 0;\n        padding: 0;\n        list-style: none;\n        font-size: 12px;\n    }\n.page.activity-detail .weather .details li {\n        margin: 0;\n        padding: 0;\n        line-height: 1.4;\n    }\n.page.activity-detail .weather .details .source {\n        font-size: 9px;\n        color: #888;\n    }\n@media (max-width: " + i(1213).locals.endXS + ") {\n        .page.activity-detail .weather.weather-large .map-control-item {\n            max-width: 270px;\n        }\n\n        .page.activity-detail .weather .weather-icon {\n            max-width: 40px;\n        }\n\n        .page.activity-detail .weather.weather-large .temperature {\n            font-size: 20px;\n            margin-left: 5px;\n        }\n\n        .page.activity-detail .weather.weather-large .weather-icon img {\n            width: 35px;\n            height: 35px;\n        }\n\n        .page.activity-detail .weather.weather-large .wind {\n            font-size: 16px;\n            width: 25px;\n            height: 25px;\n            line-height: 25px;\n        }\n\n        .page.activity-detail .weather.weather-large .wind:before {\n            height: 20px;\n            left: 9px;\n            top: -8px;\n        }\n\n        .page.activity-detail .weather.weather-large .details {\n            margin: 4px 4px 4px 0;\n        }\n    }\n/*  ======================\n        Splits and intervals table\n        ======================  */\n.page.activity-detail .tab-overflow {\n        overflow: scroll;\n    }\n.page.activity-detail .splits-table th,\n    .page.activity-detail .intervals-table th {\n        white-space: nowrap;\n        padding-left: 20px;\n        text-align: right;\n    }\n.page.activity-detail .splits-table th:nth-child(1),\n    .page.activity-detail .splits-table th:nth-child(2),\n    .page.activity-detail .intervals-table th:nth-child(2) {\n        text-align: center;\n    }\n.page.activity-detail .intervals-table th:nth-child(2) {\n        padding-right: 20px;\n    }\n.page.activity-detail .splits-table td,\n    .page.activity-detail .intervals-table td {\n        text-align: right;\n        white-space: nowrap;\n    }\n.page.activity-detail .splits-table td:nth-child(1),\n    .page.activity-detail .splits-table td:nth-child(2),\n    .page.activity-detail .intervals-table td:nth-child(2) {\n        text-align: center;\n    }\n.page.activity-detail .splits-table tfoot,\n    .page.activity-detail .intervals-table tfoot {\n        font-weight: bold;\n    }\n.page.activity-detail .activity-intervals-tab-content-placeholder {\n        overflow: auto;\n        min-height: 190px;\n    }\n/*  ======================\n        Gases and Tanks table\n        ======================  */\n.page.activity-detail .gases-and-tanks-table th,\n    .page.activity-detail .gases-and-tanks-table td {\n        white-space: nowrap;\n        padding-left: 10px;\n        padding-right: 10px;\n        text-align: center;\n    }\n/* Embed modal */\n.embed-activity-input[type='text'] {\n        margin-bottom: 11px;\n        width: 97%;\n        cursor: pointer;\n    }\n.embed-activity-iframe {\n        margin-left: 30px;\n    }\n.modal.activity-detail-embed .modal-body {\n        max-height: 600px;\n    }\n/* Create / Find segment button */\n.page.activity-detail .activity-segments-container {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: column;\n                flex-direction: column;\n    }\n.page.activity-detail .create-segment .icon-add {\n        font-size: 12px;\n        height: 12px;\n        width: 12px;\n        line-height: 12px;\n        margin-top: 4px;\n        margin-right: 5px;\n    }\n.page.activity-detail .segment-match-container {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: column;\n                flex-direction: column;\n    }\n.page.activity-detail .segment-match-container .segment-match-actions {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-justify-content: flex-end;\n                justify-content: flex-end;\n    }\n/* Segments table */\n.page.activity-detail .segments-table {\n        table-layout: fixed;\n    }\n.page.activity-detail .segments-table .segment-name {\n        min-width: 190px;\n    }\n.page.activity-detail .segments-table .segment-rank {\n        width: 40px;\n    }\n.page.activity-detail .segments-table .segment-link {\n        vertical-align: middle;\n        width: 100%;\n    }\n.page.activity-detail .segments-table .segment-time {\n        width: 75px;\n    }\n.page.activity-detail .segments-table .segment-pace {\n        width: 90px;\n    }\n.page.activity-detail .segments-table .segment-fav,\n    .page.activity-detail .segments-table .segment-visible {\n        width: 25px;\n    }\n.page.activity-detail .segments-table .icon-star.fav {\n        vertical-align: middle;\n    }\n.page.activity-detail .segments-table .icon-eye {\n        vertical-align: middle;\n        font-size: 18px;\n        color: #c7c7c7;\n        cursor: pointer;\n    }\n.page.activity-detail .segments-table .icon-eye.active {\n        color: #222;\n    }\n@media (max-width: " + i(1213).locals.endSM + ") {\n        .page.activity-detail .segments-table {\n            /* Creates a horizontally scrollable table that moves independently from the page when the page is too narrow */\n            display: block;\n            overflow-x: auto;\n            max-width: 90vw;\n        }\n    }\n/* Additional info */\n.page.activity-detail .additional-info > div {\n        text-align: center;\n    }\n.page.activity-detail .additional-info .device-image img {\n        width: 50%;\n    }\n.page.activity-detail .additional-info .device-name {\n        font-weight: 600;\n    }\n/* mbtester - admin */\n.page.activity-detail .additional-info .admin {\n        background: #e6ff84;\n    }\n.page.activity-detail .power-curve-excluded {\n        margin-top: 40px;\n    }\n.page.activity-detail .power-curve-excluded .heading {\n        font-size: 18px;\n    }\n.page.activity-detail .power-curve-excluded .sub-heading {\n        margin: 20px 0px 10px 0px;\n    }\n/*  ======================\n        Manual Activity Page / Edit Activity\n        ======================  */\n.page.activity-edit .time-zone-select {\n        font-size: 12px;\n        margin-left: 5px;\n        cursor: pointer;\n    }\n.page.activity-edit .time-zone-select > a {\n        display: inline-block;\n        max-width: calc(100% - 500px);\n        line-height: 11px;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n    }\n.page.activity-edit .avg-pace-speed {\n        width: auto;\n    }\n.page.activity-edit .advanced-edit-actions-container {\n        display: -webkit-flex;\n        display: flex;\n        width: 210px;\n        -webkit-justify-content: space-between;\n                justify-content: space-between;\n    }\n/*  ======================\n        Multisport\n        ======================  */\n.page.activity-detail .multisport-nav > li {\n        text-align: center;\n    }\n.page.activity-detail .multisport-nav > li > a {\n        padding-bottom: 10px;\n    }\n.page.activity-detail .multisport-nav > li > a > .icon > i {\n        display: block;\n        margin: 0 auto;\n        font-size: 36px;\n        width: 36px;\n        height: 36px;\n        line-height: 36px;\n    }\n.page.activity-detail .multisport-nav > li > a > .icon > .icon-activity-transition {\n        font-size: 20px;\n    }\n.page.activity-detail .multisport-nav > li > a > .avg-stat {\n        font-size: 10px;\n        line-height: 1;\n        height: 10px;\n    }\n.page.activity-detail .multisport-nav .dropdown-menu i {\n        font-size: 16px;\n        width: 16px;\n        height: 16px;\n        line-height: 16px;\n        margin-right: 10px;\n    }\n.page.activity-detail .multisport-nav .dropdown-menu {\n        text-align: left;\n    }\n/*  ======================\n        Connect IQ Label\n        ======================  */\n.ciq-label {\n        color: #888;\n        font-size: 12px;\n        width: 12px;\n        height: 11px;\n        line-height: 11px;\n        margin-left: 5px;\n        vertical-align: middle;\n    }\n/*  ======================\n        Media queries for responsive breakpoints\n        ======================  */\n@media (max-width: 1158px) {\n        .page.activity-detail .activity.stats .row-fluid [class*='span'] {\n            width: 100%;\n            margin-left: 0;\n        }\n    }\n/*  ======================\n        Cycling Dynamics Tab\n        ======================  */\n.cycling-dynamics .custom-max-avg-power {\n        display: inline-block;\n        margin-top: -10px;\n    }\n.cycling-dynamics .max-avg-label {\n        margin-right: 5px;\n    }\n.cycling-dynamics .cycling-tab-controls {\n        min-height: 30px;\n    }\n.cycling-dynamics .cycling-tab-controls .input-small {\n        margin-bottom: 0;\n    }\n/*  ======================\n        Platform Center Offset\n        ======================  */\n.cycling-dynamics .pco-content {\n        padding: 0 21px;\n    }\n.cycling-dynamics .pco-content .chart-container {\n        margin: 0 auto;\n        height: 160px;\n    }\n.platform-center-offset > canvas {\n        width: 160px;\n        height: 160px;\n        background-position: 0 0;\n        background-repeat: no-repeat;\n    }\n.platform-center-offset-left > canvas {\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/platform-center-offset-left.svg');\n    }\n.platform-center-offset-right > canvas {\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/platform-center-offset-right.svg');\n    }\n/*  ======================\n        Peak Power Phase\n        ======================  */\n.power-phase {\n        width: 100%;\n        padding-bottom: 10px;\n        margin-bottom: 20px;\n        border-bottom: 1px solid #ddd;\n    }\n.power-phase-charts {\n        width: 660px;\n        height: 260px;\n        margin: 0 auto;\n    }\n.power-phase-charts > div {\n        width: 325px;\n    }\n.power-phase-charts > div:first-child {\n        float: left;\n    }\n.power-phase-charts > div:last-child {\n        float: right;\n    }\n.power-phase-charts .chart-container {\n        /* Dynamic Highchart Graphic */\n        margin-top: -273px;\n        margin-left: 17px;\n    }\n.power-phase-charts .chart-container sup {\n        font-size: 22px;\n        top: -12px;\n    }\n.power-phase-graphic {\n        /* Background Image */\n        display: inline-block;\n        width: 250px;\n        height: 250px;\n        margin: 0 0 22px 0;\n        background-position: 0 0;\n        background-repeat: no-repeat;\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/power-phase.svg');\n    }\n@media (max-width: 1310px) {\n        .cycling-dynamics .custom-max-avg-power {\n            display: block;\n            margin-top: 10px;\n        }\n        .cycling-dynamics #avg-power-range-value {\n            float: none;\n            display: inline-block;\n        }\n    }\n@media (max-width: 640px) {\n        .power-phase-charts {\n            width: 100%;\n        }\n        .power-phase-charts > div {\n            width: 195px;\n        }\n        .power-phase-charts .chart-container {\n            margin-top: -225px;\n            margin-left: -18px;\n        }\n        .power-phase-graphic {\n            width: 200px; /* chart design is small */\n            height: 200px;\n        }\n    }\n@media (max-width: 520px) {\n        .power-phase {\n            border-width: 0;\n        }\n        .power-phase-charts {\n            height: 520px;\n        }\n        .power-phase-charts > div:first-child,\n        .power-phase-charts > div:last-child {\n            float: none;\n            width: 325px;\n            margin: 0 auto 30px auto;\n        }\n        .power-phase .chart-container {\n            margin-top: -274px;\n            margin-left: 19px;\n        }\n        .power-phase-graphic {\n            width: 250px; /* chart design is medium & stacked */\n            height: 250px;\n        }\n    }\n/*  ======================\n        Seated & Standing Position\n        ======================  */\n.cycling-dynamics .seated-standing {\n        padding-left: 20px;\n        padding-right: 20px;\n        margin-bottom: 0;\n        border-left: 1px solid #ddd;\n    }\n.position-seated > span,\n    .position-standing > span {\n        margin: auto auto 0 auto;\n        max-width: 80%;\n        vertical-align: bottom;\n        display: block;\n        width: 200px;\n        height: 160px;\n        background-position: center;\n        background-repeat: no-repeat;\n        margin-left: auto;\n        margin-right: auto;\n    }\n.position-seated > span {\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/seated.svg');\n    }\n.position-standing > span {\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/standing.svg');\n    }\n/*  ======================\n        Media Queries provided by Joshua Johnston (front-end team)\n        ======================  */\n@media (max-width: 1175px) {\n        .pco-content .span6,\n        .seated-standing .span6 {\n            width: 100%; /* stack these graphics early */\n            margin: 0 auto;\n        }\n    }\n@media (max-width: 767px) {\n        .cycling-dynamics .seated-standing {\n            border-left: 0;\n        }\n    }\n@media (max-width: 653px) {\n        .cycling-dynamics .cycling-tab-controls {\n            max-height: 85px;\n        }\n    }\n/*  ======================\n        Activity List Table in Modal\n        ======================  */\n.modal .activity-list .activity-title {\n        width: 250px;\n        text-overflow: ellipsis;\n        overflow: hidden;\n        display: inline-block;\n        vertical-align: middle;\n        white-space: nowrap;\n        line-height: 1.3;\n    }\n/*ACTIVITY LIKING*/\n.page-navigation-action .like-link:hover {\n        background: transparent;\n    }\n/*NO PRIVILEGES PAGE*/\n.no-privileges h3 {\n        line-height: 2rem;\n    }\n.no-privileges .locked-activity {\n        font-size: 80px;\n        color: #e5e5e5;\n        display: block;\n        padding-right: 65px;\n    }\n.ciq-info {\n        max-width: 250px;\n        margin: 33px auto 0;\n    }\n.page.activity-detail .ciq-info .app-name a {\n        font-weight: 600;\n    }\n.page.activity-detail .ciq-info .aspect {\n        position: relative;\n        width: 100%;\n        max-width: 80px;\n        margin: 15px auto;\n    }\n.page.activity-detail .ciq-info .aspect-square {\n        padding-top: 100%;\n    }\n.page.activity-detail .ciq-info .aspect-element {\n        height: 100%;\n        width: 100%;\n        position: absolute;\n        top: 0;\n    }\n@media (max-width: 1156px) and (min-width: 414px) {\n        .activity.stats .row-fluid .span3 {\n            width: 48% !important;\n            margin: 0;\n            display: inline-block;\n            float: left;\n        }\n        .activity.stats .row-fluid .span3 {\n            margin-left: 2% !important;\n        }\n    }\n/*iPhone 6+ and smaller*/\n@media screen and (max-device-width: 415px) {\n         {\n\n        /* Layout */\n\n        /* Page Navigation */\n\n        /* Dropdown Menus */\n\n        /* Icons */\n\n        /* Unique Icon Styles */\n\n        /* Type */\n\n        /* Charts */\n}\n        .page.activity-detail .page-header-content .page-title .page-title-overflow {\n            max-width: calc(100% - 50px);\n        }\n        .page.activity-detail .page-title .icon-personal-records {\n            height: 25px;\n        }\n        .page.activity-detail .activity-type-icon {\n            width: 40px;\n            height: 40px;\n            line-height: 40px;\n            margin-top: 0;\n            margin-right: 6px;\n            font-size: 20px;\n            box-shadow: 0 0 0 2px #ccc;\n        }\n        .page.activity-detail .page-header-content .date-block {\n            clear: both;\n        }\n        .chart-header .span4 {\n            display: inline-block;\n        }\n        .page.activity-detail .highcharts-container {\n            /*TO PREVENT THE CARTS FROM BREAKING PAST THE CONTAINER*/\n            margin-left: -10px;\n        }\n        .chart-header .span9 {\n            width: 100%;\n            display: inline-block;\n        }\n        .chart-header .span3 {\n            display: none;\n        }\n        .chart-header .span3 button {\n            font-size: 12px;\n            vertical-align: middle;\n            line-height: 15px;\n        }\n        .row-fluid.chart-header [class*='span'] {\n            float: left;\n        }\n        .page.activity-detail .page-header-content .date-block {\n            margin-top: -24px;\n        }\n        .page.activity-detail .page-header-content {\n            width: calc(100% - 60px);\n        }\n        .page.activity-detail .page-dropdown {\n            display: inline-block;\n        }\n        .page.activity-detail .page-navigation .dropdown-menu {\n            right: -1px;\n            top: -6px;\n        }\n        .page.activity-detail .inline-edit-trigger {\n            width: 28px;\n            height: 28px;\n        }\n        .page.activity-detail .inline-edit-save[class*='icon-'],\n        .page.activity-detail .inline-edit-cancel[class*='icon-'] {\n            height: 28px;\n            width: 28px;\n        }\n        .page.activity-detail .page-title .inline-edit-actions button {\n            margin-top: 7px;\n        }\n        .page.activity-detail .page-navigation-action,\n        .page.activity-detail .page-navigation-action:last-child {\n            padding: 3px 7px;\n        }\n        .page.activity-detail .inline-edit-trigger,\n        .page.activity-detail .page-navigation-action,\n        .page.activity-detail .page-dropdown .dropdown-menu [class^='icon-'] {\n            font-size: 16px;\n        }\n        .page.activity-detail .page-dropdown .dropdown-menu [class^='icon-'] {\n            right: 7px;\n            top: 1px;\n        }\n        .page.activity-detail .page-dropdown .dropdown-menu > li > a [class^='icon-'] {\n            font-size: 14px;\n        }\n        .page.activity-detail .dropdown .icon-pointer-down {\n            font-size: 10px;\n        }\n        .page.activity-detail .page-navigation .icon-share,\n        .page.activity-detail .page-dropdown .dropdown-menu .icon-share {\n            font-size: 18px;\n        }\n        .page.activity-detail .help-icon {\n            font-size: 18px;\n            height: 20px;\n            width: 20px;\n        }\n        .page.activity-detail .page-intro .date-block,\n        .page.activity-detail .like,\n        .page.activity-detail .dropdown-menu > li {\n            font-size: 14px;\n        }\n        .page.activity-detail .dropdown-menu > li > a {\n            line-height: 22px;\n        }\n        .page.activity-detail .event-type,\n        .page.activity-detail .course-type,\n        .page.activity-detail .gear-indicator {\n            white-space: nowrap;\n        }\n        .page.activity-detail .chart-header-main .span4 {\n            display: none;\n        }\n        .page.activity-detail .chart-header-main .span4.chart-x-axis-toggle {\n            display: inline-block;\n            width: 100%;\n        }\n        .page.activity-detail .chart-header {\n            margin-top: 11px;\n        }\n    }\n/*ACTIVITY - REP COUNTING*/\n.rep-counting-table td {\n        vertical-align: middle;\n    }\n.page.activity-detail table.rep-counting-table {\n        margin-bottom: 10px;\n    }\n[data-activity-type='pilates'] .workout-name {\n        width: 70%;\n    }\n[data-activity-type='yoga'] .workout-name {\n        width: 70%;\n    }\n.table.rep-counting-table td {\n        border-top: 1px solid #e5e5e5;\n    }\n/*\n    For the play video button\n    .page.activity-detail .rep-counting-table td a [class*=\"icon-\"] {\n        width: 20px;\n        height: 20px;\n        line-height: 20px;\n        margin-right: 5.5px;\n        font-size: 12px;\n        text-align: center;\n        box-shadow: 0 0 0 1px #ccc;\n        border-radius: 50%;\n        color: #888;\n        background: #fafafa;\n    }*/\n.page.activity-detail .rep-counting-table td .input-append {\n        margin-bottom: 0;\n    }\n.page.activity-detail .rep-counting-table td .input-small {\n        width: 50px;\n    }\n.page.activity-edit .rep-counting-table th:first-child,\n    .page.activity-edit .rep-counting-table th:last-child,\n    .page.activity-edit .rep-counting-table td:first-child,\n    .page.activity-edit .rep-counting-table td:last-child {\n        width: 15px;\n        color: #888;\n    }\n.page.activity-detail .rep-counting-table th:nth-child(3),\n    .page.activity-detail .rep-counting-table th:nth-child(4),\n    .page.activity-detail .rep-counting-table th:nth-child(5),\n    .page.activity-detail .rep-counting-table th:nth-child(6),\n    .page.activity-detail .rep-counting-table td:nth-child(3),\n    .page.activity-detail .rep-counting-table td:nth-child(4),\n    .page.activity-detail .rep-counting-table td:nth-child(5),\n    .page.activity-detail .rep-counting-table td:nth-child(6) {\n        text-align: center;\n    }\n.page.activity-detail .rep-counting-table th:first-child,\n    .page.activity-detail .rep-counting-table td:first-child {\n        text-align: center;\n    }\n.page.activity-detail .rep-counting-table td:first-child p {\n        border: 1px solid #888;\n        border-radius: 50%;\n        height: 20px;\n        width: 20px;\n        line-height: 20px;\n        font-size: 10px;\n        color: #888;\n        margin: 0 auto;\n    }\n.page.activity-detail .rep-counting-table td:last-child a {\n        font-size: 12px;\n        font-family: 'Open Sans', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial,\n            sans-serif;\n        line-height: 22px;\n    }\n.page.activity-edit .page-navigation .btn {\n        margin-top: 0;\n    }\n/*DRAG & DROP -\n    HINT FOR WHERE THE EXERCISE IS GOING TO GO*/\n.rep-placehold-row {\n        height: 60px;\n    }\n.rep-placehold:before {\n        float: left;\n        left: -12px;\n    }\n.rep-placehold:after {\n        float: right;\n        right: -13px;\n    }\n/*FOR A BORDER WHEN USER HOVERS OVER THE DRAG HANDLE*/\n.rep-counting-table tr {\n        border-left: 1px solid rgba(170, 170, 170, 0);\n        border-right: 1px solid rgba(170, 170, 170, 0);\n        border-bottom: 1px solid rgba(170, 170, 170, 0);\n    }\n.rep-counting-table .hover-rep-row {\n        border: 1px solid rgba(170, 170, 170, 0.4);\n    }\n/*FOR A THICKER BORDER WHEN USER IS DRAGGING*/\n.rep-counting-table .ui-sortable-helper {\n        box-shadow: 0px 0px 0px 2px rgba(170, 170, 170, 0.75);\n        border-top: transparent;\n        background: #ffffff;\n    }\n/*ADD RED BORDER FOR ERROR ON EXERCISE NAME*/\n.chosen-container-single .chosen-single.error {\n        color: #bf0f24;\n        border-color: #bf0f24;\n    }\n/*  ======================\n        Activity Compare Page\n        ======================  */\n.activity-compare .summary [class^='icon-'],\n    .activity-compare .summary [class*=' icon-'] {\n        text-align: center;\n        border-radius: 50%;\n        color: #888;\n        background: #fafafa;\n        width: 40px;\n        height: 40px;\n        line-height: 40px;\n        font-size: 22px;\n        box-shadow: 0 0 0 2px #ccc;\n        display: block;\n        margin: 0 auto 10px auto;\n    }\n.activity-compare .summary {\n        margin-bottom: 0;\n    }\n.activity-compare thead th,\n    .activity-compare td {\n        text-align: center;\n        border-left: 2px solid #ddd;\n    }\n.activity-compare .laps th,\n    .activity-compare .laps td {\n        border-left-color: #f0f0f0;\n    }\n.activity-compare .laps th:nth-child(3n + 2),\n    .activity-compare .laps td:nth-child(3n + 2) {\n        border-left-color: #ddd;\n    }\n.activity-compare .laps th:nth-child(1) {\n        text-align: left;\n    }\n.activity-compare .four-up .summary thead th,\n    .activity-compare .four-up .summary td {\n        vertical-align: top;\n    }\n.activity-compare .row-label {\n        text-align: left;\n    }\n.activity-compare .laps th {\n        font-weight: normal;\n        color: #888;\n    }\n.activity-compare .four-up th {\n        width: 20%;\n    }\n.activity-compare .three-up th {\n        width: 25%;\n    }\n.activity-compare .two-up th {\n        width: 33.3%;\n    }\n.activity-compare th:first-child,\n    .activity-compare td:first-child {\n        border-left: none;\n    }\n/*  ======================\n      Battery Status\n    ======================  */\n.page.activity-detail [class^='icon-battery-status-'],\n    .page.activity-detail .icon-caution {\n        margin-left: 5px;\n        font-size: 16px;\n        line-height: 18px;\n    }\n/*  ======================\n      Activity Playlist\n    ======================  */\n.page.activity-detail .playlist-card {\n        max-height: 350px;\n        overflow-y: auto;\n        overflow-x: auto;\n        border: 1px solid #e5e5e5;\n        border-radius: 4px;\n        padding: 11px;\n    }\n.page.activity-detail .list-number {\n        border: 1px solid #c7c7c7;\n        border-radius: 50%;\n        height: 24px;\n        width: 24px;\n        text-align: center;\n        padding-top: 2px;\n        background: #fff;\n    }\n.page.activity-detail .playlist-privacy {\n        float: right;\n        margin-right: 20px;\n        margin-top: -25px;\n        font-size: 12px;\n        color: #888;\n    }\n/*  ======================\n      Responsive Table Standards - applies to rep-counting table\n      ======================  */\n@media (max-width: 1125px) {\n        .minimize-main-nav .span8.exercise-table-edit {\n            width: 65.95744680851064%;\n        }\n        .span8.exercise-table-edit {\n            width: 100%;\n        }\n    }\n@media (max-width: 855px) {\n         {\n        /* Forcing table to not behave in its usual manner.*/\n\n        /* Hiding table headers (but not display: none for accessibility purposes)*/\n\n        /* Forcing td to behave like a row.*/\n\n        /*Forcing content \"before\" to behave like a table heading.*/\n\n        /* Label the data*/\n}\n        .rep-counting-table,\n        .rep-counting-table thead,\n        .rep-counting-table tbody,\n        .rep-counting-table th,\n        .rep-counting-table td,\n        .rep-counting-table tr {\n            display: block;\n        }\n        .rep-counting-table-edit {\n            margin-top: 15px;\n        }\n        .rep-counting-table thead tr {\n            position: absolute;\n            top: -9999px;\n            left: -9999px;\n        }\n\n        .page.activity-detail .rep-counting-table tr {\n            border-bottom: 4px solid #888;\n        }\n        .rep-counting-table td {\n            border: none;\n            border-bottom: 1px solid #eee;\n            position: relative;\n            padding-left: 40%;\n        }\n        .rep-counting-table td:before {\n            position: absolute;\n            font-weight: bold;\n            /* Top/left values mimic padding */\n            top: 6px;\n            left: 6px;\n            width: 45%;\n            padding-right: 10px;\n            white-space: nowrap;\n        }\n        .rep-counting-table td:before {\n            /*Handling truncation of before content.*/\n            overflow: hidden;\n            text-overflow: ellipsis;\n            white-space: nowrap;\n        }\n        .page.activity-edit .rep-counting-table.rep-counting-table-edit td:first-child,\n        .page.activity-edit .rep-counting-table.rep-counting-table-edit td:last-child {\n            width: auto;\n            height: 20px;\n        }\n\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:first-child,\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:nth-child(3),\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:nth-child(4),\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:nth-child(5),\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:nth-child(6),\n        .page.activity-detail .rep-counting-table td:first-child:before,\n        .page.activity-detail .rep-counting-table td:nth-child(3):before,\n        .page.activity-detail .rep-counting-table td:nth-child(4):before,\n        .page.activity-detail .rep-counting-table td:nth-child(5):before,\n        .page.activity-detail .rep-counting-table td:nth-child(6):before,\n        .page.activity-detail .rep-counting-table td:nth-child(3),\n        .page.activity-detail .rep-counting-table td:nth-child(4),\n        .page.activity-detail .rep-counting-table td:nth-child(5),\n        .page.activity-detail .rep-counting-table td:nth-child(6) {\n            text-align: left;\n        }\n        .page.activity-detail .rep-counting-table td:first-child:before {\n            content: attr(data-title-1);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(2):before {\n            content: attr(data-title-2);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(3):before {\n            content: attr(data-title-3);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(4):before {\n            content: attr(data-title-4);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(5):before {\n            content: attr(data-title-5);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(6):before {\n            content: attr(data-title-6);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(7):before {\n            content: attr(data-title-7);\n        }\n    }\n.page.activity-detail .chosen-single .icon-pointer-down {\n        font-size: 8px;\n    }\n.activity-compare .summary th h1 {\n        display: inline-block;\n    }\n.activity-compare .summary th .data-label {\n        display: block;\n        font-weight: 300;\n        line-height: 25px;\n    }\n.activity-compare .laps .stat {\n        border-bottom: 1px dotted inherit;\n    }\n.activity-compare .four-up .laps .stat {\n        width: 6.6%;\n    }\n.activity-compare .three-up .laps .stat {\n        width: 8.2%;\n    }\n.activity-compare .two-up .laps .stat {\n        width: 11.2%;\n    }\n.activity-compare .toggle-detail {\n        width: 100%;\n        background: #888;\n        color: #fff;\n        padding: 2px 0;\n        text-decoration: none;\n        display: block;\n        text-align: center;\n        font-size: 12px;\n    }\n@media screen and (max-device-width: 1024px) {\n         {\n\n        /*\n            td:not(:first-child) {\n                counter-increment: rowNumber;\n            }\n            td:not(:first-child):before {\n                content: counter(rowNumber);\n                text-align: left;\n                font-weight: normal;\n                top: auto;\n                width: auto;\n                color: #bbb;\n            }\n        */\n}\n        .activity-compare .laps-table-header,\n        .activity-compare .laps.table {\n            display: none;\n        }\n        .activity-compare .table-responsive thead tr {\n            position: relative;\n            top: auto;\n            left: auto;\n        }\n        .activity-compare .table-responsive th {\n            width: 100%;\n        }\n        .activity-compare .summary [class^='icon-'],\n        .activity-compare .summary [class*=' icon-'] {\n            width: 26px;\n            height: 26px;\n            line-height: 26px;\n            font-size: 15px;\n            margin-bottom: 5px;\n        }\n        .activity-compare .table-responsive th,\n        .activity-compare .table-responsive td {\n            padding-left: 0;\n            border-left: none;\n        }\n        .activity-compare .table-responsive .row-label {\n            padding-left: 10px;\n        }\n        .table-responsive,\n        .table-responsive thead,\n        .table-responsive tbody,\n        .table-responsive th,\n        .table-responsive td,\n        .table-responsive tr {\n            display: block;\n        }\n    }\n/* start from resource-js */\n.page.activity-detail .activity-map-canvas {\n        height: 400px;\n        margin-top: 5px;\n        z-index: 0;\n    }\n.page.activity-detail html {\n        height: 100%;\n    }\n.page.activity-detail body {\n        height: 100%;\n        margin: 0;\n        padding: 0;\n    }\n.page.activity-detail .is_stuck .activity-map-canvas {\n        margin-top: 58px;\n        height: 200px;\n        overflow: hidden;\n    }\n.page.activity-detail .stats .data-block {\n        margin-bottom: 11px;\n    }\n.page.activity-detail .stats h3 {\n        border-bottom: 1px solid #ddd;\n        font-size: 14px;\n        margin-bottom: 11px;\n    }\n.page.activity-detail .stats .stat-block {\n        margin-bottom: 33px;\n    }\n.page.activity-detail .kevin-temp {\n        background-color: yellow;\n        color: red;\n        font-weight: bold;\n    }\n.page.activity-detail .modal.fullscreen.expanded-chart .modal-body {\n        overflow: hidden;\n    }\n.page.activity-detail .pointer-events-none {\n        pointer-events: none;\n    }\n.full-screen-map {\n        position: fixed;\n        z-index: 1000; /* IE needs a big number */\n        left: 0;\n        top: 0;\n    }\n/* Not preferred, but this will allow us to use full-screen-map everywhere */\n.full-screen-map .leaflet-container {\n        position: fixed !important;\n        height: 100% !important;\n        width: 100% !important;\n    }\n/* end from resource-js */\n#activity-map-canvas.short {\n        height: 210px;\n    }\n/* ===============\n          Dive Log\n       =============== */\n.page.activity-detail .dive-canvas {\n        position: relative;\n        height: 230px;\n        min-width: 551px;\n    }\n.page.activity-detail .dive-canvas .canvas {\n        width: 100%;\n        height: 100%;\n    }\n.page.activity-detail .dive-log-stat {\n        position: absolute;\n        z-index: 1;\n        width: 150px;\n        height: 20px;\n        text-align: center;\n    }\n.page.activity-detail .dive-log-label {\n        color: #999999;\n    }\n.page.activity-detail .avg-depth-label {\n        color: #ff9f10;\n    }\n.page.activity-detail .deco-dive-label {\n        color: #d0021b;\n    }\n.page.activity-detail .dive-log-stat.right {\n        right: 0;\n    }\n.page.activity-detail .dive-log-stat.center {\n        margin-left: auto;\n        margin-right: auto;\n        left: 0;\n        right: 0;\n    }\n.page.activity-detail .dive-log-value {\n        font-size: 24px;\n    }\n.page.activity-detail .dive-log-label {\n        font-size: 12px;\n    }\n.page.activity-detail .surface-interval-stat {\n        top: 16px;\n    }\n.page.activity-detail .time-in-stat {\n        top: 83px;\n    }\n.page.activity-detail .max-depth-stat {\n        top: 150px;\n    }\n.page.activity-detail .avg-depth-stat {\n        top: 83px;\n    }\n.page.activity-detail .bottom-time-stat {\n        top: 150px;\n    }\n.page.activity-detail .time-out-stat {\n        top: 83px;\n    }\n.page.activity-detail .deco-dive-stat {\n        top: 150px;\n    }\n.page.activity-detail .deco-dive-value {\n        width: 20px;\n        height: 20px;\n        line-height: 20px;\n        font-size: 11px;\n        text-align: center;\n        border-radius: 50%;\n        color: #fbebed;\n        background: #d0021b;\n        font-style: normal;\n        margin: 0 auto;\n        font-weight: 600;\n    }\n.page.activity-detail .apnea-dives-table .apnea-map {\n        width: 85px;\n        height: 62px;\n    }\n/* hide attribution - could break if we update google mutant */\n.page .apnea-dives-table .apnea-map .gmnoprint,\n    .page .apnea-dives-table .apnea-map .leaflet-google-mutant.leaflet-top.leaflet-left .gm-style img,\n    .page .apnea-dives-table .apnea-map .leaflet-control-attribution {\n        display: none;\n    }\n@media (max-width: 610px) {\n        .page.activity-detail .dive-canvas {\n            height: 170px;\n            min-width: 380px;\n        }\n\n        .page.activity-detail .dive-log-value {\n            font-size: 20px;\n        }\n\n        .page.activity-detail .dive-log-label {\n            display: block;\n            margin-top: -2px;\n        }\n\n        .page.activity-detail .dive-log-value.deco-dive-value {\n            font-size: 11px;\n        }\n\n        .page.activity-detail .surface-interval-stat {\n            top: 5px;\n        }\n\n        .page.activity-detail .time-in-stat {\n            top: 56px;\n        }\n\n        .page.activity-detail .max-depth-stat {\n            top: 107px;\n        }\n\n        .page.activity-detail .avg-depth-stat {\n            top: 56px;\n        }\n\n        .page.activity-detail .bottom-time-stat {\n            top: 106px;\n        }\n\n        .page.activity-detail .time-out-stat {\n            top: 56px;\n        }\n\n        .page.activity-detail .dive-log-stat {\n            width: 105px;\n            height: 20px;\n        }\n\n        .page.activity-detail .deco-dive-stat {\n            top: 106px;\n        }\n    }\n.page.activity-detail .note-container h3 {\n        font-size: 17px;\n        margin: 0 0 8px;\n    }\n.page.activity-detail .video-container.border-wrapper,\n    .page.activity-detail .note-container.border-wrapper {\n        border-top: none;\n    }\n.page.activity-detail .wrapper-top-container {\n        border-bottom: none;\n    }\n.page.activity-detail .edit-dive-activity-dive-label {\n        display: inline;\n    }\n.page.activity-detail .diving.inline-edit-text-field {\n        top: 12px;\n    }\n.page.activity-detail #trainingEffectStatsPlaceholder .stat-block .data-block .trainingEffectLabelContainer {\n        display: -webkit-flex;\n        display: flex;\n    }\n.page.activity-detail #trainingEffectStatsPlaceholder .stat-block .data-block .trainingEffectStatChip {\n        border-radius: 50%;\n        height: 8px;\n        width: 8px;\n        margin-top: 7px;\n        margin-right: 8px;\n    }\n.modal-body .chart-color-circle {\n        background-color: #e8e8e8;\n        border-radius: 50%;\n        height: 11px;\n        width: 11px;\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 5px;\n        margin-top: -3px;\n    }\n/* ===============\n          Advanced Activity Editing\n       =============== */\n.page.activity-advanced-edit .tab-content {\n        margin-bottom: 10px;\n    }\n.page.activity-advanced-edit .activity-edit-container {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: row;\n                flex-direction: row;\n        -webkit-flex-wrap: wrap;\n                flex-wrap: wrap;\n        -webkit-justify-content: flex-start;\n                justify-content: flex-start;\n        padding-left: 60px;\n    }\n.page.activity-advanced-edit .activity-edit-container .item {\n        margin-right: 20px;\n    }\n.page.activity-advanced-edit .button-container {\n        width: 50%;\n    }\n.page.activity-advanced-edit .flex-row {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: row;\n                flex-direction: row;\n        -webkit-flex-wrap: wrap;\n                flex-wrap: wrap;\n        width: 100%;\n    }\n.page.activity-advanced-edit .flex-column {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: column;\n                flex-direction: column;\n        -webkit-flex-basis: 100%;\n                flex-basis: 100%;\n        -webkit-flex: 1 1;\n                flex: 1 1;\n        margin: 5px 5px 5px 5px;\n    }\n.page.activity-advanced-edit .advanced-learn-more {\n        margin-top: 20px;\n    }\n.page.activity-advanced-edit .data-bit.no-wrap {\n        white-space: nowrap;\n    }\n.page.activity-advanced-edit .trim-band {\n        opacity: 0.8;\n    }\n.page.activity-advanced-edit .trim-slider {\n        margin-top: -8px;\n        margin-left: 18px;\n        margin-right: 8px;\n    }\n/*  ======================\n        Activity Intervals Edit\n        ======================  */\n.page.activity-intervals-edit .edit-intervals-title {\n        text-transform: uppercase;\n        margin-bottom: 15px;\n        margin-left: 10px;\n    }\n.page.activity-intervals-edit .edit-intervals-button-container {\n        display: -webkit-flex;\n        display: flex;\n        width: 30%;\n        -webkit-justify-content: space-between;\n                justify-content: space-between;\n    }\n.page.activity-intervals-edit .edit-intervals-learn-more span {\n        font-size: 12px;\n        font-weight: normal;\n        color: rgb(108, 108, 108);\n        line-height: 18px;\n    }\n.page.activity-intervals-edit .edit-intervals-button-container button {\n        box-shadow: none;\n        border-radius: 4px;\n        border: none;\n        font-size: 14px;\n        font-weight: 300;\n        text-align: center;\n        text-shadow: 0 1px 0 #0c7cad;\n        color: #fafafa;\n    }\n.page.activity-intervals-edit .edit-intervals-button-container button.reverse {\n        border: 1px solid rgb(228, 228, 228);\n        color: rgb(0, 0, 0);\n        font-weight: normal;\n        text-shadow: none;\n    }\n/*  ======================\n        Sticky Header\n        ======================  */\n.activity-advanced-edit .sticky-header {\n        background: #fff;\n        z-index: 5;\n    }\n.activity-advanced-edit .sticky-header.stuck,\n    .main-nav-hover .activity-advanced-edit .sticky-header.stuck {\n        position: fixed;\n        z-index: 3;\n    }\n.loading-overlay.spinner-container {\n        content: '';\n        display: block;\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        background: rgba(255, 255, 255, 0.9);\n        z-index: 999;\n    }\n.spinner-container .absolute-center {\n        position: fixed;\n        z-index: 999;\n        height: 2em;\n        width: 2em;\n        overflow: show;\n        margin: auto;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n    }\n.activity-detail .spinner-container .h5.text-center {\n        width: 200px;\n        margin-left: -63px;\n    }\n#advanced-activity-tab-placeholder .tooltip-error {\n        z-index: 40 !important; /* sticky header issue */\n    }\n@media print {\n        .main-nav,\n        header.header,\n        .takeover-container,\n        .system-message {\n            display: none;\n        }\n\n        body,\n        html,\n        .main-body,\n        .main-body .content {\n            overflow: visible;\n        }\n    }\n/*  ======================\n        Responsiveness Upgrades\n        ======================  */\n.page.activity-detail #activityToolbarViewPlaceholder,\n    .page.activity-detail #activityIntroViewPlaceholder {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-justify-content: space-between;\n                justify-content: space-between;\n    }\n.page.activity-detail #gearStatusViewPlaceholder {\n        white-space: nowrap;\n    }\n@media (max-width: 1049px) {\n        .page.activity-detail #activityToolbarViewPlaceholder,\n        .page.activity-detail #activityIntroViewPlaceholder {\n            margin: 0 0 10px;\n        }\n\n        .page.activity-detail #activityToolbarViewPlaceholder {\n            -webkit-justify-content: flex-start;\n                    justify-content: flex-start;\n        }\n\n        .page.activity-detail .privacy-consent,\n        .page.activity-detail #gear-menu-list {\n            float: left;\n            left: 0;\n            min-width: 240px;\n        }\n\n        .page.activity-detail .privacy-consent {\n            min-width: 280px;\n        }\n\n        .page.activity-detail .privacy-state-current,\n        .page.activity-detail #gear-menu-list .icon-gear {\n            float: left;\n            left: 5px;\n        }\n    }\n@media (max-width: 767px) {\n        .page.activity-detail #activityToolbarViewPlaceholder,\n        .page.activity-detail #activityIntroViewPlaceholder {\n            margin: 0;\n        }\n    }\n@media (max-width: 415px) {\n        .page.activity-detail .trophy-container .inline-edit-trigger {\n            margin-top: 0;\n        }\n\n        .page.activity-detail .date-block .dropdown {\n            display: block;\n        }\n\n        .page.activity-detail .event-type,\n        .page.activity-detail .course-type {\n            margin-right: 0;\n        }\n\n        .page.activity-detail .dropdown-backdrop {\n            display: inline;\n        }\n\n        .page.activity-detail #device-info ul.dropdown-menu {\n            left: -50px;\n        }\n    }\n", "", {
+    1914: function(e, t, i) {
+        (t = e.exports = i(33)(!0)).i(i(276), void 0),
+        t.i(i(1217), void 0),
+        t.push([e.i, ".page.activity-detail .activity-type-icon {\n        width: 60px;\n        height: 60px;\n        line-height: 60px;\n        margin-top: -4px;\n        margin-right: 11px;\n        font-size: 35px;\n        box-shadow: 0 0 0 2px #ccc;\n        text-align: center;\n        border-radius: 50%;\n        color: #888;\n        background: #fafafa;\n    }\n.page.activity-detail .page-header-content {\n        width: calc(100% - 50px);\n    }\n.page.activity-edit .page-header-content {\n        width: auto;\n    }\n.page.activity-detail .page-feature {\n        position: relative;\n    }\n.page.activity-edit .page-feature {\n        min-height: 22px;\n        height: auto;\n    }\n.page.activity-detail .page-header-content .page-title .data-bit {\n        margin-top: -4px;\n    }\n.page.activity-detail .page-header-content .page-title .inline-edit-editable,\n    .page.activity-detail .page-header-content .page-title .page-title-overflow {\n        max-width: calc(100% - 110px);\n    }\n.page.activity-detail .page-header-content .page-title .page-title-overflow {\n        display: inline-block;\n        overflow: hidden;\n        white-space: nowrap;\n        text-overflow: ellipsis;\n    }\n.page.activity-detail .page-header-content .page-title .inline-edit-editable-text.page-title-overflow {\n        text-overflow: inherit;\n        max-width: 100%;\n    }\n.page.activity-detail .page-header-content .date-block {\n        margin-top: -36px;\n        position: relative;\n        z-index: 1;\n    }\n.page.activity-detail .activity-detail-title input {\n        margin-top: -4px;\n        line-height: 15px;\n        padding: 0 4px;\n        box-shadow: inset 0 2px #eee;\n    }\n.page.activity-detail .activity-title-time {\n        cursor: pointer;\n        border-bottom: 1px dotted #999;\n    }\n.page.activity-detail .icon-personal-records {\n        color: #ff9e0d;\n        vertical-align: middle;\n    }\n.page.activity-detail .page-title .icon-personal-records {\n        font-size: 18px;\n        height: 18px;\n        width: 18px;\n        line-height: 18px;\n        margin-top: -18px;\n        margin-left: 8px;\n    }\n.page.activity-detail .multisport-nav .icon-personal-records {\n        font-size: 16px;\n        height: 16px;\n        width: 16px;\n        line-height: 16px;\n        margin-top: -5px;\n        margin-left: 3px;\n    }\n.page.activity-detail .overflow-nav-container.overflow .multisport-nav {\n        padding-left: 30px;\n    }\n.page.activity-detail .multisport-nav > li:first-child {\n        position: relative;\n        margin-right: 20px;\n        margin-left: 10px;\n    }\n.page.activity-detail .multisport-nav > li:first-child:after {\n        content: '';\n        display: block;\n        border-left: 1px solid #eee;\n        padding: 0;\n        margin: 10px;\n        height: 75px;\n        width: 0;\n        position: absolute;\n        left: 100%;\n        top: 0;\n    }\n.page.activity-detail .multisport-nav > li:first-child a {\n        padding-left: 20px;\n        padding-right: 20px;\n    }\n.page.activity-detail .multisport-nav > li:first-child .time {\n        font-weight: 600;\n    }\n.page.activity-detail .event-type,\n    .page.activity-detail .course-type {\n        margin-right: 10px;\n    }\n.page.activity-detail .event-type .dropdown-menu {\n        z-index: 2;\n    }\n.page.activity-detail .stats .data-block {\n        margin-bottom: 11px;\n    }\n.page.activity-detail .stats h3 {\n        border-bottom: 1px solid #ddd;\n        font-size: 14px;\n        margin-bottom: 11px;\n    }\n.page.activity-detail .stats .stat-block {\n        margin-bottom: 33px;\n    }\n.modal .rd-color {\n        display: inline-block;\n        height: 20px;\n        width: 20px;\n        vertical-align: middle;\n        border-radius: 20px;\n        margin-right: 10px;\n        margin-top: -2px;\n    }\n.page.activity-detail .mtbStat .data-block {\n        display: inline-block;\n        margin-left: 20px;\n        margin-bottom: 20px;\n    }\n.page.activity-detail .mtbStat .trophy-container {\n        width: 20px;\n        height: 20px;\n        position: absolute;\n        margin-left: 30px;\n    }\n.page.activity-detail .has-tooltip.jump-icon {\n        margin-top: 7px;\n    }\n.page.activity-detail .mtbStat .trophy-container > .icon-personal-records {\n        color: black;\n    }\n.page.activity-detail .leaflet-popup.jump-map-tooltip {\n        opacity: 0.9 !important;\n    }\n.jump-tooltip-container {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: column;\n                flex-direction: column;\n        font-size: 12px;\n    }\n.jump-tooltip-container .tooltip-row {\n        text-align: left;\n    }\n.page.activity-detail .leaflet-popup-content-wrapper,\n    .leaflet-popup-content {\n        border-radius: 3px !important;\n    }\n/*  ======================\n        More about Training Effect\n        ====================== */\n.modal-training-effect .te-feedback {\n        float: left;\n        clear: right;\n        width: 330px;\n    }\n.modal-training-effect .te-score {\n        float: right;\n        width: 175px;\n    }\n.modal-training-effect hr {\n        clear: both;\n    }\n/*FIX OVERLAPPING PILLS ON SMALL WINDOWS AND SIDEBAR OPEN*/\n@media (max-width: 1540px) {\n        .page.activity-detail .stats .btn-group .btn-small {\n            padding: 3px 6px;\n            font-size: 10px;\n        }\n    }\n/*  ======================\n        Primary Stats\n        ====================== */\n.page.activity-detail .nav.multisport-nav {\n        margin-bottom: 26px;\n    }\n.page.activity-detail .stats-primary .data-block {\n        display: inline-block;\n        float: left;\n        box-sizing: border-box;\n        width: 50%;\n        padding-right: 20px;\n    }\n.page.activity-detail .stats-primary .data-label {\n        display: block;\n        margin-top: 6px;\n        line-height: 16px;\n    }\n@media (min-width: 992px) {\n         {\n        /* Detect 3 .data-block elements */\n        /* Detect 4 .data-block elements */\n        /* Detect 5 .data-block elements */\n}\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(3),\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(3) ~ .data-block {\n            width: 33%;\n        }\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(4),\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(4) ~ .data-block {\n            width: 25%;\n        }\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(5),\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(5) ~ .data-block {\n            width: 20%;\n        }\n    }\n@media (min-width: 992px) and (max-width: 1199px) {\n         {\n        /* Detect 5 .data-block elements */\n}\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(5) .data-bit,\n        .page.activity-detail .stats-primary .data-block:first-child:nth-last-child(5) ~ .data-block .data-bit {\n            font-size: 22px;\n            line-height: 24px;\n        }\n    }\n/*  ======================\n        Time in Zones\n        ====================== */\n.tab-time-in-zones .table-heart-rate-zones,\n    .tab-time-in-zones .table-power-zones {\n        width: 100%;\n    }\n.tab-time-in-zones * {\n        box-sizing: border-box;\n    }\n.tab-time-in-zones .stat-block > h3 {\n        margin-bottom: 10px;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-1 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-1 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-1 .zone-time {\n        background: #6d8594;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-2 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-2 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-2 .zone-time {\n        background: #39a9ec;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-3 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-3 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-3 .zone-time {\n        background: #50af12;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-4 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-4 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-4 .zone-time {\n        background: #f79d0c;\n    }\n.tab-time-in-zones .heart-rate-zones .zone-5 .zone-percent > div,\n    .tab-time-in-zones .heart-rate-zones .zone-5 .zone-name,\n    .tab-time-in-zones .heart-rate-zones .zone-5 .zone-time {\n        background: #f4253c;\n    }\n.tab-time-in-zones .power-zones .zone-1 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-1 .zone-name,\n    .tab-time-in-zones .power-zones .zone-1 .zone-time {\n        background: #6d8594; /*FAD117; */\n    }\n.tab-time-in-zones .power-zones .zone-2 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-2 .zone-name,\n    .tab-time-in-zones .power-zones .zone-2 .zone-time {\n        background: #39a9ec; /*8264DB; */\n    }\n.tab-time-in-zones .power-zones .zone-3 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-3 .zone-name,\n    .tab-time-in-zones .power-zones .zone-3 .zone-time {\n        background: #50af12; /*6D8594; */\n    }\n.tab-time-in-zones .power-zones .zone-4 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-4 .zone-name,\n    .tab-time-in-zones .power-zones .zone-4 .zone-time {\n        background: #fad117; /*39A9EC; */\n    }\n.tab-time-in-zones .power-zones .zone-5 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-5 .zone-name,\n    .tab-time-in-zones .power-zones .zone-5 .zone-time {\n        background: #f79d0c; /*50AF12; */\n    }\n.tab-time-in-zones .power-zones .zone-6 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-6 .zone-name,\n    .tab-time-in-zones .power-zones .zone-6 .zone-time {\n        background: #f4253c; /*F79D0C; */\n    }\n.tab-time-in-zones .power-zones .zone-7 .zone-percent > div,\n    .tab-time-in-zones .power-zones .zone-7 .zone-name,\n    .tab-time-in-zones .power-zones .zone-7 .zone-time {\n        background: #8264db; /*F4253C; */\n    }\n.tab-time-in-zones .table-heart-rate-zones tr td,\n    .tab-time-in-zones .table-power-zones tr td {\n        border-right: 1px solid #fff;\n        border-bottom: 1px solid #fff;\n        padding: 0px;\n    }\n.tab-time-in-zones .table-heart-rate-zones td > div,\n    .tab-time-in-zones .table-power-zones td > div {\n        padding: 12px 20px;\n    }\n.tab-time-in-zones td.zone-name {\n        width: 30px;\n    }\n.tab-time-in-zones td.zone-name > div {\n        background: rgba(255, 255, 255, 0.6);\n        /*opacity: 20;*/\n        border: none;\n    }\n.tab-time-in-zones td.zone-time {\n        width: 30px;\n    }\n.tab-time-in-zones td.zone-time > div {\n        background: rgba(255, 255, 255, 0.6);\n        text-align: right;\n        border: none;\n        /*opacity: 20;*/\n    }\n.tab-time-in-zones td.zone-percent {\n        position: relative;\n    }\n.tab-time-in-zones td.zone-percent > div {\n        position: absolute;\n        top: 0px;\n        bottom: 0px;\n        padding: 12px 0px;\n    }\n.tab-time-in-zones td.zone-percent > div > span {\n        /*width: 700px;*/\n        display: block;\n        position: absolute;\n        left: 100%;\n        padding-left: 10px;\n    }\n.tab-time-in-zones .heart-rate-zones {\n        margin-bottom: 20px;\n    }\n/*  ======================\n        Charts\n        ======================  */\n.page.activity-detail .chart-header-item {\n        font-size: 14px;\n    }\n.page.activity-detail .chart-list-customize:hover {\n        color: inherit;\n        text-decoration: none;\n    }\n.page.activity-detail .chart-header .chart-zoom-toggle {\n        padding: 0 3px;\n        margin-left: 20px;\n        margin-right: 5px;\n        vertical-align: middle;\n    }\n.page.activity-detail .overlay-item {\n        float: left;\n        margin-left: 30px;\n    }\n.page.activity-detail .chart-name .chart-title {\n        margin-right: 10px;\n    }\n.page.activity-detail .chart-name,\n    .page.activity-detail .chart-max-avg-power,\n    .page.activity-detail .chart-lap-avg-pace {\n        display: inline-block;\n    }\n.page.activity-detail .chart-max-avg-power,\n    .page.activity-detail .chart-lap-avg-pace {\n        margin-left: 30px;\n    }\n.page.activity-detail .chart-max-avg-power .custom-max-avg-power {\n        padding: 0 20px;\n        white-space: nowrap;\n    }\n.page.activity-detail .chart-zoom .overlay-item button {\n        font-size: 18px;\n        font-weight: 100;\n    }\n.page.activity-detail .chart-toggle-options .time-toggle {\n        margin-right: -5px;\n        background-color: " + i(276).locals.blue_primary + ";\n        color: " + i(276).locals.textLight + ";\n        border-right: 0 transparent;\n        border-radius: 4px 0 0 4px;\n    }\n.page.activity-detail .chart-toggle-options .distance-toggle {\n        border-left: 0 transparent;\n        border-radius: 0 4px 4px 0;\n    }\n.page.activity-detail .chart-toggle-options .length-rests-toggle {\n        margin-right: -5px;\n        border-right: 0 transparent;\n        border-radius: 4px 0 0 4px;\n    }\n.page.activity-detail .activity-charts-container .btn-customize-charts {\n        background: transparent;\n        color: black;\n        box-shadow: none;\n        border: 1px solid #ccc;\n        padding: 5px 10px;\n    }\n.page.activity-detail .chart-toggle-options button,\n    .page.activity-detail .customize-charts-controls .reorder-widgets-set,\n    .page.activity-detail .customize-charts-controls .reorder-widgets-cancel {\n        border-radius: 2px;\n        border: 1px solid #ccc;\n        background: transparent;\n        color: black;\n        box-shadow: none;\n    }\n.page.activity-detail .customize-charts-controls .reorder-widgets-set {\n        background-color: #11a9ed;\n        color: #fff;\n    }\n.page.activity-detail .customize-charts-list {\n        top: -6px;\n        left: -1px;\n        min-width: 200px;\n        border-radius: 10px;\n        background: white;\n        padding-left: 20px;\n        padding-right: 10px;\n        padding-top: 10px;\n    }\n.page.activity-detail .customize-charts-header {\n        margin-top: -5px;\n        margin-left: -10px;\n    }\n.page.activity-detail .dropdown-menu label {\n        margin-bottom: 10px;\n    }\n.page.activity-detail .sortable-checkboxes .chart-off {\n        display: none;\n    }\n.page.activity-detail .sortable-checkboxes.sort-mode .sortable-checkbox:not(:checked) + .chart-off {\n        display: block;\n        top: 1px;\n    }\n.widget .heart-rate .chart-color-circle,\n    .page.activity-detail .chart-color-circle {\n        background-color: #e8e8e8;\n        border-radius: 50%;\n        height: 11px;\n        width: 11px;\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 5px;\n        margin-top: -3px;\n    }\n.page.activity-detail .no-overlay .chart-color-circle {\n        display: none;\n    }\n.page.activity-detail .chart-zoom .chart-color-circle {\n        height: 16px;\n        width: 16px;\n        margin-top: -4px;\n    }\n.page.activity-detail .stress .chart-color-circle {\n        background-color: #ff9e0d;\n    }\n.page.activity-detail .movement .chart-color-circle {\n        background-color: #b0e1f7;\n    }\n.page.activity-detail .speed .chart-color-circle {\n        background-color: #11a9ed;\n    }\n.page.activity-detail .elevation .chart-color-circle {\n        background-color: #4cb200;\n    }\n.page.activity-detail .breath-rate .chart-color-circle {\n        background-color: #5036a3;\n    }\n.widget .heart-rate .chart-color-circle,\n    .page.activity-detail .heart-rate .chart-color-circle {\n        background-color: #ff0035;\n    }\n.page.activity-detail .performance-condition .chart-color-circle {\n        background-color: #6e8594;\n    }\n.page.activity-detail .cadence .chart-color-circle,\n    .page.activity-detail .stride-length .chart-color-circle {\n        background-color: #ff9e0d;\n    }\n.page.activity-detail .power .chart-color-circle,\n    .page.activity-detail .power-balance .chart-color-circle {\n        background-color: #cf23b8;\n    }\n.page.activity-detail .power-phase-start .chart-color-circle {\n        background-color: #11a9ed;\n    }\n.page.activity-detail .power-phase-end .chart-color-circle {\n        background-color: #50b012;\n    }\n.page.activity-detail .pco-left .chart-color-circle {\n        background-color: #bf0f24;\n    }\n.page.activity-detail .pco-right .chart-color-circle {\n        background-color: #ed7e00;\n    }\n.page.activity-detail .temperature .chart-color-circle {\n        background-color: #6e8594;\n    }\n.page.activity-detail .vertical-o .chart-color-circle,\n    .page.activity-detail .vertical-r .chart-color-circle {\n        background-color: #cf25bb;\n    }\n.page.activity-detail .reset-zoom,\n    .page.activity-detail .chart-zoom .x-axis-value {\n        position: relative;\n        left: 50%;\n        -webkit-transform: translateX(-50%);\n        transform: translateX(-50%);\n    }\n/*  ======================\n        Swim Intervals\n        ======================  */\n.page.activity-detail .modal-body h2,\n    .page.activity-detail .modal-body h5 {\n        display: inline-block;\n    }\n.page.activity-detail .swim-interval .interval-title {\n        font-weight: 600;\n        margin: 22px 0 11px 0;\n    }\n.page.activity-detail .swim-interval .interval-title .distance,\n    .page.activity-detail .swim-interval .interval-title .time {\n        font-weight: 400;\n        font-size: 14px;\n        display: inline-block;\n        margin-left: 8px;\n    }\n.page.activity-detail .swim-length {\n        width: 110px;\n        height: 55px;\n        line-height: 40px;\n        float: left;\n        text-align: center;\n        background-color: #fafafa;\n        margin-right: -1px;\n        margin-bottom: 8px;\n        border: 1px solid #ddd;\n        overflow: hidden;\n    }\n.page.activity-detail .swim-length.first {\n        border-radius: 30px 0 0 30px;\n    }\n.page.activity-detail .swim-length.last {\n        border-radius: 0 30px 30px 0;\n        margin-right: 5px;\n    }\n.page.activity-detail .swim-length.first .type {\n        padding-left: 15px;\n    }\n.page.activity-detail .swim-length.last .type {\n        padding-right: 15px;\n    }\n.page.activity-detail .swim-length.first.last {\n        border-radius: 30px;\n    }\n.page.activity-detail .swim-length .type,\n    .page.activity-detail .swim-length .first.last .type {\n        height: 15px;\n        line-height: 15px;\n        font-size: 9px;\n        text-transform: uppercase;\n        color: rgba(255, 255, 255, 0.7);\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n        padding: 0 5px;\n    }\n.page.activity-detail .swim-length .number {\n        background: #ddd;\n        display: inline-block;\n        vertical-align: middle;\n        width: 22px;\n        height: 22px;\n        line-height: 22px;\n        font-size: 12px;\n        border-radius: 50%;\n        color: #444;\n        float: left;\n        margin-top: 10px;\n        margin-left: 15px;\n    }\n.page.activity-detail .swim-length .time {\n        font-weight: 100;\n        font-size: 18px;\n        color: #222;\n        float: right;\n        margin-right: 15px;\n    }\n.page.activity-detail .swim-length.freestyle .type {\n        background: #cf23b8;\n    }\n.page.activity-detail .swim-length.butterfly .type {\n        background: #11a9ed;\n    }\n.page.activity-detail .swim-length.backstroke .type {\n        background: #50b012;\n    }\n.page.activity-detail .swim-length.breaststroke .type {\n        background: #ff0035;\n    }\n.page.activity-detail .swim-length.drill .type {\n        background: #ed7e00;\n    }\n.page.activity-detail .swim-length.drill .number {\n        display: none;\n    }\n.page.activity-detail .swim-length.drill .time {\n        float: none;\n        margin-right: 0;\n    }\n.page.activity-detail .swim-length.mixed .type,\n    .page.activity-detail .swim-length.unknown .type {\n        background: #888;\n    }\n.page.activity-detail .swim-rest {\n        float: left;\n        margin-bottom: 8px;\n        line-height: 40px;\n        background: #ddd;\n        border-radius: 30px;\n        overflow: hidden;\n        width: 90px;\n        text-align: center;\n        border: 1px solid #ddd;\n    }\n.page.activity-detail .swim-rest .type {\n        height: 15px;\n        line-height: 15px;\n        font-size: 9px;\n        text-transform: uppercase;\n        color: #eee;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n        padding: 0 5px;\n        background: #bbb;\n    }\n.page.activity-detail .swim-rest .time {\n        font-size: 18px;\n        font-weight: 100;\n    }\n/*  ======================\n        Player\n        ======================  */\n.page.activity-detail .map-controls.player {\n        margin-left: calc(50% - 16px);\n        width: 33px;\n    }\n.page.activity-detail .map-controls button.disabled {\n        display: none;\n    }\n@media (max-width: 415px) {\n        .page.activity-detail #map-controls {\n            display: -webkit-flex;\n            display: flex;\n            -webkit-flex-direction: column;\n                    flex-direction: column;\n        }\n\n        .page.activity-detail #map-controls .map-control-item {\n            margin-bottom: 5px;\n        }\n    }\n/*  ======================\n        Laps checkbox\n        ======================  */\n.page.activity-detail .map-control-item.laps {\n        width: auto;\n        white-space: nowrap;\n    }\n.page.activity-detail .map-control-item.laps label {\n        line-height: 33px;\n        padding-right: 10px;\n    }\n.page.activity-detail .map-control-item.laps label input {\n        margin-top: 11px;\n        margin-right: 5px;\n        margin-left: 10px;\n    }\n/*  ======================\n        Mobile Scroll Toggle\n        ======================  */\n.page.activity-detail .map-control-item.scrolling {\n        clear: left;\n        width: auto;\n        margin-top: 6px;\n        padding-right: 10px;\n        padding-left: 10px;\n        white-space: nowrap;\n    }\n/*  ======================\n        Weather\n        ======================  */\n.page.activity-detail .weather *,\n    .page.activity-detail .weather.large * {\n        transition: 150ms cubic-bezier(0.175, 0.885, 0.305, 1.24);\n        -webkit-transform-style: preserve-3d;\n        transform-style: preserve-3d;\n    }\n.page.activity-detail .weather {\n        right: 10px;\n        left: auto;\n        cursor: pointer;\n        margin-bottom: 5px;\n    }\n.page.activity-detail .weather .map-control-item {\n        margin-right: 0;\n        width: auto;\n        padding: 0 5px;\n        overflow: hidden;\n    }\n.page.activity-detail .weather span {\n        display: inline-block;\n        vertical-align: middle;\n        position: relative;\n        margin: 0 2px;\n    }\n.page.activity-detail .weather .trigger {\n        top: 5px;\n        left: -4px;\n    }\n.page.activity-detail .weather .trigger i {\n        color: #888;\n        font-size: 11px;\n        height: 11px;\n        width: 11px;\n        line-height: 11px;\n        margin-top: 0;\n    }\n.page.activity-detail .weather .temperature {\n        font-size: 22px;\n        font-weight: 100;\n        line-height: 33px;\n    }\n.page.activity-detail .weather .humidity-percentage {\n        font-size: 22px;\n        font-weight: 100;\n        line-height: 33px;\n    }\n.page.activity-detail .weather .weather-icon {\n        margin-right: 5px;\n    }\n.page.activity-detail .weather .weather-icon img {\n        height: 31px;\n        width: 31px;\n    }\n.page.activity-detail .weather .wind {\n        width: 21px;\n        height: 21px;\n        line-height: 21px;\n        text-align: center;\n        font-size: 12px;\n        border: 1px solid #222;\n        border-radius: 50%;\n        margin-right: 0;\n    }\n.page.activity-detail .weather .wind:before {\n        content: '';\n        display: block;\n        width: 0;\n        height: 15px;\n        border-width: 7px 3px;\n        border-style: solid;\n        border-color: #222 transparent transparent transparent;\n        position: absolute;\n        top: -4px;\n        left: 8px;\n    }\n/*\n    .page.activity-detail .wind-n:before {\n        nothing needed - north is the default\n    }\n    */\n.page.activity-detail .wind-nne:before {\n        -webkit-transform: rotate(22.5deg);\n        transform: rotate(22.5deg);\n    }\n.page.activity-detail .wind-ne:before {\n        -webkit-transform: rotate(45deg);\n        transform: rotate(45deg);\n    }\n.page.activity-detail .wind-ene:before {\n        -webkit-transform: rotate(77.5deg);\n        transform: rotate(77.5deg);\n    }\n.page.activity-detail .wind-e:before {\n        -webkit-transform: rotate(90deg);\n        transform: rotate(90deg);\n    }\n.page.activity-detail .wind-ese:before {\n        -webkit-transform: rotate(112.5deg);\n        transform: rotate(112.5deg);\n    }\n.page.activity-detail .wind-se:before {\n        -webkit-transform: rotate(135deg);\n        transform: rotate(135deg);\n    }\n.page.activity-detail .wind-sse:before {\n        -webkit-transform: rotate(157.5deg);\n        transform: rotate(157.5deg);\n    }\n.page.activity-detail .wind-s:before {\n        -webkit-transform: rotate(180deg);\n        transform: rotate(180deg);\n    }\n.page.activity-detail .wind-ssw:before {\n        -webkit-transform: rotate(202.5deg);\n        transform: rotate(202.5deg);\n    }\n.page.activity-detail .wind-sw:before {\n        -webkit-transform: rotate(225deg);\n        transform: rotate(225deg);\n    }\n.page.activity-detail .wind-wsw:before {\n        -webkit-transform: rotate(247.5deg);\n        transform: rotate(247.5deg);\n    }\n.page.activity-detail .wind-w:before {\n        -webkit-transform: rotate(270deg);\n        transform: rotate(270deg);\n    }\n.page.activity-detail .wind-wnw:before {\n        -webkit-transform: rotate(292.5deg);\n        transform: rotate(292.5deg);\n    }\n.page.activity-detail .wind-nw:before {\n        -webkit-transform: rotate(315deg);\n        transform: rotate(315deg);\n    }\n.page.activity-detail .wind-nnw:before {\n        -webkit-transform: rotate(337.5deg);\n        transform: rotate(337.5deg);\n    }\n.page.activity-detail .weather .map-control-item .details {\n        display: none;\n    }\n.page.activity-detail .weather.weather-large .map-control-item {\n        height: 70px;\n        border-radius: 35px;\n        padding-right: 10px;\n    }\n.page.activity-detail .weather.weather-large .trigger {\n        top: -4px;\n        left: -3px;\n        -webkit-transform: rotate(180deg);\n        transform: rotate(180deg);\n    }\n.page.activity-detail .weather.weather-large .temperature {\n        font-size: 32px;\n        margin-left: 8px;\n    }\n.page.activity-detail .weather.weather-large .humidity-percentage {\n        font-size: 32px;\n        margin-left: 8px;\n    }\n.page.activity-detail .weather.weather-large .weather-icon img {\n        width: 70px;\n        height: 70px;\n    }\n.page.activity-detail .weather.weather-large .wind {\n        font-size: 18px;\n        width: 35px;\n        height: 35px;\n        line-height: 35px;\n        margin-left: 5px;\n        margin-right: 5px;\n    }\n.page.activity-detail .weather.weather-large .wind:before {\n        border-width: 11px 4px;\n        height: 25px;\n        left: 13px;\n        top: -6px;\n    }\n.page.activity-detail .weather.weather-large .details {\n        display: inline-block;\n        margin: 4px 8px 8px 0;\n    }\n.page.activity-detail .weather .details ul {\n        margin: 0;\n        padding: 0;\n        list-style: none;\n        font-size: 12px;\n    }\n.page.activity-detail .weather .details li {\n        margin: 0;\n        padding: 0;\n        line-height: 1.4;\n    }\n.page.activity-detail .weather .details .source {\n        font-size: 9px;\n        color: #888;\n    }\n@media (max-width: " + i(1217).locals.endXS + ") {\n        .page.activity-detail .weather.weather-large .map-control-item {\n            max-width: 270px;\n        }\n\n        .page.activity-detail .weather .weather-icon {\n            max-width: 40px;\n        }\n\n        .page.activity-detail .weather.weather-large .temperature {\n            font-size: 20px;\n            margin-left: 5px;\n        }\n\n        .page.activity-detail .weather.weather-large .weather-icon img {\n            width: 35px;\n            height: 35px;\n        }\n\n        .page.activity-detail .weather.weather-large .wind {\n            font-size: 16px;\n            width: 25px;\n            height: 25px;\n            line-height: 25px;\n        }\n\n        .page.activity-detail .weather.weather-large .wind:before {\n            height: 20px;\n            left: 9px;\n            top: -8px;\n        }\n\n        .page.activity-detail .weather.weather-large .details {\n            margin: 4px 4px 4px 0;\n        }\n    }\n/*  ======================\n        Splits and intervals table\n        ======================  */\n.page.activity-detail .tab-overflow {\n        overflow: scroll;\n    }\n.page.activity-detail .splits-table th,\n    .page.activity-detail .intervals-table th {\n        white-space: nowrap;\n        padding-left: 20px;\n        text-align: right;\n    }\n.page.activity-detail .splits-table th:nth-child(1),\n    .page.activity-detail .splits-table th:nth-child(2),\n    .page.activity-detail .intervals-table th:nth-child(2) {\n        text-align: center;\n    }\n.page.activity-detail .intervals-table th:nth-child(2) {\n        padding-right: 20px;\n    }\n.page.activity-detail .splits-table td,\n    .page.activity-detail .intervals-table td {\n        text-align: right;\n        white-space: nowrap;\n    }\n.page.activity-detail .splits-table td:nth-child(1),\n    .page.activity-detail .splits-table td:nth-child(2),\n    .page.activity-detail .intervals-table td:nth-child(2) {\n        text-align: center;\n    }\n.page.activity-detail .splits-table tfoot,\n    .page.activity-detail .intervals-table tfoot {\n        font-weight: bold;\n    }\n.page.activity-detail .activity-intervals-tab-content-placeholder {\n        overflow: auto;\n        min-height: 190px;\n    }\n/*  ======================\n        Gases and Tanks table\n        ======================  */\n.page.activity-detail .gases-and-tanks-table th,\n    .page.activity-detail .gases-and-tanks-table td {\n        white-space: nowrap;\n        padding-left: 10px;\n        padding-right: 10px;\n        text-align: center;\n    }\n/* Embed modal */\n.embed-activity-input[type='text'] {\n        margin-bottom: 11px;\n        width: 97%;\n        cursor: pointer;\n    }\n.embed-activity-iframe {\n        margin-left: 30px;\n    }\n.modal.activity-detail-embed .modal-body {\n        max-height: 600px;\n    }\n/* Create / Find segment button */\n.page.activity-detail .activity-segments-container {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: column;\n                flex-direction: column;\n    }\n.page.activity-detail .create-segment .icon-add {\n        font-size: 12px;\n        height: 12px;\n        width: 12px;\n        line-height: 12px;\n        margin-top: 4px;\n        margin-right: 5px;\n    }\n.page.activity-detail .segment-match-container {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: column;\n                flex-direction: column;\n    }\n.page.activity-detail .segment-match-container .segment-match-actions {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-justify-content: flex-end;\n                justify-content: flex-end;\n    }\n/* Segments table */\n.page.activity-detail .segments-table {\n        table-layout: fixed;\n    }\n.page.activity-detail .segments-table .segment-name {\n        min-width: 190px;\n    }\n.page.activity-detail .segments-table .segment-rank {\n        width: 40px;\n    }\n.page.activity-detail .segments-table .segment-link {\n        vertical-align: middle;\n        width: 100%;\n    }\n.page.activity-detail .segments-table .segment-time {\n        width: 75px;\n    }\n.page.activity-detail .segments-table .segment-pace {\n        width: 90px;\n    }\n.page.activity-detail .segments-table .segment-fav,\n    .page.activity-detail .segments-table .segment-visible {\n        width: 25px;\n    }\n.page.activity-detail .segments-table .icon-star.fav {\n        vertical-align: middle;\n    }\n.page.activity-detail .segments-table .icon-eye {\n        vertical-align: middle;\n        font-size: 18px;\n        color: #c7c7c7;\n        cursor: pointer;\n    }\n.page.activity-detail .segments-table .icon-eye.active {\n        color: #222;\n    }\n@media (max-width: " + i(1217).locals.endSM + ") {\n        .page.activity-detail .segments-table {\n            /* Creates a horizontally scrollable table that moves independently from the page when the page is too narrow */\n            display: block;\n            overflow-x: auto;\n            max-width: 90vw;\n        }\n    }\n/* Additional info */\n.page.activity-detail .additional-info > div {\n        text-align: center;\n    }\n.page.activity-detail .additional-info .device-image img {\n        width: 50%;\n    }\n.page.activity-detail .additional-info .device-name {\n        font-weight: 600;\n    }\n/* mbtester - admin */\n.page.activity-detail .additional-info .admin {\n        background: #e6ff84;\n    }\n.page.activity-detail .power-curve-excluded {\n        margin-top: 40px;\n    }\n.page.activity-detail .power-curve-excluded .heading {\n        font-size: 18px;\n    }\n.page.activity-detail .power-curve-excluded .sub-heading {\n        margin: 20px 0px 10px 0px;\n    }\n/*  ======================\n        Manual Activity Page / Edit Activity\n        ======================  */\n.page.activity-edit .time-zone-select {\n        font-size: 12px;\n        margin-left: 5px;\n        cursor: pointer;\n    }\n.page.activity-edit .time-zone-select > a {\n        display: inline-block;\n        max-width: calc(100% - 500px);\n        line-height: 11px;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n    }\n.page.activity-edit .avg-pace-speed {\n        width: auto;\n    }\n.page.activity-edit .advanced-edit-actions-container {\n        display: -webkit-flex;\n        display: flex;\n        width: 210px;\n        -webkit-justify-content: space-between;\n                justify-content: space-between;\n    }\n/*  ======================\n        Multisport\n        ======================  */\n.page.activity-detail .multisport-nav > li {\n        text-align: center;\n    }\n.page.activity-detail .multisport-nav > li > a {\n        padding-bottom: 10px;\n    }\n.page.activity-detail .multisport-nav > li > a > .icon > i {\n        display: block;\n        margin: 0 auto;\n        font-size: 36px;\n        width: 36px;\n        height: 36px;\n        line-height: 36px;\n    }\n.page.activity-detail .multisport-nav > li > a > .icon > .icon-activity-transition {\n        font-size: 20px;\n    }\n.page.activity-detail .multisport-nav > li > a > .avg-stat {\n        font-size: 10px;\n        line-height: 1;\n        height: 10px;\n    }\n.page.activity-detail .multisport-nav .dropdown-menu i {\n        font-size: 16px;\n        width: 16px;\n        height: 16px;\n        line-height: 16px;\n        margin-right: 10px;\n    }\n.page.activity-detail .multisport-nav .dropdown-menu {\n        text-align: left;\n    }\n/*  ======================\n        Connect IQ Label\n        ======================  */\n.ciq-label {\n        color: #888;\n        font-size: 12px;\n        width: 12px;\n        height: 11px;\n        line-height: 11px;\n        margin-left: 5px;\n        vertical-align: middle;\n    }\n/*  ======================\n        Media queries for responsive breakpoints\n        ======================  */\n@media (max-width: 1158px) {\n        .page.activity-detail .activity.stats .row-fluid [class*='span'] {\n            width: 100%;\n            margin-left: 0;\n        }\n    }\n/*  ======================\n        Cycling Dynamics Tab\n        ======================  */\n.cycling-dynamics .custom-max-avg-power {\n        display: inline-block;\n        margin-top: -10px;\n    }\n.cycling-dynamics .max-avg-label {\n        margin-right: 5px;\n    }\n.cycling-dynamics .cycling-tab-controls {\n        min-height: 30px;\n    }\n.cycling-dynamics .cycling-tab-controls .input-small {\n        margin-bottom: 0;\n    }\n/*  ======================\n        Platform Center Offset\n        ======================  */\n.cycling-dynamics .pco-content {\n        padding: 0 21px;\n    }\n.cycling-dynamics .pco-content .chart-container {\n        margin: 0 auto;\n        height: 160px;\n    }\n.platform-center-offset > canvas {\n        width: 160px;\n        height: 160px;\n        background-position: 0 0;\n        background-repeat: no-repeat;\n    }\n.platform-center-offset-left > canvas {\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/platform-center-offset-left.svg');\n    }\n.platform-center-offset-right > canvas {\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/platform-center-offset-right.svg');\n    }\n/*  ======================\n        Peak Power Phase\n        ======================  */\n.power-phase {\n        width: 100%;\n        padding-bottom: 10px;\n        margin-bottom: 20px;\n        border-bottom: 1px solid #ddd;\n    }\n.power-phase-charts {\n        width: 660px;\n        height: 260px;\n        margin: 0 auto;\n    }\n.power-phase-charts > div {\n        width: 325px;\n    }\n.power-phase-charts > div:first-child {\n        float: left;\n    }\n.power-phase-charts > div:last-child {\n        float: right;\n    }\n.power-phase-charts .chart-container {\n        /* Dynamic Highchart Graphic */\n        margin-top: -273px;\n        margin-left: 17px;\n    }\n.power-phase-charts .chart-container sup {\n        font-size: 22px;\n        top: -12px;\n    }\n.power-phase-graphic {\n        /* Background Image */\n        display: inline-block;\n        width: 250px;\n        height: 250px;\n        margin: 0 0 22px 0;\n        background-position: 0 0;\n        background-repeat: no-repeat;\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/power-phase.svg');\n    }\n@media (max-width: 1310px) {\n        .cycling-dynamics .custom-max-avg-power {\n            display: block;\n            margin-top: 10px;\n        }\n        .cycling-dynamics #avg-power-range-value {\n            float: none;\n            display: inline-block;\n        }\n    }\n@media (max-width: 640px) {\n        .power-phase-charts {\n            width: 100%;\n        }\n        .power-phase-charts > div {\n            width: 195px;\n        }\n        .power-phase-charts .chart-container {\n            margin-top: -225px;\n            margin-left: -18px;\n        }\n        .power-phase-graphic {\n            width: 200px; /* chart design is small */\n            height: 200px;\n        }\n    }\n@media (max-width: 520px) {\n        .power-phase {\n            border-width: 0;\n        }\n        .power-phase-charts {\n            height: 520px;\n        }\n        .power-phase-charts > div:first-child,\n        .power-phase-charts > div:last-child {\n            float: none;\n            width: 325px;\n            margin: 0 auto 30px auto;\n        }\n        .power-phase .chart-container {\n            margin-top: -274px;\n            margin-left: 19px;\n        }\n        .power-phase-graphic {\n            width: 250px; /* chart design is medium & stacked */\n            height: 250px;\n        }\n    }\n/*  ======================\n        Seated & Standing Position\n        ======================  */\n.cycling-dynamics .seated-standing {\n        padding-left: 20px;\n        padding-right: 20px;\n        margin-bottom: 0;\n        border-left: 1px solid #ddd;\n    }\n.position-seated > span,\n    .position-standing > span {\n        margin: auto auto 0 auto;\n        max-width: 80%;\n        vertical-align: bottom;\n        display: block;\n        width: 200px;\n        height: 160px;\n        background-position: center;\n        background-repeat: no-repeat;\n        margin-left: auto;\n        margin-right: auto;\n    }\n.position-seated > span {\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/seated.svg');\n    }\n.position-standing > span {\n        background-image: url('https://static.garmincdn.com/com.garmin.connect/ui/images/activities/cycling/standing.svg');\n    }\n/*  ======================\n        Media Queries provided by Joshua Johnston (front-end team)\n        ======================  */\n@media (max-width: 1175px) {\n        .pco-content .span6,\n        .seated-standing .span6 {\n            width: 100%; /* stack these graphics early */\n            margin: 0 auto;\n        }\n    }\n@media (max-width: 767px) {\n        .cycling-dynamics .seated-standing {\n            border-left: 0;\n        }\n    }\n@media (max-width: 653px) {\n        .cycling-dynamics .cycling-tab-controls {\n            max-height: 85px;\n        }\n    }\n/*  ======================\n        Activity List Table in Modal\n        ======================  */\n.modal .activity-list .activity-title {\n        width: 250px;\n        text-overflow: ellipsis;\n        overflow: hidden;\n        display: inline-block;\n        vertical-align: middle;\n        white-space: nowrap;\n        line-height: 1.3;\n    }\n/*ACTIVITY LIKING*/\n.page-navigation-action .like-link:hover {\n        background: transparent;\n    }\n/*NO PRIVILEGES PAGE*/\n.no-privileges h3 {\n        line-height: 2rem;\n    }\n.no-privileges .locked-activity {\n        font-size: 80px;\n        color: #e5e5e5;\n        display: block;\n        padding-right: 65px;\n    }\n.ciq-info {\n        max-width: 250px;\n        margin: 33px auto 0;\n    }\n.page.activity-detail .ciq-info .app-name a {\n        font-weight: 600;\n    }\n.page.activity-detail .ciq-info .aspect {\n        position: relative;\n        width: 100%;\n        max-width: 80px;\n        margin: 15px auto;\n    }\n.page.activity-detail .ciq-info .aspect-square {\n        padding-top: 100%;\n    }\n.page.activity-detail .ciq-info .aspect-element {\n        height: 100%;\n        width: 100%;\n        position: absolute;\n        top: 0;\n    }\n@media (max-width: 1156px) and (min-width: 414px) {\n        .activity.stats .row-fluid .span3 {\n            width: 48% !important;\n            margin: 0;\n            display: inline-block;\n            float: left;\n        }\n        .activity.stats .row-fluid .span3 {\n            margin-left: 2% !important;\n        }\n    }\n/*iPhone 6+ and smaller*/\n@media screen and (max-device-width: 415px) {\n         {\n\n        /* Layout */\n\n        /* Page Navigation */\n\n        /* Dropdown Menus */\n\n        /* Icons */\n\n        /* Unique Icon Styles */\n\n        /* Type */\n\n        /* Charts */\n}\n        .page.activity-detail .page-header-content .page-title .page-title-overflow {\n            max-width: calc(100% - 50px);\n        }\n        .page.activity-detail .page-title .icon-personal-records {\n            height: 25px;\n        }\n        .page.activity-detail .activity-type-icon {\n            width: 40px;\n            height: 40px;\n            line-height: 40px;\n            margin-top: 0;\n            margin-right: 6px;\n            font-size: 20px;\n            box-shadow: 0 0 0 2px #ccc;\n        }\n        .page.activity-detail .page-header-content .date-block {\n            clear: both;\n        }\n        .chart-header .span4 {\n            display: inline-block;\n        }\n        .page.activity-detail .highcharts-container {\n            /*TO PREVENT THE CARTS FROM BREAKING PAST THE CONTAINER*/\n            margin-left: -10px;\n        }\n        .chart-header .span9 {\n            width: 100%;\n            display: inline-block;\n        }\n        .chart-header .span3 {\n            display: none;\n        }\n        .chart-header .span3 button {\n            font-size: 12px;\n            vertical-align: middle;\n            line-height: 15px;\n        }\n        .row-fluid.chart-header [class*='span'] {\n            float: left;\n        }\n        .page.activity-detail .page-header-content .date-block {\n            margin-top: -24px;\n        }\n        .page.activity-detail .page-header-content {\n            width: calc(100% - 60px);\n        }\n        .page.activity-detail .page-dropdown {\n            display: inline-block;\n        }\n        .page.activity-detail .page-navigation .dropdown-menu {\n            right: -1px;\n            top: -6px;\n        }\n        .page.activity-detail .inline-edit-trigger {\n            width: 28px;\n            height: 28px;\n        }\n        .page.activity-detail .inline-edit-save[class*='icon-'],\n        .page.activity-detail .inline-edit-cancel[class*='icon-'] {\n            height: 28px;\n            width: 28px;\n        }\n        .page.activity-detail .page-title .inline-edit-actions button {\n            margin-top: 7px;\n        }\n        .page.activity-detail .page-navigation-action,\n        .page.activity-detail .page-navigation-action:last-child {\n            padding: 3px 7px;\n        }\n        .page.activity-detail .inline-edit-trigger,\n        .page.activity-detail .page-navigation-action,\n        .page.activity-detail .page-dropdown .dropdown-menu [class^='icon-'] {\n            font-size: 16px;\n        }\n        .page.activity-detail .page-dropdown .dropdown-menu [class^='icon-'] {\n            right: 7px;\n            top: 1px;\n        }\n        .page.activity-detail .page-dropdown .dropdown-menu > li > a [class^='icon-'] {\n            font-size: 14px;\n        }\n        .page.activity-detail .dropdown .icon-pointer-down {\n            font-size: 10px;\n        }\n        .page.activity-detail .page-navigation .icon-share,\n        .page.activity-detail .page-dropdown .dropdown-menu .icon-share {\n            font-size: 18px;\n        }\n        .page.activity-detail .help-icon {\n            font-size: 18px;\n            height: 20px;\n            width: 20px;\n        }\n        .page.activity-detail .page-intro .date-block,\n        .page.activity-detail .like,\n        .page.activity-detail .dropdown-menu > li {\n            font-size: 14px;\n        }\n        .page.activity-detail .dropdown-menu > li > a {\n            line-height: 22px;\n        }\n        .page.activity-detail .event-type,\n        .page.activity-detail .course-type,\n        .page.activity-detail .gear-indicator {\n            white-space: nowrap;\n        }\n        .page.activity-detail .chart-header-main .span4 {\n            display: none;\n        }\n        .page.activity-detail .chart-header-main .span4.chart-x-axis-toggle {\n            display: inline-block;\n            width: 100%;\n        }\n        .page.activity-detail .chart-header {\n            margin-top: 11px;\n        }\n    }\n/*ACTIVITY - REP COUNTING*/\n.rep-counting-table td {\n        vertical-align: middle;\n    }\n.page.activity-detail table.rep-counting-table {\n        margin-bottom: 10px;\n    }\n[data-activity-type='pilates'] .workout-name {\n        width: 70%;\n    }\n[data-activity-type='yoga'] .workout-name {\n        width: 70%;\n    }\n.table.rep-counting-table td {\n        border-top: 1px solid #e5e5e5;\n    }\n/*\n    For the play video button\n    .page.activity-detail .rep-counting-table td a [class*=\"icon-\"] {\n        width: 20px;\n        height: 20px;\n        line-height: 20px;\n        margin-right: 5.5px;\n        font-size: 12px;\n        text-align: center;\n        box-shadow: 0 0 0 1px #ccc;\n        border-radius: 50%;\n        color: #888;\n        background: #fafafa;\n    }*/\n.page.activity-detail .rep-counting-table td .input-append {\n        margin-bottom: 0;\n    }\n.page.activity-detail .rep-counting-table td .input-small {\n        width: 50px;\n    }\n.page.activity-edit .rep-counting-table th:first-child,\n    .page.activity-edit .rep-counting-table th:last-child,\n    .page.activity-edit .rep-counting-table td:first-child,\n    .page.activity-edit .rep-counting-table td:last-child {\n        width: 15px;\n        color: #888;\n    }\n.page.activity-detail .rep-counting-table th:nth-child(3),\n    .page.activity-detail .rep-counting-table th:nth-child(4),\n    .page.activity-detail .rep-counting-table th:nth-child(5),\n    .page.activity-detail .rep-counting-table th:nth-child(6),\n    .page.activity-detail .rep-counting-table td:nth-child(3),\n    .page.activity-detail .rep-counting-table td:nth-child(4),\n    .page.activity-detail .rep-counting-table td:nth-child(5),\n    .page.activity-detail .rep-counting-table td:nth-child(6) {\n        text-align: center;\n    }\n.page.activity-detail .rep-counting-table th:first-child,\n    .page.activity-detail .rep-counting-table td:first-child {\n        text-align: center;\n    }\n.page.activity-detail .rep-counting-table td:first-child p {\n        border: 1px solid #888;\n        border-radius: 50%;\n        height: 20px;\n        width: 20px;\n        line-height: 20px;\n        font-size: 10px;\n        color: #888;\n        margin: 0 auto;\n    }\n.page.activity-detail .rep-counting-table td:last-child a {\n        font-size: 12px;\n        font-family: 'Open Sans', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial,\n            sans-serif;\n        line-height: 22px;\n    }\n.page.activity-edit .page-navigation .btn {\n        margin-top: 0;\n    }\n/*DRAG & DROP -\n    HINT FOR WHERE THE EXERCISE IS GOING TO GO*/\n.rep-placehold-row {\n        height: 60px;\n    }\n.rep-placehold:before {\n        float: left;\n        left: -12px;\n    }\n.rep-placehold:after {\n        float: right;\n        right: -13px;\n    }\n/*FOR A BORDER WHEN USER HOVERS OVER THE DRAG HANDLE*/\n.rep-counting-table tr {\n        border-left: 1px solid rgba(170, 170, 170, 0);\n        border-right: 1px solid rgba(170, 170, 170, 0);\n        border-bottom: 1px solid rgba(170, 170, 170, 0);\n    }\n.rep-counting-table .hover-rep-row {\n        border: 1px solid rgba(170, 170, 170, 0.4);\n    }\n/*FOR A THICKER BORDER WHEN USER IS DRAGGING*/\n.rep-counting-table .ui-sortable-helper {\n        box-shadow: 0px 0px 0px 2px rgba(170, 170, 170, 0.75);\n        border-top: transparent;\n        background: #ffffff;\n    }\n/*ADD RED BORDER FOR ERROR ON EXERCISE NAME*/\n.chosen-container-single .chosen-single.error {\n        color: #bf0f24;\n        border-color: #bf0f24;\n    }\n/*  ======================\n        Activity Compare Page\n        ======================  */\n.activity-compare .summary [class^='icon-'],\n    .activity-compare .summary [class*=' icon-'] {\n        text-align: center;\n        border-radius: 50%;\n        color: #888;\n        background: #fafafa;\n        width: 40px;\n        height: 40px;\n        line-height: 40px;\n        font-size: 22px;\n        box-shadow: 0 0 0 2px #ccc;\n        display: block;\n        margin: 0 auto 10px auto;\n    }\n.activity-compare .summary {\n        margin-bottom: 0;\n    }\n.activity-compare thead th,\n    .activity-compare td {\n        text-align: center;\n        border-left: 2px solid #ddd;\n    }\n.activity-compare .laps th,\n    .activity-compare .laps td {\n        border-left-color: #f0f0f0;\n    }\n.activity-compare .laps th:nth-child(3n + 2),\n    .activity-compare .laps td:nth-child(3n + 2) {\n        border-left-color: #ddd;\n    }\n.activity-compare .laps th:nth-child(1) {\n        text-align: left;\n    }\n.activity-compare .four-up .summary thead th,\n    .activity-compare .four-up .summary td {\n        vertical-align: top;\n    }\n.activity-compare .row-label {\n        text-align: left;\n    }\n.activity-compare .laps th {\n        font-weight: normal;\n        color: #888;\n    }\n.activity-compare .four-up th {\n        width: 20%;\n    }\n.activity-compare .three-up th {\n        width: 25%;\n    }\n.activity-compare .two-up th {\n        width: 33.3%;\n    }\n.activity-compare th:first-child,\n    .activity-compare td:first-child {\n        border-left: none;\n    }\n/*  ======================\n      Battery Status\n    ======================  */\n.page.activity-detail [class^='icon-battery-status-'],\n    .page.activity-detail .icon-caution {\n        margin-left: 5px;\n        font-size: 16px;\n        line-height: 18px;\n    }\n/*  ======================\n      Activity Playlist\n    ======================  */\n.page.activity-detail .playlist-card {\n        max-height: 350px;\n        overflow-y: auto;\n        overflow-x: auto;\n        border: 1px solid #e5e5e5;\n        border-radius: 4px;\n        padding: 11px;\n    }\n.page.activity-detail .list-number {\n        border: 1px solid #c7c7c7;\n        border-radius: 50%;\n        height: 24px;\n        width: 24px;\n        text-align: center;\n        padding-top: 2px;\n        background: #fff;\n    }\n.page.activity-detail .playlist-privacy {\n        float: right;\n        margin-right: 20px;\n        margin-top: -25px;\n        font-size: 12px;\n        color: #888;\n    }\n/*  ======================\n      Responsive Table Standards - applies to rep-counting table\n      ======================  */\n@media (max-width: 1125px) {\n        .minimize-main-nav .span8.exercise-table-edit {\n            width: 65.95744680851064%;\n        }\n        .span8.exercise-table-edit {\n            width: 100%;\n        }\n    }\n@media (max-width: 855px) {\n         {\n        /* Forcing table to not behave in its usual manner.*/\n\n        /* Hiding table headers (but not display: none for accessibility purposes)*/\n\n        /* Forcing td to behave like a row.*/\n\n        /*Forcing content \"before\" to behave like a table heading.*/\n\n        /* Label the data*/\n}\n        .rep-counting-table,\n        .rep-counting-table thead,\n        .rep-counting-table tbody,\n        .rep-counting-table th,\n        .rep-counting-table td,\n        .rep-counting-table tr {\n            display: block;\n        }\n        .rep-counting-table-edit {\n            margin-top: 15px;\n        }\n        .rep-counting-table thead tr {\n            position: absolute;\n            top: -9999px;\n            left: -9999px;\n        }\n\n        .page.activity-detail .rep-counting-table tr {\n            border-bottom: 4px solid #888;\n        }\n        .rep-counting-table td {\n            border: none;\n            border-bottom: 1px solid #eee;\n            position: relative;\n            padding-left: 40%;\n        }\n        .rep-counting-table td:before {\n            position: absolute;\n            font-weight: bold;\n            /* Top/left values mimic padding */\n            top: 6px;\n            left: 6px;\n            width: 45%;\n            padding-right: 10px;\n            white-space: nowrap;\n        }\n        .rep-counting-table td:before {\n            /*Handling truncation of before content.*/\n            overflow: hidden;\n            text-overflow: ellipsis;\n            white-space: nowrap;\n        }\n        .page.activity-edit .rep-counting-table.rep-counting-table-edit td:first-child,\n        .page.activity-edit .rep-counting-table.rep-counting-table-edit td:last-child {\n            width: auto;\n            height: 20px;\n        }\n\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:first-child,\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:nth-child(3),\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:nth-child(4),\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:nth-child(5),\n        .page.activity-detail .rep-counting-table.rep-counting-table-edit td:nth-child(6),\n        .page.activity-detail .rep-counting-table td:first-child:before,\n        .page.activity-detail .rep-counting-table td:nth-child(3):before,\n        .page.activity-detail .rep-counting-table td:nth-child(4):before,\n        .page.activity-detail .rep-counting-table td:nth-child(5):before,\n        .page.activity-detail .rep-counting-table td:nth-child(6):before,\n        .page.activity-detail .rep-counting-table td:nth-child(3),\n        .page.activity-detail .rep-counting-table td:nth-child(4),\n        .page.activity-detail .rep-counting-table td:nth-child(5),\n        .page.activity-detail .rep-counting-table td:nth-child(6) {\n            text-align: left;\n        }\n        .page.activity-detail .rep-counting-table td:first-child:before {\n            content: attr(data-title-1);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(2):before {\n            content: attr(data-title-2);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(3):before {\n            content: attr(data-title-3);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(4):before {\n            content: attr(data-title-4);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(5):before {\n            content: attr(data-title-5);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(6):before {\n            content: attr(data-title-6);\n        }\n        .page.activity-detail .rep-counting-table td:nth-child(7):before {\n            content: attr(data-title-7);\n        }\n    }\n.page.activity-detail .chosen-single .icon-pointer-down {\n        font-size: 8px;\n    }\n.activity-compare .summary th h1 {\n        display: inline-block;\n    }\n.activity-compare .summary th .data-label {\n        display: block;\n        font-weight: 300;\n        line-height: 25px;\n    }\n.activity-compare .laps .stat {\n        border-bottom: 1px dotted inherit;\n    }\n.activity-compare .four-up .laps .stat {\n        width: 6.6%;\n    }\n.activity-compare .three-up .laps .stat {\n        width: 8.2%;\n    }\n.activity-compare .two-up .laps .stat {\n        width: 11.2%;\n    }\n.activity-compare .toggle-detail {\n        width: 100%;\n        background: #888;\n        color: #fff;\n        padding: 2px 0;\n        text-decoration: none;\n        display: block;\n        text-align: center;\n        font-size: 12px;\n    }\n@media screen and (max-device-width: 1024px) {\n         {\n\n        /*\n            td:not(:first-child) {\n                counter-increment: rowNumber;\n            }\n            td:not(:first-child):before {\n                content: counter(rowNumber);\n                text-align: left;\n                font-weight: normal;\n                top: auto;\n                width: auto;\n                color: #bbb;\n            }\n        */\n}\n        .activity-compare .laps-table-header,\n        .activity-compare .laps.table {\n            display: none;\n        }\n        .activity-compare .table-responsive thead tr {\n            position: relative;\n            top: auto;\n            left: auto;\n        }\n        .activity-compare .table-responsive th {\n            width: 100%;\n        }\n        .activity-compare .summary [class^='icon-'],\n        .activity-compare .summary [class*=' icon-'] {\n            width: 26px;\n            height: 26px;\n            line-height: 26px;\n            font-size: 15px;\n            margin-bottom: 5px;\n        }\n        .activity-compare .table-responsive th,\n        .activity-compare .table-responsive td {\n            padding-left: 0;\n            border-left: none;\n        }\n        .activity-compare .table-responsive .row-label {\n            padding-left: 10px;\n        }\n        .table-responsive,\n        .table-responsive thead,\n        .table-responsive tbody,\n        .table-responsive th,\n        .table-responsive td,\n        .table-responsive tr {\n            display: block;\n        }\n    }\n/* start from resource-js */\n.page.activity-detail .activity-map-canvas {\n        height: 400px;\n        margin-top: 5px;\n        z-index: 0;\n    }\n.page.activity-detail html {\n        height: 100%;\n    }\n.page.activity-detail body {\n        height: 100%;\n        margin: 0;\n        padding: 0;\n    }\n.page.activity-detail .is_stuck .activity-map-canvas {\n        margin-top: 58px;\n        height: 200px;\n        overflow: hidden;\n    }\n.page.activity-detail .stats .data-block {\n        margin-bottom: 11px;\n    }\n.page.activity-detail .stats h3 {\n        border-bottom: 1px solid #ddd;\n        font-size: 14px;\n        margin-bottom: 11px;\n    }\n.page.activity-detail .stats .stat-block {\n        margin-bottom: 33px;\n    }\n.page.activity-detail .kevin-temp {\n        background-color: yellow;\n        color: red;\n        font-weight: bold;\n    }\n.page.activity-detail .modal.fullscreen.expanded-chart .modal-body {\n        overflow: hidden;\n    }\n.page.activity-detail .pointer-events-none {\n        pointer-events: none;\n    }\n.full-screen-map {\n        position: fixed;\n        z-index: 1000; /* IE needs a big number */\n        left: 0;\n        top: 0;\n    }\n/* Not preferred, but this will allow us to use full-screen-map everywhere */\n.full-screen-map .leaflet-container {\n        position: fixed !important;\n        height: 100% !important;\n        width: 100% !important;\n    }\n/* end from resource-js */\n#activity-map-canvas.short {\n        height: 210px;\n    }\n/* ===============\n          Dive Log\n       =============== */\n.page.activity-detail .dive-canvas {\n        position: relative;\n        height: 230px;\n        min-width: 551px;\n    }\n.page.activity-detail .dive-canvas .canvas {\n        width: 100%;\n        height: 100%;\n    }\n.page.activity-detail .dive-log-stat {\n        position: absolute;\n        z-index: 1;\n        width: 150px;\n        height: 20px;\n        text-align: center;\n    }\n.page.activity-detail .dive-log-label {\n        color: #999999;\n    }\n.page.activity-detail .avg-depth-label {\n        color: #ff9f10;\n    }\n.page.activity-detail .deco-dive-label {\n        color: #d0021b;\n    }\n.page.activity-detail .dive-log-stat.right {\n        right: 0;\n    }\n.page.activity-detail .dive-log-stat.center {\n        margin-left: auto;\n        margin-right: auto;\n        left: 0;\n        right: 0;\n    }\n.page.activity-detail .dive-log-value {\n        font-size: 24px;\n    }\n.page.activity-detail .dive-log-label {\n        font-size: 12px;\n    }\n.page.activity-detail .surface-interval-stat {\n        top: 16px;\n    }\n.page.activity-detail .time-in-stat {\n        top: 83px;\n    }\n.page.activity-detail .max-depth-stat {\n        top: 150px;\n    }\n.page.activity-detail .avg-depth-stat {\n        top: 83px;\n    }\n.page.activity-detail .bottom-time-stat {\n        top: 150px;\n    }\n.page.activity-detail .time-out-stat {\n        top: 83px;\n    }\n.page.activity-detail .deco-dive-stat {\n        top: 150px;\n    }\n.page.activity-detail .deco-dive-value {\n        width: 20px;\n        height: 20px;\n        line-height: 20px;\n        font-size: 11px;\n        text-align: center;\n        border-radius: 50%;\n        color: #fbebed;\n        background: #d0021b;\n        font-style: normal;\n        margin: 0 auto;\n        font-weight: 600;\n    }\n.page.activity-detail .apnea-dives-table .apnea-map {\n        width: 85px;\n        height: 62px;\n    }\n/* hide attribution - could break if we update google mutant */\n.page .apnea-dives-table .apnea-map .gmnoprint,\n    .page .apnea-dives-table .apnea-map .leaflet-google-mutant.leaflet-top.leaflet-left .gm-style img,\n    .page .apnea-dives-table .apnea-map .leaflet-control-attribution {\n        display: none;\n    }\n@media (max-width: 610px) {\n        .page.activity-detail .dive-canvas {\n            height: 170px;\n            min-width: 380px;\n        }\n\n        .page.activity-detail .dive-log-value {\n            font-size: 20px;\n        }\n\n        .page.activity-detail .dive-log-label {\n            display: block;\n            margin-top: -2px;\n        }\n\n        .page.activity-detail .dive-log-value.deco-dive-value {\n            font-size: 11px;\n        }\n\n        .page.activity-detail .surface-interval-stat {\n            top: 5px;\n        }\n\n        .page.activity-detail .time-in-stat {\n            top: 56px;\n        }\n\n        .page.activity-detail .max-depth-stat {\n            top: 107px;\n        }\n\n        .page.activity-detail .avg-depth-stat {\n            top: 56px;\n        }\n\n        .page.activity-detail .bottom-time-stat {\n            top: 106px;\n        }\n\n        .page.activity-detail .time-out-stat {\n            top: 56px;\n        }\n\n        .page.activity-detail .dive-log-stat {\n            width: 105px;\n            height: 20px;\n        }\n\n        .page.activity-detail .deco-dive-stat {\n            top: 106px;\n        }\n    }\n.page.activity-detail .note-container h3 {\n        font-size: 17px;\n        margin: 0 0 8px;\n    }\n.page.activity-detail .video-container.border-wrapper,\n    .page.activity-detail .note-container.border-wrapper {\n        border-top: none;\n    }\n.page.activity-detail .wrapper-top-container {\n        border-bottom: none;\n    }\n.page.activity-detail .edit-dive-activity-dive-label {\n        display: inline;\n    }\n.page.activity-detail .diving.inline-edit-text-field {\n        top: 12px;\n    }\n.page.activity-detail #trainingEffectStatsPlaceholder .stat-block .data-block .trainingEffectLabelContainer {\n        display: -webkit-flex;\n        display: flex;\n    }\n.page.activity-detail #trainingEffectStatsPlaceholder .stat-block .data-block .trainingEffectStatChip {\n        border-radius: 50%;\n        height: 8px;\n        width: 8px;\n        margin-top: 7px;\n        margin-right: 8px;\n    }\n.modal-body .chart-color-circle {\n        background-color: #e8e8e8;\n        border-radius: 50%;\n        height: 11px;\n        width: 11px;\n        display: inline-block;\n        vertical-align: middle;\n        margin-right: 5px;\n        margin-top: -3px;\n    }\n/* ===============\n          Advanced Activity Editing\n       =============== */\n.page.activity-advanced-edit .tab-content {\n        margin-bottom: 10px;\n    }\n.page.activity-advanced-edit .activity-edit-container {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: row;\n                flex-direction: row;\n        -webkit-flex-wrap: wrap;\n                flex-wrap: wrap;\n        -webkit-justify-content: flex-start;\n                justify-content: flex-start;\n        padding-left: 60px;\n    }\n.page.activity-advanced-edit .activity-edit-container .item {\n        margin-right: 20px;\n    }\n.page.activity-advanced-edit .button-container {\n        width: 50%;\n    }\n.page.activity-advanced-edit .flex-row {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: row;\n                flex-direction: row;\n        -webkit-flex-wrap: wrap;\n                flex-wrap: wrap;\n        width: 100%;\n    }\n.page.activity-advanced-edit .flex-column {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-flex-direction: column;\n                flex-direction: column;\n        -webkit-flex-basis: 100%;\n                flex-basis: 100%;\n        -webkit-flex: 1 1;\n                flex: 1 1;\n        margin: 5px 5px 5px 5px;\n    }\n.page.activity-advanced-edit .advanced-learn-more {\n        margin-top: 20px;\n    }\n.page.activity-advanced-edit .data-bit.no-wrap {\n        white-space: nowrap;\n    }\n.page.activity-advanced-edit .trim-band {\n        opacity: 0.8;\n    }\n.page.activity-advanced-edit .trim-slider {\n        margin-top: -8px;\n        margin-left: 18px;\n        margin-right: 8px;\n    }\n/*  ======================\n        Activity Intervals Edit\n        ======================  */\n.page.activity-intervals-edit .edit-intervals-title {\n        text-transform: uppercase;\n        margin-bottom: 15px;\n        margin-left: 10px;\n    }\n.page.activity-intervals-edit .edit-intervals-button-container {\n        display: -webkit-flex;\n        display: flex;\n        width: 30%;\n        -webkit-justify-content: space-between;\n                justify-content: space-between;\n    }\n.page.activity-intervals-edit .edit-intervals-learn-more span {\n        font-size: 12px;\n        font-weight: normal;\n        color: rgb(108, 108, 108);\n        line-height: 18px;\n    }\n.page.activity-intervals-edit .edit-intervals-button-container button {\n        box-shadow: none;\n        border-radius: 4px;\n        border: none;\n        font-size: 14px;\n        font-weight: 300;\n        text-align: center;\n        text-shadow: 0 1px 0 #0c7cad;\n        color: #fafafa;\n    }\n.page.activity-intervals-edit .edit-intervals-button-container button.reverse {\n        border: 1px solid rgb(228, 228, 228);\n        color: rgb(0, 0, 0);\n        font-weight: normal;\n        text-shadow: none;\n    }\n/*  ======================\n        Sticky Header\n        ======================  */\n.activity-advanced-edit .sticky-header {\n        background: #fff;\n        z-index: 5;\n    }\n.activity-advanced-edit .sticky-header.stuck,\n    .main-nav-hover .activity-advanced-edit .sticky-header.stuck {\n        position: fixed;\n        z-index: 3;\n    }\n.loading-overlay.spinner-container {\n        content: '';\n        display: block;\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        background: rgba(255, 255, 255, 0.9);\n        z-index: 999;\n    }\n.spinner-container .absolute-center {\n        position: fixed;\n        z-index: 999;\n        height: 2em;\n        width: 2em;\n        overflow: show;\n        margin: auto;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n    }\n.activity-detail .spinner-container .h5.text-center {\n        width: 200px;\n        margin-left: -63px;\n    }\n#advanced-activity-tab-placeholder .tooltip-error {\n        z-index: 40 !important; /* sticky header issue */\n    }\n@media print {\n        .main-nav,\n        header.header,\n        .takeover-container,\n        .system-message {\n            display: none;\n        }\n\n        body,\n        html,\n        .main-body,\n        .main-body .content {\n            overflow: visible;\n        }\n    }\n/*  ======================\n        Responsiveness Upgrades\n        ======================  */\n.page.activity-detail #activityToolbarViewPlaceholder,\n    .page.activity-detail #activityIntroViewPlaceholder {\n        display: -webkit-flex;\n        display: flex;\n        -webkit-justify-content: space-between;\n                justify-content: space-between;\n    }\n.page.activity-detail #gearStatusViewPlaceholder {\n        white-space: nowrap;\n    }\n@media (max-width: 1049px) {\n        .page.activity-detail #activityToolbarViewPlaceholder,\n        .page.activity-detail #activityIntroViewPlaceholder {\n            margin: 0 0 10px;\n        }\n\n        .page.activity-detail #activityToolbarViewPlaceholder {\n            -webkit-justify-content: flex-start;\n                    justify-content: flex-start;\n        }\n\n        .page.activity-detail .privacy-consent,\n        .page.activity-detail #gear-menu-list {\n            float: left;\n            left: 0;\n            min-width: 240px;\n        }\n\n        .page.activity-detail .privacy-consent {\n            min-width: 280px;\n        }\n\n        .page.activity-detail .privacy-state-current,\n        .page.activity-detail #gear-menu-list .icon-gear {\n            float: left;\n            left: 5px;\n        }\n    }\n@media (max-width: 767px) {\n        .page.activity-detail #activityToolbarViewPlaceholder,\n        .page.activity-detail #activityIntroViewPlaceholder {\n            margin: 0;\n        }\n    }\n@media (max-width: 415px) {\n        .page.activity-detail .trophy-container .inline-edit-trigger {\n            margin-top: 0;\n        }\n\n        .page.activity-detail .date-block .dropdown {\n            display: block;\n        }\n\n        .page.activity-detail .event-type,\n        .page.activity-detail .course-type {\n            margin-right: 0;\n        }\n\n        .page.activity-detail .dropdown-backdrop {\n            display: inline;\n        }\n\n        .page.activity-detail #device-info ul.dropdown-menu {\n            left: -50px;\n        }\n    }\n", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/src/styles/activity.page.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/src/styles/activity.page.css"],
             names: [],
             mappings: "AAII;QACI,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,iBAAgB;QAChB,mBAAkB;QAClB,gBAAe;QACf,2BAA0B;QAC1B,mBAAkB;QAClB,mBAAkB;QAClB,YAAW;QACX,oBAAmB;KACvB;AACA;QACI,yBAAwB;KAC5B;AACA;QACI,YAAW;KACf;AACA;QACI,mBAAkB;KACtB;AACA;QACI,iBAAgB;QAChB,aAAY;KAChB;AACA;QACI,iBAAgB;KACpB;AACA;;QAEI,8BAA6B;KACjC;AACA;QACI,sBAAqB;QACrB,iBAAgB;QAChB,oBAAmB;QACnB,wBAAuB;KAC3B;AACA;QACI,uBAAsB;QACtB,gBAAe;KACnB;AACA;QACI,kBAAiB;QACjB,mBAAkB;QAClB,WAAU;KACd;AACA;QACI,iBAAgB;QAChB,kBAAiB;QACjB,eAAc;QACd,6BAA4B;KAChC;AACA;QACI,gBAAe;QACf,+BAA8B;KAClC;AACA;QACI,eAAc;QACd,uBAAsB;KAC1B;AACA;QACI,gBAAe;QACf,aAAY;QACZ,YAAW;QACX,kBAAiB;QACjB,kBAAiB;QACjB,iBAAgB;KACpB;AACA;QACI,gBAAe;QACf,aAAY;QACZ,YAAW;QACX,kBAAiB;QACjB,iBAAgB;QAChB,iBAAgB;KACpB;AACA;QACI,mBAAkB;KACtB;AACA;QACI,mBAAkB;QAClB,mBAAkB;QAClB,kBAAiB;KACrB;AACA;QACI,YAAW;QACX,eAAc;QACd,4BAA2B;QAC3B,WAAU;QACV,aAAY;QACZ,aAAY;QACZ,SAAQ;QACR,mBAAkB;QAClB,WAAU;QACV,OAAM;KACV;AACA;QACI,mBAAkB;QAClB,oBAAmB;KACvB;AACA;QACI,iBAAgB;KACpB;AACA;;QAEI,mBAAkB;KACtB;AACA;QACI,WAAU;KACd;AACA;QACI,oBAAmB;KACvB;AACA;QACI,8BAA6B;QAC7B,gBAAe;QACf,oBAAmB;KACvB;AACA;QACI,oBAAmB;KACvB;AACA;QACI,sBAAqB;QACrB,aAAY;QACZ,YAAW;QACX,uBAAsB;QACtB,oBAAmB;QACnB,mBAAkB;QAClB,iBAAgB;KACpB;AAEA;QACI,sBAAqB;QACrB,kBAAiB;QACjB,oBAAmB;KACvB;AAEA;QACI,YAAW;QACX,aAAY;QACZ,mBAAkB;QAClB,kBAAiB;KACrB;AAEA;QACI,gBAAe;KACnB;AAEA;QACI,aAAY;KAChB;AAEA;QACI,wBAAuB;KAC3B;AAEA;QACI,sBAAa;QAAb,cAAa;QACb,+BAAsB;gBAAtB,uBAAsB;QACtB,gBAAe;KACnB;AAEA;QACI,iBAAgB;KACpB;AAEA;;QAII,8BAA6B;KACjC;AAEA;;iCAE4B;AAC5B;QACI,YAAW;QACX,aAAY;QACZ,aAAY;KAChB;AACA;QACI,aAAY;QACZ,aAAY;KAChB;AACA;QACI,YAAW;KACf;AAEA,2DAA0D;AAC1D;QACI;YACI,iBAAgB;YAChB,gBAAe;SACnB;KACJ;AAEA;;iCAE4B;AAC5B;QACI,oBAAmB;KACvB;AACA;QACI,sBAAqB;QACrB,YAAW;QACX,uBAAsB;QACtB,WAAU;QACV,oBAAmB;KACvB;AACA;QACI,eAAc;QACd,gBAAe;QACf,kBAAiB;KACrB;AAEA;QA3NJ;QA4NQ,mCAAkC;QAKlC,mCAAkC;QAKlC,mCAAkC;CA2wE1C;QApxEQ;;YAEI,WAAU;SACd;QAEA;;YAEI,WAAU;SACd;QAEA;;YAEI,WAAU;SACd;KACJ;AAEA;QA7OJ;QA8OQ,mCAAkC;CAmwE1C;QAlwEQ;;YAEI,gBAAe;YACf,kBAAiB;SACrB;KACJ;AAEA;;iCAE4B;AAC5B;;QAEI,YAAW;KACf;AACA;QACI,uBAAsB;KAC1B;AACA;QACI,oBAAmB;KACvB;AACA;;;QAGI,oBAAmB;KACvB;AACA;;;QAGI,oBAAmB;KACvB;AACA;;;QAGI,oBAAmB;KACvB;AACA;;;QAGI,oBAAmB;KACvB;AACA;;;QAGI,oBAAmB;KACvB;AAEA;;;QAGI,oBAAmB,CAAE,YAAW;KACpC;AACA;;;QAGI,oBAAmB,CAAE,YAAW;KACpC;AACA;;;QAGI,oBAAmB,CAAE,YAAW;KACpC;AACA;;;QAGI,oBAAmB,CAAE,YAAW;KACpC;AACA;;;QAGI,oBAAmB,CAAE,YAAW;KACpC;AACA;;;QAGI,oBAAmB,CAAE,YAAW;KACpC;AACA;;;QAGI,oBAAmB,CAAE,YAAW;KACpC;AACA;;QAEI,6BAA4B;QAC5B,8BAA6B;QAC7B,aAAY;KAChB;AACA;;QAEI,mBAAkB;KACtB;AACA;QACI,YAAW;KACf;AACA;QACI,qCAAoC;QACpC,gBAAe;QACf,aAAY;KAChB;AACA;QACI,YAAW;KACf;AACA;QACI,qCAAoC;QACpC,kBAAiB;QACjB,aAAY;QACZ,gBAAe;KACnB;AACA;QACI,mBAAkB;KACtB;AACA;QACI,mBAAkB;QAClB,SAAQ;QACR,YAAW;QACX,kBAAiB;KACrB;AACA;QACI,iBAAgB;QAChB,eAAc;QACd,mBAAkB;QAClB,WAAU;QACV,mBAAkB;KACtB;AACA;QACI,oBAAmB;KACvB;AAEA;;kCAE6B;AAC7B;QACI,gBAAe;KACnB;AACA;QACI,eAAc;QACd,sBAAqB;KACzB;AACA;QACI,eAAc;QACd,kBAAiB;QACjB,kBAAiB;QACjB,uBAAsB;KAC1B;AACA;QACI,YAAW;QACX,kBAAiB;KACrB;AACA;QACI,mBAAkB;KACtB;AACA;;;QAGI,sBAAqB;KACzB;AACA;;QAEI,kBAAiB;KACrB;AACA;QACI,gBAAe;QACf,oBAAmB;KACvB;AACA;QACI,gBAAe;QACf,iBAAgB;KACpB;AACA;QACI,mBAAkB;QAClB,8CAA8B;QAC9B,mCAAgB;QAChB,4BAA2B;QAC3B,2BAA0B;KAC9B;AAEA;QACI,2BAA0B;QAC1B,2BAA0B;KAC9B;AAEA;QACI,mBAAkB;QAClB,4BAA2B;QAC3B,2BAA0B;KAC9B;AAEA;QACI,wBAAuB;QACvB,aAAY;QACZ,iBAAgB;QAChB,uBAAsB;QACtB,kBAAiB;KACrB;AAEA;;;QAGI,mBAAkB;QAClB,uBAAsB;QACtB,wBAAuB;QACvB,aAAY;QACZ,iBAAgB;KACpB;AAEA;QACI,0BAAyB;QACzB,YAAW;KACf;AAEA;QACI,UAAS;QACT,WAAU;QACV,iBAAgB;QAChB,oBAAmB;QACnB,kBAAiB;QACjB,mBAAkB;QAClB,oBAAmB;QACnB,kBAAiB;KACrB;AAEA;QACI,iBAAgB;QAChB,mBAAkB;KACtB;AAEA;QACI,oBAAmB;KACvB;AAEA;QACI,cAAa;KACjB;AAEA;QACI,eAAc;QACd,SAAQ;KACZ;AAEA;;QAEI,0BAAyB;QACzB,mBAAkB;QAClB,aAAY;QACZ,YAAW;QACX,sBAAqB;QACrB,uBAAsB;QACtB,kBAAiB;QACjB,iBAAgB;KACpB;AACA;QACI,cAAa;KACjB;AACA;QACI,aAAY;QACZ,YAAW;QACX,iBAAgB;KACpB;AAEA;QACI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AAEA;;QAEI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AACA;;QAEI,0BAAyB;KAC7B;AACA;;QAEI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AACA;QACI,0BAAyB;KAC7B;AACA;;QAEI,0BAAyB;KAC7B;AACA;;QAEI,mBAAkB;QAClB,UAAS;QACT,oCAAmC;QAEnC,4BAA2B;KAC/B;AAEA;;kCAE6B;AAC7B;;QAEI,sBAAqB;KACzB;AAEA;QACI,iBAAgB;QAChB,sBAAqB;KACzB;AACA;;QAEI,iBAAgB;QAChB,gBAAe;QACf,sBAAqB;QACrB,iBAAgB;KACpB;AACA;QACI,aAAY;QACZ,aAAY;QACZ,kBAAiB;QACjB,YAAW;QACX,mBAAkB;QAClB,0BAAyB;QACzB,mBAAkB;QAClB,mBAAkB;QAClB,uBAAsB;QACtB,iBAAgB;KACpB;AACA;QACI,6BAA4B;KAChC;AACA;QACI,6BAA4B;QAC5B,kBAAiB;KACrB;AACA;QACI,mBAAkB;KACtB;AACA;QACI,oBAAmB;KACvB;AACA;QACI,oBAAmB;KACvB;AACA;;QAEI,aAAY;QACZ,kBAAiB;QACjB,eAAc;QACd,0BAAyB;QACzB,gCAA+B;QAC/B,iBAAgB;QAChB,wBAAuB;QACvB,oBAAmB;QACnB,eAAc;KAClB;AACA;QACI,iBAAgB;QAChB,sBAAqB;QACrB,uBAAsB;QACtB,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,gBAAe;QACf,mBAAkB;QAClB,YAAW;QACX,YAAW;QACX,iBAAgB;QAChB,kBAAiB;KACrB;AACA;QACI,iBAAgB;QAChB,gBAAe;QACf,YAAW;QACX,aAAY;QACZ,mBAAkB;KACtB;AACA;QACI,oBAAmB;KACvB;AACA;QACI,oBAAmB;KACvB;AACA;QACI,oBAAmB;KACvB;AACA;QACI,oBAAmB;KACvB;AACA;QACI,oBAAmB;KACvB;AACA;QACI,cAAa;KACjB;AACA;QACI,YAAW;QACX,gBAAe;KACnB;AACA;;QAEI,iBAAgB;KACpB;AACA;QACI,YAAW;QACX,mBAAkB;QAClB,kBAAiB;QACjB,iBAAgB;QAChB,oBAAmB;QACnB,iBAAgB;QAChB,YAAW;QACX,mBAAkB;QAClB,uBAAsB;KAC1B;AACA;QACI,aAAY;QACZ,kBAAiB;QACjB,eAAc;QACd,0BAAyB;QACzB,YAAW;QACX,iBAAgB;QAChB,wBAAuB;QACvB,oBAAmB;QACnB,eAAc;QACd,iBAAgB;KACpB;AACA;QACI,gBAAe;QACf,iBAAgB;KACpB;AAEA;;kCAE6B;AAC7B;QACI,8BAA6B;QAC7B,YAAW;KACf;AACA;QACI,cAAa;KACjB;AAEA;QACI;YACI,sBAAa;YAAb,cAAa;YACb,+BAAsB;oBAAtB,uBAAsB;SAC1B;;QAEA;YACI,mBAAkB;SACtB;KACJ;AAEA;;kCAE6B;AAC7B;QACI,YAAW;QACX,oBAAmB;KACvB;AACA;QACI,kBAAiB;QACjB,oBAAmB;KACvB;AACA;QACI,iBAAgB;QAChB,kBAAiB;QACjB,kBAAiB;KACrB;AAEA;;kCAE6B;AAC7B;QACI,YAAW;QACX,YAAW;QACX,gBAAe;QACf,oBAAmB;QACnB,mBAAkB;QAClB,oBAAmB;KACvB;AAEA;;kCAE6B;AAC7B;;QAGI,0DAAyD;QACzD,qCAAoC;QACpC,6BAA4B;KAChC;AACA;QACI,YAAW;QACX,WAAU;QACV,gBAAe;QACf,mBAAkB;KACtB;AACA;QACI,gBAAe;QACf,YAAW;QACX,eAAc;QACd,iBAAgB;KACpB;AACA;QACI,sBAAqB;QACrB,uBAAsB;QACtB,mBAAkB;QAClB,cAAa;KACjB;AACA;QACI,SAAQ;QACR,WAAU;KACd;AACA;QACI,YAAW;QACX,gBAAe;QACf,aAAY;QACZ,YAAW;QACX,kBAAiB;QACjB,cAAa;KACjB;AACA;QACI,gBAAe;QACf,iBAAgB;QAChB,kBAAiB;KACrB;AACA;QACI,gBAAe;QACf,iBAAgB;QAChB,kBAAiB;KACrB;AACA;QACI,kBAAiB;KACrB;AACA;QACI,aAAY;QACZ,YAAW;KACf;AACA;QACI,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,mBAAkB;QAClB,gBAAe;QACf,uBAAsB;QACtB,mBAAkB;QAClB,gBAAe;KACnB;AACA;QACI,YAAW;QACX,eAAc;QACd,SAAQ;QACR,aAAY;QACZ,sBAAqB;QACrB,oBAAmB;QACnB,uDAAsD;QACtD,mBAAkB;QAClB,UAAS;QACT,UAAS;KACb;AACA;;;;MAIC;AACD;QACI,mCAAkC;QAElC,2BAA0B;KAC9B;AACA;QACI,iCAAgC;QAEhC,yBAAwB;KAC5B;AACA;QACI,mCAAkC;QAElC,2BAA0B;KAC9B;AACA;QACI,iCAAgC;QAEhC,yBAAwB;KAC5B;AACA;QACI,oCAAmC;QAEnC,4BAA2B;KAC/B;AACA;QACI,kCAAiC;QAEjC,0BAAyB;KAC7B;AACA;QACI,oCAAmC;QAEnC,4BAA2B;KAC/B;AACA;QACI,kCAAiC;QAEjC,0BAAyB;KAC7B;AACA;QACI,oCAAmC;QAEnC,4BAA2B;KAC/B;AACA;QACI,kCAAiC;QAEjC,0BAAyB;KAC7B;AACA;QACI,oCAAmC;QAEnC,4BAA2B;KAC/B;AACA;QACI,kCAAiC;QAEjC,0BAAyB;KAC7B;AACA;QACI,oCAAmC;QAEnC,4BAA2B;KAC/B;AACA;QACI,kCAAiC;QAEjC,0BAAyB;KAC7B;AACA;QACI,oCAAmC;QAEnC,4BAA2B;KAC/B;AACA;QACI,cAAa;KACjB;AAEA;QACI,aAAY;QACZ,oBAAmB;QACnB,oBAAmB;KACvB;AACA;QACI,UAAS;QACT,WAAU;QACV,kCAAiC;QAEjC,0BAAyB;KAC7B;AACA;QACI,gBAAe;QACf,iBAAgB;KACpB;AACA;QACI,gBAAe;QACf,iBAAgB;KACpB;AACA;QACI,YAAW;QACX,aAAY;KAChB;AACA;QACI,gBAAe;QACf,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,iBAAgB;QAChB,kBAAiB;KACrB;AACA;QACI,uBAAsB;QACtB,aAAY;QACZ,WAAU;QACV,UAAS;KACb;AACA;QACI,sBAAqB;QACrB,sBAAqB;KACzB;AACA;QACI,UAAS;QACT,WAAU;QACV,iBAAgB;QAChB,gBAAe;KACnB;AACA;QACI,UAAS;QACT,WAAU;QACV,iBAAgB;KACpB;AACA;QACI,eAAc;QACd,YAAW;KACf;AAEA;QACI;YACI,iBAAgB;SACpB;;QAEA;YACI,gBAAe;SACnB;;QAEA;YACI,gBAAe;YACf,iBAAgB;SACpB;;QAEA;YACI,YAAW;YACX,aAAY;SAChB;;QAEA;YACI,gBAAe;YACf,YAAW;YACX,aAAY;YACZ,kBAAiB;SACrB;;QAEA;YACI,aAAY;YACZ,UAAS;YACT,UAAS;SACb;;QAEA;YACI,sBAAqB;SACzB;KACJ;AAEA;;kCAE6B;AAC7B;QACI,iBAAgB;KACpB;AACA;;QAEI,oBAAmB;QACnB,mBAAkB;QAClB,kBAAiB;KACrB;AACA;;;QAGI,mBAAkB;KACtB;AACA;QACI,oBAAmB;KACvB;AACA;;QAEI,kBAAiB;QACjB,oBAAmB;KACvB;AACA;;;QAGI,mBAAkB;KACtB;AACA;;QAEI,kBAAiB;KACrB;AACA;QACI,eAAc;QACd,kBAAiB;KACrB;AACA;;kCAE6B;AAC7B;;QAEI,oBAAmB;QACnB,mBAAkB;QAClB,oBAAmB;QACnB,mBAAkB;KACtB;AAEA,iBAAgB;AAChB;QACI,oBAAmB;QACnB,WAAU;QACV,gBAAe;KACnB;AACA;QACI,kBAAiB;KACrB;AACA;QACI,kBAAiB;KACrB;AAEA,kCAAiC;AAEjC;QACI,sBAAa;QAAb,cAAa;QACb,+BAAsB;gBAAtB,uBAAsB;KAC1B;AAEA;QACI,gBAAe;QACf,aAAY;QACZ,YAAW;QACX,kBAAiB;QACjB,gBAAe;QACf,kBAAiB;KACrB;AAEA;QACI,sBAAa;QAAb,cAAa;QACb,+BAAsB;gBAAtB,uBAAsB;KAC1B;AAEA;QACI,sBAAa;QAAb,cAAa;QACb,kCAAyB;gBAAzB,0BAAyB;KAC7B;AAEA,oBAAmB;AACnB;QACI,oBAAmB;KACvB;AACA;QACI,iBAAgB;KACpB;AACA;QACI,YAAW;KACf;AACA;QACI,uBAAsB;QACtB,YAAW;KACf;AACA;QACI,YAAW;KACf;AACA;QACI,YAAW;KACf;AACA;;QAEI,YAAW;KACf;AACA;QACI,uBAAsB;KAC1B;AACA;QACI,uBAAsB;QACtB,gBAAe;QACf,eAAc;QACd,gBAAe;KACnB;AACA;QACI,YAAW;KACf;AAEA;QACI;YACI,gHAA+G;YAC/G,eAAc;YACd,iBAAgB;YAChB,gBAAe;SACnB;KACJ;AAEA,qBAAoB;AACpB;QACI,mBAAkB;KACtB;AACA;QACI,WAAU;KACd;AACA;QACI,iBAAgB;KACpB;AACA,sBAAqB;AACrB;QACI,oBAAmB;KACvB;AAEA;QACI,iBAAgB;KACpB;AAEA;QACI,gBAAe;KACnB;AAEA;QACI,0BAAyB;KAC7B;AAEA;;kCAE6B;AAC7B;QACI,gBAAe;QACf,iBAAgB;QAChB,gBAAe;KACnB;AACA;QACI,sBAAqB;QACrB,8BAA6B;QAC7B,kBAAiB;QACjB,iBAAgB;QAChB,wBAAuB;QACvB,oBAAmB;KACvB;AACA;QACI,YAAW;KACf;AACA;QACI,sBAAa;QAAb,cAAa;QACb,aAAY;QACZ,uCAA8B;gBAA9B,+BAA8B;KAClC;AAEA;;kCAE6B;AAC7B;QACI,mBAAkB;KACtB;AACA;QACI,qBAAoB;KACxB;AACA;QACI,eAAc;QACd,eAAc;QACd,gBAAe;QACf,YAAW;QACX,aAAY;QACZ,kBAAiB;KACrB;AACA;QACI,gBAAe;KACnB;AACA;QACI,gBAAe;QACf,eAAc;QACd,aAAY;KAChB;AACA;QACI,gBAAe;QACf,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,mBAAkB;KACtB;AACA;QACI,iBAAgB;KACpB;AAEA;;kCAE6B;AAC7B;QACI,YAAW;QACX,gBAAe;QACf,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,iBAAgB;QAChB,uBAAsB;KAC1B;AAEA;;kCAE6B;AAC7B;QACI;YACI,YAAW;YACX,eAAc;SAClB;KACJ;AAEA;;kCAE6B;AAC7B;QACI,sBAAqB;QACrB,kBAAiB;KACrB;AACA;QACI,kBAAiB;KACrB;AACA;QACI,iBAAgB;KACpB;AACA;QACI,iBAAgB;KACpB;AAEA;;kCAE6B;AAC7B;QACI,gBAAe;KACnB;AACA;QACI,eAAc;QACd,cAAa;KACjB;AACA;QACI,aAAY;QACZ,cAAa;QACb,yBAAwB;QACxB,6BAA4B;KAChC;AACA;QACI,sIAAqI;KACzI;AACA;QACI,uIAAsI;KAC1I;AAEA;;kCAE6B;AAC7B;QACI,YAAW;QACX,qBAAoB;QACpB,oBAAmB;QACnB,8BAA6B;KACjC;AACA;QACI,aAAY;QACZ,cAAa;QACb,eAAc;KAClB;AACA;QACI,aAAY;KAChB;AACA;QACI,YAAW;KACf;AACA;QACI,aAAY;KAChB;AACA;QACI,+BAA8B;QAC9B,mBAAkB;QAClB,kBAAiB;KACrB;AACA;QACI,gBAAe;QACf,WAAU;KACd;AACA;QACI,sBAAqB;QACrB,sBAAqB;QACrB,aAAY;QACZ,cAAa;QACb,mBAAkB;QAClB,yBAAwB;QACxB,6BAA4B;QAC5B,sHAAqH;KACzH;AACA;QACI;YACI,eAAc;YACd,iBAAgB;SACpB;QACA;YACI,YAAW;YACX,sBAAqB;SACzB;KACJ;AACA;QACI;YACI,YAAW;SACf;QACA;YACI,aAAY;SAChB;QACA;YACI,mBAAkB;YAClB,mBAAkB;SACtB;QACA;YACI,aAAY,CAAE,2BAA0B;YACxC,cAAa;SACjB;KACJ;AACA;QACI;YACI,gBAAe;SACnB;QACA;YACI,cAAa;SACjB;QACA;;YAEI,YAAW;YACX,aAAY;YACZ,yBAAwB;SAC5B;QACA;YACI,mBAAkB;YAClB,kBAAiB;SACrB;QACA;YACI,aAAY,CAAE,sCAAqC;YACnD,cAAa;SACjB;KACJ;AAEA;;kCAE6B;AAC7B;QACI,mBAAkB;QAClB,oBAAmB;QACnB,iBAAgB;QAChB,4BAA2B;KAC/B;AACA;;QAEI,yBAAwB;QACxB,eAAc;QACd,uBAAsB;QACtB,eAAc;QACd,aAAY;QACZ,cAAa;QACb,4BAA2B;QAC3B,6BAA4B;QAC5B,kBAAiB;QACjB,mBAAkB;KACtB;AACA;QACI,iHAAgH;KACpH;AACA;QACI,mHAAkH;KACtH;AAEA;;kCAE6B;AAC7B;QACI;;YAEI,YAAW,CAAE,gCAA+B;YAC5C,eAAc;SAClB;KACJ;AACA;QACI;YACI,eAAc;SAClB;KACJ;AACA;QACI;YACI,iBAAgB;SACpB;KACJ;AAEA;;kCAE6B;AAC7B;QACI,aAAY;QACZ,wBAAuB;QACvB,iBAAgB;QAChB,sBAAqB;QACrB,uBAAsB;QACtB,oBAAmB;QACnB,iBAAgB;KACpB;AAEA,mBAAkB;AAClB;QACI,wBAAuB;KAC3B;AAEA,sBAAqB;AACrB;QACI,kBAAiB;KACrB;AACA;QACI,gBAAe;QACf,eAAc;QACd,eAAc;QACd,oBAAmB;KACvB;AACA;QACI,iBAAgB;QAChB,oBAAmB;KACvB;AAEA;QACI,iBAAgB;KACpB;AAEA;QACI,mBAAkB;QAClB,YAAW;QACX,gBAAe;QACf,kBAAiB;KACrB;AAEA;QACI,kBAAiB;KACrB;AAEA;QACI,aAAY;QACZ,YAAW;QACX,mBAAkB;QAClB,OAAM;KACV;AAEA;QACI;YACI,sBAAqB;YACrB,UAAS;YACT,sBAAqB;YACrB,YAAW;SACf;QACA;YACI,2BAA0B;SAC9B;KACJ;AACA,yBAAwB;AACxB;QAr9CJ;;QA+/CQ,YAAW;;QAKX,qBAAoB;;QAKpB,oBAAmB;;QASnB,WAAU;;QAiCV,wBAAuB;;QAWvB,UAAS;;QAeT,YAAW;CAo6BnB;QA3hCQ;YACI,6BAA4B;SAChC;QACA;YACI,aAAY;SAChB;QACA;YACI,YAAW;YACX,aAAY;YACZ,kBAAiB;YACjB,cAAa;YACb,kBAAiB;YACjB,gBAAe;YACf,2BAA0B;SAC9B;QACA;YACI,YAAW;SACf;QACA;YACI,sBAAqB;SACzB;QACA;YACI,yDAAwD;YACxD,mBAAkB;SACtB;QACA;YACI,YAAW;YACX,sBAAqB;SACzB;QACA;YACI,cAAa;SACjB;QACA;YACI,gBAAe;YACf,uBAAsB;YACtB,kBAAiB;SACrB;QACA;YACI,YAAW;SACf;QAGA;YACI,kBAAiB;SACrB;QAGA;YACI,yBAAwB;SAC5B;QAGA;YACI,sBAAqB;SACzB;QACA;YACI,YAAW;YACX,UAAS;SACb;QAGA;YACI,YAAW;YACX,aAAY;SAChB;QACA;;YAEI,aAAY;YACZ,YAAW;SACf;QACA;YACI,gBAAe;SACnB;QACA;;YAEI,iBAAgB;SACpB;QACA;;;YAGI,gBAAe;SACnB;QACA;YACI,WAAU;YACV,SAAQ;SACZ;QACA;YACI,gBAAe;SACnB;QACA;YACI,gBAAe;SACnB;QAGA;;YAEI,gBAAe;SACnB;QACA;YACI,gBAAe;YACf,aAAY;YACZ,YAAW;SACf;QAGA;;;YAGI,gBAAe;SACnB;QACA;YACI,kBAAiB;SACrB;QACA;;;YAGI,oBAAmB;SACvB;QAGA;YACI,cAAa;SACjB;QACA;YACI,sBAAqB;YACrB,YAAW;SACf;QACA;YACI,iBAAgB;SACpB;KACJ;AAEA,2BAA0B;AAC1B;QACI,uBAAsB;KAC1B;AACA;QACI,oBAAmB;KACvB;AAEA;QACI,WAAU;KACd;AAEA;QACI,WAAU;KACd;AAEA;QACI,8BAA6B;KACjC;AACA;;;;;;;;;;;;;OAaE;AACF;QACI,iBAAgB;KACpB;AACA;QACI,YAAW;KACf;AAEA;;;;QAII,YAAW;QACX,YAAW;KACf;AACA;;;;;;;;QAQI,mBAAkB;KACtB;AACA;;QAEI,mBAAkB;KACtB;AACA;QACI,uBAAsB;QACtB,mBAAkB;QAClB,aAAY;QACZ,YAAW;QACX,kBAAiB;QACjB,gBAAe;QACf,YAAW;QACX,eAAc;KAClB;AAEA;QACI,gBAAe;QACf;uBACc;QACd,kBAAiB;KACrB;AACA;QACI,cAAa;KACjB;AAEA;gDAC2C;AAC3C;QACI,aAAY;KAChB;AACA;QACI,YAAW;QACX,YAAW;KACf;AACA;QACI,aAAY;QACZ,aAAY;KAChB;AACA,sDAAqD;AACrD;QACI,8CAA6C;QAC7C,+CAA8C;QAC9C,gDAA+C;KACnD;AACA;QACI,2CAA0C;KAC9C;AACA,8CAA6C;AAC7C;QACI,sDAAqD;QACrD,wBAAuB;QACvB,oBAAmB;KACvB;AACA,6CAA4C;AAC5C;QACI,eAAc;QACd,sBAAqB;KACzB;AACA;;kCAE6B;AAC7B;;QAEI,mBAAkB;QAClB,mBAAkB;QAClB,YAAW;QACX,oBAAmB;QACnB,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,gBAAe;QACf,2BAA0B;QAC1B,eAAc;QACd,yBAAwB;KAC5B;AACA;QACI,iBAAgB;KACpB;AACA;;QAEI,mBAAkB;QAClB,4BAA2B;KAC/B;AACA;;QAEI,2BAA0B;KAC9B;AACA;;QAEI,wBAAuB;KAC3B;AACA;QACI,iBAAgB;KACpB;AACA;;QAEI,oBAAmB;KACvB;AACA;QACI,iBAAgB;KACpB;AACA;QACI,oBAAmB;QACnB,YAAW;KACf;AACA;QACI,WAAU;KACd;AACA;QACI,WAAU;KACd;AACA;QACI,aAAY;KAChB;AACA;;QAEI,kBAAiB;KACrB;AAEA;;8BAEyB;AACzB;;QAEI,iBAAgB;QAChB,gBAAe;QACf,kBAAiB;KACrB;AAEA;;8BAEyB;AACzB;QACI,kBAAiB;QACjB,iBAAgB;QAChB,iBAAgB;QAChB,0BAAyB;QACzB,mBAAkB;QAClB,cAAa;KACjB;AACA;QACI,0BAAyB;QACzB,mBAAkB;QAClB,aAAY;QACZ,YAAW;QACX,mBAAkB;QAClB,iBAAgB;QAChB,iBAAgB;KACpB;AAEA;QACI,aAAY;QACZ,mBAAkB;QAClB,kBAAiB;QACjB,gBAAe;QACf,YAAW;KACf;AAEA;;gCAE2B;AAE3B;QACI;YACI,0BAAyB;SAC7B;QACA;YACI,YAAW;SACf;KACJ;AAEA;QA9zDJ;QA+zDQ,qDAAoD;;QAapD,4EAA2E;;QAW3E,qCAAoC;;QAQpC,4DAA2D;;QAwC3D,mBAAkB;CA0mB1B;QAjrBQ;;;;;;YAMI,eAAc;SAClB;QACA;YACI,iBAAgB;SACpB;QAGA;YACI,mBAAkB;YAClB,aAAY;YACZ,cAAa;SACjB;;QAEA;YACI,8BAA6B;SACjC;QAGA;YACI,aAAY;YACZ,8BAA6B;YAC7B,mBAAkB;YAClB,kBAAiB;SACrB;QAGA;YACI,mBAAkB;YAClB,kBAAiB;YACjB,mCAAkC;YAClC,SAAQ;YACR,UAAS;YACT,WAAU;YACV,oBAAmB;YACnB,oBAAmB;SACvB;QACA;YACI,0CAAyC;YACzC,iBAAgB;YAChB,wBAAuB;YACvB,oBAAmB;SACvB;QACA;;YAEI,YAAW;YACX,aAAY;SAChB;;QAEA;;;;;;;;;;;;;;YAcI,iBAAgB;SACpB;QAGA;YACI,4BAA2B;SAC/B;QACA;YACI,4BAA2B;SAC/B;QACA;YACI,4BAA2B;SAC/B;QACA;YACI,4BAA2B;SAC/B;QACA;YACI,4BAA2B;SAC/B;QACA;YACI,4BAA2B;SAC/B;QACA;YACI,4BAA2B;SAC/B;KACJ;AAEA;QACI,eAAc;KAClB;AACA;QACI,sBAAqB;KACzB;AACA;QACI,eAAc;QACd,iBAAgB;QAChB,kBAAiB;KACrB;AACA;QACI,kCAAiC;KACrC;AACA;QACI,YAAW;KACf;AACA;QACI,YAAW;KACf;AACA;QACI,aAAY;KAChB;AACA;QACI,YAAW;QACX,iBAAgB;QAChB,YAAW;QACX,eAAc;QACd,sBAAqB;QACrB,eAAc;QACd,mBAAkB;QAClB,gBAAe;KACnB;AAEA;QAj8DJ;;QAu+DQ;;;;;;;;;;;;UAYC;CA8fT;QA/iBQ;;YAEI,cAAa;SACjB;QACA;YACI,mBAAkB;YAClB,UAAS;YACT,WAAU;SACd;QACA;YACI,YAAW;SACf;QACA;;YAEI,YAAW;YACX,aAAY;YACZ,kBAAiB;YACjB,gBAAe;YACf,mBAAkB;SACtB;QACA;;YAEI,gBAAe;YACf,kBAAiB;SACrB;QACA;YACI,mBAAkB;SACtB;QACA;;;;;;YAMI,eAAc;SAClB;KAeJ;AAEA,4BAA2B;AAE3B;QACI,cAAa;QACb,gBAAe;QACf,WAAU;KACd;AAEA;QACI,aAAY;KAChB;AACA;QACI,aAAY;QACZ,UAAS;QACT,WAAU;KACd;AAEA;QACI,iBAAgB;QAChB,cAAa;QACb,iBAAgB;KACpB;AAEA;QACI,oBAAmB;KACvB;AACA;QACI,8BAA6B;QAC7B,gBAAe;QACf,oBAAmB;KACvB;AACA;QACI,oBAAmB;KACvB;AAEA;QACI,yBAAwB;QACxB,WAAU;QACV,kBAAiB;KACrB;AAEA;QACI,iBAAgB;KACpB;AAEA;QACI,qBAAoB;KACxB;AAEA;QACI,gBAAe;QACf,cAAa,CAAE,2BAA0B;QACzC,QAAO;QACP,OAAM;KACV;AAEA,6EAA4E;AAC5E;QACI,2BAA0B;QAC1B,wBAAuB;QACvB,uBAAsB;KAC1B;AAEA,0BAAyB;AAEzB;QACI,cAAa;KACjB;AAEA;;yBAEoB;AAEpB;QACI,mBAAkB;QAClB,cAAa;QACb,iBAAgB;KACpB;AAEA;QACI,YAAW;QACX,aAAY;KAChB;AAEA;QACI,mBAAkB;QAClB,WAAU;QACV,aAAY;QACZ,aAAY;QACZ,mBAAkB;KACtB;AAEA;QACI,eAAc;KAClB;AAEA;QACI,eAAc;KAClB;AAEA;QACI,eAAc;KAClB;AAEA;QACI,SAAQ;KACZ;AAEA;QACI,kBAAiB;QACjB,mBAAkB;QAClB,QAAO;QACP,SAAQ;KACZ;AAEA;QACI,gBAAe;KACnB;AAEA;QACI,gBAAe;KACnB;AAEA;QACI,UAAS;KACb;AAEA;QACI,UAAS;KACb;AAEA;QACI,WAAU;KACd;AAEA;QACI,UAAS;KACb;AAEA;QACI,WAAU;KACd;AAEA;QACI,UAAS;KACb;AAEA;QACI,WAAU;KACd;AAEA;QACI,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,gBAAe;QACf,mBAAkB;QAClB,mBAAkB;QAClB,eAAc;QACd,oBAAmB;QACnB,mBAAkB;QAClB,eAAc;QACd,iBAAgB;KACpB;AAEA;QACI,YAAW;QACX,aAAY;KAChB;AAEA,+DAA8D;AAC9D;;;QAGI,cAAa;KACjB;AAEA;QACI;YACI,cAAa;YACb,iBAAgB;SACpB;;QAEA;YACI,gBAAe;SACnB;;QAEA;YACI,eAAc;YACd,iBAAgB;SACpB;;QAEA;YACI,gBAAe;SACnB;;QAEA;YACI,SAAQ;SACZ;;QAEA;YACI,UAAS;SACb;;QAEA;YACI,WAAU;SACd;;QAEA;YACI,UAAS;SACb;;QAEA;YACI,WAAU;SACd;;QAEA;YACI,UAAS;SACb;;QAEA;YACI,aAAY;YACZ,aAAY;SAChB;;QAEA;YACI,WAAU;SACd;KACJ;AAEA;QACI,gBAAe;QACf,gBAAe;KACnB;AAEA;;QAEI,iBAAgB;KACpB;AAEA;QACI,oBAAmB;KACvB;AAEA;QACI,gBAAe;KACnB;AAEA;QACI,UAAS;KACb;AAEA;QACI,sBAAa;QAAb,cAAa;KACjB;AAEA;QACI,mBAAkB;QAClB,YAAW;QACX,WAAU;QACV,gBAAe;QACf,kBAAiB;KACrB;AAEA;QACI,0BAAyB;QACzB,mBAAkB;QAClB,aAAY;QACZ,YAAW;QACX,sBAAqB;QACrB,uBAAsB;QACtB,kBAAiB;QACjB,iBAAgB;KACpB;AAEA;;yBAEoB;AAEpB;QACI,oBAAmB;KACvB;AAEA;QACI,sBAAa;QAAb,cAAa;QACb,4BAAmB;gBAAnB,oBAAmB;QACnB,wBAAe;gBAAf,gBAAe;QACf,oCAA2B;gBAA3B,4BAA2B;QAC3B,mBAAkB;KACtB;AAEA;QACI,mBAAkB;KACtB;AAEA;QACI,WAAU;KACd;AAEA;QACI,sBAAa;QAAb,cAAa;QACb,4BAAmB;gBAAnB,oBAAmB;QACnB,wBAAe;gBAAf,gBAAe;QACf,YAAW;KACf;AAEA;QACI,sBAAa;QAAb,cAAa;QACb,+BAAsB;gBAAtB,uBAAsB;QACtB,yBAAgB;gBAAhB,iBAAgB;QAChB,kBAAO;gBAAP,UAAO;QACP,wBAAuB;KAC3B;AAEA;QACI,iBAAgB;KACpB;AAEA;QACI,oBAAmB;KACvB;AAEA;QACI,aAAY;KAChB;AAEA;QACI,iBAAgB;QAChB,kBAAiB;QACjB,kBAAiB;KACrB;AAEA;;kCAE6B;AAE7B;QACI,0BAAyB;QACzB,oBAAmB;QACnB,kBAAiB;KACrB;AAEA;QACI,sBAAa;QAAb,cAAa;QACb,WAAU;QACV,uCAA8B;gBAA9B,+BAA8B;KAClC;AAEA;QACI,gBAAe;QACf,oBAAmB;QACnB,0BAAyB;QACzB,kBAAiB;KACrB;AAEA;QACI,iBAAgB;QAChB,mBAAkB;QAClB,aAAY;QACZ,gBAAe;QACf,iBAAgB;QAChB,mBAAkB;QAClB,6BAA4B;QAC5B,eAAc;KAClB;AAEA;QACI,qCAAoC;QACpC,oBAAmB;QACnB,oBAAmB;QACnB,kBAAiB;KACrB;AAEA;;kCAE6B;AAC7B;QACI,iBAAgB;QAChB,WAAU;KACd;AAEA;;QAEI,gBAAe;QACf,WAAU;KACd;AAEA;QACI,YAAW;QACX,eAAc;QACd,gBAAe;QACf,OAAM;QACN,QAAO;QACP,YAAW;QACX,aAAY;QACZ,qCAAoC;QACpC,aAAY;KAChB;AAEA;QACI,gBAAe;QACf,aAAY;QACZ,YAAW;QACX,WAAU;QACV,eAAc;QACd,aAAY;QACZ,OAAM;QACN,QAAO;QACP,UAAS;QACT,SAAQ;KACZ;AAEA;QACI,aAAY;QACZ,mBAAkB;KACtB;AAEA;QACI,uBAAsB,CAAE,yBAAwB;KACpD;AAEA;QACI;;;;YAII,cAAa;SACjB;;QAEA;;;;YAII,kBAAiB;SACrB;KACJ;AAEA;;kCAE6B;AAC7B;;QAEI,sBAAa;QAAb,cAAa;QACb,uCAA8B;gBAA9B,+BAA8B;KAClC;AAEA;QACI,oBAAmB;KACvB;AAEA;QACI;;YAEI,iBAAgB;SACpB;;QAEA;YACI,oCAA2B;oBAA3B,4BAA2B;SAC/B;;QAEA;;YAEI,YAAW;YACX,QAAO;YACP,iBAAgB;SACpB;;QAEA;YACI,iBAAgB;SACpB;;QAEA;;YAEI,YAAW;YACX,UAAS;SACb;KACJ;AAEA;QACI;;YAEI,UAAS;SACb;KACJ;AAEA;QACI;YACI,cAAa;SACjB;;QAEA;YACI,eAAc;SAClB;;QAEA;;YAEI,gBAAe;SACnB;;QAEA;YACI,gBAAe;SACnB;;QAEA;YACI,YAAW;SACf;KACJ",
             file: "activity.page.css",
@@ -31959,17 +31918,17 @@
             sourceRoot: ""
         }]),
         t.locals = {
-            blue_primary: "" + i(274).locals.blue_primary,
-            textLight: "" + i(274).locals.textLight,
-            endXS: "" + i(1213).locals.endXS,
-            endSM: "" + i(1213).locals.endSM
+            blue_primary: "" + i(276).locals.blue_primary,
+            textLight: "" + i(276).locals.textLight,
+            endXS: "" + i(1217).locals.endXS,
+            endSM: "" + i(1217).locals.endSM
         }
     },
-    1912: function(e, t, i) {
+    1917: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
-          , r = i(1637)
+          , r = i(1643)
           , s = n.a.Collection.extend({
             model: r.a,
             url: function() {
@@ -31991,7 +31950,7 @@
         });
         t.a = s
     },
-    1913: function(e, t) {
+    1918: function(e, t) {
         !function(e, t, i) {
             L.drawVersion = "1.0.4",
             L.Draw = {},
@@ -34293,9 +34252,9 @@
             })
         }(window, document)
     },
-    1914: function(e, t, i) {
+    1919: function(e, t, i) {
         var a, n, r;
-        n = [i(1217)],
+        n = [i(1221)],
         void 0 === (r = "function" === typeof (a = function(e) {
             if (e.Hotline)
                 return e;
@@ -34535,7 +34494,7 @@
         }
         ) ? a.apply(t, n) : a) || (e.exports = r)
     },
-    1919: function(e, t, i) {
+    1924: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -34556,13 +34515,13 @@
         });
         t.a = n
     },
-    1990: function(e, t, i) {
+    1995: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
-          , o = i(29)
+          , o = i(28)
           , l = s.a.Collection.extend({
             model: s.a.Model,
             initialize: function(e) {
@@ -34591,14 +34550,14 @@
         });
         t.a = l
     },
-    1992: function(e, t) {
+    1997: function(e, t) {
         e.exports = '<div class="<%- maxView ? \'\' : \'text-center\' %>">\n    <div class="alert alert-error" style="display: none;"><%- Localizer.localize(\'ftp.weight.error\') %></div>\n    <% if (title) {  %>\n        <h6 class="font-thin top-m"><%- title %></h6>\n        <% if (prompt) { %>\n            <p class="font-thin top-s"><%- prompt %></p>\n        <% }             %>\n    <% } else if (prompt) { %>\n        <div class="bottom-m"><%- prompt %></div>\n    <% }        %>\n    <form action="" class="form-horizontal">\n        <div class="row-fluid">\n            <div class="control-group">\n                <label class="control-label weight-label" for="user-weight"><%- Localizer.localize(\'ftp.weight\') %></label>\n                <div class="<%- maxView ? \'controls controls-row\' : \'\' %>">\n                    <span class="input-append">\n                        <input type="text" id="user-weight" placeholder="" class="input-mini" maxlength="<%- maxLength %>" autofocus>\n                        <span class="add-on"><%- weightLabel %></span>\n                    </span>\n                    <% if (displaySaveButton) { %>\n                        <button class="btn btn-form"><%- Localizer.localize(\'save\') %></button>\n                    <% } %>\n                </div>\n            </div>\n        </div>\n    </form>\n</div>\n'
     },
-    1997: function(e, t, i) {
+    2002: function(e, t, i) {
         "use strict";
         i(7);
-        var a, n = i(18), r = i.n(n), s = i(4), o = i(13), l = i(1282), c = i(1670), h = (i(29),
-        i(1218)), d = i(1223), p = i.n(d), u = i(1248), m = i.n(u), g = i(1400), f = i.n(g);
+        var a, n = i(18), r = i.n(n), s = i(4), o = i(13), l = i(1285), c = i(1675), h = (i(28),
+        i(1222)), d = i(1227), p = i.n(d), u = i(1253), m = i.n(u), g = i(1403), f = i.n(g);
         m()(p.a),
         f()(p.a),
         (a = p.a).wrap(a.Legend.prototype, "colorizeItem", function(e, t, i) {
@@ -34830,30 +34789,30 @@
         A.Events = y,
         t.a = A
     },
-    1998: function(e, t) {
+    2003: function(e, t) {
         e.exports = '<h6 id="te-feedback-header"><%- feedbackTitle %></h6>\n<p id="te-feedback-content"><%- feedbackContent %></p>'
     },
-    1999: function(e, t) {
+    2004: function(e, t) {
         e.exports = '<% if (aerobicTrainingEffect !== null) {      %>\n    <div id="te-aerobic-feedback" class="te-feedback"></div>\n    <div class="rounded-gauge te-score" id="te-aerobic-score"></div>\n<% } %>\n\n<% if (aerobicTrainingEffect !== null && anaerobicTrainingEffect !== null ) {      %>\n    <hr class="top-s bottom-s">\n<% } %>\n\n<% if (anaerobicTrainingEffect !== null) {      %>\n    <div id="te-anaerobic-feedback" class="te-feedback"></div>\n    <div class="rounded-gauge te-score" id="te-anaerobic-score"></div>\n<% } %>\n'
     },
-    2000: function(e, t) {
+    2005: function(e, t) {
         e.exports = "<p><strong><%- Localizer.localize('AEROBIC_TRAINING_EFFECT') %></strong> <%- Localizer.localize('AEROBIC_TE_DESCRIPTION') %></p>\n<% if (anaerobicTrainingEffect !== null) {      %>\n    <p><strong><%- Localizer.localize('ANAEROBIC_TRAINING_EFFECT') %></strong> <%- Localizer.localize('ANAEROBIC_TE_DESCRIPTION') %></p>\n<% } %>\n\n<div class=\"fine-print\">\n    <%= Localizer.localize('TRAINING_EFFECT_REPORT_FOOTER') %>\n</div>"
     },
-    2001: function(e, t) {
+    2006: function(e, t) {
         e.exports = "<table class=\"table table-bordered table-training-effect\">\n    <thead>\n    <tr>\n        <th><%- Localizer.localize('trainingEffect.help.status') %></th>\n        <th><%- Localizer.localize('trainingEffect.help.score') %></th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr>\n        <td><%- Localizer.localize('trainingEffect.help.score5') %></td>\n        <td>5</td>\n    </tr>\n    <tr>\n        <td><%- Localizer.localize('trainingEffect.help.score4') %></td>\n        <td>4</td>\n    </tr>\n    <tr>\n        <td><%- Localizer.localize('trainingEffect.help.score3') %></td>\n        <td>3</td>\n    </tr>\n    <tr>\n        <td><%- Localizer.localize('trainingEffect.help.score2') %></td>\n        <td>2</td>\n    </tr>\n    <tr>\n        <td><%- Localizer.localize('trainingEffect.help.score1') %></td>\n        <td>1</td>\n    </tr>\n    <tr>\n        <td><%- Localizer.localize('trainingEffect.help.score0') %></td>\n        <td>0</td>\n    </tr>\n    </tbody>\n</table>"
     },
-    2002: function(e, t) {
+    2007: function(e, t) {
         e.exports = '\n\x3c!-- Temporary file until FR 945 is announced, delete this file\nand its references once the features for FR 945 goes LIVE\nCA-51051 --\x3e\n\n\n<% if (isWidget === false) { %>\n    <ul class="nav nav-tabs">\n        <li class="active"><a href="#te-this-activity-placeholder" data-toggle="tab"><%- Localizer.localize(\'label.this.activity\') %></a></li>\n        <li><a href="#te-learn-placeholder" data-toggle="tab"><%- Localizer.localize(\'agent.learn.more\') %></a></li>\n        <li><a href="#te-scores-placeholder" data-toggle="tab"><%- Localizer.localize(\'label.scoring.scale\') %></a></li>\n    </ul>\n\n    <div class="tab-content">\n        <div class="tab-pane active" id="te-this-activity-placeholder"></div>\n\n        <div class="tab-pane" id="te-learn-placeholder"></div>\n        \n        <div class="tab-pane" id="te-scores-placeholder"></div>\n    </div>\n<% } else { %>\n    <ul class="nav nav-tabs">\n        <li class="active"><a href="#te-learn-placeholder" data-toggle="tab"><%- Localizer.localize(\'agent.learn.more\') %></a></li>\n        <li><a href="#te-scores-placeholder" data-toggle="tab"><%- Localizer.localize(\'label.scoring.scale\') %></a></li>\n    </ul>\n\n    <div class="tab-content">\n        <div class="tab-pane active" id="te-learn-placeholder"></div>\n\n        <div class="tab-pane" id="te-scores-placeholder"></div>\n    </div>\n\n<% } %>'
     },
-    2003: function(e, t, i) {
+    2008: function(e, t, i) {
         "use strict";
         i(7);
         var a = i(8)
           , n = i.n(a)
           , r = i(4)
-          , s = i(1430)
-          , o = i(36)
-          , l = i(1324)
+          , s = i(1435)
+          , o = i(37)
+          , l = i(1329)
           , c = n.a.View.extend({
             initialize: function(e) {
                 this.aerobicScore = e.aerobicScore,
@@ -34894,7 +34853,7 @@
         });
         t.a = c
     },
-    2004: function(e, t, i) {
+    2009: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -34909,7 +34868,7 @@
         });
         t.a = n
     },
-    2005: function(e, t, i) {
+    2010: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -34960,25 +34919,25 @@
         });
         t.a = o
     },
-    2018: function(e, t) {
+    2025: function(e, t) {
         e.exports = '<div id="open-express">\n    <h3 id="wireless-message-header" class="bottom-m wireless-message" style="display: none;"></h3>\n    <h3 class="bottom-m non-wireless-message" style="display: none;"><%- Localizer.localize(\'agent.connecting\') %></h3>\n    <p><%- Localizer.localize(\'agent.wait\') %></p>\n</div>\n<div id="sync-message" class="still-waiting text-left alert alert-info bottom-none" style="display: none;">\n</div>\n'
     },
-    2093: function(e, t, i) {
+    2110: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = (i(8),
         i(4),
         i(13),
-        i(1274))
-          , s = i(1696)
+        i(1279))
+          , s = i(1702)
           , o = i.n(s)
           , l = r.a.extend({
             template: n.a.template(o.a)
         });
         t.a = l
     },
-    2175: function(e, t, i) {
+    2192: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a);
@@ -34994,12 +34953,12 @@
             }
         })
     },
-    2176: function(e, t, i) {
+    2193: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
-          , r = i(81)
-          , s = i(1258)
+          , r = i(82)
+          , s = i(1254)
           , o = ["DESCENT_SPLIT"]
           , l = n.a.Collection.extend({
             url: function() {
@@ -35040,11 +34999,11 @@
         });
         t.a = l
     },
-    2177: function(e, t, i) {
-        (t = e.exports = i(32)(!0)).i(i(274), void 0),
-        t.push([e.i, ".WorkoutExecutionMetrics_executionScore__mo83w {\n    margin-bottom: 10px;\n}\n.WorkoutExecutionMetrics_wrapper__2WBXN {\n    position: relative;\n    background-color: " + i(274).locals.lightui_surface_1 + ";\n    border-radius: 4px;\n    padding: 22px 10px;\n}\n.WorkoutExecutionMetrics_statsSectionExecutionScore__3uozR {\n    margin-bottom: 0;\n}\n.WorkoutExecutionMetrics_statsSectionExecutionScore__3uozR .WorkoutExecutionMetrics_wrapper__2WBXN {\n    background: none;\n    padding: 0;\n}\n.WorkoutExecutionMetrics_dot__34Msj {\n    display: inline-block;\n    position: relative;\n    top: 2px;\n    width: 14px;\n    height: 14px;\n    margin-right: 8px;\n    border-radius: 50%;\n}\n.WorkoutExecutionMetrics_upperDot__1__xZ {\n    top: -2px;\n}\n.WorkoutExecutionMetrics_middleDot__3y18a {\n    position: static;\n}\n.WorkoutExecutionMetrics_scoreDot__1nOMU {\n    margin-right: 3px;\n    top: 1px;\n}\n.WorkoutExecutionMetrics_dot__34Msj.WorkoutExecutionMetrics_red__2svEe {\n    background-color: " + i(274).locals.red_primary + ";\n}\n.WorkoutExecutionMetrics_dot__34Msj.WorkoutExecutionMetrics_orange__PGO2H {\n    background-color: " + i(274).locals.color_614 + ";\n}\n.WorkoutExecutionMetrics_dot__34Msj.WorkoutExecutionMetrics_yellow__dvY9G {\n    background-color: " + i(274).locals.yellow_primary + ";\n}\n.WorkoutExecutionMetrics_dot__34Msj.WorkoutExecutionMetrics_green__393JI {\n    background-color: " + i(274).locals.green_primary + ";\n}\n.WorkoutExecutionMetrics_dot__34Msj.WorkoutExecutionMetrics_blue__38PWW {\n    background-color: " + i(274).locals.color_201 + ";\n}\n.WorkoutExecutionMetrics_dot__34Msj.WorkoutExecutionMetrics_lightblue__1Oukf {\n    background-color: " + i(274).locals.teal_light_1 + ";\n}\n.WorkoutExecutionMetrics_dot__34Msj.WorkoutExecutionMetrics_lime__30bPp {\n    background-color: " + i(274).locals.lime_primary + ";\n}\n.WorkoutExecutionMetrics_score__gSFuE {\n    margin-right: 4px;\n    font-size: 26px;\n    font-weight: 300;\n    line-height: 26px;\n    color: #222222;\n}\n.WorkoutExecutionMetrics_scoreSmall__1ifRT {\n    font-size: 16px;\n    color: #222222;\n    line-height: 26px;\n}\n.WorkoutExecutionMetrics_label__2sS5l {\n    color: #888888;\n    font-size: 12px;\n    line-height: 22px;\n}\n.WorkoutExecutionMetrics_helpIcon__GsGyh {\n    margin-left: 4px;\n}\n.WorkoutExecutionMetrics_executionScore__mo83w .WorkoutExecutionMetrics_modalContainer__1qypG h3 {\n    border: none !important;\n    margin-bottom: 0 !important;\n}\n.WorkoutExecutionMetrics_executionScoreExample__sZx_e {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    text-align: center;\n    max-width: 270px;\n    margin: 0 auto 20px auto;\n}\n.WorkoutExecutionMetrics_fractionEqual__1xBRl {\n    position: relative;\n    display: inline-block;\n    overflow: visible;\n    width: 100%;\n    margin: 4px 0;\n    border-top: 1px solid #000;\n}\n.WorkoutExecutionMetrics_fractionEqual__1xBRl:after {\n    content: '=';\n    display: inline-block;\n    position: absolute;\n    top: -12px;\n    right: -16px;\n}\n.WorkoutExecutionMetrics_result__2yuvZ {\n    display: table;\n    height: 100%;\n    padding-left: 24px;\n    text-align: left;\n}\n.WorkoutExecutionMetrics_result__2yuvZ .WorkoutExecutionMetrics_middle__FqVyU {\n    display: table-cell;\n    vertical-align: middle;\n}\n.WorkoutExecutionMetrics_headerText__Hi3BO {\n    font-size: 18px;\n    font-weight: 300;\n}\n.WorkoutExecutionMetrics_h3__3FjrR,\n.WorkoutExecutionMetrics_h4__2NvjR,\n.WorkoutExecutionMetrics_h5__1xmKy {\n    display: block;\n    margin-bottom: 8px;\n}\n.WorkoutExecutionMetrics_h3__3FjrR {\n    font-size: 22px;\n    font-weight: 300;\n    line-height: 33px;\n}\n.WorkoutExecutionMetrics_h4__2NvjR {\n    font-size: 18px;\n    font-weight: 300;\n    line-height: 27px;\n}\n.WorkoutExecutionMetrics_h5__1xmKy {\n    font-size: 16px;\n    font-weight: 300;\n    line-height: 24px;\n}\n/*edit*/\n.WorkoutExecutionMetrics_slider-handle__ra5Wn {\n    border: 2px solid rgb(25, 118, 210);\n    background-image: none !important;\n    background-color: " + i(274).locals.yellow_primary + ";\n}\n.WorkoutExecutionMetrics_htitle__JpptO {\n    font-size: 14px;\n    font-weight: 600;\n    margin-bottom: 5px;\n}\n.WorkoutExecutionMetrics_currentValue__3L6JH {\n    font-size: 12px;\n    text-align: center;\n    margin-bottom: 10px;\n}\n.WorkoutExecutionMetrics_sliderLabelNone__1oQbQ,\n.WorkoutExecutionMetrics_sliderLabelMaximum__3OB2_ {\n    font-size: 12px;\n    color: rgb(108, 108, 108);\n}\n.WorkoutExecutionMetrics_sliderLabelMaximum__3OB2_ {\n    float: right;\n}\n.WorkoutExecutionMetrics_face__WyPZ5 {\n    display: inline-block;\n    position: relative;\n    float: left;\n    width: 20px;\n    height: 20px;\n    background-repeat: no-repeat;\n    background-position: center center;\n    background-size: 100% 100%;\n    margin-right: 4px;\n}\n.WorkoutExecutionMetrics_face__WyPZ5.WorkoutExecutionMetrics_very_weak__1AeSn {\n    background-image: url('/web-images/activity/very_weak.svg');\n}\n.WorkoutExecutionMetrics_face__WyPZ5.WorkoutExecutionMetrics_weak___rxI7 {\n    background-image: url('/web-images/activity/weak.svg');\n}\n.WorkoutExecutionMetrics_face__WyPZ5.WorkoutExecutionMetrics_normal__1lSEr {\n    background-image: url('/web-images/activity/normal.svg');\n}\n.WorkoutExecutionMetrics_face__WyPZ5.WorkoutExecutionMetrics_strong__1XOex {\n    background-image: url('/web-images/activity/strong.svg');\n}\n.WorkoutExecutionMetrics_face__WyPZ5.WorkoutExecutionMetrics_very_strong__3Uni_ {\n    background-image: url('/web-images/activity/very_strong.svg');\n}\n.WorkoutExecutionMetrics_clear__29WnY {\n    clear: both;\n}\n.WorkoutExecutionMetrics_checkbox__3AdS1 {\n    position: relative;\n}\n.WorkoutExecutionMetrics_feelIconContainer__AK71S {\n    max-width: 40px;\n    max-height: 40px;\n    display: inline-block;\n    margin: 0 5px;\n}\n.WorkoutExecutionMetrics_feelStaticIconContainer__3Mx1p {\n    margin: 0 5px 0 0;\n}\n.WorkoutExecutionMetrics_feelCheckboxLabel__2lLCM {\n    display: -webkit-flex;\n    display: flex;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.WorkoutExecutionMetrics_checkbox__3AdS1 .WorkoutExecutionMetrics_face__WyPZ5 {\n    top: 1px;\n}\n.WorkoutExecutionMetrics_customCheckbox__NnHUt {\n    position: absolute;\n    opacity: 0;\n    cursor: pointer;\n    z-index: 1;\n    width: 16px;\n    height: 16px;\n}\n.WorkoutExecutionMetrics_customCheckbox__NnHUt ~ .WorkoutExecutionMetrics_feelCheckboxLabel__2lLCM .WorkoutExecutionMetrics_customCheckboxSpan__2a4wx {\n    float: left;\n    position: relative;\n    display: inline-block;\n    border: 1px solid " + i(274).locals.darkui_accent_2 + ";\n    border-radius: 50%;\n    width: 16px;\n    height: 16px;\n    margin-right: 5px;\n    vertical-align: middle;\n    cursor: pointer;\n}\n.WorkoutExecutionMetrics_customCheckbox__NnHUt:checked ~ .WorkoutExecutionMetrics_feelCheckboxLabel__2lLCM .WorkoutExecutionMetrics_customCheckboxSpan__2a4wx:after {\n    position: relative;\n    left: -1px;\n    top: -2px;\n    content: ' ';\n    display: inline-block;\n    border: 4px solid " + i(274).locals.color_201 + ";\n    border-radius: 50%;\n    width: 11px;\n    height: 11px;\n    color: " + i(274).locals.color_131 + ";\n}\n.WorkoutExecutionMetrics_gridAlignCenter__TG4YQ {\n    display: grid;\n    -webkit-align-items: center;\n            align-items: center;\n}\n", "", {
+    2194: function(e, t, i) {
+        (t = e.exports = i(33)(!0)).i(i(276), void 0),
+        t.push([e.i, ".WorkoutExecutionMetrics_executionScore__12meQ {\n    margin-bottom: 10px;\n}\n.WorkoutExecutionMetrics_wrapper__1Ibe1 {\n    position: relative;\n    background-color: " + i(276).locals.lightui_surface_1 + ";\n    border-radius: 4px;\n    padding: 22px 10px;\n}\n.WorkoutExecutionMetrics_statsSectionExecutionScore__1YDAl {\n    margin-bottom: 0;\n}\n.WorkoutExecutionMetrics_statsSectionExecutionScore__1YDAl .WorkoutExecutionMetrics_wrapper__1Ibe1 {\n    background: none;\n    padding: 0;\n}\n.WorkoutExecutionMetrics_dot__OLO1n {\n    display: inline-block;\n    position: relative;\n    top: 2px;\n    width: 14px;\n    height: 14px;\n    margin-right: 8px;\n    border-radius: 50%;\n}\n.WorkoutExecutionMetrics_upperDot__3ZVO- {\n    top: -2px;\n}\n.WorkoutExecutionMetrics_middleDot__P6Rgg {\n    position: static;\n}\n.WorkoutExecutionMetrics_scoreDot__1MG-I {\n    margin-right: 3px;\n    top: 1px;\n}\n.WorkoutExecutionMetrics_dot__OLO1n.WorkoutExecutionMetrics_red__1BH-1 {\n    background-color: " + i(276).locals.red_primary + ";\n}\n.WorkoutExecutionMetrics_dot__OLO1n.WorkoutExecutionMetrics_orange__1MDNC {\n    background-color: " + i(276).locals.color_614 + ";\n}\n.WorkoutExecutionMetrics_dot__OLO1n.WorkoutExecutionMetrics_yellow__1Bxm7 {\n    background-color: " + i(276).locals.yellow_primary + ";\n}\n.WorkoutExecutionMetrics_dot__OLO1n.WorkoutExecutionMetrics_green__2BglC {\n    background-color: " + i(276).locals.green_primary + ";\n}\n.WorkoutExecutionMetrics_dot__OLO1n.WorkoutExecutionMetrics_blue__1TZfk {\n    background-color: " + i(276).locals.color_201 + ";\n}\n.WorkoutExecutionMetrics_dot__OLO1n.WorkoutExecutionMetrics_lightblue__3jpOB {\n    background-color: " + i(276).locals.teal_light_1 + ";\n}\n.WorkoutExecutionMetrics_dot__OLO1n.WorkoutExecutionMetrics_lime__QHRkU {\n    background-color: " + i(276).locals.lime_primary + ";\n}\n.WorkoutExecutionMetrics_score__Iq4V0 {\n    margin-right: 4px;\n    font-size: 26px;\n    font-weight: 300;\n    line-height: 26px;\n    color: #222222;\n}\n.WorkoutExecutionMetrics_scoreSmall__31gUP {\n    font-size: 16px;\n    color: #222222;\n    line-height: 26px;\n}\n.WorkoutExecutionMetrics_label__2_2yo {\n    color: #888888;\n    font-size: 12px;\n    line-height: 22px;\n}\n.WorkoutExecutionMetrics_helpIcon__1AXmO {\n    margin-left: 4px;\n}\n.WorkoutExecutionMetrics_executionScore__12meQ .WorkoutExecutionMetrics_modalContainer__14A0X h3 {\n    border: none !important;\n    margin-bottom: 0 !important;\n}\n.WorkoutExecutionMetrics_executionScoreExample__3QLiD {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    text-align: center;\n    max-width: 270px;\n    margin: 0 auto 20px auto;\n}\n.WorkoutExecutionMetrics_fractionEqual__3doEW {\n    position: relative;\n    display: inline-block;\n    overflow: visible;\n    width: 100%;\n    margin: 4px 0;\n    border-top: 1px solid #000;\n}\n.WorkoutExecutionMetrics_fractionEqual__3doEW:after {\n    content: '=';\n    display: inline-block;\n    position: absolute;\n    top: -12px;\n    right: -16px;\n}\n.WorkoutExecutionMetrics_result__1x8Y4 {\n    display: table;\n    height: 100%;\n    padding-left: 24px;\n    text-align: left;\n}\n.WorkoutExecutionMetrics_result__1x8Y4 .WorkoutExecutionMetrics_middle__1zxO_ {\n    display: table-cell;\n    vertical-align: middle;\n}\n.WorkoutExecutionMetrics_headerText__1lNpk {\n    font-size: 18px;\n    font-weight: 300;\n}\n.WorkoutExecutionMetrics_h3__2JSf-,\n.WorkoutExecutionMetrics_h4__2RJDv,\n.WorkoutExecutionMetrics_h5__1njg2 {\n    display: block;\n    margin-bottom: 8px;\n}\n.WorkoutExecutionMetrics_h3__2JSf- {\n    font-size: 22px;\n    font-weight: 300;\n    line-height: 33px;\n}\n.WorkoutExecutionMetrics_h4__2RJDv {\n    font-size: 18px;\n    font-weight: 300;\n    line-height: 27px;\n}\n.WorkoutExecutionMetrics_h5__1njg2 {\n    font-size: 16px;\n    font-weight: 300;\n    line-height: 24px;\n}\n/*edit*/\n.WorkoutExecutionMetrics_slider-handle__33H8v {\n    border: 2px solid rgb(25, 118, 210);\n    background-image: none !important;\n    background-color: " + i(276).locals.yellow_primary + ";\n}\n.WorkoutExecutionMetrics_htitle__2uAzs {\n    font-size: 14px;\n    font-weight: 600;\n    margin-bottom: 5px;\n}\n.WorkoutExecutionMetrics_currentValue__OWEpJ {\n    font-size: 12px;\n    text-align: center;\n    margin-bottom: 10px;\n}\n.WorkoutExecutionMetrics_sliderLabelNone__2xkGR,\n.WorkoutExecutionMetrics_sliderLabelMaximum__3iXoF {\n    font-size: 12px;\n    color: rgb(108, 108, 108);\n}\n.WorkoutExecutionMetrics_sliderLabelMaximum__3iXoF {\n    float: right;\n}\n.WorkoutExecutionMetrics_face__2I_1U {\n    display: inline-block;\n    position: relative;\n    float: left;\n    width: 20px;\n    height: 20px;\n    background-repeat: no-repeat;\n    background-position: center center;\n    background-size: 100% 100%;\n    margin-right: 4px;\n}\n.WorkoutExecutionMetrics_face__2I_1U.WorkoutExecutionMetrics_very_weak__1_dtC {\n    background-image: url('/web-images/activity/very_weak.svg');\n}\n.WorkoutExecutionMetrics_face__2I_1U.WorkoutExecutionMetrics_weak__2kd4l {\n    background-image: url('/web-images/activity/weak.svg');\n}\n.WorkoutExecutionMetrics_face__2I_1U.WorkoutExecutionMetrics_normal__2E8kR {\n    background-image: url('/web-images/activity/normal.svg');\n}\n.WorkoutExecutionMetrics_face__2I_1U.WorkoutExecutionMetrics_strong__379e- {\n    background-image: url('/web-images/activity/strong.svg');\n}\n.WorkoutExecutionMetrics_face__2I_1U.WorkoutExecutionMetrics_very_strong___sh0I {\n    background-image: url('/web-images/activity/very_strong.svg');\n}\n.WorkoutExecutionMetrics_clear__3Sc4y {\n    clear: both;\n}\n.WorkoutExecutionMetrics_checkbox__jnX-K {\n    position: relative;\n}\n.WorkoutExecutionMetrics_feelIconContainer__ZZXO5 {\n    max-width: 40px;\n    max-height: 40px;\n    display: inline-block;\n    margin: 0 5px;\n}\n.WorkoutExecutionMetrics_feelStaticIconContainer__K8CtQ {\n    margin: 0 5px 0 0;\n}\n.WorkoutExecutionMetrics_feelCheckboxLabel__iDKCy {\n    display: -webkit-flex;\n    display: flex;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.WorkoutExecutionMetrics_checkbox__jnX-K .WorkoutExecutionMetrics_face__2I_1U {\n    top: 1px;\n}\n.WorkoutExecutionMetrics_customCheckbox__1xIX5 {\n    position: absolute;\n    opacity: 0;\n    cursor: pointer;\n    z-index: 1;\n    width: 16px;\n    height: 16px;\n}\n.WorkoutExecutionMetrics_customCheckbox__1xIX5 ~ .WorkoutExecutionMetrics_feelCheckboxLabel__iDKCy .WorkoutExecutionMetrics_customCheckboxSpan__3yYqX {\n    float: left;\n    position: relative;\n    display: inline-block;\n    border: 1px solid " + i(276).locals.darkui_accent_2 + ";\n    border-radius: 50%;\n    width: 16px;\n    height: 16px;\n    margin-right: 5px;\n    vertical-align: middle;\n    cursor: pointer;\n}\n.WorkoutExecutionMetrics_customCheckbox__1xIX5:checked ~ .WorkoutExecutionMetrics_feelCheckboxLabel__iDKCy .WorkoutExecutionMetrics_customCheckboxSpan__3yYqX:after {\n    position: relative;\n    left: -1px;\n    top: -2px;\n    content: ' ';\n    display: inline-block;\n    border: 4px solid " + i(276).locals.color_201 + ";\n    border-radius: 50%;\n    width: 11px;\n    height: 11px;\n    color: " + i(276).locals.color_131 + ";\n}\n.WorkoutExecutionMetrics_gridAlignCenter__jeoJw {\n    display: grid;\n    -webkit-align-items: center;\n            align-items: center;\n}\n", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/src/Activity/WorkoutExecutionMetrics/WorkoutExecutionMetrics.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/src/Activity/WorkoutExecutionMetrics/WorkoutExecutionMetrics.css"],
             names: [],
             mappings: "AAEA;IACI,oBAAmB;CACvB;AAEA;IACI,mBAAkB;IAClB,8CAAmC;IACnC,mBAAkB;IAClB,mBAAkB;CACtB;AAEA;IACI,iBAAgB;CACpB;AAEA;IACI,iBAAgB;IAChB,WAAU;CACd;AAEA;IACI,sBAAqB;IACrB,mBAAkB;IAClB,SAAQ;IACR,YAAW;IACX,aAAY;IACZ,kBAAiB;IACjB,mBAAkB;CACtB;AAEA;IACI,UAAS;CACb;AAEA;IACI,iBAAgB;CACpB;AAEA;IACI,kBAAiB;IACjB,SAAQ;CACZ;AAEA;IACI,8CAA6B;CACjC;AAEA;IACI,8CAA2B;CAC/B;AAEA;IACI,8CAAgC;CACpC;AACA;IACI,8CAA+B;CACnC;AAEA;IACI,8CAA2B;CAC/B;AAEA;IACI,+CAA8B;CAClC;AAEA;IACI,8CAA8B;CAClC;AAEA;IACI,kBAAiB;IACjB,gBAAe;IACf,iBAAgB;IAChB,kBAAiB;IACjB,eAAc;CAClB;AAEA;IACI,gBAAe;IACf,eAAc;IACd,kBAAiB;CACrB;AAEA;IACI,eAAc;IACd,gBAAe;IACf,kBAAiB;CACrB;AAEA;IACI,iBAAgB;CACpB;AACA;IACI,wBAAuB;IACvB,4BAA2B;CAC/B;AACA;IACI,cAAa;IACb,sCAAqC;IACrC,mBAAkB;IAClB,iBAAgB;IAChB,yBAAwB;CAC5B;AAEA;IACI,mBAAkB;IAClB,sBAAqB;IACrB,kBAAiB;IACjB,YAAW;IACX,cAAa;IACb,2BAA0B;CAC9B;AAEA;IACI,aAAY;IACZ,sBAAqB;IACrB,mBAAkB;IAClB,WAAU;IACV,aAAY;CAChB;AAEA;IACI,eAAc;IACd,aAAY;IACZ,mBAAkB;IAClB,iBAAgB;CACpB;AAEA;IACI,oBAAmB;IACnB,uBAAsB;CAC1B;AAEA;IACI,gBAAe;IACf,iBAAgB;CACpB;AAEA;;;IAGI,eAAc;IACd,mBAAkB;CACtB;AAEA;IACI,gBAAe;IACf,iBAAgB;IAChB,kBAAiB;CACrB;AAEA;IACI,gBAAe;IACf,iBAAgB;IAChB,kBAAiB;CACrB;AAEA;IACI,gBAAe;IACf,iBAAgB;IAChB,kBAAiB;CACrB;AAEA,QAAO;AAEP;IACI,oCAAmC;IACnC,kCAAiC;IACjC,8CAAgC;CACpC;AAEA;IACI,gBAAe;IACf,iBAAgB;IAChB,mBAAkB;CACtB;AAEA;IACI,gBAAe;IACf,mBAAkB;IAClB,oBAAmB;CACvB;AAEA;;IAEI,gBAAe;IACf,0BAAyB;CAC7B;AAEA;IACI,aAAY;CAChB;AAEA;IACI,sBAAqB;IACrB,mBAAkB;IAClB,YAAW;IACX,YAAW;IACX,aAAY;IACZ,6BAA4B;IAC5B,mCAAkC;IAClC,2BAA0B;IAC1B,kBAAiB;CACrB;AAEA;IACI,4DAA2D;CAC/D;AAEA;IACI,uDAAsD;CAC1D;AAEA;IACI,yDAAwD;CAC5D;AAEA;IACI,yDAAwD;CAC5D;AAEA;IACI,8DAA6D;CACjE;AAEA;IACI,YAAW;CACf;AAEA;IACI,mBAAkB;CACtB;AACA;IACI,gBAAe;IACf,iBAAgB;IAChB,sBAAqB;IACrB,cAAa;CACjB;AACA;IACI,kBAAiB;CACrB;AACA;IACI,sBAAa;IAAb,cAAa;IACb,4BAAmB;YAAnB,oBAAmB;CACvB;AAEA;IACI,SAAQ;CACZ;AAEA;IACI,mBAAkB;IAClB,WAAU;IACV,gBAAe;IACf,WAAU;IACV,YAAW;IACX,aAAY;CAChB;AAEA;IACI,YAAW;IACX,mBAAkB;IAClB,sBAAqB;IACrB,8CAAiC;IACjC,mBAAkB;IAClB,YAAW;IACX,aAAY;IACZ,kBAAiB;IACjB,uBAAsB;IACtB,gBAAe;CACnB;AAEA;IACI,mBAAkB;IAClB,WAAU;IACV,UAAS;IACT,aAAY;IACZ,sBAAqB;IACrB,8CAA2B;IAC3B,mBAAkB;IAClB,YAAW;IACX,aAAY;IACZ,mCAAgB;CACpB;AAEA;IACI,cAAa;IACb,4BAAmB;YAAnB,oBAAmB;CACvB",
             file: "WorkoutExecutionMetrics.css",
@@ -35052,69 +35011,69 @@
             sourceRoot: ""
         }]),
         t.locals = {
-            color_131: "" + i(274).locals.color_131,
-            darkui_accent_2: "" + i(274).locals.darkui_accent_2,
-            lightui_surface_1: "" + i(274).locals.lightui_surface_1,
-            red_primary: "" + i(274).locals.red_primary,
-            color_614: "" + i(274).locals.color_614,
-            color_201: "" + i(274).locals.color_201,
-            lightui_surface_4: "" + i(274).locals.lightui_surface_4,
-            yellow_primary: "" + i(274).locals.yellow_primary,
-            lime_primary: "" + i(274).locals.lime_primary,
-            green_primary: "" + i(274).locals.green_primary,
-            color_106: "" + i(274).locals.color_106,
-            teal_light_1: "" + i(274).locals.teal_light_1,
-            executionScore: "WorkoutExecutionMetrics_executionScore__mo83w",
-            wrapper: "WorkoutExecutionMetrics_wrapper__2WBXN",
-            statsSectionExecutionScore: "WorkoutExecutionMetrics_statsSectionExecutionScore__3uozR",
-            dot: "WorkoutExecutionMetrics_dot__34Msj",
-            upperDot: "WorkoutExecutionMetrics_upperDot__1__xZ",
-            middleDot: "WorkoutExecutionMetrics_middleDot__3y18a",
-            scoreDot: "WorkoutExecutionMetrics_scoreDot__1nOMU",
-            red: "WorkoutExecutionMetrics_red__2svEe",
-            orange: "WorkoutExecutionMetrics_orange__PGO2H",
-            yellow: "WorkoutExecutionMetrics_yellow__dvY9G",
-            green: "WorkoutExecutionMetrics_green__393JI",
-            blue: "WorkoutExecutionMetrics_blue__38PWW",
-            lightblue: "WorkoutExecutionMetrics_lightblue__1Oukf",
-            lime: "WorkoutExecutionMetrics_lime__30bPp",
-            score: "WorkoutExecutionMetrics_score__gSFuE",
-            scoreSmall: "WorkoutExecutionMetrics_scoreSmall__1ifRT",
-            label: "WorkoutExecutionMetrics_label__2sS5l",
-            helpIcon: "WorkoutExecutionMetrics_helpIcon__GsGyh",
-            modalContainer: "WorkoutExecutionMetrics_modalContainer__1qypG",
-            executionScoreExample: "WorkoutExecutionMetrics_executionScoreExample__sZx_e",
-            fractionEqual: "WorkoutExecutionMetrics_fractionEqual__1xBRl",
-            result: "WorkoutExecutionMetrics_result__2yuvZ",
-            middle: "WorkoutExecutionMetrics_middle__FqVyU",
-            headerText: "WorkoutExecutionMetrics_headerText__Hi3BO",
-            h3: "WorkoutExecutionMetrics_h3__3FjrR",
-            h4: "WorkoutExecutionMetrics_h4__2NvjR",
-            h5: "WorkoutExecutionMetrics_h5__1xmKy",
-            "slider-handle": "WorkoutExecutionMetrics_slider-handle__ra5Wn",
-            htitle: "WorkoutExecutionMetrics_htitle__JpptO",
-            currentValue: "WorkoutExecutionMetrics_currentValue__3L6JH",
-            sliderLabelNone: "WorkoutExecutionMetrics_sliderLabelNone__1oQbQ",
-            sliderLabelMaximum: "WorkoutExecutionMetrics_sliderLabelMaximum__3OB2_",
-            face: "WorkoutExecutionMetrics_face__WyPZ5",
-            very_weak: "WorkoutExecutionMetrics_very_weak__1AeSn",
-            weak: "WorkoutExecutionMetrics_weak___rxI7",
-            normal: "WorkoutExecutionMetrics_normal__1lSEr",
-            strong: "WorkoutExecutionMetrics_strong__1XOex",
-            very_strong: "WorkoutExecutionMetrics_very_strong__3Uni_",
-            clear: "WorkoutExecutionMetrics_clear__29WnY",
-            checkbox: "WorkoutExecutionMetrics_checkbox__3AdS1",
-            feelIconContainer: "WorkoutExecutionMetrics_feelIconContainer__AK71S",
-            feelStaticIconContainer: "WorkoutExecutionMetrics_feelStaticIconContainer__3Mx1p",
-            feelCheckboxLabel: "WorkoutExecutionMetrics_feelCheckboxLabel__2lLCM",
-            customCheckbox: "WorkoutExecutionMetrics_customCheckbox__NnHUt",
-            customCheckboxSpan: "WorkoutExecutionMetrics_customCheckboxSpan__2a4wx",
-            gridAlignCenter: "WorkoutExecutionMetrics_gridAlignCenter__TG4YQ"
+            color_131: "" + i(276).locals.color_131,
+            darkui_accent_2: "" + i(276).locals.darkui_accent_2,
+            lightui_surface_1: "" + i(276).locals.lightui_surface_1,
+            red_primary: "" + i(276).locals.red_primary,
+            color_614: "" + i(276).locals.color_614,
+            color_201: "" + i(276).locals.color_201,
+            lightui_surface_4: "" + i(276).locals.lightui_surface_4,
+            yellow_primary: "" + i(276).locals.yellow_primary,
+            lime_primary: "" + i(276).locals.lime_primary,
+            green_primary: "" + i(276).locals.green_primary,
+            color_106: "" + i(276).locals.color_106,
+            teal_light_1: "" + i(276).locals.teal_light_1,
+            executionScore: "WorkoutExecutionMetrics_executionScore__12meQ",
+            wrapper: "WorkoutExecutionMetrics_wrapper__1Ibe1",
+            statsSectionExecutionScore: "WorkoutExecutionMetrics_statsSectionExecutionScore__1YDAl",
+            dot: "WorkoutExecutionMetrics_dot__OLO1n",
+            upperDot: "WorkoutExecutionMetrics_upperDot__3ZVO-",
+            middleDot: "WorkoutExecutionMetrics_middleDot__P6Rgg",
+            scoreDot: "WorkoutExecutionMetrics_scoreDot__1MG-I",
+            red: "WorkoutExecutionMetrics_red__1BH-1",
+            orange: "WorkoutExecutionMetrics_orange__1MDNC",
+            yellow: "WorkoutExecutionMetrics_yellow__1Bxm7",
+            green: "WorkoutExecutionMetrics_green__2BglC",
+            blue: "WorkoutExecutionMetrics_blue__1TZfk",
+            lightblue: "WorkoutExecutionMetrics_lightblue__3jpOB",
+            lime: "WorkoutExecutionMetrics_lime__QHRkU",
+            score: "WorkoutExecutionMetrics_score__Iq4V0",
+            scoreSmall: "WorkoutExecutionMetrics_scoreSmall__31gUP",
+            label: "WorkoutExecutionMetrics_label__2_2yo",
+            helpIcon: "WorkoutExecutionMetrics_helpIcon__1AXmO",
+            modalContainer: "WorkoutExecutionMetrics_modalContainer__14A0X",
+            executionScoreExample: "WorkoutExecutionMetrics_executionScoreExample__3QLiD",
+            fractionEqual: "WorkoutExecutionMetrics_fractionEqual__3doEW",
+            result: "WorkoutExecutionMetrics_result__1x8Y4",
+            middle: "WorkoutExecutionMetrics_middle__1zxO_",
+            headerText: "WorkoutExecutionMetrics_headerText__1lNpk",
+            h3: "WorkoutExecutionMetrics_h3__2JSf-",
+            h4: "WorkoutExecutionMetrics_h4__2RJDv",
+            h5: "WorkoutExecutionMetrics_h5__1njg2",
+            "slider-handle": "WorkoutExecutionMetrics_slider-handle__33H8v",
+            htitle: "WorkoutExecutionMetrics_htitle__2uAzs",
+            currentValue: "WorkoutExecutionMetrics_currentValue__OWEpJ",
+            sliderLabelNone: "WorkoutExecutionMetrics_sliderLabelNone__2xkGR",
+            sliderLabelMaximum: "WorkoutExecutionMetrics_sliderLabelMaximum__3iXoF",
+            face: "WorkoutExecutionMetrics_face__2I_1U",
+            very_weak: "WorkoutExecutionMetrics_very_weak__1_dtC",
+            weak: "WorkoutExecutionMetrics_weak__2kd4l",
+            normal: "WorkoutExecutionMetrics_normal__2E8kR",
+            strong: "WorkoutExecutionMetrics_strong__379e-",
+            very_strong: "WorkoutExecutionMetrics_very_strong___sh0I",
+            clear: "WorkoutExecutionMetrics_clear__3Sc4y",
+            checkbox: "WorkoutExecutionMetrics_checkbox__jnX-K",
+            feelIconContainer: "WorkoutExecutionMetrics_feelIconContainer__ZZXO5",
+            feelStaticIconContainer: "WorkoutExecutionMetrics_feelStaticIconContainer__K8CtQ",
+            feelCheckboxLabel: "WorkoutExecutionMetrics_feelCheckboxLabel__iDKCy",
+            customCheckbox: "WorkoutExecutionMetrics_customCheckbox__1xIX5",
+            customCheckboxSpan: "WorkoutExecutionMetrics_customCheckboxSpan__3yYqX",
+            gridAlignCenter: "WorkoutExecutionMetrics_gridAlignCenter__jeoJw"
         }
     },
-    2178: function(e, t, i) {
+    2195: function(e, t, i) {
         "use strict";
-        var a = i(1237)
+        var a = i(1241)
           , n = {
             LatLng: /^((-|)([0-9]|[1-8][0-9])((\.|,)\d{0,6})?), *((-|)([0-9]|[1-9][0-9]|1[0-7][0-9])((\.|,)\d{0,6})?)$/i
         }
@@ -35127,7 +35086,7 @@
         r.RegularExpressions = n,
         t.a = r
     },
-    2179: function(e, t, i) {
+    2196: function(e, t, i) {
         "use strict";
         var a = {
             lat: null,
@@ -35153,7 +35112,7 @@
         ,
         t.a = n
     },
-    2180: function(e, t, i) {
+    2197: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -35162,10 +35121,10 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(1218)
-              , h = i(1268)
-              , d = i(1327)
-              , p = i(2181)
+              , c = i(1222)
+              , h = i(1276)
+              , d = i(1332)
+              , p = i(2198)
               , u = i.n(p)
               , m = {
                 PrimaryChanged: "PrimaryChanged",
@@ -35327,13 +35286,13 @@
         }
         ).call(this, i(10))
     },
-    2181: function(e, t) {
+    2198: function(e, t) {
         e.exports = '<div class="span4 clearfix">\n    <h5><span class="chart-color-circle" style="background-color:<%- backgroundColor %>"></span><%- backgroundSeriesLabel %></h5>\n    <div class="chart-range-selector chart-header-item" style="display: none">\n    </div>\n</div>\n<div class="span2 clearfix">\n    <button class="reset-zoom btn btn-small" style="visibility: hidden;"><%- Localizer.localize(\'chart_reset_zoom\') %></button>\n</div>\n<div class="span6 clearfix">\n    <div class="pull-right overlay-options">\n        <% if (series.length > 0) {     %>\n        <div class="overlay-item dropdown">\n            <button class="dropdown-toggle" data-toggle="dropdown">\n                <span class="<%- primarySeries ? \'chart-color-circle\' : \'\' %>" style="background-color:<%- primaryColor %>"></span><%- primarySeriesLabel %><i class="icon-pointer-down"></i>\n            </button>\n            <ul id="primary-dropdown" class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">\n                <li class="<%- primarySeries == null ? \'active\' : \'\' %>"><a tabindex="-1" href="#"><%- Localizer.localize(\'chart_no_overlay\') %></a></li>\n                <% for (var i = 0; i < series.length; i++) {            %>\n                <%      var seriesRow = series[i][0];                   %>\n                    <% if (primarySeries && seriesRow.getUniqueName() == primarySeries[0].getUniqueName()) {      %>\n                        <li class="active" data-value="<%- seriesRow.getUniqueName() %>" ><a tabindex="-1" href="#"><%- seriesRow.getLabel() %></a></li>\n                    <% } else {                                             %>\n                        <li data-value="<%- seriesRow.getUniqueName() %>" ><a tabindex="-1" href="#"><%- seriesRow.getLabel() %></a></li>\n                    <% }                                                    %>\n                <% }                                                    %>\n            </ul>\n        </div>\n        <% }                            %>\n        <% if (series.length > 1 && primarySeries) {     %>\n        <div class="overlay-item dropdown">\n            <button class="dropdown-toggle" data-toggle="dropdown">\n                <span class="<%- secondarySeries ? \'chart-color-circle\' : \'\' %>" style="background-color:<%- secondaryColor %>"></span><%- secondarySeriesLabel %><i class="icon-pointer-down"></i>\n            </button>\n            <ul id="secondary-dropdown" class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">\n                <li class="<%- secondarySeries == null ? \'active\' : \'\' %>"><a tabindex="-1" href="#"><%- Localizer.localize(\'chart_no_overlay\') %></a></li>\n                <% for (var i = 0; i < series.length; i++) {            %>\n                <%      var seriesRow = series[i][0];                   %>\n                    <% if (secondarySeries && seriesRow.getUniqueName() == secondarySeries[0].getUniqueName()) {      %>\n                    <li class="active" data-value="<%- seriesRow.getUniqueName() %>" ><a tabindex="-1" href="#"><%- seriesRow.getLabel() %></a></li>\n                    <% } else {                                             %>\n                    <li data-value="<%- seriesRow.getUniqueName() %>" ><a tabindex="-1" href="#"><%- seriesRow.getLabel() %></a></li>\n                    <% }                                                    %>\n                <% }                                                    %>\n            </ul>\n        </div>\n        <% }                            %>\n    </div>\n    <% if (showWorkoutSeries) { %>\n        <div class="pull-right">\n            <h5><span class="chart-color-circle" style="background-color:<%- workoutSeriesColor %>"></span><%- Localizer.localize(\'workout_target\') %></h5>  \n        </div>\n    <% } %>\n</div>\n\n'
     },
-    2182: function(e, t) {
+    2199: function(e, t) {
         e.exports = '<div id=\'chart-header-placeholder\' class="row-fluid"></div>\n<div class="no-padding">\n    <div class="zoomed-chart" style="width:100%; height:calc(100% - 320px);"></div>\n</div>\n\n<% if (xAxisTypes.length) { %>\n\n<select class="input-medium x-axis-value">\n    <% for (var i = 0; i < xAxisTypes.length; i++) {    %>\n    <%  var xAxisType = xAxisTypes[i];                  %>\n    <option value="<%- xAxisType.name %>"><%- xAxisType.label %></option>\n    <% }                                                %>\n\n</select>\n\n<% } %>\n'
     },
-    2183: function(e, t, i) {
+    2200: function(e, t, i) {
         "use strict";
         var a = {
             green: "#00B050",
@@ -35367,15 +35326,35 @@
             GradientRangeMaxes: n
         }
     },
-    2184: function(e, t) {
+    2201: function(e, t, i) {
+        "use strict";
+        var a = i(8)
+          , n = i.n(a)
+          , r = i(4)
+          , s = n.a.View.extend({
+            initialize: function(e) {},
+            render: function() {
+                this.$el.addClass(this.customClasses),
+                this.$el.html(this.template({
+                    Localizer: r.a
+                })),
+                this.$el.show()
+            }
+        });
+        s.Events = {
+            OnChartToggle: "OnChartToggle"
+        },
+        t.a = s
+    },
+    2202: function(e, t) {
         e.exports = '<% if (chartTitles.length) { %>\n<div class="row-fluid chart-header">\n    <div class="span9">\n        <div class="chart-name chart-header-item">\n            <% var i, chartTitle, seriesColor; %>\n            <% for (i = 0; i < chartTitles.length; i++) { %>\n                <% chartTitle = chartTitles[i].chartTitle; %>\n                <% seriesColor = chartTitles[i].seriesColor; %>\n                <span class="chart-color-circle" style="background-color:<%- seriesColor %>"></span><span class="chart-title"><%- chartTitle %></span>\n            <% } %>\n            <% if (helpKey) { %>\n                <a href="#" class="help-icon" data-toggle="modal" data-help-key="<%- helpKey %>" role="button">\n                    <i class="icon-help"></i>\n                </a>\n            <% } %>\n        </div>\n        <div class="chart-range-selector chart-header-item" style="display: none">\n\n        </div>\n        <div class="chart-selector chart-header-item" style="display:none"></div>\n    </div>\n    <div class="span3">\n        <% if (canExpandChart) { %>\n        <div class="pull-right">\n            <button class="chart-zoom-toggle"><i class="icon-full-screen"></i>\n            </button>\n        </div>\n        <% } %>\n        <div id="workout-target-label" class="pull-right hidden">\n            <span class="chart-color-circle" style="background-color:<%- workoutSeriesColor %>"></span><%- Localizer.localize(\'workout_target\') %>\n        </div>\n    </div>\n</div>\n<% } %>\n<div class="chart-placeholder bottom-s"></div>\n'
     },
-    2185: function(e, t, i) {
+    2203: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             primarySeriesType: s.a.HeartRate,
             fillColor: r.a.mapSeriesType(s.a.HeartRate),
@@ -35384,13 +35363,13 @@
             }
         })
     },
-    2186: function(e, t, i) {
+    2204: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
-          , r = i(1242)
-          , s = i(1218)
-          , o = i(1235);
+          , r = i(1246)
+          , s = i(1222)
+          , o = i(1239);
         t.a = r.a.extend({
             primarySeriesType: o.a.Speed,
             fillColor: s.a.mapSeriesType(o.a.Speed),
@@ -35401,15 +35380,15 @@
             }
         })
     },
-    2187: function(e, t, i) {
+    2205: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(13)
-          , o = i(1242)
-          , l = i(1218)
-          , c = i(1235);
+          , o = i(1246)
+          , l = i(1222)
+          , c = i(1239);
         t.a = o.a.extend({
             chartSelector: c.a.Pace.chartSelector,
             primarySeriesType: c.a.Pace,
@@ -35424,12 +35403,12 @@
             }
         })
     },
-    2188: function(e, t, i) {
+    2206: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             chartRangeSelectorType: s.a.PowerWatts.chartRangeSelectorType,
             primarySeriesType: s.a.PowerWatts,
@@ -35442,13 +35421,13 @@
             }
         })
     },
-    2189: function(e, t, i) {
+    2207: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
-          , r = i(1242)
-          , s = i(1218)
-          , o = i(1235);
+          , r = i(1246)
+          , s = i(1222)
+          , o = i(1239);
         t.a = r.a.extend({
             primarySeriesType: o.a.OpenWaterSwimSpeed,
             fillColor: s.a.mapSeriesType(o.a.OpenWaterSwimSpeed),
@@ -35459,12 +35438,12 @@
             }
         })
     },
-    2190: function(e, t, i) {
+    2208: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             primarySeriesType: s.a.OpenWaterSwimPace,
             fillColor: r.a.mapSeriesType(s.a.OpenWaterSwimPace),
@@ -35474,21 +35453,21 @@
             }
         })
     },
-    2191: function(e, t, i) {
+    2209: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
-          , r = i(1247)
-          , s = i(2192)
+          , r = i(1252)
+          , s = i(2210)
           , o = i.n(s);
         t.a = r.a.extend({
             template: n.a.template(o.a)
         })
     },
-    2192: function(e, t) {
+    2210: function(e, t) {
         e.exports = '<span href="<%- url %>" class="inline-edit-target page-title-overflow"><%- value %>\n<% if (label) {     %>\n<%- label %>\n<% }                %>\n</span>\n\n<button class="inline-edit-trigger modal-trigger" title="<%- Localizer.localize(\'edit\') %>">\n    <i class="icon-pencil"></i>\n</button>\n\n<div class="inline-edit-editable">\n    <div class="inline-edit-editable-text page-title-overflow" contenteditable="true"><%- value %></div>\n    <span class="inline-edit-actions">\n        <button class="inline-edit-save icon-checkmark"></button>\n        <button class="inline-edit-cancel icon-close"></button>\n    </span>\n</div>\n    '
     },
-    2193: function(e, t, i) {
+    2211: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -35497,10 +35476,10 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(101)
-              , h = i(36)
-              , d = i(1824)
-              , p = i(2195)
+              , c = i(102)
+              , h = i(37)
+              , d = i(1828)
+              , p = i(2213)
               , u = i.n(p);
             t.a = s.a.View.extend({
                 template: n.a.template(u.a),
@@ -35561,13 +35540,13 @@
         }
         ).call(this, i(10))
     },
-    2194: function(e, t) {
+    2212: function(e, t) {
         e.exports = '<% if (gearCount == 0) { %>\n    <h5 class="font-thin text-center"><%- Localizer.localize(\'label_no_gear_available\') %></h5>\n<% } %>\n\n<% if (shoes && shoes.length > 0) { %>\n<h6 class="bottom-none"><%- Localizer.localize(\'gear_type_shoes\') %></h6>\n<ul class="gear-list">\n\n    <% for (var i = 0; i < shoes.length; i++) { %>\n    <%  var shoe = shoes[i];                        %>\n    <li class="active" title="<%- shoe.displayName %>" id="<%- \'edit-gear-\' + shoe.uuid %>">\n        <span class="gear-status">\n            <div class="small spinner blue" title="Loading..."></div>\n        </span>\n        <i class="icon-steps gear-type"></i>\n\n        <% if (shoe.gearStatusName === \'retired\') { %>\n            <span class="label"><%- Localizer.localize(\'label_status_retired\') %>\n        <% } %>\n        </span> <%- shoe.fullDisplayName %>\n    </li>\n    <% }                                            %>\n</ul>\n<% } %>\n\n<% if (bikes && bikes.length > 0) { %>\n<h6 class="bottom-none"><%- Localizer.localize(\'gear_type_bikes\') %></h6>\n<ul class="gear-list">\n    <% for (var i = 0; i < bikes.length; i++) { %>\n    <%  var bike = bikes[i];                        %>\n    <li class="active" title="<%- bike.fullDisplayName %>" id="<%- \'edit-gear-\' + bike.uuid %>">\n        <span class="gear-status"><div class="small spinner blue" title="Loading..."></div></span>\n        <i class="icon-activity-cycling gear-type"></i>\n\n        <% if (bike.gearStatusName === \'retired\') { %>\n            <span class="label"><%- Localizer.localize(\'label_status_retired\') %>\n        <% } %>\n        </span> <%- bike.fullDisplayName %>\n    </li>\n    <% }                                            %>\n</ul>\n<% } %>\n\n<% if (others && others.length > 0) { %>\n<h6 class="bottom-none"><%- Localizer.localize(\'gear_type_other\') %></h6>\n<ul class="gear-list">\n    <% for (var i = 0; i < others.length; i++) { %>\n    <%  var other = others[i];                        %>\n    <li class="active" title="<%- other.fullDisplayName %>" id="<%- \'edit-gear-\' + other.uuid %>">\n        <span class="gear-status"><div class="small spinner blue" title="Loading..."></div></span>\n        <i class="icon-gear gear-type"></i>\n\n        <% if (other.gearStatusName === \'retired\') { %>\n            <span class="label"><%- Localizer.localize(\'label_status_retired\') %>\n        <% } %>\n        </span> <%- other.fullDisplayName %>\n    </li>\n    <% }                                            %>\n</ul>\n<% } %>\n\n<div class="text-center top-xs">\n\n    <% if (gearCount > 0) { %>\n    <a href="/modern/gear" class="manage-gear-link colored"><%- Localizer.localize(\'label_manage_gear\') %></a>\n    <% } else { %>\n    <a href="/modern/gear/add" class="add-gear-link colored"><%- Localizer.localize(\'label_add_gear\') %></a>\n    <% }        %>\n\n</div>\n\n'
     },
-    2195: function(e, t) {
+    2213: function(e, t) {
         e.exports = '<% if (gearCount) { %>\n    <%- Localizer.localize(\'label_gear\') %>:\n    <a class="toggle-add-gear" href="#attached-gear" <% if(!isEditPage) { print(\'data-scroll="smooth"\'); } %> ><span class="new-items-alert"><%- gearCount %></span></a>\n<% } else if (!readOnly) { %>\n    <%- Localizer.localize(\'label_gear\') %>:\n    <a class="toggle-add-gear colored" href="#"><%- Localizer.localize(\'add\') %></a>\n<% }  %>\n'
     },
-    2196: function(e, t, i) {
+    2214: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -35575,7 +35554,7 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(13)
-          , c = i(2197)
+          , c = i(2215)
           , h = i.n(c)
           , d = s.a.View.extend({
             template: n.a.template(h.a),
@@ -35627,10 +35606,10 @@
         });
         t.a = d
     },
-    2197: function(e, t) {
+    2215: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_timing\') %></h3>\n    <div class="data-block small">\n        <div class="data-bit total-time-value"><%- Personalizer.personalizeDuration(totalTime) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_time_total\') %></span>\n    </div>\n\n    <% if(!isPilatesActivity) { %>\n    <div class="data-block small">\n        <div class="data-bit duration-time-value"><%- Personalizer.personalizeDuration(workTime) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_work_time\') %></span>\n    </div>\n\n    <div class="data-block small">\n        <div class="data-bit rest-time-value"><%- Personalizer.personalizeDuration(restTime) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_rest_time\') %></span>\n    </div>\n    <% } %>\n</div>'
     },
-    2198: function(e, t, i) {
+    2216: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -35638,8 +35617,8 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(13)
-          , c = i(59)
-          , h = i(2199)
+          , c = i(60)
+          , h = i(2217)
           , d = i.n(h)
           , p = s.a.View.extend({
             template: n.a.template(d.a),
@@ -35708,10 +35687,10 @@
         });
         t.a = p
     },
-    2199: function(e, t) {
+    2217: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'workout_details\') %></h3>\n    <% if(!isYogaActivity) { %>\n    <div class="data-block small">\n        <div class="data-bit total-reps"><%- Personalizer.zeroDash(totalReps) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_total_reps\') %></span>\n        <% if(isPilatesActivity) { %>\n            <span class="help-icon">\n                <span class="icon-help icon-help-reps"></span>\n            </span>\n        <% } %>\n    </div>\n    <% } %>\n\n    <div class="data-block small">\n        <div class="data-bit total-sets"><%- Personalizer.personalizeActiveSets(activeSets) %></div>\n        <span class="data-label"><%- label %></span>\n        <% if(isPilatesActivity) { %>\n            <span class="help-icon">\n                <span class="icon-help icon-help-moves"></span>\n            </span>\n        <% } %>\n    </div>\n\n    <% if(!isPilatesActivity && !isYogaActivity) { %>\n    <div class="data-block small">\n        <div class="data-bit">\n            <span class="total-volume"><%- totalVolume %></span>\n            <% if(isMetric) { %>\n                <%- Localizer.localize(\'weight_unit_metric\') %>\n            <% } else { %>\n                <%- Localizer.localize(\'weight_unit_statute\') %>\n            <% } %>\n        </div>\n        <span class="data-label"><%- Localizer.localize(\'label_volume\') %></span>\n\n        <span class="help-icon">\n            <span class="icon-help icon-help-volume"></span>\n        </span>\n    </div>\n    <% } %>\n\n    <% if(isYogaActivity) { %>\n        <div class="data-block small">\n            <div class="data-bit total-reps"><%- Personalizer.personalizeStandingTime(avgTimePerPose) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_avg_time_per_pose\') %></span>\n        </div>\n    <% } %>\n</div>'
     },
-    2200: function(e, t, i) {
+    2218: function(e, t, i) {
         "use strict";
         i.d(t, "a", function() {
             return n
@@ -35719,14 +35698,14 @@
         var a = i(0);
         function n(e) {
             return {
-                type: a.De,
+                type: a.Ee,
                 meta: {
                     cacheTime: e ? null : 12e4
                 }
             }
         }
     },
-    2201: function(e, t, i) {
+    2219: function(e, t, i) {
         "use strict";
         i.d(t, "c", function() {
             return s
@@ -35770,8 +35749,8 @@
             n
         }
     },
-    2202: function(e, t, i) {
-        var a = i(4301);
+    2220: function(e, t, i) {
+        var a = i(4328);
         "string" === typeof a && (a = [[e.i, a, ""]]);
         var n = {
             hmr: !0,
@@ -35781,14 +35760,14 @@
         i(35)(a, n);
         a.locals && (e.exports = a.locals)
     },
-    2203: function(e, t, i) {
+    2221: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(9)
               , n = i.n(a)
-              , r = i(1285)
-              , s = i(79)
-              , o = i(80)
+              , r = i(1291)
+              , s = i(80)
+              , o = i(81)
               , l = i(6)
               , c = i.n(l)
               , h = i(8)
@@ -35896,7 +35875,7 @@
         }
         ).call(this, i(7))
     },
-    2249: function(e, t, i) {
+    2267: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -35904,12 +35883,12 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(13)
-          , c = i(1223)
+          , c = i(1227)
           , h = i.n(c)
-          , d = i(1244)
+          , d = i(1249)
           , p = i.n(d)
-          , u = i(1218)
-          , m = i(1324);
+          , u = i(1222)
+          , m = i(1329);
         p()(h.a);
         var g = s.a.View.extend({
             className: "te-gauge-chart",
@@ -36002,7 +35981,7 @@
                 }
             }
         })
-          , f = i(1998)
+          , f = i(2003)
           , v = i.n(f)
           , y = s.a.View.extend({
             initialize: function(e) {
@@ -36021,7 +36000,7 @@
                 this
             }
         })
-          , A = i(1999)
+          , A = i(2004)
           , _ = i.n(A)
           , b = s.a.View.extend({
             template: n.a.template(_.a),
@@ -36067,7 +36046,7 @@
                 return this
             }
         })
-          , C = i(2e3)
+          , C = i(2005)
           , w = i.n(C)
           , x = s.a.View.extend({
             initialize: function(e) {
@@ -36084,7 +36063,7 @@
                 this
             }
         })
-          , S = i(2001)
+          , S = i(2006)
           , T = i.n(S)
           , E = s.a.View.extend({
             initialize: function() {
@@ -36097,11 +36076,11 @@
                 this
             }
         })
-          , L = i(2002)
-          , P = i.n(L)
-          , k = s.a.View.extend({
+          , L = i(2007)
+          , k = i.n(L)
+          , P = s.a.View.extend({
             initialize: function(e) {
-                this.template = n.a.template(P.a),
+                this.template = n.a.template(k.a),
                 this.aerobicTrainingEffect = e.aerobicTrainingEffect,
                 this.aerobicTrainingEffectMessage = e.aerobicTrainingEffectMessage,
                 this.anaerobicTrainingEffect = e.anaerobicTrainingEffect,
@@ -36129,9 +36108,9 @@
                 this.$("#te-scores-placeholder").html(this.scoringScaleView.render().el)
             }
         });
-        t.a = k
+        t.a = P
     },
-    2276: function(e, t, i) {
+    2282: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
@@ -36146,28 +36125,28 @@
             }
         })
     },
-    2486: function(e, t, i) {
+    2506: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
-          , r = i(1323);
+          , r = i(1328);
         t.a = n.a.Collection.extend({
             model: r.default
         })
     },
-    2487: function(e, t, i) {
+    2507: function(e, t, i) {
         "use strict";
-        var a = i(79)
-          , n = i(80)
-          , r = i(97)
-          , s = i(95)
-          , o = i(96)
+        var a = i(80)
+          , n = i(81)
+          , r = i(99)
+          , s = i(97)
+          , o = i(98)
           , l = i(11)
           , c = i.n(l)
-          , h = i(1821)
-          , d = i(161)
-          , p = i(275)
-          , u = i(1538)
+          , h = i(1825)
+          , d = i(164)
+          , p = i(277)
+          , u = i(1540)
           , m = i.n(u)
           , g = 67
           , f = 33
@@ -36270,7 +36249,7 @@
         }(c.a.Component);
         t.a = v
     },
-    2488: function(e, t, i) {
+    2508: function(e, t, i) {
         "use strict";
         var a = {
             getData: function(e, t) {
@@ -36296,15 +36275,15 @@
         };
         t.a = a
     },
-    2489: function(e, t) {
+    2509: function(e, t) {
         e.exports = '<div class="jump-tooltip-container">\n    <div class="tooltip-row"><%- label %></div>\n    <% if (jump.distance !== null) { %>\n        <div class="tooltip-row"><%- Localizer.localize(\'label_jumps_distance\') %>: <%- Personalizer.personalizeMTBHeight(jump.distance, Localizer) %></div>\n    <% } %>    \n    <% if (jump.hangTime !== null) { %>\n        <div class="tooltip-row"><%- Localizer.localize(\'label_jumps_hangtime\') %>: <%- Personalizer.personalizeMTBSeconds(jump.hangTime, Localizer) %></div>\n    <% } %>\n    <% if (jump.speed !== null) { %>\n        <div class="tooltip-row"><%- Localizer.localize(\'label_jumps_speed\') %>: <%- Personalizer.personalizeMTBSpeed(jump.speed, activityTypeKey, Localizer) %></div>\n    <% } %>\n</div>'
     },
-    2490: function(e, t, i) {
+    2510: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(8)
               , n = i.n(a)
-              , r = (i(29),
+              , r = (i(28),
             n.a.Model.extend({
                 url: function() {
                     return "/proxy/activity-service/activity/" + this.activityId + "/relative"
@@ -36319,7 +36298,7 @@
         }
         ).call(this, i(7))
     },
-    2491: function(e, t, i) {
+    2511: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -36334,7 +36313,7 @@
         });
         t.a = n
     },
-    2492: function(e, t, i) {
+    2512: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -36342,7 +36321,7 @@
               , r = i(8)
               , s = i.n(r)
               , o = i(4)
-              , l = i(4196)
+              , l = i(4223)
               , c = i.n(l)
               , h = {
                 SAVE_EDIT_PHOTOS: "SAVE_EDIT_PHOTOS",
@@ -36431,14 +36410,14 @@
         }
         ).call(this, i(10))
     },
-    2493: function(e, t, i) {
+    2513: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = i(4)
-          , l = i(4231)
+          , l = i(4258)
           , c = i.n(l);
         t.a = s.a.View.extend({
             template: n.a.template(c.a),
@@ -36461,7 +36440,7 @@
             }
         })
     },
-    2494: function(e, t, i) {
+    2514: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -36469,8 +36448,8 @@
               , r = i(8)
               , s = i.n(r)
               , o = i(4)
-              , l = i(2556)
-              , c = i(4232)
+              , l = i(2576)
+              , c = i(4259)
               , h = i.n(c)
               , d = {
                 DisplayWeightEntryPopup: "DisplayWeightEntryPopup",
@@ -36541,14 +36520,14 @@
         }
         ).call(this, i(10))
     },
-    2495: function(e, t, i) {
+    2515: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(8)
           , o = i.n(s)
-          , l = i(4233)
+          , l = i(4260)
           , c = i.n(l);
         t.a = o.a.View.extend({
             template: n.a.template(c.a),
@@ -36574,8 +36553,8 @@
             }
         })
     },
-    2496: function(e, t, i) {
-        var a = i(4270);
+    2516: function(e, t, i) {
+        var a = i(4297);
         "string" === typeof a && (a = [[e.i, a, ""]]);
         var n = {
             hmr: !0,
@@ -36585,8 +36564,8 @@
         i(35)(a, n);
         a.locals && (e.exports = a.locals)
     },
-    2497: function(e, t, i) {
-        var a = i(4277);
+    2517: function(e, t, i) {
+        var a = i(4304);
         "string" === typeof a && (a = [[e.i, a, ""]]);
         var n = {
             hmr: !0,
@@ -36596,15 +36575,15 @@
         i(35)(a, n);
         a.locals && (e.exports = a.locals)
     },
-    2498: function(e, t, i) {
+    2518: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
               , n = i.n(a)
               , r = i(4)
               , s = i(13)
-              , o = i(51)
-              , l = i(34);
+              , o = i(53)
+              , l = i(36);
             function c(e, t) {
                 var i = t || 0;
                 if (e)
@@ -36742,10 +36721,97 @@
         }
         ).call(this, i(10))
     },
-    2499: function(e, t) {
+    2519: function(e, t) {
         e.exports = '<div class="device-image bottom-xs">\n    <img src="<%- accessory.imageUrl || \'//static.garmincdn.com/com.garmin.connect/content/images/device-images/default-device.png\' %>">\n</div>\n<div class="device-name"><%- accessory.name %></div>'
     },
-    2555: function(e, t, i) {
+    2576: function(e, t, i) {
+        "use strict";
+        var a = {
+            FREESTYLE: "freestyle",
+            BACKSTROKE: "backstroke",
+            BREASTSTROKE: "breaststroke",
+            BUTTERFLY: "butterfly",
+            DRILL: "drill",
+            MIXED: "mixed",
+            IM: "unknown",
+            INVALID: "unknown"
+        }
+          , n = {
+            FREESTYLE: "swim.stroke.freestyle",
+            BACKSTROKE: "swim.stroke.backstroke",
+            BREASTSTROKE: "swim.stroke.breaststroke",
+            BUTTERFLY: "swim.stroke.butterfly",
+            DRILL: "swim.stroke.drill",
+            MIXED: "swim.stroke.mixed",
+            IM: "swim.stroke.unknown",
+            INVALID: "swim.stroke.unknown",
+            REST: "swim.rest"
+        };
+        t.a = {
+            mapClass: function(e) {
+                var t = a[e];
+                return "undefined" == typeof t ? a.INVALID : t
+            },
+            mapKey: function(e) {
+                var t = n[e];
+                return "undefined" == typeof t ? n.INVALID : t
+            }
+        }
+    },
+    2578: function(e, t, i) {
+        "use strict";
+        var a = i(4)
+          , n = i(8)
+          , r = i.n(n).a.Collection.extend({
+            url: function() {
+                return "/proxy/personalrecord-service/personalrecord/prByActivityId/" + this.activityId
+            },
+            initialize: function(e, t) {
+                this.activityId = t.activityId
+            }
+        })
+          , s = i(26)
+          , o = i(60)
+          , l = (i(19),
+        o.a.extend({
+            initialize: function(e) {
+                this.prsFetched = !1,
+                this.prsFetching = !1,
+                o.a.prototype.initialize.apply(this, arguments),
+                this.collection = new r([],{
+                    activityId: e.activityId
+                }),
+                this.modelSynchronizer = new s.a,
+                this.modelSynchronizer.addModel({
+                    model: this.collection,
+                    required: !0
+                }),
+                this.modelSynchronizer.on(s.a.Events.SYNCHRONIZED, this.onPrsFetched, this)
+            },
+            show: function() {
+                this.prsFetching || (this.prsFetched ? o.a.prototype.show.apply(this, arguments) : (this.prsFetching = !0,
+                this.modelSynchronizer.fetchModels()))
+            },
+            onPrsFetched: function() {
+                this.content = this.formatPrs(),
+                this.render(),
+                this.prsFetching = !1,
+                this.prsFetched = !0,
+                this.show()
+            },
+            formatPrs: function() {
+                if (0 == this.collection.length)
+                    return "";
+                var e = "";
+                return this.collection.each(function(t) {
+                    e += a.a.localize(t.get("prTypeLabelKey")) + "<br/>"
+                }, this),
+                e
+            }
+        }));
+        t.a = l
+    },
+    2580: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -36753,9 +36819,9 @@
           , s = i(8)
           , o = i.n(s)
           , l = i(13)
-          , c = i(4230)
-          , h = i(36)
-          , d = i(4235)
+          , c = i(4257)
+          , h = i(37)
+          , d = i(4262)
           , p = i.n(d)
           , u = o.a.View.extend({
             initialize: function(e) {
@@ -36767,7 +36833,7 @@
                 }))
             }
         })
-          , m = i(4236)
+          , m = i(4263)
           , g = i.n(m);
         t.a = o.a.View.extend({
             template: n.a.template(g.a),
@@ -36808,100 +36874,13 @@
             }
         })
     },
-    2556: function(e, t, i) {
-        "use strict";
-        var a = {
-            FREESTYLE: "freestyle",
-            BACKSTROKE: "backstroke",
-            BREASTSTROKE: "breaststroke",
-            BUTTERFLY: "butterfly",
-            DRILL: "drill",
-            MIXED: "mixed",
-            IM: "unknown",
-            INVALID: "unknown"
-        }
-          , n = {
-            FREESTYLE: "swim.stroke.freestyle",
-            BACKSTROKE: "swim.stroke.backstroke",
-            BREASTSTROKE: "swim.stroke.breaststroke",
-            BUTTERFLY: "swim.stroke.butterfly",
-            DRILL: "swim.stroke.drill",
-            MIXED: "swim.stroke.mixed",
-            IM: "swim.stroke.unknown",
-            INVALID: "swim.stroke.unknown",
-            REST: "swim.rest"
-        };
-        t.a = {
-            mapClass: function(e) {
-                var t = a[e];
-                return "undefined" == typeof t ? a.INVALID : t
-            },
-            mapKey: function(e) {
-                var t = n[e];
-                return "undefined" == typeof t ? n.INVALID : t
-            }
-        }
-    },
-    2558: function(e, t, i) {
-        "use strict";
-        var a = i(4)
-          , n = i(8)
-          , r = i.n(n).a.Collection.extend({
-            url: function() {
-                return "/proxy/personalrecord-service/personalrecord/prByActivityId/" + this.activityId
-            },
-            initialize: function(e, t) {
-                this.activityId = t.activityId
-            }
-        })
-          , s = i(26)
-          , o = i(59)
-          , l = (i(19),
-        o.a.extend({
-            initialize: function(e) {
-                this.prsFetched = !1,
-                this.prsFetching = !1,
-                o.a.prototype.initialize.apply(this, arguments),
-                this.collection = new r([],{
-                    activityId: e.activityId
-                }),
-                this.modelSynchronizer = new s.a,
-                this.modelSynchronizer.addModel({
-                    model: this.collection,
-                    required: !0
-                }),
-                this.modelSynchronizer.on(s.a.Events.SYNCHRONIZED, this.onPrsFetched, this)
-            },
-            show: function() {
-                this.prsFetching || (this.prsFetched ? o.a.prototype.show.apply(this, arguments) : (this.prsFetching = !0,
-                this.modelSynchronizer.fetchModels()))
-            },
-            onPrsFetched: function() {
-                this.content = this.formatPrs(),
-                this.render(),
-                this.prsFetching = !1,
-                this.prsFetched = !0,
-                this.show()
-            },
-            formatPrs: function() {
-                if (0 == this.collection.length)
-                    return "";
-                var e = "";
-                return this.collection.each(function(t) {
-                    e += a.a.localize(t.get("prTypeLabelKey")) + "<br/>"
-                }, this),
-                e
-            }
-        }));
-        t.a = l
-    },
-    4112: function(e, t, i) {
+    4139: function(e, t, i) {
         "use strict";
         i.r(t),
         function(e, a) {
             var n = i(9)
               , r = i.n(n)
-              , s = i(1285)
+              , s = i(1291)
               , o = i(7)
               , l = i.n(o)
               , c = i(6)
@@ -36912,107 +36891,107 @@
               , m = i(18)
               , g = i.n(m)
               , f = i(13)
-              , v = i(1409)
-              , y = i(2486)
+              , v = i(1410)
+              , y = i(2506)
               , A = i(354)
-              , _ = i(1454)
-              , b = i(165)
-              , C = i(1655)
-              , w = i(4113)
+              , _ = i(1458)
+              , b = i(168)
+              , C = i(1661)
+              , w = i(4140)
               , x = i(389)
-              , S = i(1551)
-              , T = i(1990)
-              , E = i(4114)
-              , L = i(1570)
-              , P = i(4115)
-              , k = i(1727)
+              , S = i(1553)
+              , T = i(1995)
+              , E = i(4141)
+              , L = i(1574)
+              , k = i(4142)
+              , P = i(1733)
               , z = i(19)
-              , I = i(1323)
-              , D = i(183)
-              , B = i(1386)
-              , M = i(1694)
-              , O = i(1695)
-              , R = i(56)
-              , N = i(1297)
-              , V = i(1429)
-              , F = i(1582)
-              , G = i(1352)
-              , H = i(1415)
-              , U = i(2175)
-              , Q = i(4116)
-              , K = i(1636)
-              , W = i(363)
+              , I = i(1328)
+              , D = i(187)
+              , M = i(1389)
+              , B = i(1700)
+              , O = i(1701)
+              , R = i(57)
+              , N = i(1304)
+              , V = i(1434)
+              , F = i(1587)
+              , G = i(1357)
+              , H = i(1420)
+              , U = i(2192)
+              , Q = i(4143)
+              , K = i(1642)
+              , W = i(364)
               , Y = i(284)
-              , j = i(224)
-              , $ = i(2005)
-              , Z = i(4117)
-              , q = i(1384)
-              , X = i(4118)
-              , J = i(1912)
-              , ee = i(1301)
-              , te = i(2176)
-              , ie = i(2276)
-              , ae = i(1395)
-              , ne = i(4119)
-              , re = i(99)
-              , se = i(4120)
-              , oe = i(4122)
-              , le = i(36)
-              , ce = i(163)
-              , he = i(1788)
-              , de = i(100)
-              , pe = i(4124)
-              , ue = i(4174)
-              , me = i(4176)
-              , ge = i(4180)
-              , fe = i(4186)
-              , ve = i(1717)
-              , ye = i(4953)
-              , Ae = i(1719)
-              , _e = i(4986)
-              , be = i(4922)
-              , Ce = i(4238)
-              , we = i(4240)
-              , xe = i(4978)
-              , Se = i(4244)
-              , Te = i(4910)
-              , Ee = i(4273)
-              , Le = i(4283)
-              , Pe = i(2555)
-              , ke = i(4289)
-              , ze = i(4982)
-              , Ie = i(1731)
-              , De = i(4293)
-              , Be = i(4945)
-              , Me = i(26)
-              , Oe = i(29)
-              , Re = i(2498)
-              , Ne = i(101)
+              , j = i(228)
+              , $ = i(2010)
+              , Z = i(4144)
+              , q = i(1387)
+              , X = i(4145)
+              , J = i(1917)
+              , ee = i(1308)
+              , te = i(2193)
+              , ie = i(2282)
+              , ae = i(1398)
+              , ne = i(4146)
+              , re = i(100)
+              , se = i(4147)
+              , oe = i(4149)
+              , le = i(37)
+              , ce = i(126)
+              , he = i(1791)
+              , de = i(101)
+              , pe = i(4151)
+              , ue = i(4201)
+              , me = i(4203)
+              , ge = i(4207)
+              , fe = i(4213)
+              , ve = i(1723)
+              , ye = i(4980)
+              , Ae = i(1725)
+              , _e = i(5038)
+              , be = i(4948)
+              , Ce = i(4265)
+              , we = i(4267)
+              , xe = i(5019)
+              , Se = i(4271)
+              , Te = i(4938)
+              , Ee = i(4300)
+              , Le = i(4310)
+              , ke = i(2580)
+              , Pe = i(4316)
+              , ze = i(5008)
+              , Ie = i(1737)
+              , De = i(4320)
+              , Me = i(4975)
+              , Be = i(26)
+              , Oe = i(28)
+              , Re = i(2518)
+              , Ne = i(102)
               , Ve = i(66)
-              , Fe = i(98)
-              , Ge = i(50)
+              , Fe = i(64)
+              , Ge = i(52)
               , He = i(17)
-              , Ue = i(1479)
-              , Qe = i(4297)
-              , Ke = i(110)
-              , We = i(4969)
-              , Ye = i(4987)
-              , je = i(214)
-              , $e = i(4298)
-              , Ze = i(4299)
-              , qe = i(4946)
-              , Xe = i(4302)
-              , Je = i(4303)
-              , et = i(4304)
-              , tt = i(4964)
-              , it = i(2203)
-              , at = i(1295)
-              , nt = i(4308)
-              , rt = i(1736)
-              , st = i(4309)
+              , Ue = i(1485)
+              , Qe = i(4324)
+              , Ke = i(90)
+              , We = i(5040)
+              , Ye = i(5024)
+              , je = i(218)
+              , $e = i(4325)
+              , Ze = i(4326)
+              , qe = i(4973)
+              , Xe = i(4329)
+              , Je = i(4330)
+              , et = i(4331)
+              , tt = i(4987)
+              , it = i(2221)
+              , at = i(1302)
+              , nt = i(4335)
+              , rt = i(1425)
+              , st = i(4336)
               , ot = i.n(st)
-              , lt = (i(1275),
-            i(225))
+              , lt = (i(1280),
+            i(167))
               , ct = {
                 PageRendered: "PageRendered"
             }
@@ -37145,7 +37124,7 @@
                     }),
                     this.dataModel.getLatestWeight = new L.a),
                     this.dataModel.player = new v.a({}),
-                    this.dataModel.thirdPartyUploads = new P.a({}),
+                    this.dataModel.thirdPartyUploads = new k.a({}),
                     this.dependenciesLoaded = !1,
                     this.connectIQPresentationDataLoaded = !1,
                     this.enableVectorAirFeatureFlag = new Qe.a({}),
@@ -37161,9 +37140,6 @@
                     }),
                     this.activityIntervalsPreference = new Ke.a({
                         key: "4403676f-2fa8-47b8-bfc8-a5e796bdfe44"
-                    }),
-                    this.lapAveragePacePreference = new Ke.a({
-                        key: lt.c
                     }),
                     this.workoutMetrics = new Ke.a({
                         key: lt.g
@@ -37220,12 +37196,12 @@
                         model: this.dataModel.activityModel.repCountingActivity,
                         required: !0
                     }),
-                    this.isPilatesActivity() ? this.exerciseTypes = new M.a({}) : this.isYogaActivity() ? this.exerciseTypes = new O.a({}) : this.exerciseTypes = new B.a({}),
+                    this.isPilatesActivity() ? this.exerciseTypes = new B.a({}) : this.isYogaActivity() ? this.exerciseTypes = new O.a({}) : this.exerciseTypes = new M.a({}),
                     e.addModel({
                         model: this.exerciseTypes,
                         required: !0
                     })),
-                    Fe.a.isIndoorClimbingActivity(this.dataModel.activityModel.activity.get("activityTypeDTO").typeKey) && this.dataModel.indoorClimbDifficulty && e.addModel({
+                    (Fe.a.isIndoorClimbingActivity(this.dataModel.activityModel.activity.get("activityTypeDTO").typeKey) || Fe.a.isBoulderingActivity(this.dataModel.activityModel.activity.get("activityTypeDTO").typeKey)) && this.dataModel.indoorClimbDifficulty && e.addModel({
                         model: this.dataModel.indoorClimbDifficulty,
                         required: !0
                     }),
@@ -37297,10 +37273,6 @@
                     }),
                     e.addModel({
                         model: this.activityIntervalsPreference,
-                        required: !0
-                    }),
-                    e.addModel({
-                        model: this.lapAveragePacePreference,
                         required: !0
                     }),
                     e.addModel({
@@ -37491,8 +37463,7 @@
                         activityTypes: this.dataModel.activityTypes,
                         viewerIsAuthenticated: this.viewerIsAuthenticated(),
                         tankSensor: this.dataModel.tankSensor,
-                        indoorClimbDifficulty: this.dataModel.indoorClimbDifficulty,
-                        canShowLapAveragePaceSelector: this.lapAveragePacePreference.featureEnabled()
+                        indoorClimbDifficulty: this.dataModel.indoorClimbDifficulty
                     }),
                     this.listenTo(this.activityChartsView, pe.a.Events.DisplayWeightEntryPopup, this.onDisplayWeightEntryPopup, this),
                     this.listenTo(this.activityChartsView, pe.a.Events.WeightChangedFromChart, this.onWeightChanged, this),
@@ -37732,7 +37703,7 @@
                     this.activitySegmentsView.render()
                 },
                 onMtbMetricsTabClicked: function(e) {
-                    0 === e && this.$("#tab-mtb").html(new Pe.a({
+                    0 === e && this.$("#tab-mtb").html(new ke.a({
                         summaryDTO: this.dataModel.currentActivityModel.activity.get("summaryDTO"),
                         activity: this.dataModel.currentActivityModel.activity,
                         jumps: this.dataModel.jumps
@@ -37747,10 +37718,10 @@
                             }),
                             this.$("#tab-power-curve").html(this.powerCurveExcludedView.render().el);
                         else {
-                            var t = new ke.a({
+                            var t = new Pe.a({
                                 activityPowerCurve: this.dataModel.powerCurve
                             });
-                            this.listenTo(t, ke.a.Events.Error, function(e) {
+                            this.listenTo(t, Pe.a.Events.Error, function(e) {
                                 this.$(".alert").html(e).show()
                             }),
                             this.$("#tab-power-curve").html(t.render().el)
@@ -37771,7 +37742,7 @@
                 loadChildActivities: function() {
                     var e = this.dataModel.activityModel.activity.get("childIds");
                     if (e && e.length > 0) {
-                        var t = new Me.a
+                        var t = new Be.a
                           , i = 1;
                         l.a.each(e, function(e) {
                             var a = new ht(e);
@@ -37782,7 +37753,7 @@
                                 required: !0
                             })
                         }, this),
-                        t.on(Me.a.Events.SYNCHRONIZED, function() {
+                        t.on(Be.a.Events.SYNCHRONIZED, function() {
                             l.a.each(this.dataModel.activityModel.childModels, function(e) {
                                 this.dataModel.activityModel.childActivities.add(e.activity)
                             }, this),
@@ -37836,7 +37807,7 @@
                         displayPowerAvgCalInfo: this.dataModel.activityModel.activityDetails.hasPowerData()
                     }),
                     this.activityAdditionalInfoView.render()),
-                    this.activityAccessoryInfoView ? this.activityAccessoryInfoView && this.activityAccessoryInfoView.updateAccessories(this.getAllAccessories()) : this.activityAccessoryInfoView = new Be.a({
+                    this.activityAccessoryInfoView ? this.activityAccessoryInfoView && this.activityAccessoryInfoView.updateAccessories(this.getAllAccessories()) : this.activityAccessoryInfoView = new Me.a({
                         el: this.$("#accessory-info"),
                         accessories: this.getAllAccessories()
                     }),
@@ -37886,6 +37857,8 @@
                     this.activityToolbarView.setActivity(t.activity),
                     this.activityToolbarView.render(),
                     this.renderActivityDetailSmallStats(),
+                    this.activityTabsView.activityTypeKey = t.activity.get("activityTypeDTO").typeKey,
+                    this.activityTabsView.render(),
                     this.activityIntroView.updateModels(t.activity, t.selectedGear, t.course),
                     this.activityIntroView.render(),
                     this.activityGearListView && (this.activityGearListView.updateModels(t.activity, t.selectedGear),
@@ -37896,17 +37869,17 @@
                     }),
                     this.showExerciseView(t.activity.get("activityTypeDTO").typeKey)) {
                         if (!this.exerciseTypes) {
-                            (r = new Me.a).addModel({
+                            (r = new Be.a).addModel({
                                 model: this.dataModel.currentActivityModel.repCountingActivity,
                                 required: !0
                             }),
-                            this.isPilatesActivity(t) ? this.exerciseTypes = new M.a({}) : this.exerciseTypes = new B.a({}),
+                            this.isPilatesActivity(t) ? this.exerciseTypes = new B.a({}) : this.exerciseTypes = new M.a({}),
                             r.addModel({
                                 model: this.exerciseTypes,
                                 required: !0
                             });
                             var n = this;
-                            return this.listenTo(r, Me.a.Events.SYNCHRONIZED, function() {
+                            return this.listenTo(r, Be.a.Events.SYNCHRONIZED, function() {
                                 n.displayActivityModel(n.dataModel.currentActivityModel),
                                 n.stopListening(r)
                             }),
@@ -37914,12 +37887,12 @@
                         }
                         if (this.dataModel.activityModel.isParent) {
                             var r;
-                            (r = new Me.a).addModel({
+                            (r = new Be.a).addModel({
                                 model: this.dataModel.currentActivityModel.repCountingActivity,
                                 required: !0
                             });
                             n = this;
-                            this.listenTo(r, Me.a.Events.SYNCHRONIZED, function() {
+                            this.listenTo(r, Be.a.Events.SYNCHRONIZED, function() {
                                 n.displayActivityModel(n.dataModel.currentActivityModel),
                                 n.stopListening(r)
                             }),
@@ -37952,7 +37925,7 @@
                     this.activityDiveLogView = null,
                     this.$("#divingLogViewPlaceholder").html("")),
                     this.activityNotes && "function" === typeof this.activityNotes.updatePlaceholderText && this.activityNotes.updatePlaceholderText(Fe.a.getNotePlaceholderCopy(this.dataModel.currentActivityModel.activity.get("activityTypeDTO"), this.dataModel.activityTypes)),
-                    Fe.a.isIndoorClimbingActivity(this.activityTypeKey) && this.dataModel.activityModel.activityTypedSplits && this.dataModel.activityModel.activityTypedSplits.length && (this.climbingDifficultyChart = new de.a,
+                    (Fe.a.isIndoorClimbingActivity(this.dataModel.activityModel.activity.get("activityTypeDTO").typeKey) || Fe.a.isBoulderingActivity(this.dataModel.activityModel.activity.get("activityTypeDTO").typeKey)) && this.dataModel.activityModel.activityTypedSplits && this.dataModel.activityModel.activityTypedSplits.length && (this.climbingDifficultyChart = new de.a,
                     this.climbingDifficultyChart.renderComponent(Je.a, this.$("#climbingDifficultyChartPlaceholder")[0], {
                         typedSplits: this.dataModel.activityModel.activityTypedSplits.toJSON(),
                         indoorClimbDifficulty: this.dataModel.indoorClimbDifficulty.toJSON()
@@ -37960,7 +37933,7 @@
                     this.$("#climbingDifficultyChartPlaceholder").css({
                         display: "block"
                     })),
-                    Fe.a.isBoulderingActivity(this.activityTypeKey) && this.dataModel.activityModel.activityTypedSplits && this.dataModel.activityModel.activityTypedSplits.length && (this.boulderingDifficultyChart = new de.a,
+                    Fe.a.isBoulderingActivity(this.dataModel.activityModel.activity.get("activityTypeDTO").typeKey) && this.dataModel.activityModel.activityTypedSplits && this.dataModel.activityModel.activityTypedSplits.length && (this.boulderingDifficultyChart = new de.a,
                     this.boulderingDifficultyChart.renderComponent(et.a, this.$("#climbingDifficultyChartPlaceholder")[0], {
                         typedSplits: this.dataModel.activityModel.activityTypedSplits.toJSON(),
                         indoorClimbDifficulty: this.dataModel.indoorClimbDifficulty.toJSON()
@@ -37998,7 +37971,7 @@
                     }
                 },
                 loadActivityModel: function(e, t) {
-                    var i = new Me.a({});
+                    var i = new Be.a({});
                     this.rendered || i.addEvent({
                         model: this,
                         event: ct.PageRendered,
@@ -38075,7 +38048,7 @@
                             this.shouldActivityModelShowSegments(e) && this.activityTabsView.updateSegmentCount(e.segments.length)
                         }, this));
                         var r = e.activity.get("associatedCourseId");
-                        r && (e.course = new k.a({
+                        r && (e.course = new P.a({
                             courseId: r
                         }),
                         i.addModel({
@@ -38101,8 +38074,8 @@
                             required: !0,
                             countError: !0
                         })),
-                        i.on(Me.a.Events.SYNCHRONIZED, t),
-                        i.on(Me.a.Events.SYNCHRONIZED, function() {
+                        i.on(Be.a.Events.SYNCHRONIZED, t),
+                        i.on(Be.a.Events.SYNCHRONIZED, function() {
                             e.isLoaded = !0,
                             this.dataModel.connectIQPresentationData && this.dataModel.connectIQPresentationData.length > 0 && !this.connectIQPresentationDataLoaded && this.loadConnectIQ()
                         }, this),
@@ -38238,7 +38211,7 @@
                         weightDate: Oe.a.formatISODate(new Date(this.dataModel.activityModel.activity.get("startTimeGMT")))
                     });
                     this.listenTo(t, he.a.Events.WEIGHT_SUCCESS, function(t) {
-                        e.successCallback && "function" === typeof e.successCallback && e.successCallback.call(e.context || this, f.a.convertWeightToKg(t)),
+                        e.successCallback && "function" === typeof e.successCallback && e.successCallback.call(e.context || this, t),
                         i && "function" === typeof i.close && i.close()
                     }, this);
                     var i = new le.a({
@@ -38381,15 +38354,15 @@
                             this.dataModel.powerCurve = new $e.a({
                                 activityId: e
                             });
-                            var t = new Me.a;
+                            var t = new Be.a;
                             t.addModel({
                                 model: this.dataModel.powerCurve,
                                 required: !0
                             }),
-                            this.listenTo(t, Me.a.Events.SYNCHRONIZED, function() {
+                            this.listenTo(t, Be.a.Events.SYNCHRONIZED, function() {
                                 this.onPowerCurveTabClicked(0)
                             }),
-                            t.bind(Me.a.Events.SYNCHRONIZE_FAILED, function() {
+                            t.bind(Be.a.Events.SYNCHRONIZE_FAILED, function() {
                                 this.trigger(ct.Error, u.a.localize("please_try_again_later"))
                             }, this),
                             t.fetchModels()
@@ -38526,7 +38499,7 @@
         }
         .call(this, i(10), i(10))
     },
-    4113: function(e, t, i) {
+    4140: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Collection.extend({
@@ -38539,7 +38512,7 @@
         });
         t.a = n
     },
-    4114: function(e, t, i) {
+    4141: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a);
@@ -38554,7 +38527,7 @@
             }
         })
     },
-    4115: function(e, t, i) {
+    4142: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a);
@@ -38562,7 +38535,7 @@
             url: "/web-data/thirdPartyUploads/ThirdPartyUploads.json"
         })
     },
-    4116: function(e, t, i) {
+    4143: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -38580,7 +38553,7 @@
         });
         t.a = n
     },
-    4117: function(e, t, i) {
+    4144: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(8)
@@ -38633,7 +38606,7 @@
         }
         ).call(this, i(7))
     },
-    4118: function(e, t, i) {
+    4145: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a);
@@ -38641,7 +38614,7 @@
             url: "/web-data/activity-charts-order/activity-charts-order-master.json"
         })
     },
-    4119: function(e, t, i) {
+    4146: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = "INTERVAL_ACTIVE"
@@ -38665,7 +38638,7 @@
         });
         t.a = r
     },
-    4120: function(e, t, i) {
+    4147: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -38673,9 +38646,9 @@
               , r = i(8)
               , s = i.n(r)
               , o = i(4)
-              , l = i(100)
-              , c = i(2487)
-              , h = i(4121)
+              , l = i(101)
+              , c = i(2507)
+              , h = i(4148)
               , d = i.n(h)
               , p = {
                 NOTE_SAVED: "NOTE_SAVED"
@@ -38879,10 +38852,10 @@
         }
         ).call(this, i(10))
     },
-    4121: function(e, t) {
+    4148: function(e, t) {
         e.exports = '<% if (positionOfControls === \'top\' && canEditNote) { %>\n<div class="pull-right">\n    <a href="#" class="edit-note-button colored" style="display: <%- showEditLink ? \'inline-block\' : \'none\' %>"><%- Localizer.localize(\'edit\') %></a>\n    <% if (hasDeleteTextControl) { %>\n        &nbsp;&nbsp;&nbsp;&nbsp;\n        <a href="#" class="delete-note-button colored" style="display: <%- showEditLink ? \'inline-block\' : \'none\' %>"><%- Localizer.localize(\'button_delete\') %></a>\n    <% } %>\n</div>\n<% } %>\n\n<div id="executionScore"></div>\n\n<% if (hasHeader) { %>\n    <h3><%- Localizer.localize(headerText) %></h3>\n<% } %>\n<textarea id="noteTextarea" <% if (isNoteDisabled) { print(\'disabled="disabled"\'); print(\'readonly="readonly"\'); print(\'class="read-only"\');} %>\n    rows="3" tabindex="1" spellcheck="false" <% if (charMaxLength) { print(\'maxlength="\' + charMaxLength + \'"\'); } %>\n    placeholder="<%- placeholderText ? Localizer.localize(placeholderText) : \'\' %>"><%- description ? description : \'\' %></textarea>\n\n<% if (canEditNote) { %>\n    <% if (positionOfControls === \'bottom\') { %>\n        <div class="pull-right">\n        <a href="#" class="edit-note-button colored" style="display: <%- showEditLink ? \'inline-block\' : \'none\' %>" tabindex="2"><%- Localizer.localize(\'edit\') %></a>\n        <% if (hasDeleteTextControl) { %>\n            &nbsp;&nbsp;&nbsp;&nbsp;\n            <a href="#" class="delete-note-button colored" style="display: <%- showEditLink ? \'inline-block\' : \'none\' %>"><%- Localizer.localize(\'button_delete\') %></a>\n        <% } %>\n        </div>\n    <% } %>\n    <div class="add-note-button-wrapper pull-right" style="display: <%- showEditLink ? \'none\' : \'block\' %>">\n        <% if (hasCancelButton) { %>\n        <button tabindex="0" class="btn btn-small btn-secondary cancel-note-button colored"><%- Localizer.localize(\'button_cancel\') %></button>\n        &nbsp;\n        <% } %>\n        <button class="btn btn-small add-note-button" type="submit" tabindex="2"><%- Localizer.localize(\'save\') %></button>\n    </div>\n<% } %>\n'
     },
-    4122: function(e, t, i) {
+    4149: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -38891,9 +38864,9 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(2178)
-              , h = i(2179)
-              , d = i(4123)
+              , c = i(2195)
+              , h = i(2196)
+              , d = i(4150)
               , p = i.n(d)
               , u = {
                 NOTE_SAVED: "NOTE_SAVED"
@@ -39097,10 +39070,10 @@
         }
         ).call(this, i(10))
     },
-    4123: function(e, t) {
+    4150: function(e, t) {
         e.exports = '<% if (positionOfControls === \'top\' && canEditNote) { %>\n<div class="pull-right">\n    <a href="#" class="edit-note-button colored" style="display: <%- showEditLink ? \'inline-block\' : \'none\' %>"><%- Localizer.localize(\'edit\') %></a>\n    <% if (hasDeleteTextControl) { %>\n        &nbsp;&nbsp;&nbsp;&nbsp;\n        <a href="#" class="delete-note-button colored" style="display: <%- showEditLink ? \'inline-block\' : \'none\' %>"><%- Localizer.localize(\'button_delete\') %></a>\n    <% } %>\n</div>\n<% } %>\n\n\x3c!-- Display Lat / Long if it is provided --\x3e\n<% if (hasLatLong) { %>\n<h3><%- Localizer.localize(headerText) %></h3>\n<textarea id="<%- elementId %>" <% if (isNoteDisabled) { print(\'disabled="disabled"\'); print(\'readonly="readonly"\'); print(\'class="read-only"\');} %>\n    rows="3" tabindex="1" spellcheck="false" <% if (charMaxLength) { print(\'maxlength="\' + charMaxLength + \'"\'); } %>\n    placeholder="<%- placeholderText ? Localizer.localize(placeholderText) : \'\' %>"><%- Personalizer.personalizeLatLon(Latitude, Longitude) %></textarea>\n\n\x3c!-- Only Display the canEditNote if Lat / Long are provided --\x3e\n    <% if (canEditNote) { %>\n        <% if (positionOfControls === \'bottom\') { %>\n            <div class="pull-right">\n            <a href="#" class="edit-note-button colored" style="display: <%- showEditLink ? \'inline-block\' : \'none\' %>" tabindex="2"><%- Localizer.localize(\'edit\') %></a>\n            <% if (hasDeleteTextControl) { %>\n                &nbsp;&nbsp;&nbsp;&nbsp;\n                <a href="#" class="delete-note-button colored" style="display: <%- showEditLink ? \'inline-block\' : \'none\' %>"><%- Localizer.localize(\'button_delete\') %></a>\n            <% } %>\n            </div>\n        <% } %>\n        <div class="add-note-button-wrapper pull-right" style="display: <%- showEditLink ? \'none\' : \'block\' %>">\n            <% if (hasCancelButton) { %>\n            <button tabindex="0" class="btn btn-small btn-secondary cancel-note-button colored"><%- Localizer.localize(\'button_cancel\') %></button>\n            &nbsp;\n            <% } %>\n            <button class="btn btn-small add-note-button" type="submit" tabindex="2"><%- Localizer.localize(\'save\') %></button>\n        </div>\n    <% } %>\n<% } %>'
     },
-    4124: function(e, t, i) {
+    4151: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(2)
@@ -39111,77 +39084,77 @@
               , l = i.n(o)
               , c = i(4)
               , h = i(13)
-              , d = i(98)
-              , p = i(36)
-              , u = i(1235)
-              , m = i(1360)
-              , g = i(1539)
-              , f = i(4125)
-              , v = i(4126)
-              , y = i(4127)
-              , A = i(4128)
-              , _ = (i(4129),
-            i(1242))
-              , b = i(1822)
-              , C = i(4131)
-              , w = i(4132)
-              , x = i(4133)
-              , S = i(4134)
-              , T = i(2185)
-              , E = i(2186)
-              , L = i(2187)
-              , P = i(4135)
-              , k = i(4136)
-              , z = i(4137)
-              , I = i(4138)
-              , D = i(2188)
-              , B = i(4139)
-              , M = i(4140)
-              , O = i(4141)
-              , R = i(4142)
-              , N = i(4143)
-              , V = i(4144)
-              , F = i(4145)
-              , G = i(2189)
-              , H = i(2190)
-              , U = i(4146)
-              , Q = i(4147)
-              , K = i(4148)
-              , W = i(4149)
-              , Y = i(4150)
-              , j = i(4151)
-              , $ = i(1732)
-              , Z = i(4152)
-              , q = i(4153)
-              , X = i(4154)
-              , J = i(4155)
-              , ee = i(4156)
-              , te = i(4157)
-              , ie = i(4158)
-              , ae = i(4159)
-              , ne = i(4160)
-              , re = i(4161)
-              , se = i(4162)
-              , oe = i(4163)
-              , le = i(4164)
-              , ce = i(4165)
-              , he = i(4166)
-              , de = i(4167)
-              , pe = i(4168)
-              , ue = i(4169)
-              , me = i(4171)
+              , d = i(64)
+              , p = i(37)
+              , u = i(1239)
+              , m = i(1365)
+              , g = i(1541)
+              , f = i(4152)
+              , v = i(4153)
+              , y = i(4154)
+              , A = i(4155)
+              , _ = (i(4156),
+            i(1246))
+              , b = i(1826)
+              , C = i(4158)
+              , w = i(4159)
+              , x = i(4160)
+              , S = i(4161)
+              , T = i(2203)
+              , E = i(2204)
+              , L = i(2205)
+              , k = i(4162)
+              , P = i(4163)
+              , z = i(4164)
+              , I = i(4165)
+              , D = i(2206)
+              , M = i(4166)
+              , B = i(4167)
+              , O = i(4168)
+              , R = i(4169)
+              , N = i(4170)
+              , V = i(4171)
+              , F = i(4172)
+              , G = i(2207)
+              , H = i(2208)
+              , U = i(4173)
+              , Q = i(4174)
+              , K = i(4175)
+              , W = i(4176)
+              , Y = i(4177)
+              , j = i(4178)
+              , $ = i(1738)
+              , Z = i(4179)
+              , q = i(4180)
+              , X = i(4181)
+              , J = i(4182)
+              , ee = i(4183)
+              , te = i(4184)
+              , ie = i(4185)
+              , ae = i(4186)
+              , ne = i(4187)
+              , re = i(4188)
+              , se = i(4189)
+              , oe = i(4190)
+              , le = i(4191)
+              , ce = i(4192)
+              , he = i(4193)
+              , de = i(4194)
+              , pe = i(4195)
+              , ue = i(4196)
+              , me = i(4198)
               , ge = i.n(me)
-              , fe = i(4172)
+              , fe = i(4199)
               , ve = i.n(fe)
-              , ye = i(101)
-              , Ae = i(216)
-              , _e = i(1279)
-              , be = (i(1311),
-            i(1223))
+              , ye = i(102)
+              , Ae = i(220)
+              , _e = i(1286)
+              , be = (i(1323),
+            i(1227))
               , Ce = i.n(be)
-              , we = i(4173)
+              , we = i(4200)
               , xe = i.n(we)
-              , Se = i(44);
+              , Se = i(45);
             xe()(Ce.a);
             var Te = {
                 DisplayWeightEntryPopup: "DisplayWeightEntryPopup",
@@ -39224,7 +39197,6 @@
                     this.viewerIsAuthenticated = t.viewerIsAuthenticated,
                     this.tankSensor = t.tankSensor,
                     this.indoorClimbDifficulty = t.indoorClimbDifficulty,
-                    this.canShowLapAveragePaceSelector = t.canShowLapAveragePaceSelector,
                     e(document).on("click", function(e) {
                         this.$(".dropdown.page-dropdown").is(e.target) || 0 !== this.$(".dropdown.page-dropdown").has(e.target).length || 0 !== this.$(".open").has(e.target).length || this.$(".activity-charts-container .customize-charts-wrapper .dropdown").removeClass("open")
                     }
@@ -39350,6 +39322,13 @@
                         event: "track_event",
                         category: "Activity Page Event",
                         action: "Reorder charts on an activity"
+                    })
+                },
+                paceChartToggleToAnalytics: function() {
+                    ye.a.push({
+                        event: "track_event",
+                        category: "Activity Page Event",
+                        action: "Toggle Lap Avaerage Pace view"
                     })
                 },
                 isLapSwimming: function() {
@@ -39620,7 +39599,6 @@
                     this.canDisplayElevationChart() && this.addSeries(u.a.Elevation, b.a),
                     this.canDisplayAscentDescentChart() && this.addSeries(u.a.Elevation, w.a),
                     this.setupSpeedPaceChartView(),
-                    this.setupLapAveragePaceChartView(),
                     this.isBreathworkActivity() || this.addSeries(u.a.HeartRate, T.a),
                     this.addSeries(u.a.PerformanceCondition, ae.a),
                     this.canDisplayAscentChart() && this.addSeries(u.a.Ascent, ne.a),
@@ -39628,7 +39606,7 @@
                     this.setupCadenceChartView(),
                     this.addSeries(u.a.Position, Z.a),
                     this.setupPowerCharts(),
-                    this.addSeries(u.a.LeftRightPowerBalance, M.a),
+                    this.addSeries(u.a.LeftRightPowerBalance, B.a),
                     this.addSeries(u.a.LeftPCO, $.a),
                     this.addSeries(u.a.RightPCO, $.a),
                     this.setupPPStartCharts(),
@@ -39686,9 +39664,7 @@
                         break;
                     case h.a.SpeedTypes.Pace:
                     case h.a.SpeedTypes.RowingPace:
-                        this.paceChartView = this.addSeries(u.a.Pace, L.a, {
-                            canShowChartSelector: this.canShowChartSelector()
-                        });
+                        this.setupPaceChartView();
                         break;
                     case h.a.SpeedTypes.SwimSpeed:
                         this.speedChartView = this.addSeries(u.a.OpenWaterSwimSpeed, G.a);
@@ -39697,20 +39673,29 @@
                         this.paceChartView = this.addSeries(u.a.OpenWaterSwimPace, H.a);
                         break;
                     case h.a.SpeedTypes.FloorClimbingPace:
-                        this.paceChartView = this.addSeries(u.a.FloorClimbingPace, P.a)
+                        this.paceChartView = this.addSeries(u.a.FloorClimbingPace, k.a)
                     }
                 },
-                setupLapAveragePaceChartView: function() {
-                    this.speedType === h.a.SpeedTypes.Pace && this.paceChartView && (this.lapAveragePaceChartView = this.addSeries(u.a.LapAveragePace, pe.a, {
-                        canShowChartSelector: this.canShowChartSelector()
-                    }))
+                setupPaceChartView: function() {
+                    this.paceChartView = this.addSeries(u.a.Pace, L.a),
+                    this.lapAveragePaceChartView = this.addSeries(u.a.LapAveragePace, pe.a);
+                    var e = this;
+                    this.shouldRenderPaceChartSwitcher() ? this.paceChartView && this.lapAveragePaceChartView && this.chartSwitchers.push(new ue.a({
+                        shouldChartRender: this.shouldChartRender.bind(this),
+                        chartViews: [this.paceChartView, this.lapAveragePaceChartView],
+                        activeChart: this.paceChartView,
+                        preChartSelectionHandler: function(t) {
+                            return t === e.lapAveragePaceChartView && e.paceChartToggleToAnalytics(),
+                            !0
+                        }
+                    })) : this.addSeries(u.a.Pace, L.a)
                 },
                 setupCadenceChartView: function() {
-                    this.speedType == h.a.SpeedTypes.Speed ? this.addSeries(u.a.BikeCadence, k.a) : this.speedType == h.a.SpeedTypes.Pace ? this.addSeries(u.a.RunCadence, z.a) : this.speedType == h.a.SpeedTypes.SwimPace && this.addSeries(u.a.OpenWaterSwimStrokes, U.a)
+                    this.speedType == h.a.SpeedTypes.Speed ? this.addSeries(u.a.BikeCadence, P.a) : this.speedType == h.a.SpeedTypes.Pace ? this.addSeries(u.a.RunCadence, z.a) : this.speedType == h.a.SpeedTypes.SwimPace && this.addSeries(u.a.OpenWaterSwimStrokes, U.a)
                 },
                 setupPowerCharts: function() {
                     this.powerChartView = this.addSeries(u.a.PowerWatts, D.a),
-                    this.powerChartKgView = this.addSeries(u.a.PowerKg, B.a);
+                    this.powerChartKgView = this.addSeries(u.a.PowerKg, M.a);
                     var e = this.getSelectedPowerChart()
                       , t = this;
                     this.powerChartView && this.powerChartKgView && this.isOwner ? (this.powerChartSwitcher = new ue.a({
@@ -39866,16 +39851,19 @@
                     }, this),
                     this.resetZoom()
                 },
+                isTemperatureSeriesInGritOrFlow: function(e, t) {
+                    return (e.primarySeries[0].name === u.a.Grit.prototype.name || e.primarySeries[0].name === u.a.Flow.prototype.name) && t.name === u.a.Temperature.prototype.name
+                },
                 onExpandedChartClicked: function(e) {
                     var t = this.getExpandedChartView(e)
                       , i = []
                       , a = this.getAvailableSeries();
-                    s.a.each(a, function(e) {
-                        var t = [];
-                        (this.usersWeight || e[0].name !== u.a.PowerKg.prototype.name) && (s.a.each(e, function(e) {
-                            t.push(e)
+                    s.a.each(a, function(t) {
+                        var a = [];
+                        (this.usersWeight || t[0].name !== u.a.PowerKg.prototype.name) && (s.a.each(t, function(t) {
+                            this.isTemperatureSeriesInGritOrFlow(e, t) || a.push(t)
                         }, this),
-                        i.push(t))
+                        a.length && i.push(a))
                     }, this);
                     var n = s.a.find(i, function(t) {
                         if (t.length !== e.primarySeries.length)
@@ -40060,9 +40048,9 @@
                 canDisplayDistanceTimeToggleView: function() {
                     return !this.isDiving()
                 },
-                canShowChartSelector: function() {
+                shouldRenderPaceChartSwitcher: function() {
                     var e = this.activityTypes.getParentType(this.model.getActivityTypeKey());
-                    return !!e && ("running" === e.get("typeKey") && this.canShowLapAveragePaceSelector)
+                    return !!e && "running" === e.get("typeKey")
                 },
                 formatJumpData: function(e) {
                     var t = this;
@@ -40212,11 +40200,11 @@
         }
         ).call(this, i(10))
     },
-    4125: function(e, t, i) {
+    4152: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
-          , r = i(1539);
+          , r = i(1541);
         t.a = r.a.extend({
             step: !0,
             measurementSystem: function() {
@@ -40243,17 +40231,17 @@
             }
         })
     },
-    4126: function(e, t, i) {
+    4153: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = (i(8),
         i(4))
           , s = i(13)
-          , o = i(1539)
-          , l = i(1268)
-          , c = i(1218)
-          , h = i(2488);
+          , o = i(1541)
+          , l = i(1276)
+          , c = i(1222)
+          , h = i(2508);
         t.a = o.a.extend({
             getSeriesYAxisOptions: function(e, t) {
                 return {
@@ -40325,11 +40313,11 @@
             }
         })
     },
-    4127: function(e, t, i) {
+    4154: function(e, t, i) {
         "use strict";
         (function(e) {
-            var a = i(1539)
-              , n = i(2183);
+            var a = i(1541)
+              , n = i(2200);
             t.a = a.a.extend({
                 createChartSeries: function(t, i) {
                     var r = a.a.prototype.createChartSeries.call(this, t, i);
@@ -40359,28 +40347,28 @@
         }
         ).call(this, i(10))
     },
-    4128: function(e, t, i) {
+    4155: function(e, t, i) {
         "use strict";
-        var a = i(1539)
+        var a = i(1541)
           , n = i(13)
-          , r = i(1302)
-          , s = i(44);
+          , r = i(1255)
+          , s = i(45);
         t.a = a.a.extend({
             createChartSeries: function() {
                 var e = a.a.prototype.createChartSeries.apply(this, arguments);
                 return e.data.forEach(function(e) {
-                    +n.a.personalizeStress(e.y) <= r.a && (e.color = s.color_218)
+                    +n.a.personalizeStress(e.y) <= r.b && (e.color = s.color_218)
                 }),
                 e
             }
         })
     },
-    4129: function(e, t, i) {
+    4156: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
-          , r = i(1274)
-          , s = i(4130)
+          , r = i(1279)
+          , s = i(4157)
           , o = i.n(s);
         r.a.extend({
             scrollable: !1,
@@ -40391,18 +40379,18 @@
             }
         })
     },
-    4130: function(e, t) {
+    4157: function(e, t) {
         e.exports = '<div class="dropdown">\n    <button class="dropdown-toggle chart-header-item" data-toggle="dropdown">\n        <%- selectedItem.name %>\n        <i class="icon-pointer-down"></i>\n    </button>\n    <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu">\n        <% for (var i = 0; i < items.length; i++) {         %>\n        <% var item = items[i];                             %>\n        <li data-value="<%- item.value %>"><a tabindex="-1" href="#"><%- item.name %></a></li>\n        <% }                                                %>\n    </ul>\n</div>'
     },
-    4131: function(e, t, i) {
+    4158: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(13)
-          , o = i(1242)
-          , l = i(1218)
-          , c = i(1235)
+          , o = i(1246)
+          , l = i(1222)
+          , c = i(1239)
           , h = o.a.extend({
             fillColor: l.a.mapSeriesType(c.a.ClimbAscent),
             primarySeriesType: c.a.ClimbAscent,
@@ -40413,12 +40401,12 @@
         });
         t.a = h
     },
-    4132: function(e, t, i) {
+    4159: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
-          , r = i(1822)
-          , s = i(1731)
+          , r = i(1826)
+          , s = i(1737)
           , o = r.a.extend({
             getChartTitles: function() {
                 if (this.overlayData && this.overlayData.type === s.a.typedSplits) {
@@ -40439,15 +40427,15 @@
         });
         t.a = o
     },
-    4133: function(e, t, i) {
+    4160: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(13)
-          , o = i(1242)
-          , l = i(1218)
-          , c = i(1235)
+          , o = i(1246)
+          , l = i(1222)
+          , c = i(1239)
           , h = o.a.extend({
             fillColor: l.a.mapSeriesType(c.a.DiveDepth),
             primarySeriesType: c.a.DiveDepth,
@@ -40478,12 +40466,12 @@
         });
         t.a = h
     },
-    4134: function(e, t, i) {
+    4161: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235)
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239)
           , o = n.a.extend({
             fillColor: r.a.mapSeriesType(s.a.TankPressure),
             primarySeriesType: s.a.TankPressure,
@@ -40498,14 +40486,14 @@
         });
         t.a = o
     },
-    4135: function(e, t, i) {
+    4162: function(e, t, i) {
         "use strict";
         i(7);
         var a = i(4)
           , n = (i(13),
-        i(1235))
-          , r = i(1218)
-          , s = i(1242);
+        i(1239))
+          , r = i(1222)
+          , s = i(1246);
         t.a = s.a.extend({
             fillColor: r.a.mapSeriesType(n.a.FloorClimbingPace),
             primarySeriesType: n.a.FloorClimbingPace,
@@ -40514,12 +40502,12 @@
             }
         })
     },
-    4136: function(e, t, i) {
+    4163: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             primarySeriesType: s.a.BikeCadence,
             fillColor: r.a.mapSeriesType(s.a.BikeCadence),
@@ -40528,12 +40516,12 @@
             }
         })
     },
-    4137: function(e, t, i) {
+    4164: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             primarySeriesType: s.a.RunCadence,
             fillColor: r.a.mapSeriesType(s.a.RunCadence),
@@ -40547,12 +40535,12 @@
             }
         })
     },
-    4138: function(e, t, i) {
+    4165: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             primarySeriesType: s.a.Temperature,
             fillColor: r.a.mapSeriesType(s.a.Temperature),
@@ -40564,12 +40552,12 @@
             }
         })
     },
-    4139: function(e, t, i) {
+    4166: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             chartRangeSelectorType: s.a.PowerKg.chartRangeSelectorType,
             primarySeriesType: s.a.PowerKg,
@@ -40582,13 +40570,13 @@
             }
         })
     },
-    4140: function(e, t, i) {
+    4167: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
-          , r = i(1242)
-          , s = i(1218)
-          , o = i(1235);
+          , r = i(1246)
+          , s = i(1222)
+          , o = i(1239);
         t.a = r.a.extend({
             primarySeriesType: o.a.LeftRightPowerBalance,
             seriesType: "scatter",
@@ -40614,12 +40602,12 @@
             }
         })
     },
-    4141: function(e, t, i) {
+    4168: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1218)
-          , r = i(1242)
-          , s = i(1235);
+          , n = i(1222)
+          , r = i(1246)
+          , s = i(1239);
         t.a = r.a.extend({
             primarySeriesType: s.a.VerticalOscillation,
             seriesType: "scatter",
@@ -40633,12 +40621,12 @@
             }
         })
     },
-    4142: function(e, t, i) {
+    4169: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1218)
-          , r = i(1242)
-          , s = i(1235);
+          , n = i(1222)
+          , r = i(1246)
+          , s = i(1239);
         t.a = r.a.extend({
             primarySeriesType: s.a.VerticalRatio,
             seriesType: "scatter",
@@ -40652,12 +40640,12 @@
             }
         })
     },
-    4143: function(e, t, i) {
+    4170: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             primarySeriesType: s.a.Gforce,
             fillColor: r.a.mapSeriesType(s.a.Gforce),
@@ -40669,12 +40657,12 @@
             }
         })
     },
-    4144: function(e, t, i) {
+    4171: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1218)
-          , r = i(1242)
-          , s = i(1235);
+          , n = i(1222)
+          , r = i(1246)
+          , s = i(1239);
         t.a = r.a.extend({
             primarySeriesType: s.a.GroundContactTime,
             seriesType: "scatter",
@@ -40688,13 +40676,13 @@
             }
         })
     },
-    4145: function(e, t, i) {
+    4172: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
-          , r = i(1242)
-          , s = i(1218)
-          , o = i(1235);
+          , r = i(1246)
+          , s = i(1222)
+          , o = i(1239);
         t.a = r.a.extend({
             primarySeriesType: o.a.GroundContactTimeBalance,
             seriesType: "scatter",
@@ -40718,12 +40706,12 @@
             }
         })
     },
-    4146: function(e, t, i) {
+    4173: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             primarySeriesType: s.a.OpenWaterSwimStrokes,
             fillColor: r.a.mapSeriesType(s.a.OpenWaterSwimStrokes),
@@ -40732,13 +40720,13 @@
             }
         })
     },
-    4147: function(e, t, i) {
+    4174: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
-          , r = i(1823)
-          , s = i(1218)
-          , o = i(1235);
+          , r = i(1827)
+          , s = i(1222)
+          , o = i(1239);
         t.a = r.a.extend({
             seriesType: "area",
             primarySeriesType: o.a.SwimSpeed,
@@ -40754,13 +40742,13 @@
             }
         })
     },
-    4148: function(e, t, i) {
+    4175: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
-          , r = i(1823)
-          , s = i(1218)
-          , o = i(1235);
+          , r = i(1827)
+          , s = i(1222)
+          , o = i(1239);
         t.a = r.a.extend({
             seriesType: "area",
             primarySeriesType: o.a.SwimPace,
@@ -40787,14 +40775,14 @@
             }
         })
     },
-    4149: function(e, t, i) {
+    4176: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(4)
               , n = i(13)
-              , r = i(1823)
-              , s = i(1218)
-              , o = i(1235);
+              , r = i(1827)
+              , s = i(1222)
+              , o = i(1239);
             t.a = r.a.extend({
                 seriesType: "area",
                 primarySeriesType: o.a.SwimStrokes,
@@ -40813,14 +40801,14 @@
         }
         ).call(this, i(7))
     },
-    4150: function(e, t, i) {
+    4177: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(4)
               , n = i(13)
-              , r = i(1823)
-              , s = i(1218)
-              , o = i(1235);
+              , r = i(1827)
+              , s = i(1222)
+              , o = i(1239);
             t.a = r.a.extend({
                 seriesType: "area",
                 primarySeriesType: o.a.SwimSwolf,
@@ -40839,12 +40827,12 @@
         }
         ).call(this, i(7))
     },
-    4151: function(e, t, i) {
+    4178: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             primarySeriesType: s.a.StrideLength,
             fillColor: r.a.mapSeriesType(s.a.StrideLength),
@@ -40858,17 +40846,17 @@
             }
         })
     },
-    4152: function(e, t, i) {
+    4179: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(13)
-          , o = i(1235)
-          , l = i(1218)
-          , c = i(2488)
-          , h = i(1268)
-          , d = i(1242);
+          , o = i(1239)
+          , l = i(1222)
+          , c = i(2508)
+          , h = i(1276)
+          , d = i(1246);
         t.a = d.a.extend({
             primarySeriesType: o.a.Position,
             seriesType: "line",
@@ -40941,53 +40929,53 @@
             }
         })
     },
-    4153: function(e, t, i) {
+    4180: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1732);
+          , n = i(1738);
         t.a = n.a.extend({
             chartTitle: function() {
                 return a.a.localize("label_cd_power_phase_start")
             }
         })
     },
-    4154: function(e, t, i) {
+    4181: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1732);
+          , n = i(1738);
         t.a = n.a.extend({
             chartTitle: function() {
                 return a.a.localize("label_cd_power_phase_end")
             }
         })
     },
-    4155: function(e, t, i) {
+    4182: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1732);
+          , n = i(1738);
         t.a = n.a.extend({
             chartTitle: function() {
                 return a.a.localize("label_cd_peak_power_phase_start")
             }
         })
     },
-    4156: function(e, t, i) {
+    4183: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1732);
+          , n = i(1738);
         t.a = n.a.extend({
             chartTitle: function() {
                 return a.a.localize("label_cd_peak_power_phase_end")
             }
         })
     },
-    4157: function(e, t, i) {
+    4184: function(e, t, i) {
         "use strict";
         var a = i(4)
           , n = i(13)
-          , r = i(1242)
-          , s = i(1218)
-          , o = i(1235);
+          , r = i(1246)
+          , s = i(1222)
+          , o = i(1239);
         t.a = r.a.extend({
             primarySeriesType: o.a.DistancePerStroke,
             fillColor: s.a.mapSeriesType(o.a.DistancePerStroke),
@@ -41015,12 +41003,12 @@
             }
         })
     },
-    4158: function(e, t, i) {
+    4185: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1242)
-          , r = i(1218)
-          , s = i(1235);
+          , n = i(1246)
+          , r = i(1222)
+          , s = i(1239);
         t.a = n.a.extend({
             primarySeriesType: s.a.StrokeRate,
             fillColor: r.a.mapSeriesType(s.a.StrokeRate),
@@ -41029,14 +41017,14 @@
             }
         })
     },
-    4159: function(e, t, i) {
+    4186: function(e, t, i) {
         "use strict";
         i(8);
         var a = i(4)
           , n = (i(13),
-        i(1242))
-          , r = i(1218)
-          , s = i(1235)
+        i(1246))
+          , r = i(1222)
+          , s = i(1239)
           , o = n.a.extend({
             primarySeriesType: s.a.PerformanceCondition,
             lineWidth: 2,
@@ -41048,15 +41036,15 @@
         });
         t.a = o
     },
-    4160: function(e, t, i) {
+    4187: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(13)
-          , o = i(1235)
-          , l = i(1218)
-          , c = i(1242);
+          , o = i(1239)
+          , l = i(1222)
+          , c = i(1246);
         t.a = c.a.extend({
             fillColor: l.a.mapSeriesType(o.a.Ascent),
             primarySeriesType: o.a.Ascent,
@@ -41066,12 +41054,12 @@
             }
         })
     },
-    4161: function(e, t, i) {
+    4188: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1218)
-          , r = i(1242)
-          , s = i(1235);
+          , n = i(1222)
+          , r = i(1246)
+          , s = i(1239);
         t.a = r.a.extend({
             primarySeriesTypes: s.a.VectorAirDragCdA,
             fillColor: n.a.mapSeriesType(s.a.VectorAirDragCdA),
@@ -41080,12 +41068,12 @@
             }
         })
     },
-    4162: function(e, t, i) {
+    4189: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1218)
-          , r = i(1242)
-          , s = i(1235);
+          , n = i(1222)
+          , r = i(1246)
+          , s = i(1239);
         t.a = r.a.extend({
             primarySeriesTypes: s.a.VectorAirDragCdA,
             fillColor: n.a.mapSeriesType(s.a.VectorAirDragCdA),
@@ -41094,16 +41082,16 @@
             }
         })
     },
-    4163: function(e, t, i) {
+    4190: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(13)
           , s = i(4)
-          , o = i(1218)
-          , l = i(1242)
-          , c = i(1235)
-          , h = i(1325);
+          , o = i(1222)
+          , l = i(1246)
+          , c = i(1239)
+          , h = i(1330);
         t.a = l.a.extend({
             primarySeriesType: c.a.VectorAirWindSpeed,
             lineWidth: 2,
@@ -41153,17 +41141,17 @@
             }
         })
     },
-    4164: function(e, t, i) {
+    4191: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(4)
               , r = i(13)
-              , s = i(1242)
-              , o = i(1235)
-              , l = i(1218)
-              , c = i(2183)
+              , s = i(1246)
+              , o = i(1239)
+              , l = i(1222)
+              , c = i(2200)
               , h = i(17)
-              , d = i(2489)
+              , d = i(2509)
               , p = i.n(d);
             t.a = s.a.extend({
                 className: "grit-chart",
@@ -41253,17 +41241,17 @@
         }
         ).call(this, i(7), i(10))
     },
-    4165: function(e, t, i) {
+    4192: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(4)
               , r = i(17)
               , s = i(13)
-              , o = i(1242)
-              , l = i(1235)
-              , c = i(1218)
-              , h = i(2183)
-              , d = i(2489)
+              , o = i(1246)
+              , l = i(1239)
+              , c = i(1222)
+              , h = i(2200)
+              , d = i(2509)
               , p = i.n(d);
             t.a = o.a.extend({
                 lineWidth: 2,
@@ -41352,12 +41340,12 @@
         }
         ).call(this, i(7), i(10))
     },
-    4166: function(e, t, i) {
+    4193: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1235)
-          , r = i(1218)
-          , s = i(1242);
+          , n = i(1239)
+          , r = i(1222)
+          , s = i(1246);
         t.a = s.a.extend({
             fillColor: r.a.mapSeriesType(n.a.RespirationRate),
             primarySeriesType: n.a.RespirationRate,
@@ -41366,15 +41354,15 @@
             }
         })
     },
-    4167: function(e, t, i) {
+    4194: function(e, t, i) {
         "use strict";
         var a = i(4)
-          , n = i(1235)
-          , r = i(1218)
-          , s = i(1242)
+          , n = i(1239)
+          , r = i(1222)
+          , s = i(1246)
           , o = i(13)
-          , l = i(1302)
-          , c = i(44);
+          , l = i(1255)
+          , c = i(45);
         t.a = s.a.extend({
             seriesType: "column",
             fillColor: r.a.mapSeriesType(n.a.Stress),
@@ -41385,28 +41373,28 @@
             createSeries: function() {
                 var e = s.a.prototype.createSeries.apply(this, arguments);
                 return e.data.forEach(function(e) {
-                    +o.a.personalizeStress(e.y) <= l.a && (e.color = c.color_218)
+                    +o.a.personalizeStress(e.y) <= l.b && (e.color = c.blue_light_1)
                 }),
                 e
             }
         })
     },
-    4168: function(e, t, i) {
+    4195: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(13)
-          , o = i(1242)
-          , l = i(1218)
-          , c = i(1235);
+          , o = i(1246)
+          , l = i(1222)
+          , c = i(1239);
         t.a = o.a.extend({
             chartSelector: c.a.LapAveragePace.chartSelector,
             primarySeriesType: c.a.LapAveragePace,
             fillColor: l.a.mapSeriesType(c.a.Pace),
             formattingFunction: n.a.bind(s.a.formatPace, s.a),
             chartTitle: function() {
-                return r.a.localize("label_pace")
+                return r.a.localize("pace_chart_lap_avg")
             },
             getActivityTypeKey: function(e) {
                 var t = e || this;
@@ -41414,7 +41402,7 @@
             }
         })
     },
-    4169: function(e, t, i) {
+    4196: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -41422,9 +41410,9 @@
               , r = i(8)
               , s = i.n(r)
               , o = i(4)
-              , l = i(1408)
-              , c = i(1242)
-              , h = i(4170)
+              , l = i(1409)
+              , c = i(1246)
+              , h = i(4197)
               , d = i.n(h)
               , p = s.a.View.extend({
                 events: {
@@ -41519,16 +41507,16 @@
         }
         ).call(this, i(10))
     },
-    4170: function(e, t) {
+    4197: function(e, t) {
         e.exports = '<div class="dropdown">\n    <span class="chart-color-circle" style="background-color:<%- seriesColor %>"></span>\n    <% if (title) { %>\n        <%- title %>&nbsp;&nbsp;\n    <% } %>\n    <button class="dropdown-toggle chart-header-item" data-toggle="dropdown">\n        <%- activeChart.chartTitle(true) %>\n        <i class="icon-pointer-down"></i>\n    </button>\n    <% if (helpTooltip) { %>\n    <a href="javascript:void(0);" class="help-icon has-tooltip" data-html="true"\n       title="<%- Localizer.localize(helpTooltip) %>"><i class="icon-help"></i></a>\n    <% } else if (helpKey) { %>\n    <a href="#" class="help-icon" data-toggle="modal" data-help-key="<%- helpKey %>" role="button"><i\n            class="icon-help"></i></a>\n    <% } %>\n\n    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">\n        <% for (var i = 0; i < chartViews.length; i++) { %>\n        <%  var chartView = chartViews[i]; %>\n        <li class="<%- activeChart === chartView ? \'active\' : \'\' %> chart-toggle-menu-item" data-chartid="<%- chartView.cid %>"><a tabindex="-1" href="#"><%- chartView.chartTitle(true) %></a></li>\n        <% } %>\n    </ul>\n</div>\n'
     },
-    4171: function(e, t) {
+    4198: function(e, t) {
         e.exports = '<div class="span12 activity-charts-container">\n    <div class="row-fluid chart-header chart-header-main bottom-s">\n        <% if (viewerIsAuthenticated) { %>\n        <div class="span3 customize-charts-wrapper">\n            <div class="dropdown page-dropdown">\n                <button class="btn btn-small dropdown-trigger btn-customize-charts"><%- Localizer.localize(\'customize_charts\') %><i class="icon-pointer-down"></i></button>\n                <div class="customize-charts-list dropdown-menu pull-right">\n                    <label class="customize-charts-header"><%- Localizer.localize(\'customize_charts\') %></label>\n                    <div class="sortable-checkboxes ui-sortable">\n                        <% for (let index = 0; index < availableCharts.length; index++) { %>\n                            <label class="reOrderCheckbox" data-which="<%= availableCharts[index].seriesKey %>">\n                                <span class="drag-handle pull-left ui-sortable-handle" style="display:none;"><i class="icon-drag-handle"></i></span>\n                                <input type="checkbox" class="default-widget sortable-checkbox" name="settings-checkbox" value="<%- availableCharts[index].seriesKey %>" <%- !availableCharts[index].hide ? \'checked\' : \'\'%>/>\n                                <span class="chart-off pull-right label"><%- Localizer.localize(\'off\') %></span>\n                                <%- availableCharts[index].title %>\n                            </label>\n                        <% } %>\n                    </div>\n                    <div class="controls controls-row customize-charts-controls top-xs bottom-xs">\n                        <a href="#" class="colored reorder-widgets" style="display: inline;"><%- Localizer.localize(\'reorder_charts\') %></a>\n                        <button class="btn btn-small reorder-widgets-set" style="display: none;"><%- Localizer.localize(\'set_charts_order\') %></button>\n                        <button class="btn btn-small btn-secondary reorder-widgets-cancel" style="display: none;"><%- Localizer.localize(\'cancel_btn\') %></button>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <% } %>\n        <div class="span4">\n            <button id="btnResetZoom" class="reset-zoom btn btn-small" style="visibility: hidden"><%- Localizer.localize(\'chart_reset_zoom\') %></button>\n        </div>\n        <% if (canDisplayDistanceTimeToggleView) { %>\n            <div class="<%- viewerIsAuthenticated ? \'span5\' : \'span8\' %>">\n                <div class="pull-right chart-toggle-options">\n                    <% if (isLapSwimming) { %>\n                        <button class="btn btn-small length-rests-toggle"><%- Localizer.localize(\'over_lengths\') %></button>\n                    <% } %>\n                    <button class="btn btn-small time-toggle"><%- Localizer.localize(\'label_time\') %></button>\n                    <button class="btn btn-small distance-toggle"><%- Localizer.localize(\'label_distance\') %></button>\n                </div>\n            </div>\n        <% } %>\n    </div>\n\n    <div id="charts-container"></div>\n</div>'
     },
-    4172: function(e, t) {
+    4199: function(e, t) {
         e.exports = '<li class="multiple ">\n    <label data-seriestype="<%- seriesType %>">\n        <input type="checkbox" class="checkbox"><%- chartName %>\n    </label>\n</li>'
     },
-    4173: function(e, t, i) {
+    4200: function(e, t, i) {
         var a, n;
         n = function(e) {
             var t = function(e) {
@@ -41685,7 +41673,7 @@
         }
         .call(t, i, t, e)) || (e.exports = a)
     },
-    4174: function(e, t, i) {
+    4201: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -41694,8 +41682,8 @@
           , o = i(4)
           , l = i(13)
           , c = i(19)
-          , h = i(1439)
-          , d = i(4175)
+          , h = i(1444)
+          , d = i(4202)
           , p = i.n(d);
         t.a = s.a.View.extend({
             template: n.a.template(p.a),
@@ -41720,10 +41708,10 @@
             }
         })
     },
-    4175: function(e, t) {
+    4202: function(e, t) {
         e.exports = '<div class="border-wrapper">\n\n</div>\n\n\n'
     },
-    4176: function(e, t, i) {
+    4203: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -41732,35 +41720,35 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(34)
-              , h = i(2490)
-              , d = i(531)
-              , p = i(1247)
-              , u = i(2191)
-              , m = i(1500)
-              , g = i(2558)
-              , f = i(1535)
-              , v = i(4177)
-              , y = i(2193)
-              , A = i(2093)
-              , _ = i(1449)
-              , b = i(81)
-              , C = i(29)
+              , c = i(36)
+              , h = i(2510)
+              , d = i(534)
+              , p = i(1252)
+              , u = i(2209)
+              , m = i(1503)
+              , g = i(2578)
+              , f = i(1537)
+              , v = i(4204)
+              , y = i(2211)
+              , A = i(2110)
+              , _ = i(1454)
+              , b = i(82)
+              , C = i(28)
               , w = i(17)
-              , x = i(1231)
-              , S = i(98)
-              , T = i(101)
-              , E = i(216)
-              , L = i(4179)
-              , P = i.n(L)
-              , k = {
+              , x = i(1234)
+              , S = i(64)
+              , T = i(102)
+              , E = i(220)
+              , L = i(4206)
+              , k = i.n(L)
+              , P = {
                 ActivityTypeChanged: "ActivityTypeChanged",
                 PrepareToNavigate: "PrepareToNavigate",
                 ActivityNameChanged: "ActivityNameChanged",
                 EventTypeChanged: "EventTypeChanged"
             }
               , z = s.a.View.extend({
-                template: n.a.template(P.a),
+                template: n.a.template(k.a),
                 events: {
                     "click .page-previous": "onPreviousButtonClicked",
                     "click .page-next": "onNextButtonClicked",
@@ -41936,12 +41924,12 @@
                     this.nextId ? this.enableNextButton() : this.disableNextButton()
                 },
                 onNextButtonClicked: function() {
-                    this.nextId && (this.trigger(k.PrepareToNavigate),
+                    this.nextId && (this.trigger(P.PrepareToNavigate),
                     w.default.navigate("/activity/" + this.nextId),
                     this.pushActivityNavigationToAnalytics())
                 },
                 onPreviousButtonClicked: function() {
-                    this.previousId && (this.trigger(k.PrepareToNavigate),
+                    this.previousId && (this.trigger(P.PrepareToNavigate),
                     w.default.navigate("/activity/" + this.previousId),
                     this.pushActivityNavigationToAnalytics())
                 },
@@ -41957,7 +41945,7 @@
                     this.model.save()),
                     this.inlineEditView.render(),
                     this.renderPrTrophy(),
-                    this.trigger(k.ActivityNameChanged, t)
+                    this.trigger(P.ActivityNameChanged, t)
                 },
                 onDivingActivityNameAndNumberConfirmed: function(e, t) {
                     this.model.set("activityName", e),
@@ -41966,7 +41954,7 @@
                     this.inlineEditView.setDiveNumber(t),
                     this.inlineEditView.render(),
                     this.renderPrTrophy(),
-                    this.trigger(k.ActivityNameChanged, e, t)
+                    this.trigger(P.ActivityNameChanged, e, t)
                 },
                 onActivityNameCancelled: function() {
                     this.renderPrTrophy()
@@ -41985,13 +41973,13 @@
                     }
                     this.model.save(),
                     this.setActivityTypeIcon(t),
-                    this.trigger(k.ActivityTypeChanged, t.get("typeKey"), i)
+                    this.trigger(P.ActivityTypeChanged, t.get("typeKey"), i)
                 },
                 onEventTypeChanged: function(e) {
                     var t = this.eventTypes.findByTypeId(e);
                     this.model.set("eventTypeDTO", t.toJSON()),
                     this.model.save(),
-                    this.trigger(k.EventTypeChanged, e)
+                    this.trigger(P.EventTypeChanged, e)
                 },
                 onCourseChanged: function(e) {
                     e && -1 != e ? this.model.set("associatedCourseId", e) : this.model.set("associatedCourseId", null),
@@ -42043,17 +42031,17 @@
                     e.stopPropagation()
                 }
             });
-            z.Events = k,
+            z.Events = P,
             t.a = z
         }
         ).call(this, i(10))
     },
-    4177: function(e, t, i) {
+    4204: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
-          , r = i(1274)
-          , s = i(4178)
+          , r = i(1279)
+          , s = i(4205)
           , o = i.n(s)
           , l = r.a.extend({
             scrollable: !1,
@@ -42065,19 +42053,19 @@
         });
         t.a = l
     },
-    4178: function(e, t) {
+    4205: function(e, t) {
         e.exports = '<%\nif (selectedItem && selectedItem.value != -1) {\n    var escapedCourseName = jQuery(\'<div/>\').text(selectedItem.name).html();\n    courseLinkHtml = \'<a href="/modern/course/\' + selectedItem.value + \'" class="course-name colored">\' + escapedCourseName + \'</a>\';\n} else {\n    var courseLinkHtml = \'--\';\n}\n%>\n<div class="dropdown">\n    <span class="dropdown-toggle" data-toggle="dropdown">\n        <%- label %>: <%= courseLinkHtml %>\n        <i class="icon-pointer-down"></i>\n    </span>\n    <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenu">\n        <% for (var i = 0; i < items.length; i++) {         %>\n        <% var item = items[i];                             %>\n        <li data-value="<%- item.value %>"><a tabindex="-1" href="#"><%- item.name %></a></li>\n        <% }                                                %>\n    </ul>\n</div>'
     },
-    4179: function(e, t) {
+    4206: function(e, t) {
         e.exports = '\x3c!--Page Feature--\x3e\n<div class="page-header-content">\n    <h1 class="page-feature clearfix">\n        <%\n            // Html encode this to prevent XSS\n            var linkHtml = \'<a href="\' + url(\'/profile/\' + activity.metadataDTO.userInfoDto.displayname) + \'" class="colored">\' + _.escape(activity.ownerNameDisplayValue) + \'</a>\';\n\n            if (course) {\n                courseLinkHtml = \'<a href="/modern/course/\' + course.courseId + \'" class="course-name colored">\' + _.escape(course.name) + \'</a>\';\n            } else {\n                var courseLinkHtml = \'--\';\n            }\n\n            var dateHtml = \'\';\n            if (activity.timeZoneDisplayValue) {\n                dateHtml = activity.activityDateDisplayValue + \'<span title="\' + activity.timeZoneDisplayValue +\'" class="activity-title-time has-tooltip" data-placement="bottom">\' + activity.activityTimeDisplayValue +\'</span>\';\n            } else {\n                dateHtml = activity.activityDateDisplayValue + \'<span class="activity-title-time has-tooltip" title="">\' + activity.activityTimeDisplayValue +\'</span>\';\n            }\n\n        %>\n\n\n        <div class="pull-left activity-detail-title">\n            <% if (!activityTypeReadOnly && !readOnly) { %>\n                <span id="activityTypeDropdownPlaceholder" class="dropdown"></span>\n            <% } else { %>\n                <%- Localizer.localize(\'activity_type_\' + activity.activityTypeDTO.typeKey) %>\n            <% } %>\n            <%= Localizer.localize(\'activity_type_by\', linkHtml, dateHtml) %>\n        </div>\n    </h1>\n    <i class="activity-type-icon pull-left icon-activity-<%- activityTypeClassMapper.map(activity.activityTypeDTO.typeKey) %>"></i>\n    \x3c!--Page Title--\x3e\n    <h3 class="page-title">\n        <div class="data-bit">\n            <% if (!readOnly) { %>\n                <div class="trophy-container" id="activity-name-edit"></div>\n            <% } else { %>\n                <span class="trophy-container page-title-overflow"><%- activity.activityName %></span>\n            <% } %>\n        </div>\n    </h3>\n\n    <div class="date-block">\n        <span class="event-type">\n            <% if (!readOnly) { %>\n            <span id="event-type-dropdown" class="dropdown"></span>\n            <% } else { %>\n            <%- Localizer.localize(\'event_type_label\', Localizer.localize(activity.eventTypeDTO.typeKey)) %>\n            <% } %>\n        </span>\n        <% if(!isRepCounting) { %>\n            <span class="course-type">\n                <% if (!readOnly) { %>\n                    <span id="course-dropdown" class="dropdown"></span>\n                <% } else { %>\n                    <%= Localizer.localize(\'activity_course_link\', courseLinkHtml) %>\n                <% } %>\n            </span>\n        <% } %>\n        <span id="gearStatusViewPlaceholder" class="gear-indicator"></span>\n    </div>\n</div>\n\n<div class="page-navigation">\n    <button class="page-previous page-navigation-action" title="<%- Localizer.localize(\'previous\') %>"><i class="icon-arrow-left"></i></button>\n    <button class="page-next page-navigation-action" title="<%- Localizer.localize(\'next\') %>"><i class="icon-arrow-right"></i></button>\n</div>\n'
     },
-    4180: function(e, t, i) {
+    4207: function(e, t, i) {
         "use strict";
         (function(e, a) {
-            var n, r = i(7), s = i.n(r), o = i(8), l = i.n(o), c = i(4), h = i(13), d = i(1497), p = i.n(d), u = i(34), m = i(1409), g = i(4181), f = i(81), v = i(1231), y = i(1283), A = i(214), _ = i(101), b = i(98), C = i(1577), w = i(4182), x = i(4183), S = i(256), T = i(4185), E = i.n(T), L = i(44), P = {
+            var n, r = i(7), s = i.n(r), o = i(8), l = i.n(o), c = i(4), h = i(13), d = i(1500), p = i.n(d), u = i(36), m = i(1410), g = i(4208), f = i(82), v = i(1234), y = i(1289), A = i(218), _ = i(102), b = i(64), C = i(1581), w = i(4209), x = i(4210), S = i(259), T = i(4212), E = i.n(T), L = i(45), k = {
                 OnContentsRendered: "OnContentsRendered",
                 onMapCoordinateSystemClicked: "onMapCoordinateSystemClicked"
-            }, k = {
+            }, P = {
                 cycling: "#ff0000",
                 running: "#003300",
                 swimming: "#0000ff",
@@ -42087,7 +42075,7 @@
                 color: "#ff0035",
                 videoColor: "#11a9ed",
                 width: 5
-            }, I = 0, D = 2, B = l.a.View.extend({
+            }, I = 0, D = 2, M = l.a.View.extend({
                 template: s.a.template(E.a),
                 events: {
                     "click .play": "onPlayerButtonClicked",
@@ -42241,7 +42229,7 @@
                         this.rendered = !0,
                         this.mapCanvas = this.$("#activity-map-canvas"),
                         window.matchMedia("(max-width: 767px)").matches ? "google" !== this.mapProvider && this.mapCanvas.addClass("pointer-events-none") : this.mapControlsView.hideScrollToggleButton(),
-                        this.trigger(P.OnContentsRendered)
+                        this.trigger(k.OnContentsRendered)
                     }
                 },
                 renderParentPolylines: function(e) {
@@ -42269,7 +42257,7 @@
                           , h = this.childActivities.at(r);
                         if (h) {
                             var d = v.a.map(h.get("activityTypeDTO").typeKey);
-                            k[d]
+                            P[d]
                         }
                         var p = this.activityTypes.getParentType(h.getActivityTypeKey())
                           , u = p ? p.get("typeKey") : null;
@@ -42957,12 +42945,12 @@
                     return b.a.isMountainBikeActivity(this.model.get("activityTypeDTO").typeKey)
                 }
             });
-            B.Events = P,
-            t.a = B
+            M.Events = k,
+            t.a = M
         }
-        ).call(this, i(10), i(1238))
+        ).call(this, i(10), i(1242))
     },
-    4181: function(e, t, i) {
+    4208: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -42971,13 +42959,13 @@
         });
         t.a = n
     },
-    4182: function(e, t, i) {
+    4209: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = (i(8),
         i(4))
-          , s = i(1457)
+          , s = i(1461)
           , o = s.a.extend({
             lapTemplateHtml: '<div class="map-control-item laps"><label for="laps-checkbox"><input type="checkbox" id="laps-checkbox"><%= lapToggleText %></label></div>',
             initialize: function(e) {
@@ -43019,9 +43007,9 @@
         o.Events.ENABLE_DISABLE_MAP_SCROLL = "ENABLE_DISABLE_MAP_SCROLL",
         t.a = o
     },
-    4183: function(e, t, i) {
+    4210: function(e, t, i) {
         "use strict";
-        var a, n = i(1), r = i(7), s = i.n(r), o = i(8), l = i.n(o), c = i(4), h = i(13), d = i(4184), p = i.n(d);
+        var a, n = i(1), r = i(7), s = i.n(r), o = i(8), l = i.n(o), c = i(4), h = i(13), d = i(4211), p = i.n(d);
         t.a = l.a.View.extend({
             template: s.a.template(p.a),
             events: {
@@ -43089,13 +43077,13 @@
             a)
         })
     },
-    4184: function(e, t) {
+    4211: function(e, t) {
         e.exports = '<% var windSpeedVal = Personalizer.personalizeWindSpeed(weather.windSpeed); %>\n<% var unit = Localizer.localize(Personalizer.getWindSpeedUnitKey()); %>\n<% var windDir = (weather.windDirectionCompassPoint != \'N/A\' && weather.windDirectionCompassPoint !== null ) ? Localizer.localize(\'weather.wind.direction.\' + weather.windDirectionCompassPoint) : \'\' %>\n<div class="map-control-item">\n    <span class="trigger"><i class="icon-arrow-left"></i></span>\n    <% if (weather.temp != null) {  %>\n        <span class="temperature" title="<%- Personalizer.personalizeTemperature(weather.temp) %>\xb0 <%- Localizer.localize(Personalizer.getTemperatureUnitKey()) %>"><%- Personalizer.personalizeTemperature(weather.temp) %>\xb0</span>\n    <% } %>\n\n    <% if (weather.weatherTypeDTO && imageUrl) { %>\n        <span class="weather-icon" title="<%- weather.weatherTypeDTO.desc %>"><img src="<%- imageUrl %>" alt="<%- weather.weatherTypeDTO.desc %>"></span>\n    <% } %>\n\n    <% if (weather.windSpeed != null) { %>\n        <span class="wind wind-<%- weather.windDirectionCompassPoint %>" title="<%- Localizer.localize(\'wind_speed_and_direction\', windSpeedVal, unit, windDir) %>"><%- windSpeedVal %></span>\n    <% } %>\n\n    <% if (weather.relativeHumidity !== null && activityType === "auto_racing") { %>\n    <span class="humidity-percentage"><%- Localizer.localize(\'weather_humidity_percentage\', weather.relativeHumidity) %></span>\n    <% } %>\n    <span class="details">\n        <ul>\n            <% if (weather.apparentTemp != null) { %>\n            <li class="relativity"><%- Localizer.localize(\'weather_feels_like\', Personalizer.personalizeTemperature(weather.apparentTemp))  %></li>\n            <% } %>\n\n            <% if (weather.windSpeed != null) { %>\n            <li class="wind-details"><%- Localizer.localize(\'wind_speed_and_direction\', windSpeedVal, unit, windDir) %></li>\n            <% } %>\n\n            <% if (weather.relativeHumidity != null) { %>\n            <li class="humidity"><%- Localizer.localize(\'weather_percent_humidity\', weather.relativeHumidity) %></li>\n            <% } %>\n\n            <% if (weather.weatherStationDTO != null) { %>\n            <li class="source"><%- Localizer.localize(\'weather_source\', weather.weatherStationDTO.id) %></li>\n            <% } %>\n        </ul>\n    </span>\n</div>\n'
     },
-    4185: function(e, t) {
+    4212: function(e, t) {
         e.exports = '<div class="span12">\n    <div id="activity-map-canvas" class="activity-map-canvas" style="min-width: 300px;"></div>\n\n    <div id="map-controls" class="map-controls"></div>\n\n    <% if (hasPlayButton) { %>\n    <div class="map-controls player" title="<%- Localizer.localize(\'activity_player_tooltip\') %>">\n        <button class="map-control-item play" style="display: block;" aria-label="<%-\xa0Localizer.localize(\'icon_play\')\xa0%>"><i class="icon-pointer-right"></i></button>\n        <button class="map-control-item pause" style="display: none;" aria-label="<%-\xa0Localizer.localize(\'icon_pause\')\xa0%>"><span></span><span></span></button>\n    </div>\n    <% } %>\n\n    <div class="map-controls flex-wrap pull-right">\n        <span id="weather-controls" class="weather"></span>\n        <button id="fullScreenBtn" class="map-control-item full-screen-btn">\n            <% if (isFullScreen) { %>\n                <i class="icon-full-screen hidden"></i>\n                <i class="icon-close" \n                    aria-label="<%-\xa0Localizer.localize(\'close\')\xa0%>"></i>\n            <% } else { %>\n                <i class="icon-full-screen" \n                    aria-label="<%-\xa0Localizer.localize(\'full_screen\')\xa0%>"></i>\n                <i class="icon-close hidden"></i>\n            <% } %>\n        </button>\n    </div>\n</div>'
     },
-    4186: function(e, t, i) {
+    4213: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -43105,32 +43093,32 @@
               , o = i(4)
               , l = i(13)
               , c = i(356)
-              , h = i(34)
-              , d = i(36)
-              , p = i(4187)
+              , h = i(36)
+              , d = i(37)
+              , p = i(4214)
               , u = i(19)
-              , m = i(2490)
-              , g = i(1348)
-              , f = i(221)
-              , v = i(1458)
-              , y = i(1639)
-              , A = i(163)
-              , _ = i(4189)
-              , b = i(1231)
+              , m = i(2510)
+              , g = i(1353)
+              , f = i(225)
+              , v = i(1462)
+              , y = i(1645)
+              , A = i(126)
+              , _ = i(4216)
+              , b = i(1234)
               , C = i(66)
               , w = i(17)
-              , x = i(98)
-              , S = i(1479)
-              , T = i(4191)
+              , x = i(64)
+              , S = i(1485)
+              , T = i(4218)
               , E = i.n(T)
-              , L = i(1233)
-              , P = {
+              , L = i(1237)
+              , k = {
                 PersonalRecordsChanged: "PersonalRecordsChanged",
                 PrivacyChanged: "PrivacyChanged",
                 RestoreActivity: "RestoreActivity",
                 ExportSplitsCSV: "ExportSplitsCSV"
             }
-              , k = s.a.View.extend({
+              , P = s.a.View.extend({
                 template: n.a.template(E.a),
                 events: {
                     "click #btn-favorite": "onFavoriteClicked",
@@ -43311,7 +43299,7 @@
                 },
                 onActivityRestoreClicked: function(e) {
                     e.preventDefault(),
-                    this.trigger(P.RestoreActivity)
+                    this.trigger(k.RestoreActivity)
                 },
                 onPrivacyChanged: function(e) {
                     this.buttonSettings.privacy && e && (this.model.set("accessControlRuleDTO", {
@@ -43321,7 +43309,7 @@
                     this.privacyView.setPrivacy(e),
                     this.privacyView.render(),
                     this.sharingView.setPrivacy(e),
-                    this.trigger(P.PrivacyChanged))
+                    this.trigger(k.PrivacyChanged))
                 },
                 updateFavoriteIcon: function() {
                     this.model.get("favorite") ? this.$("#favorite-icon").addClass("active") : this.$("#favorite-icon").removeClass("active")
@@ -43366,7 +43354,7 @@
                             c.on(_.a.Events.PR_CREATE_COMPLETED, function(e) {
                                 i.usersPersonalRecords.fetch(),
                                 i.model.set("personalRecord", !0),
-                                i.trigger(P.PersonalRecordsChanged, e),
+                                i.trigger(k.PersonalRecordsChanged, e),
                                 p.close()
                             }),
                             c.on(_.a.Events.PR_CREATE_FAILED, function(e) {
@@ -43482,25 +43470,25 @@
                 },
                 onExportCsv: function(e) {
                     e.preventDefault(),
-                    this.trigger(P.ExportSplitsCSV)
+                    this.trigger(k.ExportSplitsCSV)
                 }
             });
-            k.Events = P,
-            t.a = k
+            P.Events = k,
+            t.a = P
         }
         ).call(this, i(10))
     },
-    4187: function(e, t, i) {
+    4214: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(4)
-              , r = i(51)
-              , s = i(101)
-              , o = i(34)
-              , l = i(1294)
-              , c = i(2018)
+              , r = i(53)
+              , s = i(102)
+              , o = i(36)
+              , l = i(1301)
+              , c = i(2025)
               , h = i.n(c)
-              , d = i(4188)
+              , d = i(4215)
               , p = i.n(d)
               , u = l.a.extend({
                 events: {
@@ -43571,18 +43559,18 @@
         }
         ).call(this, i(7), i(10))
     },
-    4188: function(e, t) {
+    4215: function(e, t) {
         e.exports = '<div class="alert alert-error queue-error" style="display: none">\n    <p><%- Localizer.localize(\'queue.error\') %></p>\n</div>\n\n<% if (hasDevices) { %>\n    <h3 class="bottom-l"><%- sendToDeviceTitle %></h3>\n    <p class="bottom-xs"><%- Localizer.localize(\'agent.select.device\') %></p>\n\n    <% if (devices && devices.length > 0) { %>\n    <select class="bottom-s selected-device">\n        <% for (var i = 0; i < devices.length; i++) { %>\n        <option value="<%- devices[i].get(\'deviceId\') %>"><%- devices[i].get(\'displayName\') %></option>\n        <% }; %>\n    </select>\n    <div class="bottom-m device-selected"><a href="#" class="btn btn-large send-to-queue"><%- Localizer.localize(\'queue.send.now\') %></a></div>\n    <% } else { %>\n    <div><%- Localizer.localize(\'no.devices.found\') %></div>\n    <% } %>\n\n    <div class="need-help bottom-xs">\n        <a href="#" class="colored open-help need-help-link"><%- Localizer.localize(\'agent.need.help\') %></a>\n        <a href="#" class="colored close-help" style="display: none;"><%- Localizer.localize(\'agent.close.help\') %></a>\n    </div>\n    <div class="send-help text-left" style="display: none;">\n        <h4><%- Localizer.localize(\'agent.help.title\') %></h4>\n        <p><%- Localizer.localize(\'agent.help.reason\') %></p>\n        <ul>\n            <li><%- Localizer.localize(\'device.not.supported\') %></li>\n            <li><%- Localizer.localize(\'device.not.setup\') %></li>\n        </ul>\n        <p><%= Localizer.localize(\'agent.download.info\') %></p>\n        <hr>\n        <h4><%- Localizer.localize(\'agent.help.title2\') %></h4>\n        <p><%- Localizer.localize(\'device.send.course.title\') %></p>\n        <ul>\n            <li><%- Localizer.localize(\'device.send.course.info\') %></li>\n            <li><%- Localizer.localize(\'device.send.course.info2\') %></li>\n            <li><%- Localizer.localize(\'device.send.course.info3\') %></li>\n        </ul>\n    </div>\n\n<% } else { %>\n    <p><%- Localizer.localize(\'agent.additional.info\') %></p>\n    <div class="text-center">\n        <p><a href="/<%- Localizer.localize(\'agent.download.locale\') %>/start" class="btn btn-large queue-download"><%- Localizer.localize(\'agent.download\') %></a></p>\n    </div>\n    <div class="text-center get-started-overview top-l">\n        <div class="get-started-item">\n            <div class="get-started-img download"></div>\n            <span><%- Localizer.localize(\'agent.download.install\') %></span>\n        </div>\n        <div class="get-started-item">\n            <div class="get-started-img plug-in"></div>\n            <span><%- Localizer.localize(\'agent.plugin\') %></span>\n        </div>\n        <div class="get-started-item">\n            <div class="get-started-img link-device"></div>\n            <span><%- Localizer.localize(\'agent.link.device\') %></span>\n        </div>\n        <div class="get-started-item">\n            <div class="get-started-img connect"></div>\n            <span><%- Localizer.localize(\'gc\') %></span>\n        </div>\n    </div>\n<% }  %>\n\n\n'
     },
-    4189: function(e, t, i) {
+    4216: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
-          , r = i(4190)
+          , r = i(4217)
           , s = i.n(r)
-          , o = i(1343)
-          , l = i(29)
-          , c = i(1320)
+          , o = i(1348)
+          , l = i(28)
+          , c = i(1325)
           , h = (i(13),
         i(4))
           , d = i(8)
@@ -43709,13 +43697,13 @@
         u.Events = p,
         t.a = u
     },
-    4190: function(e, t) {
+    4217: function(e, t) {
         e.exports = '<div style="display: <%- showExistingPrNotification ? \'none\' : \'block\' %>;">\n<h4><%- Localizer.localize(title) %></h4>\n<select>\n    <% for (var i = 0; i < collection.length; i += 1) { %>\n         <option data="<%- collection[i].id %>"><%- Localizer.localize(collection[i].key) %></option>\n    <% } %>\n</select>\n</div>\n<div class="replace-pr-confirmation" style="display: <%- showExistingPrNotification ? \'block\' : \'none\' %>;">\n    <h4 class="bottom-m"><%- Localizer.localize(\'pr.conflict.replace_existing_record\', title) %></h4>\n    <div class="row-fluid text-center">\n        <div class="span6 old-pr" title="<%- currentPr.name %>">\n            <h5><%- Localizer.localize(\'pr.conflict.current\') %></h5>\n            <div class="pr-time font-thin bottom-xs"><%- currentPr.value %></div>\n            <div class="pr-activity-name"><%- currentPr.name %></div>\n            <div class="pr-date bottom-s"><%- currentPr.time %></div>\n            <button class="btn btn-secondary cancel bottom-s" data-dismiss="modal" aria-hidden="true"><%- Localizer.localize(\'pr.action.keep.label\') %></button>\n        </div>\n        <div class="span6 new-pr" title="<%- replacingPr.activityName %>">\n            <h5><%- Localizer.localize(\'pr.conflict.new\') %></h5>\n            <div class="pr-time font-thin bottom-xs"><%- replacingPr.value %></div>\n            <div class="pr-activity-name"><%- replacingPr.name %></div>\n            <div class="pr-date bottom-s"><%- replacingPr.time %></div>\n            <button class="btn confirm bottom-s"><%- Localizer.localize(\'pr.conflict.replace\') %></button>\n        </div>\n    </div>\n</div>'
     },
-    4191: function(e, t) {
+    4218: function(e, t) {
         e.exports = '<div>\n    \x3c!--Liking--\x3e\n    <span class="entry-like">\n    </span>\n</div>\n\n<div>\n    <% if (bs.edit) { %>\n    <button id="btn-edit" class="btn-edit favorite page-navigation-action" title="<%- Localizer.localize(\'edit\') %>">\n        <i class="icon-pencil"></i>\n    </button>\n    <% } %>\n\n    <% if (bs.favorite) { %>\n    <button id="btn-favorite" class="favorite page-navigation-action" title="<%- Localizer.localize(\'tooltip.favorite\') %>">\n        <i id="favorite-icon" class="icon-star fav"></i>\n    </button>\n    <% } %>\n\n    \x3c!-- Share --\x3e\n    <div class="dropdown page-dropdown activity-share hidden-phone" style="display:inline-block;" title="<%- Localizer.localize(\'share\') %>">\n\n    </div>\n\n    \x3c!-- Privacy Lock --\x3e\n    <% if (bs.privacy) { %>\n    <div id="privacy-view-placeholder" title="<%- Localizer.localize(\'privacy\') %>">\n    </div>\n    <% } %>\n\n    <div class="dropdown page-dropdown">\n        <button class="dropdown-trigger page-navigation-action" data-toggle="dropdown" title="<%- Localizer.localize(\'tooltip_activity_gear\') %>"><i class="icon-gear"></i></button>\n        <ul id="gear-menu-list" class="dropdown-menu pull-right">\n            <li class="clearfix"><i class="icon-gear pull-right"></i></li>\n\n            <% if (viewAsOwner) { %>\n            <li class="<%- bs.compare ? \'\' : \'disabled\' %>" id="btn-compare"><a href="#"><%- Localizer.localize(\'activity_compare\') %></a></li>\n            <% } %>\n\n            <% if (viewerIsAuthenticated) { %>\n            <li class="<%- bs.sendtodevice ? \'\' : \'disabled\' %>" id="btn-send-to-device" class="kevin-temp"><a href="#"><%- Localizer.localize(\'queue.send.to.device\') %></a></li>\n            <% } %>\n\n            <% if (viewerIsAuthenticated) { %>\n            <li class="<%- bs.savecourse ? \'\' : \'disabled\' %>" id="btn-save-as-course"><a href="#"><%- Localizer.localize(\'saveAs.course.title\') %></a></li>\n            <% } %>\n\n            <% if (viewAsOwner) { %>\n            <li class="<%- bs.setpr ? \'\' : \'disabled\' %>" id="btn-set-as-pr"><a href="#"><%- Localizer.localize(\'activity_set_as_pr\') %></a></li>\n            <% } %>\n\n            <% if (viewerIsAuthenticated && viewAsOwner) { %>\n            <li class="divider"></li>\n            <li class="<%- bs.exportorig ? \'\' : \'disabled\' %>" id="btn-export-original"><a href="#"><%- Localizer.localize(\'activity_export_original\') %></a></li>\n            <li class="<%- bs.exporttcx ? \'\' : \'disabled\' %>" id="btn-export-tcx"><a href="#"><%- Localizer.localize(\'activity_export_tcx\') %></a></li>\n            <li class="<%- bs.exportgpx ? \'\' : \'disabled\' %>" id="btn-export-gpx"><a href="#"><%- Localizer.localize(\'activity_export_gpx\') %></a></li>           \n            <li class="<%- bs.exportkml ? \'\' : \'disabled\' %>" id="btn-export-google-earth"><a href="#"><%- Localizer.localize(\'activity_export_google_earth\') %></a></li>\n            <li class="<%- bs.exportcsv ? \'\' : \'disabled\' %>" id="btn-export-csv"><a href="#"><%- Localizer.localize(\'activity_export_splits_csv\') %></a></li>\n            <% } %>\n\n            <% if (viewAsOwner) { %>\n            <li class="divider"></li>\n            <li class="btn-edit <%- bs.edit ? \'\' : \'disabled\' %>" id="btn-menu-edit"><a href="#"><%- Localizer.localize(\'edit\') %></a></li>\n            <% if (showAdvancedActivityEdit) { %>\n                <li class="btn-activity-trim" id="btn-activity-trim"><a href="#"><%- Localizer.localize(\'activity_trim\') %></a></li>\n            <% } %>\n            <% if (showActivityRestore) { %>\n                <li class="btn-activity-restore" id="btn-activity-restore"><a href="#"><%- Localizer.localize(\'activity_restore\') %></a></li>\n            <% } %>            \n            <li class="<%- bs.delete ? \'\' : \'disabled\' %>" id="btn-delete"><a href="#confirm-delete-activity" role="button" data-toggle="modal"><%- Localizer.localize(\'delete.delete\') %></a></li>\n            <% } %>\n        </ul>\n    </div>\n\n</div>\n'
     },
-    4192: function(e, t, i) {
+    4219: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(8)
@@ -43745,7 +43733,7 @@
         }
         ).call(this, i(10))
     },
-    4193: function(e, t, i) {
+    4220: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -43753,12 +43741,12 @@
               , r = i(8)
               , s = i.n(r)
               , o = i(4)
-              , l = i(4194)
-              , c = i(2491)
-              , h = (i(36),
-            i(218),
-            i(2492),
-            i(4197))
+              , l = i(4221)
+              , c = i(2511)
+              , h = (i(37),
+            i(222),
+            i(2512),
+            i(4224))
               , d = i.n(h)
               , p = {
                 ENLARGE_PHOTO: "ENLARGE_PHOTO",
@@ -43989,14 +43977,14 @@
         }
         ).call(this, i(10))
     },
-    4194: function(e, t, i) {
+    4221: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = i(4)
-          , l = i(4195)
+          , l = i(4222)
           , c = i.n(l);
         t.a = s.a.View.extend({
             template: n.a.template(c.a),
@@ -44020,19 +44008,19 @@
             }
         })
     },
-    4195: function(e, t) {
+    4222: function(e, t) {
         e.exports = '<img src="<%- image.url %>" alt="<%- Localizer.localize(\'photos_description\') %>" data-photo-id="<%- image.imageId %>" class="photo inactive-photo">'
     },
-    4196: function(e, t) {
+    4223: function(e, t) {
         e.exports = '<div class="edit-carousel-overlay">\n     <span class="data-label fine-print"><%- Localizer.localize(\'edit_carousel_text\') %></span>\n     <div class="js-edit-images clearfix">\n          <% for(var i=0; i < images.length; i++) { %>\n               <div class="edit-image-div" data-photo-id="<%- images[i].imageId %>" style="background-image: url(<%- images[i].smallUrl %>);">\n                   <button class="delete-photo-icon" data-photo-id="<%- images[i].imageId %>">&times;</button>\n               </div>\n          <% } %>\n     </div>\n     <div class="overlay-edit-btn">\n           <span>\n               <a class="btn btn-small btn-secondary cancel-edit-carousel"><%- Localizer.localize(\'cancel\') %></a>\n           </span>\n           <span>\n               <a class="btn btn-small btn-save-carousel" disabled><%- Localizer.localize(\'save\') %></a>\n           </span>\n     </div>\n</div>\n\n\n'
     },
-    4197: function(e, t) {
+    4224: function(e, t) {
         e.exports = '<div class="photo-carousel clearfix">\n    <div class="slider-control-section-container">\n        <div class="add-area">\n            <span class="add-photo-text dz-clickable"><i class="icon-add-photo icon-photo-add dz-clickable"></i><%- Localizer.localize(\'photos_add\') %></span>\n        </div>\n        <div class="slider-control-buttons">\n            <div class="delete-photo"><%- Localizer.localize(\'photos_remove\') %></div>\n            <div class="edit-carousel"><%- Localizer.localize(\'photos_edit\') %></div>\n        </div>\n    </div>\n    <div class="slides">\n        <div class="arrow-bar-left" data-slide-id="">\n            <i class="icon-arrow-left prev"></i>\n        </div>\n        <div class="arrow-bar-right" data-slide-id="">\n            <i class="icon-arrow-right next"></i>\n        </div>\n        <div class="delete-content">\n            <div class="delete-overlay">\n            <div class="delete-message delete-image">\n                <h5 class="bottom-xs delete-text"><%- Localizer.localize(\'photos_remove_confirmation\') %></h5>\n                <span>\n                    <a class="btn btn-secondary keep-photo"><%- Localizer.localize(\'photos_keep\') %></a>\n                </span>\n                <span>\n                    <a class="btn btn-primary btn-danger confirm-remove-photo"><%- Localizer.localize(\'photos_remove\') %></a>\n                </span>\n            </div>\n            <div class="delete-error-message">\n                <h5 class="bottom-xs delete-error-text"><%- Localizer.localize(\'photos_remove_error\') %></h5>\n                <span>\n                    <a class="btn btn-secondary dismiss-delete-error"><%- Localizer.localize(\'photos_dismiss_error\') %></a>\n                </span>\n            </div>\n            </div>\n        </div>\n    </div>\n\n    <div class="slider-control-section-container">\n        <span class="scroll-circle-area"></span>\n    </div>\n</div>'
     },
-    4198: function(e, t) {
+    4225: function(e, t) {
         e.exports = '<h5 class="bottom-xs photos-header"><%- Localizer.localize(\'photos\') %></h5>\n<div class="add-photos border-wrapper">\n    <h5 class="bottom-xs add-photos-message"><i class="icon-photos icon-photo-add"></i>&nbsp;<%-Localizer.localize(\'photos_add_message\') %></h5>\n</div>'
     },
-    4199: function(e, t, i) {
+    4226: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -44040,13 +44028,13 @@
               , r = i(8)
               , s = i.n(r)
               , o = i(4)
-              , l = i(1569)
+              , l = i(1573)
               , c = i.n(l)
-              , h = i(4200)
+              , h = i(4227)
               , d = i.n(h)
-              , p = i(4201)
+              , p = i(4228)
               , u = i.n(p)
-              , m = i(34)
+              , m = i(36)
               , g = {
                 DROPPED_EXCESS_PHOTOS: "DROPPED_EXCESS_PHOTOS",
                 ADDED_PHOTO: "ADDED_PHOTO",
@@ -44205,20 +44193,20 @@
         }
         ).call(this, i(10))
     },
-    4200: function(e, t) {
+    4227: function(e, t) {
         e.exports = '<div class="dz-file-preview file-error">\n    <h6 class="file-name" data-dz-name></h6>\n    <h6 class="file-size" data-dz-size></h6>\n    <h6 class="file-error-message" data-dz-errormessage></h6>\n</div>'
     },
-    4201: function(e, t) {
+    4228: function(e, t) {
         e.exports = '<form class="dropzone dropzone-upload-box dz-clickable">\n    <div class="view-photos"></div>\n    <div class="empty-state"></div>\n    <div class="drop-photos-section">\n        <h6 class="description"><%- Localizer.localize(\'photos_drop_instruction\') %></h6>\n    </div>\n    <div class="drag-photos-section">\n        <h6 class="description"><%- Localizer.localize(\'photos_drag_instruction\') %></h6>\n        <h6 class="description"><%- Localizer.localize(\'photos_upload_limit\') %></h6>\n    </div>\n    <div class="exceeds-limit-section">\n        <h6 class="description"><%- Localizer.localize(\'photos_upload_limit\') %></h6>\n    </div>\n</form>'
     },
-    4202: function(e, t) {
+    4229: function(e, t) {
         e.exports = '<div class="photo-upload-growl">\n    <div class="alert-growl-bottom-right">\n        <div class="alert-upload animated">\n\n            <h4 class="upload-text"></h4>\n\n            <div class="upload-progress-section">\n                <div class="upload-progress-bar">\n                    <div class="total-upload-progress"></div>\n                </div>\n                <h4 class="cancel-upload"><%- Localizer.localize(\'photos_upload_growl_cancel_upload\') %></h4>\n                <h4 class="dismiss-growl"><%- Localizer.localize(\'photos_upload_growl_dismiss\') %></h4>\n            </div>\n\n            <div class="upload-error-section">\n                <div class="upload-error-information">\n                    <h4 class="upload-error-summary"></h4>\n                    <h4 class="upload-error-dismiss"><%- Localizer.localize(\'photos_upload_growl_dismiss\') %></h4>\n                    <h4 class="upload-error-expand"><%- Localizer.localize(\'photos_upload_growl_expand_list\') %></h4>\n                    <h4 class="upload-error-minimize"><%- Localizer.localize(\'photos_upload_growl_minimize_list\') %></h4>\n                </div>\n                <div class="upload-error-list"></div>\n            </div>\n\n        </div>\n    </div>\n</div>\n\n<div class="photo-upload-error-growl">\n    <div class="alert-growl-bottom-right">\n        <div class="alert-error animated">\n            <h4 class="error-text"><%- Localizer.localize(\'photos_upload_growl_too_many_photos\') %></h4>\n            <h4 class="dismiss-error-growl"><%- Localizer.localize(\'photos_upload_growl_dismiss\') %></h4>\n        </div>\n    </div>\n</div>'
     },
-    4203: function(e, t) {
+    4230: function(e, t) {
         e.exports = '<div class="upload-photos-dropzone"></div>\n<div class="upload-growl"></div>\n<div class="edit-carousel-content"></div>\n<div class="alert alert-error hidden"></div>\n<div class="photo-carousel-view"></div>'
     },
-    4204: function(e, t, i) {
-        var a = i(4205);
+    4231: function(e, t, i) {
+        var a = i(4232);
         "string" === typeof a && (a = [[e.i, a, ""]]);
         var n = {
             hmr: !0,
@@ -44228,10 +44216,10 @@
         i(35)(a, n);
         a.locals && (e.exports = a.locals)
     },
-    4205: function(e, t, i) {
-        (e.exports = i(32)(!0)).push([e.i, "/*  ======================\n      Photo Empty State\n      ======================  */\n    .photo-empty-state .photos-header {\n        margin-bottom: 8px;\n    }\n    .photo-empty-state .add-photos {\n        width: 100%;\n        margin-bottom: 10px;\n        text-align: center;\n        cursor: pointer;\n    }\n    .photo-empty-state .add-photos-message {\n        font-size: 18px;\n        color: #121212;\n        letter-spacing: 0;\n        margin: 0;\n        display: -webkit-inline-flex;\n        display: inline-flex;\n        padding: 21px 10px 21px 10px;\n        cursor: pointer;\n    }\n    .photo-empty-state .icon-add-photo {\n        padding-right: 10px;\n        line-height: 23px;\n        height: auto;\n        width: auto;\n        cursor: pointer;\n    }\n    /*  ======================\n    Photo Carousel\n    ======================  */\n    .photo-carousel-section {\n        -webkit-user-select: none;\n        -moz-user-select: none;\n        -ms-user-select: none;\n        user-select: none;\n    }\n    .photo-carousel {\n        text-align: center;\n        position: relative;\n        margin: auto;\n        width: 100%;\n        height: 100%;\n    }\n    .photo-carousel .slides {\n        height: 270px;\n        margin-bottom: 5px;\n        float: left;\n        width: 100%;\n        position: relative;\n    }\n    /* Photo Containers */\n    .photo-carousel .active-photo-container,\n    .photo-carousel .inactive-photo-container {\n        height: 100%;\n        display: -webkit-flex;\n        display: flex;\n        -webkit-align-items: center;\n                align-items: center;\n        width: 80%;\n        padding-left: 10%;\n    }\n    .photo-carousel .inactive-photo-container {\n        display: none;\n    }\n    /* Photos */\n    .photo-carousel .photo {\n        max-height: 100%;\n        max-width: 100%;\n        height: auto;\n        width: auto;\n        margin-left: auto;\n        margin-right: auto;\n        cursor: pointer;\n    }\n    .photo-carousel .active-photo {\n        display: inline;\n    }\n    .photo-carousel .inactive-photo {\n        display: none;\n    }\n    /* Delete */\n    .photo-carousel .delete-content,\n    .photo-carousel .delete-overlay,\n    photo-carousel .edit-carousel-content,\n    .photo-carousel .edit-carousel-overlay {\n        display: none;\n        position: absolute;\n        top: 0;\n        bottom: 0;\n        left: 0;\n        right: 0;\n        height: 100%;\n        width: 100%;\n        z-index: 1;\n    }\n    .photo-carousel .delete-content,\n    .photo-carousel .edit-carousel-content {\n        -webkit-align-items: center;\n                align-items: center;\n    }\n    .photo-carousel .delete-overlay,\n    .photo-carousel {\n        transition: 0.5s ease;\n        background-color: #ffffff;\n    }\n    .modal .photo-carousel {\n        background-color: #000;\n    }\n    .slider-control-section-container {\n        padding: 0 10%;\n        /*is 80% because it inherits  box-sizing: content-box;*/\n        width: 80%;\n        float: left;\n        text-align: center;\n        margin: 5px 0;\n    }\n    .slider-control-section-container .slider-control-buttons {\n        float: right;\n    }\n    .slider-control-section-container .add-area {\n        float: left;\n    }\n    .icon-photo-add {\n        margin-right: 5px;\n    }\n    .edit-carousel-content {\n        transition: 0.5s ease;\n        background-color: #ffffff;\n    }\n    .edit-carousel-overlay {\n        margin: 5px;\n        text-align: center;\n    }\n    .edit-carousel-content .js-edit-images {\n        margin-bottom: 10px;\n        -webkit-user-select: none;\n        -moz-user-select: none;\n        -ms-user-select: none;\n        user-select: none;\n    }\n    .edit-carousel-content .edit-image-div {\n        margin: 5px;\n        width: 100px;\n        height: 100px;\n        float: left;\n        position: relative;\n        background: no-repeat center center;\n        background-size: cover;\n    }\n    .edit-carousel-content .delete-photo-icon {\n        position: absolute;\n        bottom: 5px;\n        right: 5px;\n        display: block;\n        margin: 0;\n        padding: 0;\n        width: 25px;\n        height: 25px;\n        line-height: 1;\n        font-size: 20px;\n        text-align: center;\n        border: 1px solid #888;\n        background: #fff;\n        border-radius: 50%;\n        opacity: 0.8;\n    }\n    .edit-carousel-content .overlay-edit-btn {\n        text-align: right;\n        margin-bottom: 15px;\n    }\n    .photo-carousel .delete-message,\n    .photo-carousel .delete-error-message,\n    .photo-carousel .edit-carousel-content {\n        z-index: 100;\n        display: none;\n        margin-left: auto;\n        margin-right: auto;\n        visibility: visible;\n    }\n    .photo-carousel .delete-error-message .dismiss-delete-error {\n        cursor: pointer;\n    }\n    .photo-carousel .delete-content .keep-photo,\n    .photo-carousel .delete-content .confirm-remove-photo {\n        margin: 5px;\n        cursor: pointer;\n    }\n    /* Scroll arrows */\n    .photo-carousel .arrow-bar-left,\n    .photo-carousel .arrow-bar-right {\n        height: 100%;\n        width: 10%;\n        position: absolute;\n    }\n    .photo-carousel .arrow-bar-left {\n        left: 0;\n    }\n    .photo-carousel .arrow-bar-right {\n        right: 0;\n    }\n    .photo-carousel .icon-arrow-left,\n    .photo-carousel .icon-arrow-right {\n        font-size: 30px;\n        width: auto;\n        margin: 0;\n        height: auto;\n        color: #c7c7c7;\n        opacity: 0.7;\n        position: absolute;\n        top: 50%;\n        cursor: pointer;\n    }\n    .photo-carousel .icon-arrow-right {\n        right: 25%;\n    }\n    .photo-carousel .icon-arrow-left {\n        left: 25%;\n    }\n    .photo-carousel .icon-arrow-right.hidden-arrow,\n    .photo-carousel .icon-arrow-left.hidden-arrow {\n        visibility: hidden;\n    }\n    /* Add */\n    .photo-carousel .add-photo-text {\n        font-size: 12px;\n        color: #11a9ed;\n        cursor: pointer;\n    }\n    .photo-carousel .add-photo-icon,\n    .photo-carousel .add-icon-text-disabled {\n        margin-right: 5px;\n        line-height: 15px;\n    }\n    .photo-carousel .add-photo-text-disabled {\n        font-size: 12px;\n        color: #c7c7c7;\n        cursor: text;\n    }\n    .drag-drop-placeholder {\n        width: 100px;\n        height: 100px;\n        margin: 5px;\n        float: left;\n        border: 2px dashed #11a9ed;\n        box-sizing: border-box;\n    }\n    /* Remove */\n    .photo-carousel .delete-photo,\n    .photo-carousel .edit-carousel {\n        font-size: 12px;\n        color: #11a9ed;\n        float: right;\n        cursor: pointer;\n        display: inline;\n        margin-right: 2px;\n    }\n    .photo-carousel .add-photo-text:hover,\n    .photo-carousel .add-photo-text:focus,\n    .photo-carousel .delete-photo:hover,\n    .photo-carousel .delete-photo:focus,\n    .photo-carousel .edit-carousel:hover,\n    .photo-carousel .edit-carousel:focus {\n        text-decoration: underline;\n    }\n    .photo-carousel .delete-photo + .edit-carousel {\n        margin-right: 10px;\n    }\n    .photo-carousel .delete-image,\n    .photo-carousel .delete-error-message {\n        cursor: hand;\n        z-index: 100;\n        margin-top: 20%;\n    }\n    /* Scroll circles */\n    .photo-carousel .scroll-circle {\n        cursor: pointer;\n        height: 10px;\n        width: 10px;\n        margin: 0 4px 0 4px;\n        background-color: #c7c7c7;\n        border: 1px solid #c7c7c7;\n        border-radius: 50%;\n        display: inline-block;\n        transition: background-color 0.5s ease;\n    }\n    .photo-carousel .active-circle,\n    .photo-carousel .scroll-circle:hover {\n        background-color: #4badef;\n        border: 1px solid #4badef;\n    }\n    /* Modal */\n    .photo-carousel-modal {\n        height: 90%;\n        background-color: black;\n        border: black;\n        width: 90%;\n        padding: 0;\n        margin: 0;\n        left: 5%;\n        right: 5%;\n    }\n    .photo-carousel-modal .photo-carousel-section {\n        height: 85%;\n    }\n    .photo-carousel-modal .photo-carousel {\n        height: 95%;\n    }\n    .photo-carousel-modal .modal-body {\n        overflow-y: inherit;\n        padding: 45px 5px 0 5px;\n    }\n    .photo-carousel-modal .slides,\n    .photo-carousel-modal .arrow-bar-left,\n    .photo-carousel-modal .arrow-bar-right {\n        height: 100%;\n        width: auto;\n        float: none;\n    }\n    .photo-carousel-modal .active-photo-container,\n    .photo-carousel-modal .inactive-photo-container {\n        width: 90%;\n        padding-left: 5%;\n    }\n    .photo-carousel-modal .icon-arrow-left {\n        left: 0;\n    }\n    .photo-carousel-modal .icon-arrow-left,\n    .photo-carousel-modal .icon-arrow-right {\n        font-size: 55px;\n    }\n    .photo-carousel-modal .photo {\n        cursor: auto;\n        cursor: initial;\n    }\n    .photo-carousel-modal .slides {\n        margin-bottom: 35px;\n    }\n    .photo-carousel-modal .scroll-circle {\n        height: 12px;\n        width: 12px;\n        margin: 0 10px 0 10px;\n    }\n    .photo-carousel-modal .close {\n        font-size: 35px;\n        color: #ffffff;\n        margin-top: 15px;\n        line-height: 20px;\n        margin-right: 5px;\n    }\n    .modal-backdrop.lightbox {\n        background-color: black;\n    }\n    /*  ======================\n    Photo Upload\n    ======================  */\n    .photo-upload {\n        margin-bottom: 2px;\n    }\n    /* Dropzone instruction text */\n    .photo-upload .dz-message {\n        margin: 0;\n    }\n    /* Upload bar */\n    .photo-upload .dz-preview .dz-progress {\n        left: 0;\n        margin-left: 20px;\n        top: 60%;\n        background: #ffffff;\n        border: 1px solid #11a8ec;\n        width: 60px;\n        height: 9px;\n    }\n    .photo-upload .dz-preview .dz-progress .dz-upload {\n        background: #11a8ec;\n    }\n    /* Filename */\n    .photo-upload .dz-preview .dz-filename {\n        width: 77px;\n        font-size: 12px;\n        text-overflow: ellipsis;\n        overflow: hidden;\n        white-space: nowrap;\n    }\n    /* Override default Dropzone CSS */\n    .photo-upload .dropzone.dropzone-upload-box {\n        position: relative;\n    }\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable {\n        font-weight: 400;\n        border: none;\n        padding: 0;\n        margin: 0;\n        font-size: 14px;\n        min-height: 0;\n    }\n    .photo-upload .dropzone.dropzone-upload-box.dz-max-files-reached {\n        opacity: 1;\n    }\n    /* Dropzone uses an * selector that can only be overridden by another * selector */\n    .photo-upload .dropzone.dropzone-upload-box * {\n        box-sizing: content-box;\n    }\n    /* Drag files */\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable.drag-file-hover,\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable.drop-file-hover {\n        border: 2px dashed #11a9ed;\n    }\n    .photo-upload .drop-photos-section,\n    .photo-upload .drag-photos-section,\n    .photo-upload .exceeds-limit-section.exceeds-limit-overlay,\n    .photo-upload .exceeds-limit-section.dropzone-exceeds-limit-overlay {\n        position: absolute;\n        width: 100%;\n        height: 100%;\n        top: 0;\n        left: 0;\n        right: 0;\n        bottom: 0;\n        font-size: 21px;\n        background-color: rgba(255, 255, 255, 0.95);\n    }\n    .photo-upload .drop-photos-section,\n    .photo-upload .drag-photos-section {\n        display: none;\n        color: #11a9ed;\n    }\n    .photo-upload .exceeds-limit-section {\n        display: none;\n    }\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable.exceeds-limit-hover,\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable.dropzone-exceeds-limit-hover {\n        border: 2px dashed #ff0035;\n    }\n    .photo-upload .exceeds-limit-section.exceeds-limit-overlay,\n    .photo-upload .exceeds-limit-section.dropzone-exceeds-limit-overlay {\n        display: block;\n        color: #ff0035;\n    }\n    .photo-upload .description {\n        position: relative;\n        text-align: center;\n        top: 50%;\n        margin: 0;\n    }\n    /* Growler */\n    .photo-upload-growl {\n        display: none;\n    }\n    /*  ======================\n    Photo Upload Growl\n    ======================  */\n    .photo-upload-growl .alert-growl-bottom-right {\n        z-index: 10;\n        width: 610px;\n        position: fixed;\n        right: 50px;\n        bottom: 50px;\n        max-height: 500px;\n        overflow-y: auto;\n        overflow-x: hidden;\n    }\n    .photo-upload-growl .alert-growl-bottom-right .alert-upload {\n        color: #121212;\n        background-color: #ffffff;\n        border: 3px solid #f2f2f2;\n        padding: 10px 25px 10px 25px;\n    }\n    .photo-upload-growl .upload-text {\n        margin-bottom: 5px;\n        display: block;\n        font-size: 14px;\n    }\n    .photo-upload-growl .upload-progress-section {\n        padding-top: 10px;\n        padding-bottom: 10px;\n    }\n    .photo-upload-growl .upload-progress-bar {\n        display: -webkit-inline-flex;\n        display: inline-flex;\n        width: 85%;\n        height: 15px;\n        background-color: #ffffff;\n        border: 1px solid #11a8ec;\n        border-radius: 48px;\n        vertical-align: middle;\n    }\n    .photo-upload-growl .total-upload-progress {\n        width: 0%;\n        background-color: #11a9ed;\n        border-radius: 48px;\n        height: 100%;\n    }\n    .photo-upload-growl .cancel-upload,\n    .photo-upload-growl .dismiss-growl {\n        font-size: 14px;\n        color: #11a8ec;\n        display: inline;\n        padding-left: 4%;\n        vertical-align: middle;\n        cursor: pointer;\n    }\n    .photo-upload-growl .dismiss-growl {\n        display: none;\n    }\n    /* Upload Error Banner */\n    .photo-upload-growl .upload-error-section {\n        display: none;\n        width: 604px;\n        margin-left: -26px;\n    }\n    .photo-upload-growl .upload-error-information {\n        background-color: #ffc5d2;\n        border: 1px solid #bf0f24;\n        width: 100%;\n        display: -webkit-inline-flex;\n        display: inline-flex;\n        height: 35px;\n        margin-top: 10px;\n        margin-bottom: 10px;\n    }\n    .photo-upload-growl .upload-error-summary,\n    .photo-upload-growl .upload-error-dismiss,\n    .photo-upload-growl .upload-error-minimize,\n    .photo-upload-growl .upload-error-expand {\n        font-size: 14px;\n        color: #b81623;\n        letter-spacing: 0;\n        margin-top: 8px;\n    }\n    .photo-upload-growl .upload-error-summary {\n        margin-left: 25px;\n    }\n    .photo-upload-growl .upload-error-dismiss,\n    .photo-upload-growl .upload-error-minimize,\n    .photo-upload-growl .upload-error-expand {\n        text-decoration: underline;\n        cursor: pointer;\n    }\n    .photo-upload-growl .upload-error-dismiss {\n        margin-left: 300px;\n    }\n    .photo-upload-growl .upload-error-minimize,\n    .photo-upload-growl .upload-error-expand {\n        margin-left: 15px;\n    }\n    .photo-upload-growl .upload-error-minimize {\n        display: none;\n    }\n    /* Upload Error List */\n    .photo-upload-growl .upload-error-list {\n        display: none;\n    }\n    .photo-upload-growl .dz-file-preview {\n        display: none;\n    }\n    .photo-upload-growl .dz-file-preview.dz-error.dz-complete {\n        display: block;\n    }\n    .photo-upload-growl .file-error {\n        margin: 10px 25px 0 25px;\n    }\n    .photo-upload-growl .file-name,\n    .photo-upload-growl .file-size,\n    .photo-upload-growl .file-error-message {\n        display: inline-block;\n        font-size: 14px;\n        margin-bottom: 0;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n    }\n    .photo-upload-growl .file-name {\n        width: 200px;\n    }\n    .photo-upload-growl .file-size {\n        position: absolute;\n        width: 100px;\n        left: 45%;\n    }\n    .photo-upload-growl .file-error-message {\n        position: absolute;\n        width: 175px;\n        right: 25px;\n        color: #ff0035;\n    }\n    /* Generic Upload Error */\n    .photo-upload-error-growl {\n        display: none;\n    }\n    .photo-upload-error-growl .alert-growl-bottom-right {\n        width: 475px;\n        z-index: 500;\n        margin: auto;\n        position: fixed;\n        right: 50px;\n        bottom: 50px;\n    }\n    .photo-upload-error-growl .alert-growl-bottom-right .alert-error {\n        background: #fbccd8;\n        border: 1px solid #c91a33;\n        border-radius: 6px;\n        padding: 10px 25px 10px 25px;\n    }\n    .photo-upload-error-growl .error-text,\n    .photo-upload-error-growl .dismiss-error-growl {\n        display: block;\n        font-size: 14px;\n    }\n    .photo-upload-error-growl .error-text {\n        margin-bottom: 0;\n    }\n    .photo-upload-error-growl .dismiss-error-growl {\n        cursor: pointer;\n        text-decoration: underline;\n        margin-left: 380px;\n        margin-bottom: 0;\n    }\n", "", {
+    4232: function(e, t, i) {
+        (e.exports = i(33)(!0)).push([e.i, "/*  ======================\n      Photo Empty State\n      ======================  */\n    .photo-empty-state .photos-header {\n        margin-bottom: 8px;\n    }\n    .photo-empty-state .add-photos {\n        width: 100%;\n        margin-bottom: 10px;\n        text-align: center;\n        cursor: pointer;\n    }\n    .photo-empty-state .add-photos-message {\n        font-size: 18px;\n        color: #121212;\n        letter-spacing: 0;\n        margin: 0;\n        display: -webkit-inline-flex;\n        display: inline-flex;\n        padding: 21px 10px 21px 10px;\n        cursor: pointer;\n    }\n    .photo-empty-state .icon-add-photo {\n        padding-right: 10px;\n        line-height: 23px;\n        height: auto;\n        width: auto;\n        cursor: pointer;\n    }\n    /*  ======================\n    Photo Carousel\n    ======================  */\n    .photo-carousel-section {\n        -webkit-user-select: none;\n        -moz-user-select: none;\n        -ms-user-select: none;\n        user-select: none;\n    }\n    .photo-carousel {\n        text-align: center;\n        position: relative;\n        margin: auto;\n        width: 100%;\n        height: 100%;\n    }\n    .photo-carousel .slides {\n        height: 270px;\n        margin-bottom: 5px;\n        float: left;\n        width: 100%;\n        position: relative;\n    }\n    /* Photo Containers */\n    .photo-carousel .active-photo-container,\n    .photo-carousel .inactive-photo-container {\n        height: 100%;\n        display: -webkit-flex;\n        display: flex;\n        -webkit-align-items: center;\n                align-items: center;\n        width: 80%;\n        padding-left: 10%;\n    }\n    .photo-carousel .inactive-photo-container {\n        display: none;\n    }\n    /* Photos */\n    .photo-carousel .photo {\n        max-height: 100%;\n        max-width: 100%;\n        height: auto;\n        width: auto;\n        margin-left: auto;\n        margin-right: auto;\n        cursor: pointer;\n    }\n    .photo-carousel .active-photo {\n        display: inline;\n    }\n    .photo-carousel .inactive-photo {\n        display: none;\n    }\n    /* Delete */\n    .photo-carousel .delete-content,\n    .photo-carousel .delete-overlay,\n    photo-carousel .edit-carousel-content,\n    .photo-carousel .edit-carousel-overlay {\n        display: none;\n        position: absolute;\n        top: 0;\n        bottom: 0;\n        left: 0;\n        right: 0;\n        height: 100%;\n        width: 100%;\n        z-index: 1;\n    }\n    .photo-carousel .delete-content,\n    .photo-carousel .edit-carousel-content {\n        -webkit-align-items: center;\n                align-items: center;\n    }\n    .photo-carousel .delete-overlay,\n    .photo-carousel {\n        transition: 0.5s ease;\n        background-color: #ffffff;\n    }\n    .modal .photo-carousel {\n        background-color: #000;\n    }\n    .slider-control-section-container {\n        padding: 0 10%;\n        /*is 80% because it inherits  box-sizing: content-box;*/\n        width: 80%;\n        float: left;\n        text-align: center;\n        margin: 5px 0;\n    }\n    .slider-control-section-container .slider-control-buttons {\n        float: right;\n    }\n    .slider-control-section-container .add-area {\n        float: left;\n    }\n    .icon-photo-add {\n        margin-right: 5px;\n    }\n    .edit-carousel-content {\n        transition: 0.5s ease;\n        background-color: #ffffff;\n    }\n    .edit-carousel-overlay {\n        margin: 5px;\n        text-align: center;\n    }\n    .edit-carousel-content .js-edit-images {\n        margin-bottom: 10px;\n        -webkit-user-select: none;\n        -moz-user-select: none;\n        -ms-user-select: none;\n        user-select: none;\n    }\n    .edit-carousel-content .edit-image-div {\n        margin: 5px;\n        width: 100px;\n        height: 100px;\n        float: left;\n        position: relative;\n        background: no-repeat center center;\n        background-size: cover;\n    }\n    .edit-carousel-content .delete-photo-icon {\n        position: absolute;\n        bottom: 5px;\n        right: 5px;\n        display: block;\n        margin: 0;\n        padding: 0;\n        width: 25px;\n        height: 25px;\n        line-height: 1;\n        font-size: 20px;\n        text-align: center;\n        border: 1px solid #888;\n        background: #fff;\n        border-radius: 50%;\n        opacity: 0.8;\n    }\n    .edit-carousel-content .overlay-edit-btn {\n        text-align: right;\n        margin-bottom: 15px;\n    }\n    .photo-carousel .delete-message,\n    .photo-carousel .delete-error-message,\n    .photo-carousel .edit-carousel-content {\n        z-index: 100;\n        display: none;\n        margin-left: auto;\n        margin-right: auto;\n        visibility: visible;\n    }\n    .photo-carousel .delete-error-message .dismiss-delete-error {\n        cursor: pointer;\n    }\n    .photo-carousel .delete-content .keep-photo,\n    .photo-carousel .delete-content .confirm-remove-photo {\n        margin: 5px;\n        cursor: pointer;\n    }\n    /* Scroll arrows */\n    .photo-carousel .arrow-bar-left,\n    .photo-carousel .arrow-bar-right {\n        height: 100%;\n        width: 10%;\n        position: absolute;\n    }\n    .photo-carousel .arrow-bar-left {\n        left: 0;\n    }\n    .photo-carousel .arrow-bar-right {\n        right: 0;\n    }\n    .photo-carousel .icon-arrow-left,\n    .photo-carousel .icon-arrow-right {\n        font-size: 30px;\n        width: auto;\n        margin: 0;\n        height: auto;\n        color: #c7c7c7;\n        opacity: 0.7;\n        position: absolute;\n        top: 50%;\n        cursor: pointer;\n    }\n    .photo-carousel .icon-arrow-right {\n        right: 25%;\n    }\n    .photo-carousel .icon-arrow-left {\n        left: 25%;\n    }\n    .photo-carousel .icon-arrow-right.hidden-arrow,\n    .photo-carousel .icon-arrow-left.hidden-arrow {\n        visibility: hidden;\n    }\n    /* Add */\n    .photo-carousel .add-photo-text {\n        font-size: 12px;\n        color: #11a9ed;\n        cursor: pointer;\n    }\n    .photo-carousel .add-photo-icon,\n    .photo-carousel .add-icon-text-disabled {\n        margin-right: 5px;\n        line-height: 15px;\n    }\n    .photo-carousel .add-photo-text-disabled {\n        font-size: 12px;\n        color: #c7c7c7;\n        cursor: text;\n    }\n    .drag-drop-placeholder {\n        width: 100px;\n        height: 100px;\n        margin: 5px;\n        float: left;\n        border: 2px dashed #11a9ed;\n        box-sizing: border-box;\n    }\n    /* Remove */\n    .photo-carousel .delete-photo,\n    .photo-carousel .edit-carousel {\n        font-size: 12px;\n        color: #11a9ed;\n        float: right;\n        cursor: pointer;\n        display: inline;\n        margin-right: 2px;\n    }\n    .photo-carousel .add-photo-text:hover,\n    .photo-carousel .add-photo-text:focus,\n    .photo-carousel .delete-photo:hover,\n    .photo-carousel .delete-photo:focus,\n    .photo-carousel .edit-carousel:hover,\n    .photo-carousel .edit-carousel:focus {\n        text-decoration: underline;\n    }\n    .photo-carousel .delete-photo + .edit-carousel {\n        margin-right: 10px;\n    }\n    .photo-carousel .delete-image,\n    .photo-carousel .delete-error-message {\n        cursor: hand;\n        z-index: 100;\n        margin-top: 20%;\n    }\n    /* Scroll circles */\n    .photo-carousel .scroll-circle {\n        cursor: pointer;\n        height: 10px;\n        width: 10px;\n        margin: 0 4px 0 4px;\n        background-color: #c7c7c7;\n        border: 1px solid #c7c7c7;\n        border-radius: 50%;\n        display: inline-block;\n        transition: background-color 0.5s ease;\n    }\n    .photo-carousel .active-circle,\n    .photo-carousel .scroll-circle:hover {\n        background-color: #4badef;\n        border: 1px solid #4badef;\n    }\n    /* Modal */\n    .photo-carousel-modal {\n        height: 90%;\n        background-color: black;\n        border: black;\n        width: 90%;\n        padding: 0;\n        margin: 0;\n        left: 5%;\n        right: 5%;\n    }\n    .photo-carousel-modal .photo-carousel-section {\n        height: 85%;\n    }\n    .photo-carousel-modal .photo-carousel {\n        height: 95%;\n    }\n    .photo-carousel-modal .modal-body {\n        overflow-y: inherit;\n        padding: 45px 5px 0 5px;\n    }\n    .photo-carousel-modal .slides,\n    .photo-carousel-modal .arrow-bar-left,\n    .photo-carousel-modal .arrow-bar-right {\n        height: 100%;\n        width: auto;\n        float: none;\n    }\n    .photo-carousel-modal .active-photo-container,\n    .photo-carousel-modal .inactive-photo-container {\n        width: 90%;\n        padding-left: 5%;\n    }\n    .photo-carousel-modal .icon-arrow-left {\n        left: 0;\n    }\n    .photo-carousel-modal .icon-arrow-left,\n    .photo-carousel-modal .icon-arrow-right {\n        font-size: 55px;\n    }\n    .photo-carousel-modal .photo {\n        cursor: auto;\n        cursor: initial;\n    }\n    .photo-carousel-modal .slides {\n        margin-bottom: 35px;\n    }\n    .photo-carousel-modal .scroll-circle {\n        height: 12px;\n        width: 12px;\n        margin: 0 10px 0 10px;\n    }\n    .photo-carousel-modal .close {\n        font-size: 35px;\n        color: #ffffff;\n        margin-top: 15px;\n        line-height: 20px;\n        margin-right: 5px;\n    }\n    .modal-backdrop.lightbox {\n        background-color: black;\n    }\n    /*  ======================\n    Photo Upload\n    ======================  */\n    .photo-upload {\n        margin-bottom: 2px;\n    }\n    /* Dropzone instruction text */\n    .photo-upload .dz-message {\n        margin: 0;\n    }\n    /* Upload bar */\n    .photo-upload .dz-preview .dz-progress {\n        left: 0;\n        margin-left: 20px;\n        top: 60%;\n        background: #ffffff;\n        border: 1px solid #11a8ec;\n        width: 60px;\n        height: 9px;\n    }\n    .photo-upload .dz-preview .dz-progress .dz-upload {\n        background: #11a8ec;\n    }\n    /* Filename */\n    .photo-upload .dz-preview .dz-filename {\n        width: 77px;\n        font-size: 12px;\n        text-overflow: ellipsis;\n        overflow: hidden;\n        white-space: nowrap;\n    }\n    /* Override default Dropzone CSS */\n    .photo-upload .dropzone.dropzone-upload-box {\n        position: relative;\n    }\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable {\n        font-weight: 400;\n        border: none;\n        padding: 0;\n        margin: 0;\n        font-size: 14px;\n        min-height: 0;\n    }\n    .photo-upload .dropzone.dropzone-upload-box.dz-max-files-reached {\n        opacity: 1;\n    }\n    /* Dropzone uses an * selector that can only be overridden by another * selector */\n    .photo-upload .dropzone.dropzone-upload-box * {\n        box-sizing: content-box;\n    }\n    /* Drag files */\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable.drag-file-hover,\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable.drop-file-hover {\n        border: 2px dashed #11a9ed;\n    }\n    .photo-upload .drop-photos-section,\n    .photo-upload .drag-photos-section,\n    .photo-upload .exceeds-limit-section.exceeds-limit-overlay,\n    .photo-upload .exceeds-limit-section.dropzone-exceeds-limit-overlay {\n        position: absolute;\n        width: 100%;\n        height: 100%;\n        top: 0;\n        left: 0;\n        right: 0;\n        bottom: 0;\n        font-size: 21px;\n        background-color: rgba(255, 255, 255, 0.95);\n    }\n    .photo-upload .drop-photos-section,\n    .photo-upload .drag-photos-section {\n        display: none;\n        color: #11a9ed;\n    }\n    .photo-upload .exceeds-limit-section {\n        display: none;\n    }\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable.exceeds-limit-hover,\n    .photo-upload .dropzone.dropzone-upload-box.dz-clickable.dropzone-exceeds-limit-hover {\n        border: 2px dashed #ff0035;\n    }\n    .photo-upload .exceeds-limit-section.exceeds-limit-overlay,\n    .photo-upload .exceeds-limit-section.dropzone-exceeds-limit-overlay {\n        display: block;\n        color: #ff0035;\n    }\n    .photo-upload .description {\n        position: relative;\n        text-align: center;\n        top: 50%;\n        margin: 0;\n    }\n    /* Growler */\n    .photo-upload-growl {\n        display: none;\n    }\n    /*  ======================\n    Photo Upload Growl\n    ======================  */\n    .photo-upload-growl .alert-growl-bottom-right {\n        z-index: 10;\n        width: 610px;\n        position: fixed;\n        right: 50px;\n        bottom: 50px;\n        max-height: 500px;\n        overflow-y: auto;\n        overflow-x: hidden;\n    }\n    .photo-upload-growl .alert-growl-bottom-right .alert-upload {\n        color: #121212;\n        background-color: #ffffff;\n        border: 3px solid #f2f2f2;\n        padding: 10px 25px 10px 25px;\n    }\n    .photo-upload-growl .upload-text {\n        margin-bottom: 5px;\n        display: block;\n        font-size: 14px;\n    }\n    .photo-upload-growl .upload-progress-section {\n        padding-top: 10px;\n        padding-bottom: 10px;\n    }\n    .photo-upload-growl .upload-progress-bar {\n        display: -webkit-inline-flex;\n        display: inline-flex;\n        width: 85%;\n        height: 15px;\n        background-color: #ffffff;\n        border: 1px solid #11a8ec;\n        border-radius: 48px;\n        vertical-align: middle;\n    }\n    .photo-upload-growl .total-upload-progress {\n        width: 0%;\n        background-color: #11a9ed;\n        border-radius: 48px;\n        height: 100%;\n    }\n    .photo-upload-growl .cancel-upload,\n    .photo-upload-growl .dismiss-growl {\n        font-size: 14px;\n        color: #11a8ec;\n        display: inline;\n        padding-left: 4%;\n        vertical-align: middle;\n        cursor: pointer;\n    }\n    .photo-upload-growl .dismiss-growl {\n        display: none;\n    }\n    /* Upload Error Banner */\n    .photo-upload-growl .upload-error-section {\n        display: none;\n        width: 604px;\n        margin-left: -26px;\n    }\n    .photo-upload-growl .upload-error-information {\n        background-color: #ffc5d2;\n        border: 1px solid #bf0f24;\n        width: 100%;\n        display: -webkit-inline-flex;\n        display: inline-flex;\n        height: 35px;\n        margin-top: 10px;\n        margin-bottom: 10px;\n    }\n    .photo-upload-growl .upload-error-summary,\n    .photo-upload-growl .upload-error-dismiss,\n    .photo-upload-growl .upload-error-minimize,\n    .photo-upload-growl .upload-error-expand {\n        font-size: 14px;\n        color: #b81623;\n        letter-spacing: 0;\n        margin-top: 8px;\n    }\n    .photo-upload-growl .upload-error-summary {\n        margin-left: 25px;\n    }\n    .photo-upload-growl .upload-error-dismiss,\n    .photo-upload-growl .upload-error-minimize,\n    .photo-upload-growl .upload-error-expand {\n        text-decoration: underline;\n        cursor: pointer;\n    }\n    .photo-upload-growl .upload-error-dismiss {\n        margin-left: 300px;\n    }\n    .photo-upload-growl .upload-error-minimize,\n    .photo-upload-growl .upload-error-expand {\n        margin-left: 15px;\n    }\n    .photo-upload-growl .upload-error-minimize {\n        display: none;\n    }\n    /* Upload Error List */\n    .photo-upload-growl .upload-error-list {\n        display: none;\n    }\n    .photo-upload-growl .dz-file-preview {\n        display: none;\n    }\n    .photo-upload-growl .dz-file-preview.dz-error.dz-complete {\n        display: block;\n    }\n    .photo-upload-growl .file-error {\n        margin: 10px 25px 0 25px;\n    }\n    .photo-upload-growl .file-name,\n    .photo-upload-growl .file-size,\n    .photo-upload-growl .file-error-message {\n        display: inline-block;\n        font-size: 14px;\n        margin-bottom: 0;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n    }\n    .photo-upload-growl .file-name {\n        width: 200px;\n    }\n    .photo-upload-growl .file-size {\n        position: absolute;\n        width: 100px;\n        left: 45%;\n    }\n    .photo-upload-growl .file-error-message {\n        position: absolute;\n        width: 175px;\n        right: 25px;\n        color: #ff0035;\n    }\n    /* Generic Upload Error */\n    .photo-upload-error-growl {\n        display: none;\n    }\n    .photo-upload-error-growl .alert-growl-bottom-right {\n        width: 475px;\n        z-index: 500;\n        margin: auto;\n        position: fixed;\n        right: 50px;\n        bottom: 50px;\n    }\n    .photo-upload-error-growl .alert-growl-bottom-right .alert-error {\n        background: #fbccd8;\n        border: 1px solid #c91a33;\n        border-radius: 6px;\n        padding: 10px 25px 10px 25px;\n    }\n    .photo-upload-error-growl .error-text,\n    .photo-upload-error-growl .dismiss-error-growl {\n        display: block;\n        font-size: 14px;\n    }\n    .photo-upload-error-growl .error-text {\n        margin-bottom: 0;\n    }\n    .photo-upload-error-growl .dismiss-error-growl {\n        cursor: pointer;\n        text-decoration: underline;\n        margin-left: 380px;\n        margin-bottom: 0;\n    }\n", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/src/styles/photo-gallery.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/src/styles/photo-gallery.css"],
             names: [],
             mappings: "AACI;;gCAE2B;IAE3B;QACI,mBAAkB;KACtB;IAEA;QACI,YAAW;QACX,oBAAmB;QACnB,mBAAkB;QAClB,gBAAe;KACnB;IAEA;QACI,gBAAe;QACf,eAAc;QACd,kBAAiB;QACjB,UAAS;QACT,6BAAoB;QAApB,qBAAoB;QACpB,6BAA4B;QAC5B,gBAAe;KACnB;IAEA;QACI,oBAAmB;QACnB,kBAAiB;QACjB,aAAY;QACZ,YAAW;QACX,gBAAe;KACnB;IAAE;;8BAEuB;IAEzB;QACI,0BAAyB;QACzB,uBAAsB;QACtB,sBAAqB;QACrB,kBAAiB;KACrB;IAEA;QACI,mBAAkB;QAClB,mBAAkB;QAClB,aAAY;QACZ,YAAW;QACX,aAAY;KAChB;IAEA;QACI,cAAa;QACb,mBAAkB;QAClB,YAAW;QACX,YAAW;QACX,mBAAkB;KACtB;IAEA,sBAAqB;IACrB;;QAEI,aAAY;QACZ,sBAAa;QAAb,cAAa;QACb,4BAAmB;gBAAnB,oBAAmB;QACnB,WAAU;QACV,kBAAiB;KACrB;IAEA;QACI,cAAa;KACjB;IAEA,YAAW;IACX;QACI,iBAAgB;QAChB,gBAAe;QACf,aAAY;QACZ,YAAW;QACX,kBAAiB;QACjB,mBAAkB;QAClB,gBAAe;KACnB;IAEA;QACI,gBAAe;KACnB;IAEA;QACI,cAAa;KACjB;IAEA,YAAW;IACX;;;;QAII,cAAa;QACb,mBAAkB;QAClB,OAAM;QACN,UAAS;QACT,QAAO;QACP,SAAQ;QACR,aAAY;QACZ,YAAW;QACX,WAAU;KACd;IAEA;;QAEI,4BAAmB;gBAAnB,oBAAmB;KACvB;IAEA;;QAEI,sBAAqB;QACrB,0BAAyB;KAC7B;IACA;QACI,uBAAsB;KAC1B;IACA;QACI,eAAc;QACd,wDAAuD;QACvD,WAAU;QACV,YAAW;QACX,mBAAkB;QAClB,cAAa;KACjB;IACA;QACI,aAAY;KAChB;IACA;QACI,YAAW;KACf;IACA;QACI,kBAAiB;KACrB;IAEA;QACI,sBAAqB;QACrB,0BAAyB;KAC7B;IAEA;QACI,YAAW;QACX,mBAAkB;KACtB;IAEA;QACI,oBAAmB;QACnB,0BAAyB;QACzB,uBAAsB;QACtB,sBAAqB;QACrB,kBAAiB;KACrB;IAEA;QACI,YAAW;QACX,aAAY;QACZ,cAAa;QACb,YAAW;QACX,mBAAkB;QAClB,oCAAmC;QACnC,uBAAsB;KAC1B;IAEA;QACI,mBAAkB;QAClB,YAAW;QACX,WAAU;QACV,eAAc;QACd,UAAS;QACT,WAAU;QACV,YAAW;QACX,aAAY;QACZ,eAAc;QACd,gBAAe;QACf,mBAAkB;QAClB,uBAAsB;QACtB,iBAAgB;QAChB,mBAAkB;QAClB,aAAY;KAChB;IAEA;QACI,kBAAiB;QACjB,oBAAmB;KACvB;IAEA;;;QAGI,aAAY;QACZ,cAAa;QACb,kBAAiB;QACjB,mBAAkB;QAClB,oBAAmB;KACvB;IAEA;QACI,gBAAe;KACnB;IAEA;;QAEI,YAAW;QACX,gBAAe;KACnB;IAEA,mBAAkB;IAClB;;QAEI,aAAY;QACZ,WAAU;QACV,mBAAkB;KACtB;IAEA;QACI,QAAO;KACX;IAEA;QACI,SAAQ;KACZ;IAEA;;QAEI,gBAAe;QACf,YAAW;QACX,UAAS;QACT,aAAY;QACZ,eAAc;QACd,aAAY;QACZ,mBAAkB;QAClB,SAAQ;QACR,gBAAe;KACnB;IAEA;QACI,WAAU;KACd;IAEA;QACI,UAAS;KACb;IAEA;;QAEI,mBAAkB;KACtB;IAEA,SAAQ;IACR;QACI,gBAAe;QACf,eAAc;QACd,gBAAe;KACnB;IAEA;;QAEI,kBAAiB;QACjB,kBAAiB;KACrB;IAEA;QACI,gBAAe;QACf,eAAc;QACd,aAAY;KAChB;IAEA;QACI,aAAY;QACZ,cAAa;QACb,YAAW;QACX,YAAW;QACX,2BAA0B;QAC1B,uBAAsB;KAC1B;IAEA,YAAW;IACX;;QAEI,gBAAe;QACf,eAAc;QACd,aAAY;QACZ,gBAAe;QACf,gBAAe;QACf,kBAAiB;KACrB;IACA;;;;;;QAMI,2BAA0B;KAC9B;IACA;QACI,mBAAkB;KACtB;IAEA;;QAEI,aAAY;QACZ,aAAY;QACZ,gBAAe;KACnB;IAEA,oBAAmB;IACnB;QACI,gBAAe;QACf,aAAY;QACZ,YAAW;QACX,oBAAmB;QACnB,0BAAyB;QACzB,0BAAyB;QACzB,mBAAkB;QAClB,sBAAqB;QACrB,uCAAsC;KAC1C;IAEA;;QAEI,0BAAyB;QACzB,0BAAyB;KAC7B;IAEA,WAAU;IACV;QACI,YAAW;QACX,wBAAuB;QACvB,cAAa;QACb,WAAU;QACV,WAAU;QACV,UAAS;QACT,SAAQ;QACR,UAAS;KACb;IAEA;QACI,YAAW;KACf;IAEA;QACI,YAAW;KACf;IAEA;QACI,oBAAmB;QACnB,wBAAuB;KAC3B;IAEA;;;QAGI,aAAY;QACZ,YAAW;QACX,YAAW;KACf;IAEA;;QAEI,WAAU;QACV,iBAAgB;KACpB;IAEA;QACI,QAAO;KACX;IAEA;;QAEI,gBAAe;KACnB;IAEA;QACI,aAAe;QAAf,gBAAe;KACnB;IAEA;QACI,oBAAmB;KACvB;IAEA;QACI,aAAY;QACZ,YAAW;QACX,sBAAqB;KACzB;IAEA;QACI,gBAAe;QACf,eAAc;QACd,iBAAgB;QAChB,kBAAiB;QACjB,kBAAiB;KACrB;IAEA;QACI,wBAAuB;KAC3B;IAAE;;8BAEuB;IAEzB;QACI,mBAAkB;KACtB;IAEA,+BAA8B;IAC9B;QACI,UAAS;KACb;IAEA,gBAAe;IACf;QACI,QAAO;QACP,kBAAiB;QACjB,SAAQ;QACR,oBAAmB;QACnB,0BAAyB;QACzB,YAAW;QACX,YAAW;KACf;IAEA;QACI,oBAAmB;KACvB;IAEA,cAAa;IACb;QACI,YAAW;QACX,gBAAe;QACf,wBAAuB;QACvB,iBAAgB;QAChB,oBAAmB;KACvB;IAEA,mCAAkC;IAClC;QACI,mBAAkB;KACtB;IAEA;QACI,iBAAgB;QAChB,aAAY;QACZ,WAAU;QACV,UAAS;QACT,gBAAe;QACf,cAAa;KACjB;IAEA;QACI,WAAU;KACd;IAEA,mFAAkF;IAClF;QACI,wBAAuB;KAC3B;IAEA,gBAAe;IACf;;QAEI,2BAA0B;KAC9B;IAEA;;;;QAII,mBAAkB;QAClB,YAAW;QACX,aAAY;QACZ,OAAM;QACN,QAAO;QACP,SAAQ;QACR,UAAS;QACT,gBAAe;QACf,4CAA2C;KAC/C;IAEA;;QAEI,cAAa;QACb,eAAc;KAClB;IAEA;QACI,cAAa;KACjB;IAEA;;QAEI,2BAA0B;KAC9B;IAEA;;QAEI,eAAc;QACd,eAAc;KAClB;IAEA;QACI,mBAAkB;QAClB,mBAAkB;QAClB,SAAQ;QACR,UAAS;KACb;IAIA,aAAY;IACZ;QACI,cAAa;KACjB;IAPE;;8BAEuB;IAOzB;QACI,YAAW;QACX,aAAY;QACZ,gBAAe;QACf,YAAW;QACX,aAAY;QACZ,kBAAiB;QACjB,iBAAgB;QAChB,mBAAkB;KACtB;IAEA;QACI,eAAc;QACd,0BAAyB;QACzB,0BAAyB;QACzB,6BAA4B;KAChC;IAEA;QACI,mBAAkB;QAClB,eAAc;QACd,gBAAe;KACnB;IAEA;QACI,kBAAiB;QACjB,qBAAoB;KACxB;IAEA;QACI,6BAAoB;QAApB,qBAAoB;QACpB,WAAU;QACV,aAAY;QACZ,0BAAyB;QACzB,0BAAyB;QACzB,oBAAmB;QACnB,uBAAsB;KAC1B;IAEA;QACI,UAAS;QACT,0BAAyB;QACzB,oBAAmB;QACnB,aAAY;KAChB;IAEA;;QAEI,gBAAe;QACf,eAAc;QACd,gBAAe;QACf,iBAAgB;QAChB,uBAAsB;QACtB,gBAAe;KACnB;IAEA;QACI,cAAa;KACjB;IAEA,yBAAwB;IACxB;QACI,cAAa;QACb,aAAY;QACZ,mBAAkB;KACtB;IAEA;QACI,0BAAyB;QACzB,0BAAyB;QACzB,YAAW;QACX,6BAAoB;QAApB,qBAAoB;QACpB,aAAY;QACZ,iBAAgB;QAChB,oBAAmB;KACvB;IAEA;;;;QAII,gBAAe;QACf,eAAc;QACd,kBAAiB;QACjB,gBAAe;KACnB;IAEA;QACI,kBAAiB;KACrB;IAEA;;;QAGI,2BAA0B;QAC1B,gBAAe;KACnB;IAEA;QACI,mBAAkB;KACtB;IAEA;;QAEI,kBAAiB;KACrB;IAEA;QACI,cAAa;KACjB;IAEA,uBAAsB;IACtB;QACI,cAAa;KACjB;IAEA;QACI,cAAa;KACjB;IAEA;QACI,eAAc;KAClB;IAEA;QACI,yBAAwB;KAC5B;IAEA;;;QAGI,sBAAqB;QACrB,gBAAe;QACf,iBAAgB;QAChB,iBAAgB;QAChB,wBAAuB;QACvB,oBAAmB;KACvB;IAEA;QACI,aAAY;KAChB;IAEA;QACI,mBAAkB;QAClB,aAAY;QACZ,UAAS;KACb;IAEA;QACI,mBAAkB;QAClB,aAAY;QACZ,YAAW;QACX,eAAc;KAClB;IAEA,0BAAyB;IACzB;QACI,cAAa;KACjB;IAEA;QACI,aAAY;QACZ,aAAY;QACZ,aAAY;QACZ,gBAAe;QACf,YAAW;QACX,aAAY;KAChB;IAEA;QACI,oBAAmB;QACnB,0BAAyB;QACzB,mBAAkB;QAClB,6BAA4B;KAChC;IAEA;;QAEI,eAAc;QACd,gBAAe;KACnB;IAEA;QACI,iBAAgB;KACpB;IAEA;QACI,gBAAe;QACf,2BAA0B;QAC1B,mBAAkB;QAClB,iBAAgB;KACpB",
             file: "photo-gallery.css",
@@ -44239,7 +44227,7 @@
             sourceRoot: ""
         }])
     },
-    4206: function(e, t, i) {
+    4233: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -44247,12 +44235,12 @@
               , r = i(4)
               , s = i(8)
               , o = i.n(s)
-              , l = i(216)
-              , c = i(36)
-              , h = i(218)
-              , d = i(4207)
-              , p = i(4209)
-              , u = i(4210)
+              , l = i(220)
+              , c = i(37)
+              , h = i(222)
+              , d = i(4234)
+              , p = i(4236)
+              , u = i(4237)
               , m = i.n(u)
               , g = {
                 ELEV_CORRECTION_CHANGED: "ELEV_CORRECTION_CHANGED"
@@ -44339,14 +44327,14 @@
         }
         ).call(this, i(10))
     },
-    4207: function(e, t, i) {
+    4234: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = i(4)
-          , l = i(4208)
+          , l = i(4235)
           , c = i.n(l);
         t.a = s.a.View.extend({
             template: n.a.template(c.a),
@@ -44357,10 +44345,10 @@
             }
         })
     },
-    4208: function(e, t) {
+    4235: function(e, t) {
         e.exports = "<div class=\"gps-source-help\">\n    <h4><%- Localizer.localize('connected.gps') %></h4>\n    <h5><%- Localizer.localize('connected.gps.info.summary') %></h5>\n    <h5><%- Localizer.localize('connected.gps.how.it.works') %></h5>\n    <p><%- Localizer.localize('connected.gps.how.it.works.message') %></p>\n    <h5><%- Localizer.localize('connected.gps.viewing.activities') %></h5>\n    <p><%- Localizer.localize('connected.gps.viewing.activities.message') %></p>\n</div>\n"
     },
-    4209: function(e, t, i) {
+    4236: function(e, t, i) {
         "use strict";
         t.a = {
             titleCase: function(e) {
@@ -44370,16 +44358,16 @@
             }
         }
     },
-    4210: function(e, t) {
+    4237: function(e, t) {
         e.exports = '<div class="device-image bottom-xs"><img class="" src="<%- device.imageUrl || \'//static.garmincdn.com/com.garmin.connect/content/images/device-images/default-device.png\' %>"></div>\n<div class="device-name"><%- device.productDisplayName %></div>\n<div class="software-version"><%- Localizer.localize(\'software\') %>: <%- device.versionString %></div>\n\n<div class="elevation-corrections"><%- Localizer.localize(\'additional.elev.corrections\') %>\n\n    <span class="help-icon"><i class="icon-help has-tooltip" title="<%- Localizer.localize(\'help.add.info.elev.correction.label\') %>"></i></span>:\n\n    <% if(displayToggleEvelationCorrection)  { %>\n        <span class="dropdown" style="display: inline">\n            <span class="dropdown-trigger" data-toggle="dropdown"><%- Localizer.localize(metadata.elevationCorrected ? \'additional.elevation.correction.enabled\' : \'additional.elevation.correction.disabled\') %><i class="icon-pointer-down"></i></span>\n            <ul class="dropdown-menu text-left pull-left">\n                <li class="<%- metadata.elevationCorrected ? \'active\' : \'\' %>"><a href="#"><%- Localizer.localize(\'additional.elevation.correction.enabled\') %></a></li>\n                <li class="<%- metadata.elevationCorrected ? \'\' : \'active\' %>"><a href="#"><%- Localizer.localize(\'additional.elevation.correction.disabled\') %></a></li>\n            </ul>\n        </span>\n    <% } else { %>\n    <span style="display: inline"><%- Localizer.localize(metadata.elevationCorrected ? \'additional.elevation.correction.enabled\' : \'additional.elevation.correction.disabled\') %></span>\n    <% } %>\n</div>\n\n<div class="summary-data"><%- Localizer.localize(\'additional.activity.summary\') %>: <%- Localizer.localize(metadata.isOriginal ? \'additional.original\' : \'additional.edited\') %></div>\n<% if (gpsSource) { %>\n    <div class="gps-source"><%- Localizer.localize(\'activity.gps.source\') %>\n        <a href="#" class="help-icon has-tooltip help-gps-source"><i class="icon-help"></i></a>:\n        <%- Localizer.localize(\'activity.gps.source.from\', gpsSource) %>\n    </div>\n<% } %>'
     },
-    4211: function(e, t) {
+    4238: function(e, t) {
         e.exports = '<div class="device-image bottom-xs">\n    <% if (model.imageUrl) { %>\n        <img src="<%- model.imageUrl %>" alt="<%- model.displayName %>">\n    <% } %>\n</div>\n<div class="device-name"><%- Localizer.localize(\'third_party_partner_label\', model.displayName) %></div>'
     },
-    4212: function(e, t) {
+    4239: function(e, t) {
         e.exports = '<% if (displayPowerAvgCalInfo) { %>\n    <div class="power-avg-calc"><%- Localizer.localize(\'additional.power.avg.cal\') %> <a href="#" class="help-icon has-tooltip" title="<%- Localizer.localize(\'help.add.info.power.avg.calc.label\') %>" onclick="event.preventDefault();"><i class="icon-help"></i></a>: <%- Localizer.localize(\'additional.power.calculation.use.zeroes\') %></div>\n<% } %>\n<% if (displayAgentInfo) { %>\n    <div class="agent admin"><%- Localizer.localize(\'additional.agentType\') %>: <%- agent.productDisplayName %> + <%- agent.versionString %></div>\n    <div class="uploaded admin"><%- Localizer.localize(\'additional.uploadDate\') %>: <%- DateFormatter.formatDateAndTime(new Date(metadata.uploadedDate)) %></div>\n<% } %>'
     },
-    4213: function(e, t, i) {
+    4240: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -44387,9 +44375,9 @@
               , r = i(4)
               , s = i(8)
               , o = i.n(s)
-              , l = i(4214)
-              , c = i(216)
-              , h = i(4216)
+              , l = i(4241)
+              , c = i(220)
+              , h = i(4243)
               , d = i.n(h)
               , p = {
                 ascending: "ascending",
@@ -44505,13 +44493,13 @@
         }
         ).call(this, i(10))
     },
-    4214: function(e, t, i) {
+    4241: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
-          , o = i(4215)
+          , o = i(4242)
           , l = i.n(o)
           , c = s.a.View.extend({
             template: n.a.template(l.a),
@@ -44584,38 +44572,38 @@
         });
         t.a = c
     },
-    4215: function(e, t) {
+    4242: function(e, t) {
         e.exports = '<td class="zone-name" style="<%- columnCss %>">\n    <% if (nameColumn && nameColumn.tooltipText) { %>\n        <div class="has-tooltip" data-placement="right" data-original-title="<%- nameColumn.tooltipText %>" title="<%- nameColumn.tooltipText %>"><%- nameColumn.value %></div>\n    <% } else { %>\n        <div><%- nameColumn.value %></div>\n    <% } %>\n</td>\n<td class="zone-time" style="<%- columnCss %>">\n    <% if (timeColumn && timeColumn.tooltipText) { %>\n        <div class="has-tooltip" title="<%- timeColumn.tooltipText %>"><%- timeColumn.value %></div>\n    <% } else { %>\n        <div><%- timeColumn.value %></div>\n    <% } %>\n</td>\n<td class="zone-percent">\n    <% if (percentageColumn && percentageColumn.tooltipText) { %>\n        <div class="has-tooltip" title="<%- percentageColumn.tooltipText %>">\n            <span><%- percentageColumn.value %></span>\n        </div>\n    <% } else { %>\n        <div><span><%- percentageColumn.value %></span></div>\n    <% } %>\n</td>'
     },
-    4216: function(e, t) {
+    4243: function(e, t) {
         e.exports = '<% if (options.chartTitle) { %>\n    <h3><%- Localizer.localize(options.chartTitle) %></h3>\n<% } %>\n<table class="<% if (options.tableClass) { print(options.tableClass); } %>" >\n    <tbody></tbody>\n</table>\n'
     },
-    4217: function(e, t) {
+    4244: function(e, t) {
         e.exports = '<div class="spinner-container">\n    <div class="text-center">\n        <div class="large spinner"><div></div></div>\n    </div>\n    <div class="h5 text-center font-thin"><%- Localizer.localize(\'loading\') %></div>\n</div>'
     },
-    4218: function(e, t) {
+    4245: function(e, t) {
         e.exports = "<div class=\"tab-pane tab-overflow\">\n    <div class=\"tab-content\">\n        <div class=\"tab-pane active\">\n            <table class=\"table gases-and-tanks-table\">\n                <thead>\n                <tr>\n                    <th></th>\n                    <th><%- Localizer.localize('diving_tank_type') %></th>\n                    <th><%- Localizer.localize('diving_tank_gas') %></th>\n                    <th><%- Localizer.localize('diving_tank_gas_mixture') %></th>\n                    <th><%- Localizer.localize('diving_tank_type_long') %></th>\n                    <th><%- Localizer.localize('diving_tank_size_long') %></th>\n                    <th><%- Localizer.localize('diving_tank_starting_pressure') %></th>\n                    <th><%- Localizer.localize('diving_tank_ending_pressure') %></th>\n                    <th><%- Localizer.localize('diving_tank_pressure_used') %></th>\n                    <th><%- Localizer.localize('diving_tank_gas_sac_rate') %></th>\n                </tr>\n                </thead>\n                <tbody>\n                <% for (var i = 0; i < tanksArray.length; i++) { %>\n                    <tr>\n                        <td><%- (tanksArray[i].gasIndex + 1) %></td>\n                        <td><%- Personalizer.personalizeTankStatus(tanksArray[i].gasIndex, tanksArray[i].status, diveType, Localizer) %></td>\n                        <td><%- Personalizer.personalizeDiveGas(tanksArray[i].heliumContent, tanksArray[i].oxygenContent, Localizer) %></td>\n                        <td><%- getGasMixtureString(tanksArray[i].oxygenContent, tanksArray[i].heliumContent) %></td>\n                        <td><%- (tanksArray[i].tankType ? tanksArray[i].tankType : '--') %></td>\n                        <td><%- Personalizer.personalizeVolume(tanksArray[i].tankSize) %> <%-Personalizer.personalizeVolumeUnit(tanksArray[i].tankSizeUnit, Localizer) %></td>\n                        <td><%- Personalizer.personalizePressure(tanksArray[i].tankStartingPressure) %> <%-Personalizer.personalizePressureUnit(tanksArray[i].tankStartingPressureUnit, Localizer) %></td>\n                        <td><%- Personalizer.personalizePressure(tanksArray[i].tankEndingPressure) %> <%-Personalizer.personalizePressureUnit(tanksArray[i].tankEndingPressureUnit, Localizer) %></td>\n                        <td><%- getPressureUsedString(tanksArray[i].tankStartingPressure, tanksArray[i].tankEndingPressure, tanksArray[i].tankStartingPressureUnit) %></td>\n                        <td><%- Personalizer.personalizeSacRate(tanksArray[i].sacRate) %> <%-Personalizer.personalizeSacRateUnit(tanksArray[i].sacRate, tanksArray[i].tankStartingPressureUnit, Localizer)%></td>\n                    </tr>\n                <% } %>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>"
     },
-    4219: function(e, t) {
+    4246: function(e, t) {
         e.exports = "<div class=\"tab-pane\">\n    <div class=\"tab-content\">\n        <div class=\"tab-pane active\">\n            <table class=\"table apnea-dives-table\">\n                <thead>\n                <tr>\n                    <th></th>\n                    <th></th>\n                    <th><%- Localizer.localize('max_depth') %></th>\n                    <th><%- Localizer.localize('bottom_time') %></th>\n                    <th><%- Localizer.localize('surface_interval') %></th>\n                    <th><%- Localizer.localize('entry_location') %></th>\n                    <th><%- Localizer.localize('min_water_temperature') %></th>\n                    <th><%- Localizer.localize('label_avg_HR') %></th>\n                    <th><%- Localizer.localize('label_max_HR') %></th>\n                </tr>\n                </thead>\n                <tbody>\n                \x3c!-- ApneaDivesTabItemView.html --\x3e\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>"
     },
-    4220: function(e, t) {
+    4247: function(e, t) {
         e.exports = "\n    <td><%- (index + 1) %></td>\n    <td><div class=\"apnea-map\">\x3c!-- mapView --\x3e</div></td>\n    <td><%- Personalizer.personalizeDepth(apneaDive.maxDepth) %> <%- Localizer.localize(Personalizer.getDepthUnitKey()) %></td>\n    <td><%- Personalizer.personalizeDuration(apneaDive.bottomTime, false) %></td>\n    <td><%- Personalizer.personalizeDuration(apneaDive.surfaceInterval, false) %></td>\n    <td><%- Personalizer.personalizeLatLon(apneaDive.startLatitude, apneaDive.startLongitude) %></td>\n    <td><%- Personalizer.personalizeTemperature(apneaDive.minTemperature) %> <%- Localizer.localize(Personalizer.getTemperatureUnitKey()) %></td>\n    <td><%- Personalizer.personalizeHeartRate(apneaDive.averageHR) %> <%- Localizer.localize('heart_rate_unit') %></td>\n    <td><%- Personalizer.personalizeHeartRate(apneaDive.maxHR) %> <%- Localizer.localize('heart_rate_unit') %></td>\n"
     },
-    4221: function(e, t) {
+    4248: function(e, t) {
         e.exports = '<div class="spinner-container">\n    <div class="text-center">\n        <div class="large spinner"><div></div></div>\n    </div>\n    <div class="h5 text-center font-thin"><%- Localizer.localize(\'loading\') %></div>\n</div>\n<div id="max-avg-power-controls" class="row-fluid cycling-tab-controls bottom-s"></div>\x3c!-- /.cycling-tab-controls --\x3e\n<div class="row-fluid">\n    <div id="power-phase-container" class="span12 power-phase centered"></div>\x3c!-- /.power-phase --\x3e\n    <div class="row-fluid top-m">\n        <div class="span6 centered">\n            <div id="pco-container" class="pco-content"></div>\x3c!-- /.pco-content --\x3e\n        </div>\n        <div class="span6 centered">\n            <div id="position-container" class="seated-standing"></div>\x3c!-- /.seated-standing --\x3e\n        </div>\n    </div>\n</div>'
     },
-    4222: function(e, t) {
+    4249: function(e, t) {
         e.exports = '<h5><%- Localizer.localize(\'cycling_dynamics_position\') %></h5>\n\n<div class="row">\n    <div class="span6 position-seated">\n        <span></span>\n        <div class="data-block large top-s">\n            <div class="data-bit"><%- totalSeatedTime %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_seated_time\') %></span>\n        </div>\n    </div>\n\n    <div class="span6 position-standing">\n        <span></span>\n        <div class="data-block large top-s">\n            <div class="data-bit"><%- totalStandingTime %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_standing_time\') %></span>\n        </div>\n    </div>\n\n</div>\x3c!-- /.row --\x3e'
     },
-    4223: function(e, t, i) {
+    4250: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
               , n = i.n(a)
-              , r = i(4224)
+              , r = i(4251)
               , s = i.n(r)
-              , o = i(1218)
+              , o = i(1222)
               , l = i(13)
               , c = i(4)
               , h = i(8)
@@ -44733,18 +44721,18 @@
         }
         ).call(this, i(10))
     },
-    4224: function(e, t) {
+    4251: function(e, t) {
         e.exports = '\n<h5><%- Localizer.localize(\'label_cd_tab_pco\') %></h5>\n\n<div class="row">\n    <div class="span6">\n        <div class="chart-container platform-center-offset platform-center-offset-left">\n            <canvas id="leftCanvas"></canvas>\n        </div>\n        <div class="data-block large top-s">\n            <div class="data-bit"><%- formatPCOValue(leftPlatformCenterOffset) %> <%- Localizer.localize(\'platform_center_offset_unit\') %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_tab_pco_left\') %></span>\n        </div>\n    </div>\n\n    <div class="span6">\n        <div class="chart-container platform-center-offset platform-center-offset-right">\n            <canvas id="rightCanvas"></canvas>\n        </div>\n        <div class="data-block large top-s">\n            <div class="data-bit"><%- formatPCOValue(rightPlatformCenterOffset) %> <%- Localizer.localize(\'platform_center_offset_unit\') %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_tab_pco_right\') %></span>\n        </div>\n    </div>\n</div>\n'
     },
-    4225: function(e, t, i) {
+    4252: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
               , n = i.n(a)
-              , r = i(4226)
+              , r = i(4253)
               , s = i.n(r)
-              , o = i(4227)
-              , l = i(1218)
+              , o = i(4254)
+              , l = i(1222)
               , c = i(4)
               , h = i(8)
               , d = i.n(h).a.View.extend({
@@ -45048,10 +45036,10 @@
         }
         ).call(this, i(10))
     },
-    4226: function(e, t) {
+    4253: function(e, t) {
         e.exports = '<h5><%- Localizer.localize(\'label_cd_tab_power_phase\') %></h5>\n<div class="power-phase-charts">\n\n    <div id="left-pp-container">\n        <div id="pp-left" class="chart-container"></div>\n        <div class="bottom-m power-phase-graphic"></div>\n    </div>\n\n    <div id="right-pp-container">\n        <div id="pp-right" class="chart-container"></div>\n        <div class="bottom-m power-phase-graphic"></div>\n    </div>\n\n</div>'
     },
-    4227: function(e, t, i) {
+    4254: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -45103,7 +45091,7 @@
         });
         t.a = s
     },
-    4228: function(e, t, i) {
+    4255: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(7)
@@ -45111,11 +45099,11 @@
               , s = i(8)
               , o = i.n(s)
               , l = i(4)
-              , c = i(1362)
-              , h = i(1216)
-              , d = i(210)
-              , p = i(101)
-              , u = i(4229)
+              , c = i(1367)
+              , h = i(1220)
+              , d = i(214)
+              , p = i(102)
+              , u = i(4256)
               , m = i.n(u)
               , g = {
                 PowerRangeChanged: "PowerRangeChanged",
@@ -45231,10 +45219,10 @@
         }
         ).call(this, i(10), i(10))
     },
-    4229: function(e, t) {
+    4256: function(e, t) {
         e.exports = '<div class="span12">\n    <span class="data-label max-avg-label"><%- Localizer.localize(\'max_avg_power\') %></span>\n    <div class="btn-group btn-group-pill" data-toggle="buttons-radio">\n        \x3c!-- NONE IS THE DEFAULT --\x3e\n        <button data-timerange="-1" class="btn btn-small active range-item"><%- Localizer.localize(\'avg_power_range_none\') %></button>\n        <button data-timerange="5" class="btn btn-small range-item"><%- Localizer.localize(\'avg_power_range_customsec\', 5) %></button>\n        <button data-timerange="60" class="btn btn-small range-item"><%- Localizer.localize(\'avg_power_range_custommin\', 1) %></button>\n        <button data-timerange="300" class="btn btn-small range-item"><%- Localizer.localize(\'avg_power_range_custommin\', 5) %></button>\n        <button data-timerange="1200" class="btn btn-small range-item"><%- Localizer.localize(\'avg_power_range_custommin\', 20) %></button>\n        <button class="btn btn-small custom-max-avg-power-button"><%- Localizer.localize(\'avg_power_range_custom\') %></button>\n    </div>\n\n    <div class="custom-max-avg-power" style="display:none;">\n        <input type="text" class="input-mini time-input-field" maxlength="3">\n        <select class="input-small  min-sec-selection">\n            <option value="min"><%- Localizer.localize(\'avg_power_range_unit_min\') %></option>\n            <option value="sec"><%- Localizer.localize(\'avg_power_range_unit_sec\') %></option>\n        </select>\n        <div id="power-pill-btn" class="btn btn-form"><%- Localizer.localize(\'avg_power_calculate_btn\') %></div>\n    </div>\n    <span id="avg-power-range-value" class="data-label pull-right"><%- avgValue %></span>\n</div>'
     },
-    4230: function(e, t, i) {
+    4257: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -45243,10 +45231,10 @@
               , s = i(4)
               , o = i(8)
               , l = i.n(o)
-              , c = i(2493)
-              , h = i(2494)
-              , d = i(2495)
-              , p = i(4234)
+              , c = i(2513)
+              , h = i(2514)
+              , d = i(2515)
+              , p = i(4261)
               , u = i.n(p);
             t.a = l.a.View.extend({
                 template: n.a.template(u.a),
@@ -45458,28 +45446,28 @@
         }
         ).call(this, i(10))
     },
-    4231: function(e, t) {
+    4258: function(e, t) {
         e.exports = "<% if (model && model.length > 0) { %>\n    <% if (isLapSwimming) { %>\n        <th>&nbsp;</th>\n    <% } %>\n    <% var i = 0, max = model.length; %>\n    <% for (i; i < max; i += 1) { %>\n        <% if (model[i]) { %>\n            <% if (isLapSwimming && model[i].hasOwnProperty('displayLabel')) { %>\n               <th><%= Localizer.localize(model[i].displayLabel) %></th>\n            <% } else if (!isLapSwimming) { %>\n                <th class=\"<%- model[i].class %>\"><%= Localizer.localize(model[i].displayLabel) %>\n                <% if (model[i].showSortIcon) { %>\n                    <i class=\"<%- (model[i].class === 'ascending' || model[i].class.indexOf('ascending') > -1) ? 'icon-pointer-up' : 'icon-pointer-down' %>\"></i>\n                <% } %>\n                </th>\n            <% } %>\n        <% } %>\n    <% } %>\n<% } %>"
     },
-    4232: function(e, t) {
+    4259: function(e, t) {
         e.exports = '<% if (isLapSwimming) { %>\n    <% if (settings.isParent) { %>\n        <% if (settings.isRest || model[\'swimStroke\'] == "DRILL") { %>\n            <td>&nbsp;</td>\n        <% } else { %>\n        <td>\n            <button class="table-row-parent-toggle table-row-parent-toggle-open" style="display: inline-block;"><i class="icon-pointer-right"></i></button>\n            <button class="table-row-parent-toggle table-row-parent-toggle-close" style="display: none;"><i class="icon-pointer-down"></i></button>\n        </td>\n        <% } %>\n    <% } else { %>\n         <td>&nbsp;</td>\n         <td>&nbsp;</td>\n   <% } %>\n<% } %>\n<% var index = 0; %>\n<% for (var i in model) { %>\n    <td class="<%- cellClass[index] ? cellClass[index] : \'\' %>">\n        <% if (_.isArray(model[i])) { %>\n            <% for (var c in model[i]) { %>\n                <% if (model[i][c]) { %>\n                    <%= model[i][c] %>\n                <% } else if (model[i][c] === null) { %>\n                    --\n                <% } %>\n            <% } %>\n        <% } else if (model[i] === null || (settings.isRest && columnHiddenForRest(i))) { %>\n            --\n        <% } else { %>\n            <%= ((i === \'swimStroke\' || i === \'label_swim_stroke\') ? Localizer.localize(sm.mapKey(model[i])) : model[i]) %>\n        <% } %>\n    </td>\n    <% index++; %>\n<% } %>'
     },
-    4233: function(e, t) {
+    4260: function(e, t) {
         e.exports = "<tr>\n    <% if (isLapSwimming) { %>\n        <td>&nbsp;</td>\n    <% } %>\n    <% var index = 0; %>\n    <% for(var f in model) { %>\n        <%if (isLapSwimming && f === 'lapIndex') { %>\n            <td><%- Localizer.localize(model[f]) %></td>\n        <% } else if (isLapSwimming && f === 'swimStroke') { %>\n            <td></td>\n        <% } else if (model[f] === null) { %>\n            <td></td>\n        <% } else if (isAutoRacingActivity) { %>\n            <td><%- f === 'auto_racing_lap_label' ? Localizer.localize(model[f]) : model[f] === null ? '--' : model[f] %></td>\n        <% } else if (isResortSkiActivity) { %>\n            <td><%- f === 'splits.runs' ? Localizer.localize(model[f]) : model[f] === null ? '--' : model[f] %></td>\n        <% } else { %>\n            <td class=\"<%- cellClass[index] ? cellClass[index] : '' %>\">\n                <%= f === 'splits.laps' ? Localizer.localize(model[f]) : model[f] === null ? '--' : model[f] %></td>\n        <% } %>\n        <% index++; %>\n    <% } %>\n</tr>\n"
     },
-    4234: function(e, t) {
+    4261: function(e, t) {
         e.exports = '<% if (colModel && colModel.length > 0) { %>\n    <div id="mtb-jumps-grid" class="tab-pane tab-overflow">\n        <div class="tab-content">\n            <div id="intervals-table" class="tab-pane active">\n                <table class="table clickable-table splits-table">\n                    <thead>\n                    </thead>\n                    <tbody>\n                    </tbody>\n                </table>\n            </div>\n        </div>\n    </div>\n<% } %>'
     },
-    4235: function(e, t) {
+    4262: function(e, t) {
         e.exports = "<h2><%- Localizer.localize('label_jumps') %></h2>\n<p><%- Localizer.localize('jumps_help') %></p>\n\n<h4><%- Localizer.localize('label_jumps_in_connect') %></h4>\n<p><%- Localizer.localize('jumps_in_connect') %></p>"
     },
-    4236: function(e, t) {
+    4263: function(e, t) {
         e.exports = '<div class="data-block">\n    <div><%- Personalizer.peronalizeMTBFlow(summaryDTO.avgFlow) %></div>\n    <div class="fine-print"><%- Localizer.localize(\'label_flow\') %></div>\n</div>\n<div class="data-block">\n    <div><%- Personalizer.peronalizeMTBGrit(summaryDTO.grit) %></div>\n    <div class="fine-print"><%- Localizer.localize(\'label_grit\') %></div>\n</div>\n<div class="data-block">\n    <div><%- Math.round(jumps.length) %></div>\n    <div class="fine-print">\n        <%- Localizer.localize(\'label_total_jumps\') %>\n        <a href="#help-jumps" data-toggle="modal">\n            <span title="<%- Localizer.localize(\'label.te.tip\') %>" class="help-icon jumps-help">\n                <span class="icon-help"></span>\n            </span>\n        </a>\n    </div>\n</div>\n\n<div class="mtb-jumps-grid"></div>'
     },
-    4237: function(e, t) {
+    4264: function(e, t) {
         e.exports = '<% if (showStatsTab) { %>\n<li class="active">\n    <a id="tabStatsId" href="#tab-stats" data-toggle="tab"><%- Localizer.localize(\'activity_stats\') %></a>\n</li>\n<% } %>\n<% if (showSplitsTab) { %>\n<li>\n    <a id="tabSplitsId" href="#tab-splits" data-toggle="tab"><%- splitsTab %></a>\n</li>\n<% } %>\n<% if (canShowMtbMetricsTab) { %>\n    <li>\n        <a id="tabMtbMetricsId" href="#tab-mtb" data-toggle="tab"><%- Localizer.localize(\'activity_mtb_metrics\') %></a>\n    </li>\n<% } %>\n<% if (showGasesAndTanksTab) { %>\n<li>\n    <a id="tabGasesAndTanksId" href="#tab-gases-and-tanks" data-toggle="tab"><%- Localizer.localize(\'tanks_and_gases\') %></a>\n</li>\n<% } %>\n<% if (showApneaDivesTab) { %>\n<li>\n    <a id="tabApneaDives" href="#tab-apnea-dives" data-toggle="tab"><%- Localizer.localize(\'apnea_dives_label\') %></a>\n</li>\n<% } %>\n<% if (showSegmentTab) { %>\n<li>\n    <a id="tabSegmentsId" href="#tab-segments" data-toggle="tab"><%- Localizer.localize(\'segments\') %>\n        <% if (segmentCount > 0) { %>\n            <span class="notification-count"><%- segmentCount %></span>\n        <% } %>\n    </a>\n</li>\n<% } %>\n<% if (showTimeInZones) { %>\n<li>\n    <a id="tabTimeInZonesId" href="#tab-time-in-zones" data-toggle="tab"><%- Localizer.localize(\'time.in.zones\') %></a>\n</li>\n<% } %>\n<% if (showCyclingDynamics) { %>\n<li>\n    <a id="tabCyclingDynamics" href="#tab-cycling-dynamics" data-toggle="tab"><%- Localizer.localize(\'cycling_dynamics\') %></a>\n</li>\n<% } %>\n<% if (showPowerCurve) { %>\n<li>\n    <a id="tabPowerCurve" href="#tab-power-curve" data-toggle="tab"><%- Localizer.localize(\'power_curve_title\') %></a>\n</li>\n<% } %>'
     },
-    4238: function(e, t, i) {
+    4265: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -45488,10 +45476,10 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(2486)
-              , h = i(2558)
-              , d = i(1231)
-              , p = i(4239)
+              , c = i(2506)
+              , h = i(2578)
+              , d = i(1234)
+              , p = i(4266)
               , u = i.n(p)
               , m = {
                 ActivityChanged: "ActivityChanged"
@@ -45542,10 +45530,10 @@
         }
         ).call(this, i(10))
     },
-    4239: function(e, t) {
+    4266: function(e, t) {
         e.exports = '<li class="active">\n    <a class="activity-tab" data-id="<%- parent.activityId %>" href="#tab-multisport-overview" data-toggle="tab">\n        <div class="icon"><i class="icon-activity-multisport"></i></div>\n        <div class="time"><%- Personalizer.personalizeDuration(parent.duration) %></div>\n        <div class="avg-stat"></div>\n    </a>\n</li>\n<% for (var i = 0; i < children.length; i++) { %>\n<%     var activity = children[i];            %>\n    <li>\n        <a class="activity-tab" data-id="<%- activity.activityId %>" href="#" data-toggle="tab">\n            <div class="icon"><i class="icon-activity-<%- cm.map(activity.activityTypeDTO.typeKey) %>"></i></div>\n            <div class="time"><%- Personalizer.personalizeDuration(activity.duration) %>\n                <i id="prPlaceholder-<%- activity.activityId %>" style="display:none;"></i>\n            </div>\n            <% var poolUnit = activity.unitOfPoolLength ? activity.unitOfPoolLength.unitKey : null; %>\n            <div class="avg-stat"><%- Personalizer.personalizeSpeed(activity.averageSpeed, activity.activityTypeDTO.typeKey, poolUnit) %> <%- Localizer.localize(Personalizer.getSpeedTypeKey(activity.activityTypeDTO.typeKey, null, poolUnit)) %></div>\n        </a>\n    </li>\n<% } %>\n\n\n'
     },
-    4240: function(e, t, i) {
+    4267: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -45553,11 +45541,11 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(13)
-          , c = i(101)
-          , h = i(36)
-          , d = i(1824)
-          , p = i(1304)
-          , u = i(4241)
+          , c = i(102)
+          , h = i(37)
+          , d = i(1828)
+          , p = i(1309)
+          , u = i(4268)
           , m = i.n(u);
         t.a = s.a.View.extend({
             template: n.a.template(m.a),
@@ -45622,24 +45610,24 @@
             }
         })
     },
-    4241: function(e, t) {
+    4268: function(e, t) {
         e.exports = '<% if (selectedGear && selectedGear.length) { %>\n<div class="gear-images">\n    <% for (var i = 0; i < selectedGear.length; i++) {  %>\n    <%  var gear = selectedGear[i];                     %>\n        <i class="avatar avatar-medium icon-<%- gear.gearClass %>"></i>\n    <% }                                                %>\n</div>\n<ul class="gear-names">\n    <% for (i = 0; i < selectedGear.length; i++) {  %>\n    <%  gear = selectedGear[i];                     %>\n        <li><%- gear.fullDisplayName %></li>\n    <% }                                                %>\n\n    <% if (!isReadOnly) { %>\n    <li><a href="#gear-edit-modal" data-toggle="modal" class="toggle-add-gear colored"><%- Localizer.localize(\'label_change_gear\') %></a></li>\n    <% } %>\n</ul>\n<% } %>'
     },
-    4242: function(e, t) {
+    4269: function(e, t) {
         e.exports = '<td data-title-1="<%- labels.setNumberTitle %>"><p><%- rowNumber %></p></td>\n\n<td data-title-2="<%- labels.setName %>" class="workout-name">\n    <% if(!linkNameToEdit) { %>\n    <%- Localizer.localize(exerciseType) %>\n\n    <% } else { %>\n    <a href="#" class="edit-activity colored">\n        <%- Localizer.localize(labels.chooseSetLabelKey || exerciseType) %>\n    </a>\n    <% } %>\n</td>\n\n<td data-title-3="<%- Localizer.localize(\'label.time\') %>">\n    <%- time %>\n</td>\n\n<% if(!isPilatesActivity && !isYogaActivity) { %>\n<td data-title-4="<%- Localizer.localize(\'label_rest\') %>">\n    <%- rest %>\n</td>\n<% } %>\n\n<% if(!isYogaActivity) { %>\n<td data-title-5="<%- Localizer.localize(\'label_reps\') %>">\n    <%- reps %>\n</td>\n<% } %>\n\n<% if(!isPilatesActivity && !isYogaActivity) { %>\n<td data-title-6="<%- Localizer.localize(\'label_weight\') %>">\n    <% if(weightIsNumber || isReadOnly) { %>\n\n        <%- weight %>\n\n        <% if(isMetric) { %>\n            <%- Localizer.localize(\'weight_unit_metric\') %>\n        <% } else { %>\n            <%- Localizer.localize(\'weight_unit_statute\') %>\n        <% } %>\n\n    <% } else { %>\n    <a href="#" class="colored edit-activity"><%- weight %></a>\n    <% } %>\n</td>\n<% } %>'
     },
-    4243: function(e, t) {
+    4270: function(e, t) {
         e.exports = "<table class=\"table table-hover table-responsive rep-counting-table\">\n    <thead>\n        <tr>\n            <th><%- labels.setNumberTitle %></th>\n            <th><%- labels.setName %></th>\n            <th><%- Localizer.localize('label.time') %></th>\n\n            <% if(!isPilatesActivity && !isYogaActivity) { %>\n            <th><%- Localizer.localize('label_rest') %></th>\n            <% } %>\n\n            <% if(!isYogaActivity) { %>\n            <th><%- Localizer.localize('label_reps') %></th>\n            <% } %>\n\n            <% if(!isPilatesActivity && !isYogaActivity) { %>\n            <th><%- Localizer.localize('label_weight') %></th>\n            <% } %>\n        </tr>\n    </thead>\n\n    <tbody id=\"setsContainer\"></tbody>\n</table>"
     },
-    4244: function(e, t, i) {
+    4271: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
               , n = i.n(a)
               , r = i(8)
               , s = i.n(r)
-              , o = i(50)
-              , l = i(1644);
+              , o = i(52)
+              , l = i(1650);
             t.a = s.a.View.extend({
                 initialize: function(e) {
                     o.a.setExpandCollapseHandler(function() {
@@ -45681,7 +45669,7 @@
         }
         ).call(this, i(10))
     },
-    4245: function(e, t, i) {
+    4272: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -45690,9 +45678,9 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(101)
-              , h = i(216)
-              , d = i(4246)
+              , c = i(102)
+              , h = i(220)
+              , d = i(4273)
               , p = i.n(d)
               , u = "bpm"
               , m = "percentMax"
@@ -45814,13 +45802,13 @@
         }
         ).call(this, i(10))
     },
-    4246: function(e, t) {
+    4273: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_heart_rate\') %></h3>\n    <% if (enableToggle) { %>\n    <div class="btn-group btn-group-pill bottom-m" data-toggle="buttons-radio">\n        <button id="btn-heart-rate" class="btn btn-small"><%- Localizer.localize(\'heart_rate_unit\') %></button>\n        <button id="btn-percent-max" class="btn btn-small"><%- Localizer.localize(\'percent_of_max\') %></button>\n        <button id="btn-zones" class="btn btn-small"><%- Localizer.localize(\'label_zones\') %></button>\n    </div>\n    <% } %>\n\n    <% if (model.heartRateValue) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- model.heartRateValue %> <%- model.heartRateUnit %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_avg_HR\') %></span>\n    </div>\n    <% } %>\n\n    <% if (model.maxHeartRateValue) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- model.maxHeartRateValue %> <%- model.heartRateUnit %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_max_HR\') %></span>\n    </div>\n    <% } %>\n</div>'
     },
-    4247: function(e, t) {
+    4274: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_ascent\') %></h3>\n    \x3c!-- Indoor Climb Ascent Metrics --\x3e\n    <% if (isIndoorClimbingActivity) { %>\n        <% if (indoorClimbElevationGain) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeElevation(indoorClimbElevationGain) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'activity_total_ascent\') %></span>\n            </div>\n        <% } %>\n        <% if (indoorClimbMaxAscent) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeElevation(indoorClimbMaxAscent) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'climb_max_ascent\') %></span>\n            </div>\n        <% } %>\n    <% } else { %>\n        <% if (ascent) { %>\n        <div class="data-block small">\n            <div class="data-bit"><%- Personalizer.personalizeFloors(ascent) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_ascent\') %></span>\n        </div>\n        <% } %>\n\n        <% if (descent) { %>\n        <div class="data-block small">\n            <div class="data-bit"><%- Personalizer.personalizeFloors(descent) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_descent\') %></span>\n        </div>\n        <% } %>\n\n        <% if (minElevation) { %>\n        <div class="data-block small">\n            <div class="data-bit"><%- Personalizer.personalizeElevation(minElevation) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_min_elevation\') %></span>\n        </div>\n        <% } %>\n\n        <% if (maxElevation) { %>\n        <div class="data-block small">\n            <div class="data-bit"><%- Personalizer.personalizeElevation(maxElevation) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_max_elevation\') %></span>\n        </div>\n        <% } %>\n    <% } %>\n</div>'
     },
-    4248: function(e, t, i) {
+    4275: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -45829,11 +45817,11 @@
               , s = i.n(r)
               , o = i(4)
               , l = i(13)
-              , c = i(101)
-              , h = i(98)
-              , d = i(36)
-              , p = i(4249)
-              , u = i(4251)
+              , c = i(102)
+              , h = i(64)
+              , d = i(37)
+              , p = i(4276)
+              , u = i(4278)
               , m = i.n(u)
               , g = {
                 DisplayWeightEntryPopup: "DisplayWeightEntryPopup",
@@ -45966,14 +45954,14 @@
         }
         ).call(this, i(10))
     },
-    4249: function(e, t, i) {
+    4276: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = i(4)
-          , l = i(4250)
+          , l = i(4277)
           , c = i.n(l);
         t.a = s.a.View.extend({
             template: n.a.template(c.a),
@@ -45984,13 +45972,13 @@
             }
         })
     },
-    4250: function(e, t) {
+    4277: function(e, t) {
         e.exports = "<div class=\"power-load-help\">\n    <h4><%- Localizer.localize('label_ski_power') %></h4>\n    <h5><%- Localizer.localize('ski_power_message1') %></h5>\n    <h5><%- Localizer.localize('label_ski_train') %></h5>\n    <p><%- Localizer.localize('ski_train_message') %></p>\n    <h5><%- Localizer.localize('label_ski_cycling_ftp') %></h5>\n    <p><%- Localizer.localize('label_ski_cycling_message') %></p>\n</div>\n"
     },
-    4251: function(e, t) {
+    4278: function(e, t) {
         e.exports = '<%\n\nvar leftBalance = Personalizer.personalizeLeftRightBalance(activity.leftBalance);\nvar rightBalance = Personalizer.personalizeLeftRightBalance(100 - leftBalance);\n\nvar leftEffectiveness = Personalizer.personalizeTorqueEffectiveness(activity.leftTorqueEffectiveness);\nvar rightEffectiveness = Personalizer.personalizeTorqueEffectiveness(activity.rightTorqueEffectiveness);\n\nvar leftSmoothness = Personalizer.personalizePedalSmoothness(activity.leftPedalSmoothness);\nvar rightSmoothness = Personalizer.personalizePedalSmoothness(activity.rightPedalSmoothness);\n\n%>\n<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_power\') %>\n        <% if (isCrossCountrySkiActivity) { %>\n            <span class="help-icon has-tooltip help-power" title="<%- Localizer.localize(\'label.te.tip\') %>">\n                <i class="icon-help"></i>\n            </span>\n        <% } %>\n    </h3>\n    <% if (enableToggle) { %>\n    <div class="btn-group btn-group-pill bottom-m" data-toggle="buttons-radio">\n        <button id="btn-watts" class="btn btn-small"><%- Localizer.localize(\'label_power_unit\') %></button>\n        <button id="btn-kg" class="btn btn-small"><%- Localizer.localize(\'label_power_kg\') %></button>\n        <button id="btn-zones" class="btn btn-small"><%- Localizer.localize(\'label_zones\') %></button>\n    </div>\n    <% } %>\n\n    <% if (powerData.averagePowerValue) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- powerData.averagePowerValue %> <%- powerData.powerUnit %></div>\n        <span class="data-label"><%- Localizer.localize(Personalizer.getAvgPowerLabelKey(activityType)) %></span>\n    </div>\n    <% } %>\n\n    <% if (powerData.maxPowerValue) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- powerData.maxPowerValue %>  <%- powerData.powerUnit %></div>\n        <span class="data-label"><%- Localizer.localize(Personalizer.getMaxPowerLabelKey(activityType)) %></span>\n    </div>\n    <% } %>\n\n    <% if (activity.maxPowerTwentyMinutes) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizePower(activity.maxPowerTwentyMinutes || 0) %>  <%- Localizer.localize(Personalizer.getPowerUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_max_avg_power\') %></span>\n    </div>\n    <% } %>\n\n    <% if (activity.leftBalance) {      %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Localizer.localize(Personalizer.getPowerBalanceUnitKey(), leftBalance, rightBalance) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_left_right_balance\') %></span>\n    </div>\n    <% }                                                                %>\n\n    <% if (activity.leftTorqueEffectiveness) {   %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Localizer.localize(Personalizer.getPowerBalanceUnitKey(), leftEffectiveness, rightEffectiveness) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_left_right_torque_eff\') %></span>\n    </div>\n    <% }                                                                        %>\n\n    <% if (activity.leftPedalSmoothness) {   %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Localizer.localize(Personalizer.getPowerBalanceUnitKey(), leftSmoothness, rightSmoothness) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_left_right_pedal_smoothness\') %> </span>\n    </div>\n    <% }                                                                    %>\n\n    <% if (activity.normalizedPower) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizePower(activity.normalizedPower || 0) %>  <%- Localizer.localize(Personalizer.getPowerUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_normalized_power\') %></span>\n    </div>\n    <% } %>\n\n    <% if (activity.intensityFactor) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeIntensityFactor(activity.intensityFactor || 0) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_intensity_factor\') %></span>\n    </div>\n    <% } %>\n\n    <% if (activity.trainingStressScore) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeTSS(activity.trainingStressScore || 0) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_training_stress_score\') %></span>\n    </div>\n    <% } %>\n\n    <% if (activity.functionalThresholdPower) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizePower(activity.functionalThresholdPower || 0) %> <%- Localizer.localize(Personalizer.getPowerUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_ftp_setting\') %></span>\n    </div>\n    <% } %>\n\n    <% if (activity.totalWork) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeWork(activity.totalWork || 0) %> <%- Localizer.localize(Personalizer.getWorkUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_work\') %></span>\n    </div>\n    <% } %>\n\n</div>'
     },
-    4252: function(e, t, i) {
+    4279: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(7)
@@ -46000,8 +45988,8 @@
               , l = i(4)
               , c = i(13)
               , h = i(112)
-              , d = i(101)
-              , p = i(4253)
+              , d = i(102)
+              , p = i(4280)
               , u = i.n(p)
               , m = {
                 SpeedPaceToggled: "SpeedPaceToggled"
@@ -46078,61 +46066,61 @@
         }
         ).call(this, i(10), i(10))
     },
-    4253: function(e, t) {
+    4280: function(e, t) {
         e.exports = '<%\nvar labelPace = model.isSwimmingActivity ? \'label_swim_pace\' : \'label_pace\';\n%>\n\n<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_timing\') %></h3>\n    <div class="btn-group btn-group-pill bottom-m" data-toggle="buttons-radio">\n        <button id="btn-pace" class="btn btn-small"><%- Localizer.localize(labelPace) %></button>\n        <button id="btn-speed" class="btn btn-small"><%- Localizer.localize(\'label_speed\') %></button>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- model.time %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_time\') %></span>\n    </div>\n    <% if (activity.movingDuration) {    %>\n    <div class="data-block small">\n        <div class="data-bit"><%- model.movingTime %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_moving_time\') %></span>\n    </div>\n    <% }                                                    %>\n    <% if (model.elapsedTime) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- model.elapsedTime %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_elapsed_time\') %></span>\n    </div>\n    <% } %>\n    <div class="data-block small">\n        <div class="data-bit"><%- model.avgSpeedOrPace %> <%- model.avgSpeedOrPaceUnit %></div>\n        <span class="data-label"><%- model.avgSpeedOrPaceLabel %></span>\n    </div>\n    <% if (activity.averageMovingSpeed) {    %>\n    <div class="data-block small">\n        <div class="data-bit"><%- model.avgMovingSpeedOrPace %> <%- model.avgMovingSpeedOrPaceUnit %></div>\n        <span class="data-label"><%- model.avgMovingSpeedOrPaceLabel %></span>\n    </div>\n    <% }                                                    %>\n    <% if (model.showMaxSpeed && model.maxSpeedOrPace) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- model.maxSpeedOrPace %> <%- model.maxSpeedOrPaceUnit %></div>\n        <span class="data-label"><%- model.maxSpeedOrPaceLabel %></span>\n    </div>\n    <% } %>\n</div>'
     },
-    4254: function(e, t) {
+    4281: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_timing\') %></h3>\n    <div class="data-block small">\n        <div class="data-bit total-time-value"><%- Personalizer.personalizeDuration(time) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_time\') %></span>\n    </div>\n</div>'
     },
-    4255: function(e, t) {
+    4282: function(e, t) {
         e.exports = '<div class="stat-block" style="<% if (!showStats) { print(\'display: none;\'); } %>">\n    <h3><%- statsLabel %></h3>\n\n    <% for (var i = 0; i < stats.length; i++) { %>\n        <% if (stats[i].data) {\n            var unit = stats[i].dataUnit ? stats[i].dataUnit : \'\';\n        %>\n            <div class="data-block small">\n                <div class="data-bit total-time-value"><%- stats[i].data + \' \' + unit %></div>\n                <span class="data-label"><%- stats[i].dataLabel %></span>\n                <% if (stats[i].tooltipHelpIconMessage) { %>\n                    <span class="colored has-tooltip help-icon" data-placement="right" title="<%- stats[i].tooltipHelpIconMessage %>"><i class="icon-help"></i></span>\n                <% } %>\n            </div>\n        <% } %>\n    <% } %>\n</div>\n'
     },
-    4256: function(e, t) {
+    4283: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_timing\') %></h3>\n    <% if (time) { %>\n        <div class="data-block small">\n            <div class="data-bit total-time-value"><%- Personalizer.personalizeDuration(time) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_time\') %></span>\n        </div>\n    <% } %>\n\n    <% if (elapsedTime) { %>\n        <div class="data-block small">\n            <div class="data-bit duration-time-value"><%- Personalizer.personalizeDuration(elapsedTime) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_elapsed_time\') %></span>\n        </div>\n    <% } %>\n\n    <% if (avgFloorsPerMin || avgFloorsPerMin === 0) { %>\n        <div class="data-block small">\n            <div class="data-bit duration-time-value"><%- avgFloorsPerMin %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_avg_floors_per_minute\') %></span>\n        </div>\n    <% } %>\n\n    <% if (maxFloorsPerMin || maxFloorsPerMin === 0) { %>\n        <div class="data-block small">\n            <div class="data-bit duration-time-value"><%- maxFloorsPerMin %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_max_floors_per_minute\') %></span>\n        </div>\n    <% } %>\n</div>'
     },
-    4257: function(e, t) {
-        e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_timing\') %></h3>\n        <div class="data-block small">\n            <div class="data-bit total-time-value"><%- Personalizer.personalizeDuration(climbActive.duration, false) %></div>\n            <span class="data-label"><%- Localizer.localize(\'climb_active_time\') %></span>\n        </div>\n        <div class="data-block small">\n            <div class="data-bit duration-time-value"><%- Personalizer.personalizeDuration(climbRest.duration, false) %></div>\n            <span class="data-label"><%- Localizer.localize(\'climb_rest_time\') %></span>\n        </div>\n        <div class="data-block small">\n            <div class="data-bit duration-time-value"><%- Personalizer.personalizeDuration(totalClimbTime.duration, false) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_time_total\') %></span>\n        </div>\n</div>\n'
+    4284: function(e, t) {
+        e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_timing\') %></h3>\n        <% if (activeClimbDuration) { %>\n            <div class="data-block small">\n                <div class="data-bit total-time-value"><%- Personalizer.personalizeDuration(activeClimbDuration, false) %></div>\n                <span class="data-label"><%- Localizer.localize(\'climb_active_time\') %></span>\n            </div>\n        <% } %>\n        <% if (restClimbDuration) { %>\n            <div class="data-block small">\n                <div class="data-bit duration-time-value"><%- Personalizer.personalizeDuration(restClimbDuration, false) %></div>\n                <span class="data-label"><%- Localizer.localize(\'climb_rest_time\') %></span>\n            </div>\n        <% } %>\n        <% if (totalClimbTime) { %>\n            <div class="data-block small">\n                <div class="data-bit duration-time-value"><%- Personalizer.personalizeDuration(totalClimbTime, false) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_time_total\') %></span>\n            </div>\n        <% } %>\n</div>\n'
     },
-    4258: function(e, t) {
+    4285: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_timing\') %></h3>\n    <div class="data-block small">\n        <div class="data-bit total-time-value"><%- Personalizer.personalizeDuration(time) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_time\') %></span>\n    </div>\n</div>'
     },
-    4259: function(e, t) {
+    4286: function(e, t) {
         e.exports = '<h3><%- Localizer.localize(\'cycling_dynamics\') %> <a href="javascript:void(0);" class="help-icon has-tooltip"\n                                                      data-html="true"\n                                                     title="<%- showPositionTab ? Localizer.localize(\'help.cycling.dynamics.position.title\')  + \'<br><br>\' : \'\' %><%- Localizer.localize(\'help.cycling.dynamics.power.phase.title\') %><br><br><%- Localizer.localize(\'help.cycling.dynamics.platform.center.offset.title\') %>"><i\n        class="icon-help"></i></a></h3>\n<div class="btn-group btn-group-pill bottom-m" data-toggle="buttons-radio">\n    <% if (showPositionTab) { %>\n    <button id="btn-position" class="btn btn-small cycling-dynamics active" data-toggle="tab" data-target="#position-data"><%- Localizer.localize(\'cycling_dynamics_position\') %></button>\n    <% } %>\n    <button id="btn-power-phase" class="btn btn-small cycling-dynamics <%- !showPositionTab ? \'active\' : \'\' %>" data-toggle="tab" data-target="#power-phase-data"><%- Localizer.localize(\'cycling_dynamics_power_phase_abbr\') %></button>\n    <button id="btn-pco" class="btn btn-small cycling-dynamics" data-toggle="tab" data-target="#pco-data"><%- Localizer.localize(\'cycling_dynamics_pco_abbr\') %></button>\n</div>\n\x3c!--Position Data--\x3e\n<div class="tab-content">\n    <% if (showPositionTab) { %>\n    <div id="position-data" class="tab-pane active">\n\n\n        <% if (!_.isUndefined(activity.standingTime)) { %>\n        <div class="position data-block small">\n            <div class="data-bit"><%- Personalizer.personalizeStandingTime(activity.standingTime) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_total_standing_time\') %></span>\n        </div>\n        <% } %>\n\n        <% if (!_.isUndefined(activity.averageStandingPower)) { %>\n        <div class="position data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePower(activity.averageStandingPower) %> <%- Localizer.localize(Personalizer.getPowerUnitKey()) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_avg_standing_power\') %></span>\n        </div>\n        <% } %>\n\n        <% if (!_.isUndefined(activity.maxStandingPower)) { %>\n        <div class="position data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePower(activity.maxStandingPower) %> <%- Localizer.localize(Personalizer.getPowerUnitKey()) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_max_standing_power\') %></span>\n        </div>\n        <% } %>\n\n        <% if (!_.isUndefined(activity.seatedTime)) { %>\n        <div class="position data-block small">\n            <div class="data-bit"><%- Personalizer.personalizeStandingTime(activity.seatedTime) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_total_seated_time\') %></span>\n        </div>\n        <% } %>\n\n        <% if (!_.isUndefined(activity.averageSeatedPower)) { %>\n        <div class="position data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePower(activity.averageSeatedPower) %> <%- Localizer.localize(Personalizer.getPowerUnitKey()) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_avg_seated_power\') %></span>\n        </div>\n        <% } %>\n\n        <% if (!_.isUndefined(activity.maxSeatedPower)) { %>\n        <div class="position data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePower(activity.maxSeatedPower) %> <%- Localizer.localize(Personalizer.getPowerUnitKey()) %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_max_seated_power\') %></span>\n        </div>\n        <% } %>\n\n    </div>\n    <% } %>\n    \x3c!--Power-Phase Data--\x3e\n    <div id="power-phase-data" class="tab-pane <%- !showPositionTab ? \'active\' : \'\' %>">\n\n        \x3c!-- Left Power Phase --\x3e\n        <% if (!_.isUndefined(activity.leftPowerPhaseStart)) { %>\n        <div class="power-phase data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePowerPhaseAngle(activity.leftPowerPhaseStart) %> \xb0 \u2013 <%- Personalizer.personalizePowerPhaseAngle(activity.leftPowerPhaseEnd) %> \xb0</div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_l_power_phase\') %> <a href="#" class="help-icon has-tooltip" data-html="true" title="<%- Localizer.localize(\'help.cycling.dynamics.power.phase.start.angle\') %><br/><br/><%- Localizer.localize(\'help.cycling.dynamics.power.phase.end.angle\') %><br/><br/><%- Localizer.localize(\'help.cycling.dynamics.power.phase.description\') %>" ><i class="icon-help"></i></a></span>\n        </div>\n        <% } %>\n\n        \x3c!-- Right Power Phase --\x3e\n        <% if (!_.isUndefined(activity.rightPowerPhaseStart)) { %>\n        <div class="power-phase data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePowerPhaseAngle(activity.rightPowerPhaseStart) %> \xb0 \u2013 <%- Personalizer.personalizePowerPhaseAngle(activity.rightPowerPhaseEnd) %> \xb0</div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_r_power_phase\') %></span>\n        </div>\n        <br/>\n        <% } %>\n\n\n\n        <% if (!_.isUndefined(activity.leftPowerPhaseArcLength)) { %>\n        <div class="power-phase data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePowerPhaseArcLength(activity.leftPowerPhaseArcLength) %> \xb0</div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_l_power_phase_arc_length\') %> <a href="#" class="help-icon has-tooltip" title="<%- Localizer.localize(\'help.cycling.dynamics.power.phase.arc.length\') %>" ><i class="icon-help"></i></a></span>\n        </div>\n        <% } %>\n\n        <% if (!_.isUndefined(activity.rightPowerPhaseArcLength)) { %>\n        <div class="power-phase data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePowerPhaseArcLength(activity.rightPowerPhaseArcLength) %> \xb0</div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_r_power_phase_arc_length\') %></span>\n        </div>\n        <br/>\n        <% } %>\n\n\n\n        \x3c!-- Left Peak Power Phase --\x3e\n        <% if (!_.isUndefined(activity.leftPowerPhasePeakStart)) { %>\n        <div class="power-phase data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePowerPhaseAngle(activity.leftPowerPhasePeakStart) %> \xb0 \u2013 <%- Personalizer.personalizePowerPhaseAngle(activity.leftPowerPhasePeakEnd) %> \xb0</div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_l_peak_power_phase\') %> <a href="#" class="help-icon has-tooltip" data-html="true" title="<%- Localizer.localize(\'help.cycling.dynamics.peak.power.phase.start.angle\') %><br><br><%- Localizer.localize(\'help.cycling.dynamics.peak.power.phase.end.angle\') %><br><br><%- Localizer.localize(\'help.cycling.dynamics.peak.power.phase.description\') %>" ><i class="icon-help"></i></a></span>\n        </div>\n        <% } %>\n\n        \x3c!-- Right Peak Power Phase --\x3e\n        <% if (!_.isUndefined(activity.rightPowerPhasePeakStart)) { %>\n        <div class="power-phase data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePowerPhaseAngle(activity.rightPowerPhasePeakStart) %> \xb0 \u2013 <%- Personalizer.personalizePowerPhaseAngle(activity.rightPowerPhasePeakEnd) %> \xb0</div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_r_peak_power_phase\') %></span>\n        </div>\n        <br/>\n        <% } %>\n\n\n\n        <% if (!_.isUndefined(activity.leftPowerPhasePeakArcLength)) { %>\n        <div class="power-phase data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePowerPhaseArcLength(activity.leftPowerPhasePeakArcLength) %> \xb0</div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_l_peak_power_phase_arc_length\') %> <a href="#" class="help-icon has-tooltip" title="<%- Localizer.localize(\'help.cycling.dynamics.peak.power.phase.arc.length\') %>" ><i class="icon-help"></i></a></span>\n        </div>\n        <% } %>\n\n        <% if (!_.isUndefined(activity.rightPowerPhasePeakArcLength)) { %>\n        <div class="power-phase data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePowerPhaseArcLength(activity.rightPowerPhasePeakArcLength) %> \xb0</div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_r_peak_power_phase_arc_length\') %></span>\n        </div>\n        <% } %>\n\n\n    </div>\n    \x3c!--Platform Center Offset Data--\x3e\n    <div id="pco-data" class="tab-pane">\n\n        <% if (!_.isUndefined(activity.leftPlatformCenterOffset)) { %>\n        <div class="pco data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePlatformCenterOffset(activity.leftPlatformCenterOffset) %> <%- Localizer.localize(\'platform_center_offset_unit\') %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_l_pco_average\') %> <a href="#" class="help-icon has-tooltip" title="<%- Localizer.localize(\'help.cycling.dynamics.platform.center.offset\') %>" ><i class="icon-help"></i></a></span>\n        </div>\n        <% } %>\n\n        <% if (!_.isUndefined(activity.rightPlatformCenterOffset)) { %>\n        <div class="pco data-block small">\n            <div class="data-bit"><%- Personalizer.personalizePlatformCenterOffset(activity.rightPlatformCenterOffset) %> <%- Localizer.localize(\'platform_center_offset_unit\') %></div>\n            <span class="data-label"><%- Localizer.localize(\'label_cd_r_pco_average\') %> </span>\n        </div>\n        <% } %>\n    </div>\n</div>\n'
     },
-    4260: function(e, t) {
+    4287: function(e, t) {
         e.exports = '    <h3><%- Localizer.localize(\'label_strokes_rowing\') %></h3>\n\n    <% if (activity.summaryDTO.totalNumberOfStrokes) {    %>\n    <div class="data-block small">\n        <div class="data-bit"><%- activity.summaryDTO.totalNumberOfStrokes %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_total_rowing_strokes\') %></span>\n    </div>\n    <% }                                                     %>\n\n    <% if (activity.summaryDTO.averageStrokeCadence) {    %>\n    <div class="data-block small">\n        <div class="data-bit"><%- activity.summaryDTO.averageStrokeCadence %> <%- Localizer.localize(\'rowing_cadence_unit\') %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_stroke_rate\') %></span>\n    </div>\n    <% }                                                     %>\n\n    <% if (activity.summaryDTO.maxStrokeCadence) {    %>\n    <div class="data-block small">\n        <div class="data-bit"><%- activity.summaryDTO.maxStrokeCadence %> <%- Localizer.localize(\'rowing_cadence_unit\') %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_max_stroke_rate\') %></span>\n    </div>\n    <% } %>\n\n    <% if (activity.summaryDTO.averageStrokeDistance && activity.summaryDTO.averageStrokeDistance > 0) {    %>\n    <% if (useUsersUnitSetting) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeDistanceValue(Personalizer.getAverageStrokeDistance(activity.summaryDTO.averageStrokeDistance)) %> <%- Localizer.localize(Personalizer.getStrokeDistanceUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_avg_distance_per_stroke\') %></span>\n    </div>\n    <% } else {  %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeDistanceValue(activity.summaryDTO.averageStrokeDistance) %> <%- Localizer.localize(\'distance.meter\') %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_avg_distance_per_stroke\') %></span>\n    </div>\n    <% } %>\n    <% } %>'
     },
-    4261: function(e, t) {
+    4288: function(e, t) {
         e.exports = "<% if (model) { %>\n<div class=\"data-bit\"><%- Personalizer.formatValueByPrecision(model.value, presentationData.precision) %> <%-\n    Localizer.localize(getLocalizerString(presentationData['unit-label-key'])) %>\n</div>\n<span class=\"data-label\"><%- Localizer.localize(getLocalizerString(presentationData['label-key'])) %>\n    <%= tooltipTemplate %>\n</span>\n<% } %>"
     },
-    4262: function(e, t) {
+    4289: function(e, t) {
         e.exports = "<h3><%- Localizer.localize('label_connect_iq') %>&#8482;</h3>"
     },
-    4263: function(e, t) {
+    4290: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_vector_air_aerodynamics\') %></h3>\n\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.formatVectorAirCdA(model.avgCda) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_avg_cda\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit "><%- Personalizer.formatVectorAirCdA(model.minCda) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_best_cda\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.formatWholeNumber(model.avgWattsPerCda) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_avg_watts_per_cda\') %></span>\n    </div>\n</div>'
     },
-    4264: function(e, t) {
+    4291: function(e, t) {
         e.exports = '<% if (hasNutritionAndHydrationData) { %>\n    <h3><%- Localizer.localize(\'label_nutrition_hydration\') %>\n        <span id="nutrition-hydration-help" class="help-icon has-tooltip" title="<%- Localizer.localize(\'label.te.tip\') %>">\n            <i class="icon-help"></i>\n        </span>\n    </h3>\n\n    <div class="data-block small">\n        <div class="data-bit"><%- nutritionAndHydrationData.caloriesEstimated || 0 %> <%- Localizer.localize(Personalizer.getCalorieUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_caloriesBurned\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- nutritionAndHydrationData.caloriesConsumed || 0 %> <%- Localizer.localize(Personalizer.getCalorieUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_caloriesConsumed\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- nutritionAndHydrationData.caloriesNet || 0 %> <%- Localizer.localize(Personalizer.getCalorieUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_caloriesNet\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- nutritionAndHydrationData.waterEstimated || 0 %> <%- Localizer.localize(\'label_ml\') %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_waterLoss\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- nutritionAndHydrationData.waterConsumed || 0 %> <%- Localizer.localize(\'label_ml\') %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_waterConsumed\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- nutritionAndHydrationData.waterNet || 0 %> <%- Localizer.localize(\'label_ml\') %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_waterNet\') %></span>\n    </div>\n<% } else { %>\n    <h3><%- Localizer.localize(\'label_calories\') %></h3>\n\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.formatWholeNumber(activity.calories) %> <%- Localizer.localize(Personalizer.getCalorieUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_calories\') %></span>\n    </div>\n<% } %>'
     },
-    4265: function(e, t) {
+    4292: function(e, t) {
         e.exports = "<div class=\"exercise-load-help\">\n    <h4><%- Localizer.localize('exercise_load') %></h4>\n    <h5><%- Localizer.localize('exercise_load_header_message1') %></h5>\n    <h5><%- Localizer.localize('exercise_load_header_message2') %></h5>\n    <p><%- Localizer.localize('exercise_load_message1') %></p>\n    <h5><%- Localizer.localize('exercise_load_header_message3') %></h5>\n    <p><%- Localizer.localize('exercise_load_message2') %></p>\n</div>\n"
     },
-    4266: function(e, t) {
+    4293: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label.trainingEffect\') %>\n        <span class="help-icon has-tooltip training-effect-help" title="<%- Localizer.localize(\'label.te.tip\') %>">\n            <i class="icon-help"></i>\n        </span>\n    </h3>\n\n    <% _.each(trainingEffectStats, function(trainingEffectStat) { %>\n        <div class="data-block small">\n            <% if(trainingEffectStat.hasChip) { %>\n                <div class="trainingEffectLabelContainer">\n                    <div class="trainingEffectStatChip" style="background:<%- trainingEffectStat.hasChip %>"></div>\n                    <div class="data-bit">\n                        <%- trainingEffectStat.metric %>\n                    </div>\n                </div>\n            <% } else { %>\n                <div class="data-bit">\n                    <%- trainingEffectStat.metric %>\n                </div>\n            <% } %>\n            <span class="data-label"><%- trainingEffectStat.label %>\n                <% if(trainingEffectStat.hasHelpIcon) { %>\n                    <span class="help-icon has-tooltip <%- trainingEffectStat.hasHelpIcon.selectByClass %>" title="<%- Localizer.localize(\'label.te.tip\') %>">\n                        <i class="icon-help"></i>\n                    </span>\n                <% } %>\n            </span>\n        </div>\n    <% }) %>\n</div>\n'
     },
-    4267: function(e, t) {
+    4294: function(e, t) {
         e.exports = '\x3c!-- Speed Stats --\x3e\n<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_speed\') %></h3>\n    <div class="data-block small">\n        <div class="data-bit"><%- speedModel.maxSpeedOrPace %> <%- speedModel.maxSpeedOrPaceUnit %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_max_speed\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- speedModel.avgSpeedOrPace %> <%- speedModel.avgSpeedOrPaceUnit %></div>\n        <span class="data-label"><%- speedModel.avgSpeedOrPaceLabel %></span>\n    </div>\n</div>\n\x3c!-- Distance Stats --\x3e\n<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_distance\') %></h3>\n    <div class="data-block small">\n        <div class="data-bit"><%- activity.lapCount %></div>\n        <span class="data-label"><%- Localizer.localize(\'marq_number_laps\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeDistance(activity.distance, activity.activityTypeDTO.typeKey, activity.unitOfPoolLength) %> <%- Localizer.localize(Personalizer.getDistanceUnitKey(activity.activityTypeDTO.typeKey, activity.distance, activity.unitOfPoolLength)) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_distance_total\') %></span>\n    </div>\n</div>'
     },
-    4268: function(e, t) {
-        e.exports = '\x3c!-- Climb Routes Stats --\x3e\n<div class="stat-block">\n    <h3><%- Localizer.localize(\'splits.routes\') %></h3>\n    <div class="data-block small">\n        <div class="data-bit"><%- splitSummaries.noOfSplits %></div>\n        <span class="data-label"><%- Localizer.localize(\'total_climb_routes\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- splitSummaries.numClimbsAttempted %></div>\n        <span class="data-label"><%- Localizer.localize(\'climb_attempted\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- splitSummaries.numClimbsCompleted %></div>\n        <span class="data-label"><%- Localizer.localize(\'climb_completed\') %></span>\n    </div>\n    <% if (splitSummaries.numClimbSends) { %>\n        <div class="data-block small">\n            <div class="data-bit"><%- splitSummaries.numClimbSends %></div>\n            <span class="data-label"><%- Localizer.localize(\'climb_sends\') %></span>\n        </div>\n    <% } %>\n    <% if (splitSummaries.numFalls) { %>\n        <div class="data-block small">\n            <div class="data-bit"><%- splitSummaries.numFalls %></div>\n            <span class="data-label"><%- Localizer.localize(\'climb_falls\') %></span>\n        </div>\n    <% } %>\n    <div class="data-block small">\n        <div class="data-bit"><%- routeMaxDifficulty %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_max_difficulty\') %></span>\n    </div>\n</div>'
+    4295: function(e, t) {
+        e.exports = '\x3c!-- Climb Routes Stats --\x3e\n<div class="stat-block">\n    <% if (splitSummaries) { %>\n    <h3><%- Localizer.localize(\'splits.routes\') %></h3>\n    <div class="data-block small">\n        <div class="data-bit"><%- splitSummaries.noOfSplits %></div>\n        <span class="data-label"><%- Localizer.localize(\'total_climb_routes\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- splitSummaries.numClimbsAttempted %></div>\n        <span class="data-label"><%- Localizer.localize(\'climb_attempted\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- splitSummaries.numClimbsCompleted %></div>\n        <span class="data-label"><%- Localizer.localize(\'climb_completed\') %></span>\n    </div>\n    <% if (splitSummaries.numClimbSends) { %>\n        <div class="data-block small">\n            <div class="data-bit"><%- splitSummaries.numClimbSends %></div>\n            <span class="data-label"><%- Localizer.localize(\'climb_sends\') %></span>\n        </div>\n    <% } %>\n    <% if (splitSummaries.numFalls) { %>\n        <div class="data-block small">\n            <div class="data-bit"><%- splitSummaries.numFalls %></div>\n            <span class="data-label"><%- Localizer.localize(\'climb_falls\') %></span>\n        </div>\n    <% } %>\n    <div class="data-block small">\n        <div class="data-bit"><%- routeMaxDifficulty %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_max_difficulty\') %></span>\n    </div>\n    <% } %>\n</div>'
     },
-    4269: function(e, t) {
+    4296: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label.workout.intervals\') %></h3>\n    <% if (time) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeDuration(time) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label.workout.intervals.work.time\', activityType) %></span>\n    </div>\n    <% } %>\n\n    <% if (distance) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeDistance(distance, activity.activityTypeDTO.typeKey, activity.unitOfPoolLength) %> <%- Localizer.localize(Personalizer.getDistanceUnitKey(activity.activityTypeDTO.typeKey, activity.distance, activity.unitOfPoolLength)) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label.workout.intervals.work.distance\', activityType) %></span>\n    </div>\n    <% } %>\n\n    <% if (pace) { %>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeSpeed(pace, activity.activityTypeDTO.typeKey) %> <%- Localizer.localize(Personalizer.getPaceUnitKey()) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label.workout.intervals.work.pace\', activityType, speedPacelabel) %></span>\n    </div>\n    <% } %>\n</div>'
     },
-    4270: function(e, t, i) {
-        (t = e.exports = i(32)(!0)).push([e.i, "\n\n.SkiHelp_title__BI17o {\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.SkiHelp_bodyOne__3ix3z {\n    font-size: 16px;\n}\n\n.SkiHelp_titleTwo__1Q0DE {\n    font-size: 18px;\n}\n\n.SkiHelp_bodyTwo__mktEr {\n    font-size: 14px;\n}\n\n.SkiHelp_bottomMargin__3y-5q {\n    margin-bottom: 20px;\n}\n\n.SkiHelp_colorCircle__P4Bsj {\n    padding-top: 2px;\n}\n\n.SkiHelp_colorCircle__P4Bsj span {\n    border-radius: 50%;\n    display: block;\n    height: 16px;\n    width: 16px;\n}\n\n.SkiHelp_descriptionContainer__3NAnS {\n    display: -webkit-flex;\n    display: flex;\n}\n", "", {
+    4297: function(e, t, i) {
+        (t = e.exports = i(33)(!0)).push([e.i, "\n\n.SkiHelp_title__3wmWh {\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.SkiHelp_bodyOne__2aEu9 {\n    font-size: 16px;\n}\n\n.SkiHelp_titleTwo__3Wurm {\n    font-size: 18px;\n}\n\n.SkiHelp_bodyTwo__2B4ku {\n    font-size: 14px;\n}\n\n.SkiHelp_bottomMargin__3AsaN {\n    margin-bottom: 20px;\n}\n\n.SkiHelp_colorCircle__1VulR {\n    padding-top: 2px;\n}\n\n.SkiHelp_colorCircle__1VulR span {\n    border-radius: 50%;\n    display: block;\n    height: 16px;\n    width: 16px;\n}\n\n.SkiHelp_descriptionContainer__5sly2 {\n    display: -webkit-flex;\n    display: flex;\n}\n", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/src/components/Ski/SkiHelp.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/src/components/Ski/SkiHelp.css"],
             names: [],
             mappings: ";;AAAA;IACI,gBAAe;IACf,iBAAgB;CACpB;;AAEA;IACI,gBAAe;CACnB;;AAEA;IACI,gBAAe;CACnB;;AAEA;IACI,gBAAe;CACnB;;AAEA;IACI,oBAAmB;CACvB;;AAEA;IACI,iBAAgB;CACpB;;AAEA;IACI,mBAAkB;IAClB,eAAc;IACd,aAAY;IACZ,YAAW;CACf;;AAEA;IACI,sBAAa;IAAb,cAAa;CACjB",
             file: "SkiHelp.css",
@@ -46140,22 +46128,22 @@
             sourceRoot: ""
         }]),
         t.locals = {
-            title: "SkiHelp_title__BI17o",
-            bodyOne: "SkiHelp_bodyOne__3ix3z",
-            titleTwo: "SkiHelp_titleTwo__1Q0DE",
-            bodyTwo: "SkiHelp_bodyTwo__mktEr",
-            bottomMargin: "SkiHelp_bottomMargin__3y-5q",
-            colorCircle: "SkiHelp_colorCircle__P4Bsj",
-            descriptionContainer: "SkiHelp_descriptionContainer__3NAnS"
+            title: "SkiHelp_title__3wmWh",
+            bodyOne: "SkiHelp_bodyOne__2aEu9",
+            titleTwo: "SkiHelp_titleTwo__3Wurm",
+            bodyTwo: "SkiHelp_bodyTwo__2B4ku",
+            bottomMargin: "SkiHelp_bottomMargin__3AsaN",
+            colorCircle: "SkiHelp_colorCircle__1VulR",
+            descriptionContainer: "SkiHelp_descriptionContainer__5sly2"
         }
     },
-    4271: function(e, t) {
+    4298: function(e, t) {
         e.exports = '<%\n    var activityType = activity.activityTypeDTO.typeKey;\n%>\n<div class="row-fluid">\n    <div class="span3">\n        <div id="timingStatsBreathworkPlaceholder"></div>\n        <div id="timingStatsRepCountingPlaceholder"></div>\n        <div id="divingConservatismStatsPlaceholder"></div>\n        <div id="sessionTotalsStatsPlaceholder"></div>\n        <div id="divingDepthStatsPlaceholder"></div>\n        <div id="divingBottomTimeStatsPlaceholder"></div>\n        <div id="divingN2LoadingStatsPlaceholder"></div>\n        <div id="divingCnsLoadingStatsPlaceholder"></div>\n\n        <div id="autoRacingStatsPlaceholder"></div>\n        <div id="indoorClimbRoutesPlaceholder"></div>\n\n        <% if (showDistanceData) { %>\n        <div class="stat-block activity-distance">\n            <h3><%- Localizer.localize(\'label_distance\') %></h3>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeDistance(activity.distance, activity.activityTypeDTO.typeKey, activity.unitOfPoolLength) %> <%- Localizer.localize(Personalizer.getDistanceUnitKey(activity.activityTypeDTO.typeKey, activity.distance, activity.unitOfPoolLength)) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_distance\') %></span>\n            </div>\n            <% if (activity.poolLength) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizePoolLength(activity.poolLength) %> <%- Localizer.localize(Personalizer.getPoolLengthUnitKey(activity.unitOfPoolLength.unitKey)) %></div>\n                <span class="data-label"><%- Localizer.localize(\'workout.pool.size\') %></span>\n            </div>\n            <% } %>\n        </div>\n        <% } %>\n\n        <% if (hasCalories) { %>\n            <div id="caloriesPlaceholder"></div>\n        <% } %>\n\n        <% if(showRespirationRateData) { %>\n            <div class="stat-block respiration-block">\n                <h3><%- Localizer.localize(\'label_respiration_rate\') %></h3>\n                <div class="data-block small">\n                    <div class="data-bit"><%- Personalizer.personalizeRespiration(activity.avgRespirationRate) %> <%- Localizer.localize(Personalizer.getRespirationUnitKey()) %></div>\n                    <span class="data-label"><%- Localizer.localize(\'label_average_respiration_rate\') %></span>\n                </div>\n                <% if (filteredRespirationRateData.minRespirationRate) { %>\n                    <div class="data-block small">\n                        <div class="data-bit"><%- Personalizer.personalizeRespiration(activity.minRespirationRate) %> <%- Localizer.localize(Personalizer.getRespirationUnitKey()) %></div>\n                        <span class="data-label"><%- Localizer.localize(\'label_min_respiration_rate\') %></span>\n                    </div>\n                <% } %>\n                <% if (filteredRespirationRateData.maxRespirationRate) { %>\n                    <div class="data-block small">\n                        <div class="data-bit"><%- Personalizer.personalizeRespiration(activity.maxRespirationRate) %> <%- Localizer.localize(Personalizer.getRespirationUnitKey()) %></div>\n                        <span class="data-label"><%- Localizer.localize(\'label_max_respiration_rate\') %></span>\n                    </div>\n                <% } %>\n            </div>\n        <% } %>\n\n        <div id="divingSetPointStatsPlaceholder"></div>\n\n        <% if (adaptiveRating && activity.summaryDTO.atpPlanId) { %>\n            <div class="stat-block">\n                <h3><a class="colored" href="<%- url(\'/training-plans/plan/\' + activity.summaryDTO.atpPlanId) %>"><%- Localizer.localize(\'training_plan_title\') %></a></h3>\n                <div class="data-block small">\n                    <div class="data-bit"><%- Localizer.localize(adaptiveRating) %></div>\n                    <span class="data-label"><%- Localizer.localize(\'training_plan_rating_title\') %></span>\n                </div>\n            </div>\n        <% } %>\n\n        <% if (activity.maxGforce) { %>\n        <div class="stat-block">\n            <h3><%- Localizer.localize(\'label_g_force\') %></h3>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.formatDecimalNumber(activity.maxGforce, 1, false) %> <%- Localizer.localize(\'g_force_unit\') %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_max_g_force\') %></span>\n            </div>\n        </div>\n        <% } %>\n        <div id="connectIQMeasurementPlaceholder"></div>\n        <div id="vectorAirMeasurementPlaceholder"></div>\n        <div id="executionScoreInfo" class="stat-block"></div>\n        <div id="selfEvaluation"></div>\n    </div>\n    <div class="span3">\n        <div id="trainingEffectStatsPlaceholder"></div>\n        <div id="heartRateStatsPlaceholder"></div>\n        <div id="timingStatsPlaceholder"></div>\n        <div id="divingConditionsPlaceholder"></div>\n    </div>\n    <div class="span3">\n        <div id="waterTemperaturePlaceholder"></div>\n        <div id="divingWeightPlaceholder"></div>\n        <div id="divingExposureSuitPlaceholder"></div>\n        <div id="timingStatsYogaPlaceholder"></div>\n        <div id="timingStatsFloorClimbingPlaceholder"></div>\n        <div id="timingStatsIndoorClimbPlaceholder"></div>\n        <div id="workoutDetailsStatsPlaceholder"></div>\n        <div id="powerStatsPlaceholder"></div>\n        <div id="stressStatsPlaceholder"></div>\n        <% if (activity.elevationGain || activity.elevationLoss) {    %>\n        <div class="stat-block">\n            <h3><%- Localizer.localize(Personalizer.getElevationLabelKey(activityType)) %></h3>\n            <% if (showElevationGain) { %>\n                <div class="data-block small">\n                    <div class="data-bit"><%- Personalizer.personalizeElevation(activity.elevationGain) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n                    <span class="data-label"><%- Localizer.localize(Personalizer.getElevGainLabelKey(activityType)) %></span>\n                </div>\n            <% } %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeElevation(activity.elevationLoss) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(Personalizer.getElevLossLabelKey(activityType)) %></span>\n\n            </div>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeElevation(activity.minElevation) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(Personalizer.getElevMinLabelKey(activityType)) %></span>\n            </div>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeElevation(activity.maxElevation) %> <%- Localizer.localize(Personalizer.getElevationUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(Personalizer.getElevMaxLabelKey(activityType)) %></span>\n            </div>\n        </div>\n        <% } %>\n        <div id="workoutIntervalsStatsPlaceholder"></div>\n    </div>\n    <div class="span3">\n        <div id="ascentStatsView"></div>\n        <% if (activity.averageBikeCadence || activity.maxBikeCadence) { %>\n        <div class="stat-block">\n            <h3><%- Localizer.localize(\'label_bike_cadence\') %></h3>\n            <% if (activity.averageBikeCadence) { %>\n            <div class="data-block small">\n\n                <div class="data-bit"><%- Personalizer.personalizeCadence(activity.averageBikeCadence, activityType) %> <%- Localizer.localize(Personalizer.getCadenceUnitKey(activity.activityTypeDTO.typeKey)) %></div>\n                <span class="data-label"><%- Localizer.localize(Personalizer.getAvgCadenceTypeLabelKey(activity.activityTypeDTO.typeKey)) %></span>\n            </div>\n            <% } %>\n            <% if (activity.maxBikeCadence) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeCadence(activity.maxBikeCadence, activityType) %> <%- Localizer.localize(Personalizer.getCadenceUnitKey(activity.activityTypeDTO.typeKey)) %></div>\n                <span class="data-label"><%- Localizer.localize(Personalizer.getMaxCadenceTypeLabelKey(activity.activityTypeDTO.typeKey)) %></span>\n            </div>\n            <% } %>\n        </div>\n        <% } %>\n\n        <% if (showCyclingDynamics) { %>\n            <div id="cyclingDynamicsPlaceholder" class="stat-block">\n\n            </div>\n        <% } %>\n\n        <% if (activity.averageRunCadence && !skiDynamics) { %>\n        <div class="stat-block">\n            <h3><%- Localizer.localize(Personalizer.getDynamicsLabelKey(activityType)) %>\n                <% if (activity.verticalOscillation || activity.groundContactTime) { %>\n                <span class="help-icon"><i class="icon-help has-tooltip" title="<%- Localizer.localize(\'help.running.dynamics.label\') %>"></i></span>\n                <% } %>\n            </h3>\n\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeCadence(activity.averageRunCadence, activityType) %> <%- Localizer.localize(Personalizer.getCadenceUnitKey(activity.activityTypeDTO.typeKey)) %></div>\n                <% var cadenceLabel = Localizer.localize(Personalizer.getAvgCadenceTypeLabelKey(activity.activityTypeDTO.typeKey)); %>\n                <span class="data-label"><%- cadenceLabel %>\n                    <span class="help-icon avg-cadence-help"><i class="icon-help has-tooltip" title="<%- getAvgCadenceHelpTooltipText(activity) %>"></i></span>\n                </span>\n            </div>\n\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeCadence(activity.maxRunCadence, activityType) %> <%- Localizer.localize(Personalizer.getCadenceUnitKey(activity.activityTypeDTO.typeKey)) %></div>\n                <span class="data-label"><%- Localizer.localize(Personalizer.getMaxCadenceTypeLabelKey(activity.activityTypeDTO.typeKey)) %></span>\n            </div>\n\n            <% if (activity.strideLength) {          %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeAvgStrideLength(activity.strideLength) %> <%- Localizer.localize(Personalizer.getAvgStrideLengthUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_avg_stride_length\') %></span>\n                <span class="help-icon avg-stride-length-help"><i class="icon-help has-tooltip" title="<%- getAvgStrideLengthHelpTooltipText(activity) %>"></i></span>\n            </div>\n            <% } %>\n\n            <% if (activity.verticalRatio) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeVerticalRatio(activity.verticalRatio) %> <%- Localizer.localize(Personalizer.getVerticalRatioUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_avg_vertical_ratio\') %>\n                <span class="help-icon"><i class="icon-help has-tooltip" title="<%- Localizer.localize(\'help.running.dynamics.avg.ratio.label\') %> <%- Localizer.localize(\'help_running_dynamics_not_including_zeros_standing\', Localizer.localize(\'label_avg_vertical_ratio\')) %>"></i></span>\n            </div>\n            <% }                                                %>\n\n            <% if (activity.verticalOscillation) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeVerticalOscillation(activity.verticalOscillation) %> <%- Localizer.localize(Personalizer.getVerticalOscillationUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_avg_vertical_oscillation\') %>\n                <span class="help-icon"><i class="icon-help has-tooltip" title="<%- Localizer.localize(\'help.running.dynamics.avg.oscillation.label\') %> <%- Localizer.localize(\'help_running_dynamics_not_including_zeros_standing\', Localizer.localize(\'label_avg_vertical_oscillation\')) %>"></i></span>\n            </div>\n            <% }                                                %>\n\n            <% if (activity.groundContactBalanceLeft) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Localizer.localize(Personalizer.getPowerBalanceUnitKey(), Personalizer.formatDecimalNumber(activity.groundContactBalanceLeft, 1), Personalizer.formatDecimalNumber(100 - activity.groundContactBalanceLeft, 1)) %></div>\n                <span class="data-label"><%= Localizer.localize(\'label_avg_gct_balance\') %></span>\n                <span class="help-icon"><i class="icon-help has-tooltip" title="<%- Localizer.localize(\'help.running.dynamics.gct.balance.tooltip\') %> <%= Localizer.localize(\'help_running_dynamics_not_including_zeros_standing_walking\', Localizer.localize(\'help.running.dynamics.gct.balance\')) %>"></i></span>\n            </div>\n            <% }                                                %>\n\n            <% if (activity.groundContactTime) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeGroundContactTime(activity.groundContactTime) %> <%- Localizer.localize(Personalizer.getGroundContactTimeUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_avg_ground_contact_time\') %>\n                <span class="help-icon"><i class="icon-help has-tooltip" title="<%- Localizer.localize(\'help.running.dynamics.avg.ground.contact.label\') %> <%- Localizer.localize(\'help_running_dynamics_not_including_zeros_standing_walking\', Localizer.localize(\'help.running.dynamics.gct\')) %>"></i></span>\n            </div>\n            <% }                                                %>\n\n        </div>\n        <% }                    %>\n\n\n        <% if (activity.averageSwimCadence || activity.strokeRate) { %>\n        <div class="stat-block">\n            <h3><%- Localizer.localize(\'label_swimming_dynamics\') %></h3>\n\n            <% if (activity.totalNumberOfStrokes) {      %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeStrokes(activity.totalNumberOfStrokes) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_total_swim_strokes\') %></span>\n            </div>\n            <% }                                                    %>\n\n            <% if (activity.averageSwimCadence) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeStrokes(activity.averageSwimCadence) %> <%- Localizer.localize(Personalizer.getStrokeRateUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_stroke_rate\') %></span>\n            </div>\n            <% }                                                    %>\n\n            <% if (activity.maxSwimCadence) { %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeStrokes(activity.maxSwimCadence) %> <%- Localizer.localize(Personalizer.getStrokeRateUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_max_stroke_rate\') %></span>\n            </div>\n            <% }                                                    %>\n\n            <% if (activity.averageStrokes) {        %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeCadence(activity.averageStrokes, activityType) %>/<%- Localizer.localize(Personalizer.getCadenceUnitKey(activityType)) %></div>\n                <span class="data-label"><%- Localizer.localize(Personalizer.getAvgCadenceTypeLabelKey(activity.activityTypeDTO.typeKey)) %></span>\n            </div>\n            <% }                                                    %>\n\n\n            <% if (activity.averageSWOLF) {      %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeSwolf(activity.averageSWOLF) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_avg_swolf\') %>\n                    <span class="help-icon"><i class="icon-help has-tooltip" title="<%- Localizer.localize(\'help.stats.avgSWOLF.label\') %>"></i></span>\n                </span>\n            </div>\n            <% }                                            %>\n\n        </div>\n        <% }                                                %>\n\n\n        <% if (activity.averageTemperature != null && !isDivingActivity && !isBreathworkActivity) {    %>\n        <div class="stat-block">\n            <h3><%- Localizer.localize(\'label_temperature\') %></h3>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeTemperature(activity.averageTemperature) %> <%- Localizer.localize(Personalizer.getTemperatureUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_avg_temp\') %></span>\n            </div>\n\n            <% if (activity.minTemperature != null) {    %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeTemperature(activity.minTemperature) %> <%- Localizer.localize(Personalizer.getTemperatureUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_min_temp\') %></span>\n            </div>\n            <% }                                                     %>\n\n            <% if (activity.maxTemperature != null) {    %>\n            <div class="data-block small">\n                <div class="data-bit"><%- Personalizer.personalizeTemperature(activity.maxTemperature) %> <%- Localizer.localize(Personalizer.getTemperatureUnitKey()) %></div>\n                <span class="data-label"><%- Localizer.localize(\'label_max_temp\') %></span>\n            </div>\n            <% }                                                    %>\n        </div>\n        <% }                                                        %>\n\n        <% if (hasStrokesData) { %>\n        <div id="strokesPlaceholder" class="stat-block"></div>\n        <% }  %>\n    </div>\n</div>'
     },
-    4272: function(e, t) {
+    4299: function(e, t) {
         e.exports = '<div class="stat-block">\n    <h3><%- Localizer.localize(\'label_stress\') %></h3>\n\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeStress(stressChange) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_stress_change\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeStress(startStress) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_stress_start_level\') %></span>\n    </div>\n    <div class="data-block small">\n        <div class="data-bit"><%- Personalizer.personalizeStress(endStress) %></div>\n        <span class="data-label"><%- Localizer.localize(\'label_stress_end_level\') %></span>\n    </div>\n</div>'
     },
-    4273: function(e, t, i) {
+    4300: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(2)
@@ -46165,21 +46153,21 @@
               , l = i.n(o)
               , c = i(4)
               , h = i(13)
-              , d = i(2493)
-              , p = i(2494)
-              , u = i(2495)
-              , m = i(4958)
-              , g = i(4944)
-              , f = i(4279)
-              , v = i(2498)
-              , y = i(216)
-              , A = i(1594)
-              , _ = i(1264)
-              , b = i(1331)
-              , C = i(98)
-              , w = i(4282)
+              , d = i(2513)
+              , p = i(2514)
+              , u = i(2515)
+              , m = i(4983)
+              , g = i(4969)
+              , f = i(4306)
+              , v = i(2518)
+              , y = i(220)
+              , A = i(1599)
+              , _ = i(1271)
+              , b = i(1336)
+              , C = i(64)
+              , w = i(4309)
               , x = i.n(w)
-              , S = i(1579)
+              , S = i(1583)
               , T = {
                 DisplayWeightEntryPopup: "DisplayWeightEntryPopup",
                 WeightChangedFromSplits: "WeightChangedFromSplits"
@@ -46192,12 +46180,12 @@
                     return t.fieldName === e
                 })
             }
-              , P = function(e) {
+              , k = function(e) {
                 return s.a.max(e, function(e) {
                     return e.order
                 }).order
             }
-              , k = function(e, t) {
+              , P = function(e, t) {
                 return s.a.has(e, t) ? s.a.omit(e, t) : s.a.omit(e, function(e, i, a) {
                     return e === t
                 })
@@ -46239,7 +46227,7 @@
                     return [e, "meter" === a ? h.a.MeasurementSystems.METRIC : "yard" === a ? h.a.MeasurementSystems.STATUTE_US : void 0]
                 }
             }
-              , B = {
+              , M = {
                 splits: {
                     headerClass: "sortable-header-row"
                 },
@@ -46258,11 +46246,11 @@
                     restIndex: 0
                 }
             }
-              , M = function(t, i) {
+              , B = function(t, i) {
                 for (var a = 0, n = [], r = t.length; a < r; a += 1) {
                     var s = t[a];
                     s && s.order > 0 ? n.push(s) : L(s.fieldName, i) && n.push(e.extend(s, {
-                        order: P(n) + 1
+                        order: k(n) + 1
                     }))
                 }
                 return n.sort(E),
@@ -46281,7 +46269,7 @@
                         });
                         if (c && c.length > 0)
                             for (var d = 0; d < c.length; d += 1)
-                                if (c[d].fieldName !== B.intervals.subGridModelkey) {
+                                if (c[d].fieldName !== M.intervals.subGridModelkey) {
                                     var p = null;
                                     p = s.a.has(t, c[d].displayLabel) ? t[c[d].displayLabel] : t[l],
                                     c[d].personalizer && p ? r[c[d].displayLabel] = c[d].personalizer.apply(h.a, c[d].personalizerParams ? c[d].personalizerParams(p, a) : [p]) : null === p && c[d].nullCallback && "function" === typeof c[d].nullCallback ? r[c[d].displayLabel] = c[d].nullCallback.call(this, n) : r[c[d].displayLabel] = p
@@ -46543,13 +46531,13 @@
                         i.footerModel[n] = i.activitySummary[n]);
                     e && (this.parseDataFromAPI(e),
                     this.hasIntensityIntervals && this.canViewIntervals && this.parseTypedSplitsData()),
-                    this.hasIntensityIntervals && this.canViewIntervals ? i.colModel = M(A.a.getMasterColumnConfig({
+                    this.hasIntensityIntervals && this.canViewIntervals ? i.colModel = B(A.a.getMasterColumnConfig({
                         isSwimmingActivity: i.isSwimmingActivity,
                         activityTypeKey: this.settings.activityTypeKey,
                         canDisplayVectorAirInfo: this.canDisplayVectorAirInfo,
                         personalizerParams: D,
                         getWeightLink: O()
-                    }), i.columns) : i.colModel = M(function(e) {
+                    }), i.columns) : i.colModel = B(function(e) {
                         var t = h.a.getSpeedTypeFromActivityType(e.activityTypeKey)
                           , i = h.a.getAvgSwimPaceLabelKey(e.isSwimmingActivity)
                           , a = h.a.getAvgMovingPaceLabelKey()
@@ -46903,42 +46891,65 @@
                                 showSortIcon: !1,
                                 personalizer: h.a.personalizeHeartRate
                             }, {
-                                order: 13,
+                                order: -1,
+                                fieldName: "averageRunCadence",
+                                displayLabel: "label_avg_ski_cadence",
+                                class: "",
+                                showSortIcon: !1,
+                                personalizer: h.a.personalizeCadence,
+                                personalizerParams: D.getCadence
+                            }, {
+                                order: -1,
+                                fieldName: "maxRunCadence",
+                                displayLabel: "label_max_ski_cadence",
+                                class: "",
+                                showSortIcon: !1,
+                                personalizer: h.a.personalizeCadence,
+                                personalizerParams: D.getCadence
+                            }, {
+                                order: -1,
+                                fieldName: "strideLength",
+                                displayLabel: "label_avg_stride_length",
+                                class: "",
+                                showSortIcon: !1,
+                                personalizer: h.a.personalizeAvgStrideLength
+                            }, {
+                                order: -1,
                                 fieldName: "averagePower",
                                 displayLabel: "label_avg_power",
                                 class: "",
                                 showSortIcon: !1,
                                 personalizer: h.a.personalizePower
                             }, {
-                                order: 14,
+                                order: -1,
                                 fieldName: "maxPower",
                                 displayLabel: "label_max_power",
                                 class: "",
                                 showSortIcon: !1,
                                 personalizer: h.a.personalizePower
                             }, {
-                                order: 15,
+                                order: 13,
                                 fieldName: "minTemperature",
                                 displayLabel: "label_min_temp",
                                 class: "",
                                 showSortIcon: !1,
                                 personalizer: h.a.personalizeTemperature
                             }, {
-                                order: 16,
+                                order: 14,
                                 fieldName: "maxTemperature",
                                 displayLabel: "label_max_temp",
                                 class: "",
                                 showSortIcon: !1,
                                 personalizer: h.a.personalizeTemperature
                             }, {
-                                order: 17,
+                                order: 15,
                                 fieldName: "averageTemperature",
                                 displayLabel: "label_avg_temp",
                                 class: "",
                                 showSortIcon: !1,
                                 personalizer: h.a.personalizeTemperature
                             }, {
-                                order: 18,
+                                order: 16,
                                 fieldName: "calories",
                                 displayLabel: "label_calories",
                                 class: "",
@@ -47538,9 +47549,9 @@
                 onIntervalClicked: function(t) {
                     t.preventDefault();
                     var i = e(t.currentTarget)
-                      , a = i.hasClass(B.intervals.toggleOpenClass)
+                      , a = i.hasClass(M.intervals.toggleOpenClass)
                       , n = "";
-                    n = n.concat(".", a ? B.intervals.toggleCloseClass : B.intervals.toggleOpenClass);
+                    n = n.concat(".", a ? M.intervals.toggleCloseClass : M.intervals.toggleOpenClass);
                     var r = e(n, i.parent());
                     i.css({
                         display: "none"
@@ -47574,7 +47585,7 @@
                         var t = new d.a({
                             model: this.settings.colModel,
                             isLapSwimming: this.settings.isLapSwimming,
-                            settings: this.settings.isLapSwimming ? B.intervals : B.splits
+                            settings: this.settings.isLapSwimming ? M.intervals : M.splits
                         });
                         e.append(t.render().el)
                     }
@@ -47615,20 +47626,20 @@
                               , h = I(c)
                               , d = this.getModel(c, !1, h, n, r);
                             h ? (r += 1,
-                            o = e.extend({}, B.intervals, {
+                            o = e.extend({}, M.intervals, {
                                 isRest: !0,
                                 restIndex: r,
                                 lapIndex: n
                             }),
                             d.label_swim_stroke = "REST",
                             d.lapIndex = "") : (n += 1,
-                            o = e.extend({}, B.intervals, {
+                            o = e.extend({}, M.intervals, {
                                 restIndex: r,
                                 lapIndex: n
                             }));
-                            var p = this.getRow(k(d, B.intervals.subGridModelkey), this.settings.isLapSwimming ? o : B.splits);
+                            var p = this.getRow(P(d, M.intervals.subGridModelkey), this.settings.isLapSwimming ? o : M.splits);
                             t.append(p.render().el),
-                            !h && this.settings.isLapSwimming && s.a.has(d, B.intervals.subGridModelkey) && this.renderIntervalChildRow(d, t, n)
+                            !h && this.settings.isLapSwimming && s.a.has(d, M.intervals.subGridModelkey) && this.renderIntervalChildRow(d, t, n)
                         }
                     }
                 },
@@ -47638,7 +47649,7 @@
                         e && e.length && e.remove();
                         var t = this.$("table");
                         t && t.length && t.append(new u.a({
-                            model: k(this.settings.footerModel, B.intervals.subGridModelkey),
+                            model: P(this.settings.footerModel, M.intervals.subGridModelkey),
                             isLapSwimming: this.settings.isLapSwimming,
                             isAutoRacingActivity: this.settings.isAutoRacingActivity,
                             isResortSkiActivity: this.settings.isResortSkiActivity,
@@ -47708,7 +47719,7 @@
                         isParent: !1,
                         isParentExpanded: !1,
                         isChildSelected: !1,
-                        childClass: B.intervals.childClass,
+                        childClass: M.intervals.childClass,
                         parentIndex: i,
                         childCount: e.lengthDTOs.length - 1,
                         childIndex: 0
@@ -47791,8 +47802,8 @@
         }
         ).call(this, i(10), i(10))
     },
-    4274: function(e, t, i) {
-        var a = i(4275);
+    4301: function(e, t, i) {
+        var a = i(4302);
         "string" === typeof a && (a = [[e.i, a, ""]]);
         var n = {
             hmr: !0,
@@ -47802,10 +47813,10 @@
         i(35)(a, n);
         a.locals && (e.exports = a.locals)
     },
-    4275: function(e, t, i) {
-        (t = e.exports = i(32)(!0)).push([e.i, "\n\n.ActivityIntervals_intervalsFilterContainer__2a5bp {\n    display: -webkit-flex;\n    display: flex;\n    -webkit-align-items: center;\n            align-items: center;\n    width: 200px;\n    -webkit-justify-content: space-between;\n            justify-content: space-between;\n}\n\n.ActivityIntervals_intervalsFilter__oKhxW {\n    width: 60%;\n}\n", "", {
+    4302: function(e, t, i) {
+        (t = e.exports = i(33)(!0)).push([e.i, "\n\n.ActivityIntervals_intervalsFilterContainer__19Knk {\n    display: -webkit-flex;\n    display: flex;\n    -webkit-align-items: center;\n            align-items: center;\n    width: 200px;\n    -webkit-justify-content: space-between;\n            justify-content: space-between;\n}\n\n.ActivityIntervals_intervalsFilter__10tNE {\n    width: 60%;\n}\n", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/src/Activity/ActivityIntervals/ActivityIntervals.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/src/Activity/ActivityIntervals/ActivityIntervals.css"],
             names: [],
             mappings: ";;AAAA;IACI,sBAAa;IAAb,cAAa;IACb,4BAAmB;YAAnB,oBAAmB;IACnB,aAAY;IACZ,uCAA8B;YAA9B,+BAA8B;CAClC;;AAEA;IACI,WAAU;CACd",
             file: "ActivityIntervals.css",
@@ -47813,18 +47824,18 @@
             sourceRoot: ""
         }]),
         t.locals = {
-            intervalsFilterContainer: "ActivityIntervals_intervalsFilterContainer__2a5bp",
-            intervalsFilter: "ActivityIntervals_intervalsFilter__oKhxW"
+            intervalsFilterContainer: "ActivityIntervals_intervalsFilterContainer__19Knk",
+            intervalsFilter: "ActivityIntervals_intervalsFilter__10tNE"
         }
     },
-    4276: function(e, t) {
+    4303: function(e, t) {
         e.exports = '<div class="activity-intervals-tab-content-placeholder"></div>'
     },
-    4277: function(e, t, i) {
-        (t = e.exports = i(32)(!0)).i(i(274), void 0),
-        t.push([e.i, ".ActivitySplits_splitsTab__1_rSg {\n    display: block;\n    width: 100%;\n    overflow-x: scroll;\n    padding-bottom: 10px;\n}\n.ActivitySplits_ascent__2rguc {\n    display: inline-block;\n    padding: 0 20px;\n}\n.ActivitySplits_ascent__2rguc:after {\n    content: '';\n    display: inline-block;\n    margin-top: 0.6em;\n    width: 0.6em;\n    height: 0.6em;\n    border-top: 0.3em solid " + i(274).locals.red_primary + ";\n    border-right: 0.3em solid " + i(274).locals.red_primary + ";\n    -webkit-transform: rotate(-45deg);\n            transform: rotate(-45deg);\n}\n.ActivitySplits_descent__n8ec0 {\n    display: inline-block;\n    padding: 0 20px;\n}\n.ActivitySplits_descent__n8ec0:after {\n    content: '';\n    display: inline-block;\n    margin-top: 0.6em;\n    width: 0.6em;\n    height: 0.6em;\n    border-top: 0.3em solid " + i(274).locals.blue_primary + ";\n    border-right: 0.3em solid " + i(274).locals.blue_primary + ";\n    -webkit-transform: rotate(135deg);\n            transform: rotate(135deg);\n}\n", "", {
+    4304: function(e, t, i) {
+        (t = e.exports = i(33)(!0)).i(i(276), void 0),
+        t.push([e.i, ".ActivitySplits_splitsTab__24tMx {\n    display: block;\n    width: 100%;\n    overflow-x: scroll;\n    padding-bottom: 10px;\n}\n.ActivitySplits_ascent__ulfi- {\n    display: inline-block;\n    padding: 0 20px;\n}\n.ActivitySplits_ascent__ulfi-:after {\n    content: '';\n    display: inline-block;\n    margin-top: 0.6em;\n    width: 0.6em;\n    height: 0.6em;\n    border-top: 0.3em solid " + i(276).locals.red_primary + ";\n    border-right: 0.3em solid " + i(276).locals.red_primary + ";\n    -webkit-transform: rotate(-45deg);\n            transform: rotate(-45deg);\n}\n.ActivitySplits_descent__2bSep {\n    display: inline-block;\n    padding: 0 20px;\n}\n.ActivitySplits_descent__2bSep:after {\n    content: '';\n    display: inline-block;\n    margin-top: 0.6em;\n    width: 0.6em;\n    height: 0.6em;\n    border-top: 0.3em solid " + i(276).locals.blue_primary + ";\n    border-right: 0.3em solid " + i(276).locals.blue_primary + ";\n    -webkit-transform: rotate(135deg);\n            transform: rotate(135deg);\n}\n", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/src/Activity/ActivitySplits/ActivitySplits.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/src/Activity/ActivitySplits/ActivitySplits.css"],
             names: [],
             mappings: "AAEA;IACI,eAAc;IACd,YAAW;IACX,mBAAkB;IAClB,qBAAoB;CACxB;AAEA;IACI,sBAAqB;IACrB,gBAAe;CACnB;AAEA;IACI,YAAW;IACX,sBAAqB;IACrB,kBAAiB;IACjB,aAAY;IACZ,cAAa;IACb,oDAAmC;IACnC,sDAAqC;IACrC,kCAAyB;YAAzB,0BAAyB;CAC7B;AAEA;IACI,sBAAqB;IACrB,gBAAe;CACnB;AAEA;IACI,YAAW;IACX,sBAAqB;IACrB,kBAAiB;IACjB,aAAY;IACZ,cAAa;IACb,oDAAoC;IACpC,sDAAsC;IACtC,kCAAyB;YAAzB,0BAAyB;CAC7B",
             file: "ActivitySplits.css",
@@ -47832,17 +47843,17 @@
             sourceRoot: ""
         }]),
         t.locals = {
-            red_primary: "" + i(274).locals.red_primary,
-            blue_primary: "" + i(274).locals.blue_primary,
-            splitsTab: "ActivitySplits_splitsTab__1_rSg",
-            ascent: "ActivitySplits_ascent__2rguc",
-            descent: "ActivitySplits_descent__n8ec0"
+            red_primary: "" + i(276).locals.red_primary,
+            blue_primary: "" + i(276).locals.blue_primary,
+            splitsTab: "ActivitySplits_splitsTab__24tMx",
+            ascent: "ActivitySplits_ascent__ulfi-",
+            descent: "ActivitySplits_descent__2bSep"
         }
     },
-    4278: function(e, t) {
+    4305: function(e, t) {
         e.exports = '<div class="react-activity-splits"></div>'
     },
-    4279: function(e, t, i) {
+    4306: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -47850,9 +47861,9 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(13)
-          , c = i(2556)
-          , h = i(4280)
-          , d = i(4281)
+          , c = i(2576)
+          , h = i(4307)
+          , d = i(4308)
           , p = i.n(d);
         t.a = s.a.View.extend({
             template: n.a.template(p.a),
@@ -47873,7 +47884,7 @@
             }
         })
     },
-    4280: function(e, t, i) {
+    4307: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(4)
@@ -47922,13 +47933,13 @@
         }
         ).call(this, i(7))
     },
-    4281: function(e, t) {
+    4308: function(e, t) {
         e.exports = '<% for (var i = 0, len = intervals.length; i < len; i++) {     %>\n<%  var interval = intervals[i];                    %>\n    <%  if (interval.type != \'rest\') {                  %>\n    <div class="swim-interval clearfix">\n        <h5 class="top-s interval-title"><%- Localizer.localize(\'swim_interval_num\', interval.index + 1) %><span class="distance"><%- interval.distance %> <%- interval.unit %></span><span class="time"><%- interval.duration %></span></h5>\n        \x3c!--Drill should only have one bubble with total time displayed in it--\x3e\n        <% var swimStroke = interval.lengths[0] ? interval.lengths[0].swimStroke : null %>\n        <%   if (swimStroke === \'DRILL\') {       %>\n        <div class="swim-length drill first last" title="<%- Localizer.localize(sm.mapKey(swimStroke)) %>">\n            <div class="type"><%- Localizer.localize(sm.mapKey(swimStroke)) %></div>\n            <span class="time"><%- interval.duration %></span>\n        </div>\n        <% } else { %>\n        <% var len2 = interval.lengths.length; %>\n        <% for (var j = 0; j < len2; j++) { %>\n        <%  var length = interval.lengths[j];           \n            if(length) { %>\n        <div class="swim-length <%- sm.mapClass(length.swimStroke) %> <%- j == 0 ? \'first\' : \'\' %>  <%- j == len2 - 1 ? \'last\' : \'\' %>" title="<%- Localizer.localize(sm.mapKey(length.swimStroke)) %>">\n            <div class="type"><%- Localizer.localize(sm.mapKey(length.swimStroke)) %></div>\n            <span class="number"><%- j + 1 %></span>\n            <span class="time"><%- Personalizer.formatDecimalNumber(length.duration, 1, false) %></span>\n        </div>\n        <% } %>\n        <% } %>\n        <% } %>\n        <% if (i + 1 < intervals.length && intervals[i + 1].type == \'rest\') {   %>\n        <%  var restInterval = intervals[++i];                                  %>\n        <div class="swim-rest" title="<%- Localizer.localize(\'swim.rest\') %>">\n            <div class="type"><%- Localizer.localize(\'swim.rest\') %></div>\n            <div class="time"><%- restInterval.duration %></div>\n        </div>\n        <% } %>\n\n    </div>\n    <% } %>\n<% } %>'
     },
-    4282: function(e, t) {
+    4309: function(e, t) {
         e.exports = '<% if (hasTypedSplits) { %>\n    <div class="typed-splits-placeholder"></div>\n<% } else if (hasIntensityIntervals && canViewIntervals) { %>\n    <div class="typed-splits-intervals-placeholder"></div>\n<% } else if (colModel && colModel.length > 0) { %>\n<div id="<%- isLapSwimming? \'tab-intervals\' : \'tab-splits\' %>" class="tab-pane tab-overflow">\n\n    <% if (isLapSwimming) { %>\n    <div class="btn-group btn-group-pill bottom-s" data-toggle="buttons-radio">\n        <button class="btn btn-small active ga-label" data-toggle="tab" data-target="#intervals-table"><%-Localizer.localize(\'label_table\')%></button>\n        <button class="btn btn-small ga-label" data-toggle="tab" data-target="#intervals-graphical"><%-Localizer.localize(\'label_graphical\')%></button>\n    </div>\n    <% } %>\n\n    <div class="tab-content">\n        <div id="intervals-table" class="tab-pane active">\n            <table class="table clickable-table <%- isLapSwimming? \'intervals-table\' : \'splits-table\' %>">\n                <thead>\n                </thead>\n                <tbody>\n                </tbody>\n            </table>\n        </div>\n\n    <% if (isLapSwimming) { %>\n        <div id="intervals-graphical" class="tab-pane">\n        </div>\n    <% } %>\n\n\n    </div>\n\n</div>\n<% } else { %>\n<div class="h5 font-thin text-center"><%- Localizer.localize(\'splits.noLaps\') %></div>\n<% } %>\n'
     },
-    4283: function(e, t, i) {
+    4310: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -47937,14 +47948,14 @@
               , s = i.n(r)
               , o = i(13)
               , l = i(4)
-              , c = i(4284)
-              , h = i(1919)
-              , d = i(4286)
+              , c = i(4311)
+              , h = i(1924)
+              , d = i(4313)
               , p = i(26)
               , u = i(17)
-              , m = i(4287)
+              , m = i(4314)
               , g = i.n(m)
-              , f = i(4288)
+              , f = i(4315)
               , v = i.n(f)
               , y = {
                 ViewSegmentToggled: "ViewSegmentToggled"
@@ -48087,7 +48098,7 @@
         }
         ).call(this, i(10))
     },
-    4284: function(e, t, i) {
+    4311: function(e, t, i) {
         "use strict";
         (function(e, a) {
             var n = i(7)
@@ -48096,7 +48107,7 @@
               , o = i.n(s)
               , l = i(13)
               , c = i(4)
-              , h = i(4285)
+              , h = i(4312)
               , d = i.n(h)
               , p = {
                 ViewSegmentToggled: "ViewSegmentToggled"
@@ -48193,10 +48204,10 @@
         }
         ).call(this, i(10), i(10))
     },
-    4285: function(e, t) {
+    4312: function(e, t) {
         e.exports = '    <td class="segment-rank">\n        <% if(model.showRank) { %>\n            <span class="segment-pill has-tooltip <%- model.rankCss %>" title="<%- Localizer.localize(model.rankTooltip, model.rank) %>" data-placement="right"><%- model.rank %></span>\n        <% } else { %>\n            <span class="segment-pill not-qualified has-tooltip" data-placement="right" title="<%- Localizer.localize(\'segment_not_fastest_time\') %>">--</span>\n        <% } %>\n    </td>\n    <td class="segment-name"><a href="/modern/segment/<%- model.url %>" class="colored"><%- model.name %></a></td>\n    <td class="segment-time"><%- model.time + \' \' + Localizer.localize(model.timeLabel) %></td>\n    <td class="segment-pace"><%- model.pace + \' \' + Localizer.localize(model.paceLabel) %></td>\n    <td class="segment-fav">\n        <% if( model.isOwner) { %>\n            <i href="#" class="favorite-segment-trigger icon-star fav <%- model.fav ? \'active\' : \'\' %>" data-segmentpk="<%- model.pk %>"></i>\n        <% } %>\n    </td>\n    <td class="segment-visible"><i class="icon-eye has-tooltip" data-segmentId="<%- model.url %>" title="<%- Localizer.localize(\'activity_show_on_the_map\') %>"></i></td>'
     },
-    4286: function(e, t, i) {
+    4313: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a).a.Model.extend({
@@ -48211,13 +48222,13 @@
         });
         t.a = n
     },
-    4287: function(e, t) {
+    4314: function(e, t) {
         e.exports = '<div class="activity-segments-container">\n    <% if (!collection) { %>\n    <div class="spinner-container">\n        <div class="text-center">\n            <div class="large spinner"><div></div></div>\n        </div>\n        <div class="h5 text-center font-thin"><%- Localizer.localize(\'loading\') %></div>\n    </div>\n    <% } else { %>\n    <% if (isOwner) { %>\n        <div class="activity-segment-actions">\n            <div class="pull-right create-segment left-s bottom-xs"><a href="<%- createSegmentUrl %>" class="colored"><i class="icon-add"></i><%- Localizer.localize(\'create_segment\') %></a></div>\n            <div class="pull-right match-segment bottom-xs"><a href="#" class="match-link colored"><%- Localizer.localize(\'match_segment\') %></a></div>\n        </div>\n    <% } %>\n    <% if (collection && collection.length > 0){ %>\n    <table class="table segments-table">\n        <thead>\n            <tr>\n                <th class="segment-rank"><%- Localizer.localize(\'rank\') %></th>\n                <th class="segment-name"><%- Localizer.localize(\'segment_name\') %></th>\n                <th class="segment-time"><%- Localizer.localize(\'segment_time_label\') %></th>\n                <th class="segment-pace">\n                    <% if(collection.length > 0 && Personalizer.getSpeedTypeFromActivityType(activityTypeKey).toUpperCase() === \'SPEED\') { %>\n                        <%- Localizer.localize(Personalizer.getSpeedLabelKey()) %>\n                    <% } else { %>\n                        <%- Localizer.localize(Personalizer.getPaceLabelKey()) %>\n                    <% } %>\n                </th>\n                <th class="segment-fav">&nbsp;</th>\n                <th class="segment-visible">&nbsp;</th>\n            </tr>\n        </thead>\n        <tbody>\n        </tbody>\n    </table>\n    <% } else { %>\n        <div class="h5 font-thin text-center"><%- Localizer.localize(\'no_segment_text\') %></div>\n    <% } %>\n    <% } %>\n</div>'
     },
-    4288: function(e, t) {
+    4315: function(e, t) {
         e.exports = '<div class="segment-match-container">\n    <div class="segment-match-actions">\n        <% if (isOwner) { %>\n            <div class="match-segment"><a href="#" class="match-link disabled"><%- Localizer.localize(\'match_segment\') %></a></div>\n            <div class="create-segment left-s bottom-xs"><a href="#" class="colored"><i class="icon-add"></i><%- Localizer.localize(\'create_segment\') %></a></div>\n        <% } %>\n    </div>\n    <div class="segment-match-message">\n        <h5 class="font-thin text-center top-s"><%= Localizer.localize(\'segment_match_message\') %></h5>\n    </div>\n</div>'
     },
-    4289: function(e, t, i) {
+    4316: function(e, t, i) {
         "use strict";
         (function(e) {
             var a = i(7)
@@ -48228,11 +48239,11 @@
               , l = i(26)
               , c = i(18)
               , h = i.n(c)
-              , d = i(363)
-              , p = i(1997)
-              , u = i(2004)
+              , d = i(364)
+              , p = i(2002)
+              , u = i(2009)
               , m = i(17)
-              , g = i(4290)
+              , g = i(4317)
               , f = i.n(g)
               , v = {
                 Error: "Error"
@@ -48373,23 +48384,23 @@
         }
         ).call(this, i(10))
     },
-    4290: function(e, t) {
+    4317: function(e, t) {
         e.exports = '<div class="tab-content">\n    <div class="power-curve-buttons">\n        <p><%- Localizer.localize(\'power_curve_compare_info\') %></p>\n        <div class="btn-group btn-group-pill bottom-m" data-toggle="buttons-radio">\n            <button id="power-curve-4-weeks" class="btn btn-small <%- mode === \'power-curve-4-weeks\' ? \'active\' : \'\' %>"><%- Localizer.localize(\'four_weeks\') %></button>\n            <button id="power-curve-3-months" class="btn btn-small <%- mode === \'power-curve-3-months\' ? \'active\' : \'\' %>"><%- Localizer.localize(\'three_months\') %></button>\n            <button id="power-curve-12-months" class="btn btn-small <%- mode === \'power-curve-12-months\' ? \'active\' : \'\' %>"><%- Localizer.localize(\'twelve_months\') %></button>\n            <button id="power-curve-lifetime" class="btn btn-small <%- mode === \'power-curve-lifetime\' ? \'active\' : \'\' %>"><%- Localizer.localize(\'power_curve_all\') %></button>\n        </div>\n        <a class="pull-right colored" href="<%- url(\'/report/-6/cycling/last_four_weeks\') %>"><%- Localizer.localize(\'power_curve_view_report\') %></a>\n    </div>\n    <div class="power-curve-message centered" style="display: hidden;">\n    </div>\n    <span class="power-curve-loading-spinner text-center" style="display: none">\n        <div class="text-center">\n            <div class="large spinner" title=""><div></div></div>\n        </div>\n        \x3c!-- <div class="h5 text-center font-thin"><%- Localizer.localize(\'loading\') %></div> --\x3e\n    </span>\n    <div class="power-curve-chartPlaceholder"></div>\n</div>'
     },
-    4291: function(e, t) {
+    4318: function(e, t) {
         e.exports = '<div class="pull-left">\n    <div class="list-number"><%- trackNum %></div>\n</div>\n<div class="media-body">\n    <h6 class="media-heading"><%- title %></h6>\n    <span class="data-label bottom-none"><%- songInfoString %></span>\n</div>'
     },
-    4292: function(e, t) {
+    4319: function(e, t) {
         e.exports = '<h5 class="bottom-xs"><%- Localizer.localize(\'playlist_title\') %></h5>\n<div class="playlist-card">\n    <ul class="media-list"></ul>\n</div>\n<div class="playlist-privacy"><%- Localizer.localize(\'visible_only_you\') %></div>'
     },
-    4293: function(e, t, i) {
+    4320: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = i(4)
-          , l = i(4294)
+          , l = i(4321)
           , c = i.n(l);
         t.a = s.a.View.extend({
             template: n.a.template(c.a),
@@ -48405,16 +48416,16 @@
             }
         })
     },
-    4294: function(e, t) {
+    4321: function(e, t) {
         e.exports = '<% if (apps) { %>\n    <% for (var i = 0; i < apps.length; i++) { %>\n        <div class="aspect">\n            <div class="aspect-square"></div>\n            <a target="_blank" href="https://apps.garmin.com/en-US/apps/<%- apps[i].appId %>" title="<%- Localizer.localize(\'recorded_with\') %>: <%- apps[i].name %>">\n                <img class="img-responsive aspect-element" alt="<%- apps[i].name %>" src="<%- apps[i].iconUrl %>">\n            </a>\n        </div>\n        <div class="app-name centered">\n            <a href="https://apps.garmin.com/en-US/apps/<%- apps[i].appId %>" target="_blank" class="colored"><%- apps[i].name %></a>\n            \x3c!--<div class="software-version">Software: 2.70.0.0</div> we don\'t have a software version for the app. --\x3e\n            <div class="software-developer"><%- apps[i].developerDisplayName %></div>\n        </div>\n    <% } %>\n<% } %>\n'
     },
-    4295: function(e, t) {
+    4322: function(e, t) {
         e.exports = '<div class="battery-status">\n    <%- status %>\n    <span class="<%- icon %>"></span>\n</div>'
     },
-    4296: function(e, t) {
+    4323: function(e, t) {
         e.exports = ""
     },
-    4297: function(e, t, i) {
+    4324: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a);
@@ -48422,7 +48433,7 @@
             url: "/modern/preference/enable-vector-air-feature"
         })
     },
-    4298: function(e, t, i) {
+    4325: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a);
@@ -48437,16 +48448,16 @@
             }
         })
     },
-    4299: function(e, t, i) {
+    4326: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(4)
           , s = i(8)
           , o = i.n(s)
-          , l = i(36)
-          , c = i(1317)
-          , h = i(4300)
+          , l = i(37)
+          , c = i(1322)
+          , h = i(4327)
           , d = i.n(h)
           , p = o.a.View.extend({
             template: n.a.template(d.a),
@@ -48483,13 +48494,13 @@
         p.Events = u,
         t.a = p
     },
-    4300: function(e, t) {
+    4327: function(e, t) {
         e.exports = '<div class="tab-content power-curve-excluded">\n    <div class="text-align-center heading">\n        <%- Localizer.localize(\'power_curve_removed_info\') %>\n        <span class="help-icon">\n            <a id="powerCurveModal" class="colored" data-toggle="modal">\n                <i class="icon-info"></i>\n            </a>\n        </span>\n    </div>\n    <div class="text-align-center sub-heading">\n        <%- Localizer.localize(\'power_curve_re_include\') %>\n    </div>\n    <div class="text-align-center">\n        <button type="button" id="re-include" class="btn btn-small btn-secondary"><%- Localizer.localize(\'power_curve_re_include_label\') %></button>\n    </div>\n</div>'
     },
-    4301: function(e, t, i) {
-        (t = e.exports = i(32)(!0)).push([e.i, "\n\n.AutoRaceLapTimeChart_componentContainer__2VfCl {\n    padding: 1em;\n    /* max-width: 1080px; */\n}\n\n.AutoRaceLapTimeChart_chartContainer__2rzlt {\n    width: 100%;\n    height: 250px;\n}\n\n.AutoRaceLapTimeChart_lapTimeTitle__oderF {\n    font-size: 16px;\n    margin-right: 8px;\n}\n\n.AutoRaceLapTimeChart_button__2cDfG {\n    float: right;\n}\n\n/* Modal */\n\n.AutoRaceLapTimeChart_modalChartContainer__2c5d6 {\n    width: 100%;\n    height: 600;\n}\n\n/* Legend */\n\n.AutoRaceLapTimeChart_legendContainer__3xp4r {\n    white-space: nowrap;\n}\n\n.AutoRaceLapTimeChart_legendLabel__3cQGa {\n    margin: 5px;\n}\n\n/* Tooltip */\n\n.AutoRaceLapTimeChart_statValue__DYalN {\n    font-weight: bold;\n}\n", "", {
+    4328: function(e, t, i) {
+        (t = e.exports = i(33)(!0)).push([e.i, "\n\n.AutoRaceLapTimeChart_componentContainer__18HNN {\n    padding: 1em;\n    /* max-width: 1080px; */\n}\n\n.AutoRaceLapTimeChart_chartContainer__llw3d {\n    width: 100%;\n    height: 250px;\n}\n\n.AutoRaceLapTimeChart_lapTimeTitle__3QVld {\n    font-size: 16px;\n    margin-right: 8px;\n}\n\n.AutoRaceLapTimeChart_button__1SdRK {\n    float: right;\n}\n\n/* Modal */\n\n.AutoRaceLapTimeChart_modalChartContainer__3ICnc {\n    width: 100%;\n    height: 600;\n}\n\n/* Legend */\n\n.AutoRaceLapTimeChart_legendContainer__VyXIH {\n    white-space: nowrap;\n}\n\n.AutoRaceLapTimeChart_legendLabel__1IywS {\n    margin: 5px;\n}\n\n/* Tooltip */\n\n.AutoRaceLapTimeChart_statValue__L2IX8 {\n    font-weight: bold;\n}\n", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/src/components/AutoRaceLapTimeChart/AutoRaceLapTimeChart.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/src/components/AutoRaceLapTimeChart/AutoRaceLapTimeChart.css"],
             names: [],
             mappings: ";;AAAA;IACI,aAAY;IACZ,wBAAuB;CAC3B;;AAEA;IACI,YAAW;IACX,cAAa;CACjB;;AAEA;IACI,gBAAe;IACf,kBAAiB;CACrB;;AAEA;IACI,aAAY;CAChB;;AAEA,WAAU;;AAEV;IACI,YAAW;IACX,YAAW;CACf;;AAEA,YAAW;;AAEX;IACI,oBAAmB;CACvB;;AAEA;IACI,YAAW;CACf;;AAEA,aAAY;;AAEZ;IACI,kBAAiB;CACrB",
             file: "AutoRaceLapTimeChart.css",
@@ -48497,17 +48508,17 @@
             sourceRoot: ""
         }]),
         t.locals = {
-            componentContainer: "AutoRaceLapTimeChart_componentContainer__2VfCl",
-            chartContainer: "AutoRaceLapTimeChart_chartContainer__2rzlt",
-            lapTimeTitle: "AutoRaceLapTimeChart_lapTimeTitle__oderF",
-            button: "AutoRaceLapTimeChart_button__2cDfG",
-            modalChartContainer: "AutoRaceLapTimeChart_modalChartContainer__2c5d6",
-            legendContainer: "AutoRaceLapTimeChart_legendContainer__3xp4r",
-            legendLabel: "AutoRaceLapTimeChart_legendLabel__3cQGa",
-            statValue: "AutoRaceLapTimeChart_statValue__DYalN"
+            componentContainer: "AutoRaceLapTimeChart_componentContainer__18HNN",
+            chartContainer: "AutoRaceLapTimeChart_chartContainer__llw3d",
+            lapTimeTitle: "AutoRaceLapTimeChart_lapTimeTitle__3QVld",
+            button: "AutoRaceLapTimeChart_button__1SdRK",
+            modalChartContainer: "AutoRaceLapTimeChart_modalChartContainer__3ICnc",
+            legendContainer: "AutoRaceLapTimeChart_legendContainer__VyXIH",
+            legendLabel: "AutoRaceLapTimeChart_legendLabel__1IywS",
+            statValue: "AutoRaceLapTimeChart_statValue__L2IX8"
         }
     },
-    4302: function(e, t, i) {
+    4329: function(e, t, i) {
         "use strict";
         var a = i(8)
           , n = i.n(a)
@@ -48524,21 +48535,21 @@
             }
         })
     },
-    4303: function(e, t, i) {
+    4330: function(e, t, i) {
         "use strict";
-        var a = i(79)
-          , n = i(80)
-          , r = i(97)
-          , s = i(95)
-          , o = i(96)
+        var a = i(80)
+          , n = i(81)
+          , r = i(99)
+          , s = i(97)
+          , o = i(98)
           , l = i(11)
           , c = i.n(l)
-          , h = i(1240)
-          , d = i(219)
-          , p = i(1258)
-          , u = i(215)
-          , m = i(62)
-          , g = i(44)
+          , h = i(1244)
+          , d = i(223)
+          , p = i(1254)
+          , u = i(219)
+          , m = i(30)
+          , g = i(45)
           , f = function(e) {
             function t() {
                 return Object(a.a)(this, t),
@@ -48642,7 +48653,7 @@
                             data: r,
                             color: g.orange_light_2
                         }, {
-                            name: Object(m.b)("activity:climb_attempt"),
+                            name: Object(m.b)("activity:climb_attempted"),
                             data: s,
                             color: g.red_light_2
                         }],
@@ -48662,24 +48673,24 @@
             }]),
             t
         }(c.a.Component);
-        t.a = Object(u.c)(["activity"])(f)
+        t.a = Object(u.d)(["activity"])(f)
     },
-    4304: function(e, t, i) {
+    4331: function(e, t, i) {
         "use strict";
-        var a = i(79)
-          , n = i(80)
-          , r = i(97)
-          , s = i(95)
-          , o = i(96)
+        var a = i(80)
+          , n = i(81)
+          , r = i(99)
+          , s = i(97)
+          , o = i(98)
           , l = i(11)
           , c = i.n(l)
-          , h = i(1240)
-          , d = i(275)
-          , p = i(219)
-          , u = i(1258)
-          , m = i(215)
-          , g = i(62)
-          , f = i(44)
+          , h = i(1244)
+          , d = i(277)
+          , p = i(223)
+          , u = i(1254)
+          , m = i(219)
+          , g = i(30)
+          , f = i(45)
           , v = function(e) {
             function t() {
                 return Object(a.a)(this, t),
@@ -48778,11 +48789,11 @@
                             }
                         },
                         series: [{
-                            name: Object(g.b)("activity:climb_send"),
-                            data: n,
+                            name: Object(g.b)("activity:climb_completed"),
+                            data: r,
                             color: f.green_primary
                         }, {
-                            name: Object(g.b)("activity:climb_attempt"),
+                            name: Object(g.b)("activity:climb_attempted"),
                             data: s,
                             color: f.red_light_2
                         }],
@@ -48809,8 +48820,8 @@
         }(c.a.Component);
         t.a = Object(m.c)(["activity"])(v)
     },
-    4305: function(e, t, i) {
-        var a = i(4306);
+    4332: function(e, t, i) {
+        var a = i(4333);
         "string" === typeof a && (a = [[e.i, a, ""]]);
         var n = {
             hmr: !0,
@@ -48820,11 +48831,11 @@
         i(35)(a, n);
         a.locals && (e.exports = a.locals)
     },
-    4306: function(e, t, i) {
-        (t = e.exports = i(32)(!0)).i(i(1213), void 0),
-        t.push([e.i, ".ActivitySmallStats_activitySmallStat__1oyvv {\n    display: -webkit-flex;\n    display: flex;\n    -webkit-flex-wrap: wrap;\n            flex-wrap: wrap;\n    -webkit-justify-content: space-between;\n            justify-content: space-between;\n    max-width: 800px;\n}\n.ActivitySmallStats_activityStat__2Asny {\n    -webkit-flex: 0 1 50%;\n            flex: 0 1 50%;\n    padding-top: 5px;\n    white-space: nowrap;\n}\n@media (min-width: " + i(1213).locals.endMD + ") {\n    .ActivitySmallStats_activityStat__2Asny {\n        -webkit-flex: 0 1 auto;\n                flex: 0 1 auto;\n        padding: 5px;\n        white-space: nowrap;\n    }\n}\n", "", {
+    4333: function(e, t, i) {
+        (t = e.exports = i(33)(!0)).i(i(1217), void 0),
+        t.push([e.i, ".ActivitySmallStats_activitySmallStat__3Yf-N {\n    display: -webkit-flex;\n    display: flex;\n    -webkit-flex-wrap: wrap;\n            flex-wrap: wrap;\n    -webkit-justify-content: space-between;\n            justify-content: space-between;\n    max-width: 800px;\n}\n.ActivitySmallStats_activityStat__AaSa- {\n    -webkit-flex: 0 1 50%;\n            flex: 0 1 50%;\n    padding-top: 5px;\n    white-space: nowrap;\n}\n@media (min-width: " + i(1217).locals.endMD + ") {\n    .ActivitySmallStats_activityStat__AaSa- {\n        -webkit-flex: 0 1 auto;\n                flex: 0 1 auto;\n        padding: 5px;\n        white-space: nowrap;\n    }\n}\n", "", {
             version: 3,
-            sources: ["/var/lib/jenkins/workspace/web-react_release_4.27/src/Activity/ActivityDetailSmallStats/ActivitySmallStats.css"],
+            sources: ["/var/lib/jenkins/workspace/web-react_release_4.28/src/Activity/ActivityDetailSmallStats/ActivitySmallStats.css"],
             names: [],
             mappings: "AAEA;IACI,sBAAa;IAAb,cAAa;IACb,wBAAe;YAAf,gBAAe;IACf,uCAA8B;YAA9B,+BAA8B;IAC9B,iBAAgB;CACpB;AAEA;IACI,sBAAW;YAAX,cAAW;IACX,iBAAgB;IAChB,oBAAmB;CACvB;AAEA;IACI;QACI,uBAAc;gBAAd,eAAc;QACd,aAAY;QACZ,oBAAmB;KACvB;CACJ",
             file: "ActivitySmallStats.css",
@@ -48832,25 +48843,25 @@
             sourceRoot: ""
         }]),
         t.locals = {
-            endMD: "" + i(1213).locals.endMD,
-            activitySmallStat: "ActivitySmallStats_activitySmallStat__1oyvv",
-            activityStat: "ActivitySmallStats_activityStat__2Asny"
+            endMD: "" + i(1217).locals.endMD,
+            activitySmallStat: "ActivitySmallStats_activitySmallStat__3Yf-N",
+            activityStat: "ActivitySmallStats_activityStat__AaSa-"
         }
     },
-    4307: function(e, t) {
+    4334: function(e, t) {
         e.exports = '<div class="react-activity-small-stats"></div>'
     },
-    4308: function(e, t, i) {
+    4335: function(e, t, i) {
         "use strict";
-        var a = i(79)
-          , n = i(80)
-          , r = i(97)
-          , s = i(95)
-          , o = i(96)
+        var a = i(80)
+          , n = i(81)
+          , r = i(99)
+          , s = i(97)
+          , o = i(98)
           , l = i(11)
           , c = i.n(l)
-          , h = i(161)
-          , d = i(275)
+          , h = i(164)
+          , d = i(277)
           , p = function(e) {
             function t(e) {
                 var i;
@@ -48906,12 +48917,12 @@
         },
         t.a = p
     },
-    4309: function(e, t) {
+    4336: function(e, t) {
         e.exports = '\x3c!--Page Top--\x3e\n<div class="spinner-container loading-overlay" style="display: none;">\n    <div class="absolute-center">\n        <div class="text-center">\n            <div class="large spinner"><div></div></div>\n        </div>\n        <div class="h5 text-center font-thin"></div>\n    </div>\n</div>\n\n<span id="notification-placeholder"></span>\n\n<div class="activity-page-header row-fluid page-top">\n\n    \x3c!--Page Intro--\x3e\n    <div id="activityIntroViewPlaceholder" class="span8 page-intro"></div>\n\n    \x3c!--Page Navigation--\x3e\n    <div id="activityToolbarViewPlaceholder" class="span4 page-navigation"></div>\n</div>\n\n\x3c!--Page Content--\x3e\n<div class="row-fluid page-content">\n\n    \x3c!--Left Column--\x3e\n\n    <div class="span8">\n\n        \x3c!-- Multisport Nav --\x3e\n        <ul id="multisportNavPlaceholder" class="nav nav-tabs multisport-nav" style="display: none"/>\n\n        \x3c!-- React ActivitySmallStats Summary --\x3e\n        <div id="react-activitySmallStats"></div>\n\n        \x3c!-- Diving --\x3e\n        <div id="divingLogViewPlaceholder" class="row-fluid"></div>\n\n        \x3c!-- Rep Counting Activities --\x3e\n        <div id="repCountingActivityViewPlaceholder" class="row-fluid bottom-s" style="display: none"></div>\n\n        \x3c!-- Map --\x3e\n        <div id="activityMapViewPlaceholder" class="row-fluid bottom-s activity-map"></div>\n\n        \x3c!-- Auto Racing Lap Chart - Is separate from the other charts --\x3e\n        <div id="autoRacingLapChartPlaceholder" class="row-fluid" style="display: none"></div>\n\n        \x3c!-- Climbing Difficulty Chart - Is separate from the other charts --\x3e\n        <div id="climbingDifficultyChartPlaceholder" class="row-fluid" style="display: none"></div>\n\n        \x3c!-- Charts --\x3e\n        <div id="activityChartsViewPlaceholder" class="row-fluid bottom-s"></div>\n\n        <div class="row-fluid">\n\n            <div class="span12">\n\n                \x3c!--tabs--\x3e\n                <ul id="activityTabsViewPlaceholder"></ul>\n\n                \x3c!--tab content--\x3e\n                <div class="tab-content">\n                    <div id="tab-stats" class="tab-pane active activity stats"></div>\n                    <div id="tab-splits" class="tab-pane"></div>\n                    <div id="tab-mtb" class="tab-pane"></div>\n                    <div id="tab-gases-and-tanks" class="tab-pane"></div>\n                    <div id="tab-apnea-dives" class="tab-pane"></div>\n                    <div id="tab-segments" class="tab-pane"></div>\n                    <div id="tab-time-in-zones" class="tab-pane"></div>\n                    <div id="tab-cycling-dynamics" class="tab-pane cycling-dynamics"></div>\n                    <div id="tab-power-curve" class="tab-pane"></div>\n                    <div id="tab-playlist" class="tab-pane"></div>\n                </div>\n            </div>\n\n        </div>\n\n    </div>\n\n    \x3c!--Right Column--\x3e\n    <div class="span4">\n\n        <div class="page-sidebar">\n            <div id="activityYouTubePlaceholder" class="video-container" style="display: none;">\n                <div class="video-outer">\n                </div>\n            </div>\n\n            <div id="activityPhotosPlaceholder"></div>\n\n            <div id="executionScore"></div>\n\n            <div class="react-activity-badges"></div>\n\n            \x3c!-- Activity Playlist --\x3e\n            <div id="activityPlaylistPlaceholder"></div>\n\n            <div class="wrapper-top-container border-wrapper"></div>\n\n            <div id="activityLocationViewPlaceholder"></div>\n\n            \x3c!-- Diving Entry / Exit Lat Long  --\x3e\n            <div id ="entryLocationViewPlaceholder"></div>\n\n            <div id="exitLocationViewPlaceholder"></div>\n\n            <div id="activityBuddyViewPlaceholder"></div>\n\n            <div id="activityEquipmentViewPlaceholder"></div>\n\n            \x3c!-- Daily Note --\x3e\n            <div id="activityNoteViewPlaceholder"></div>\n\n            \x3c!--comment container--\x3e\n            <div id="activityCommentsViewPlaceholder" class="comment-container"></div>\n            \x3c!--end .comment-container--\x3e\n\n            <div id="device-info" class="additional-info top-m device-info"></div>\n\n            <div id="accessory-info" class="additional-info top-m accessory-info"></div>\n\n            <div class="ciq-info top-m"></div>\n\n            <div class="attached-gear top-m text-center" id="attached-gear"></div>\n\n            \x3c!-- Legal --\x3e\n            <div class="legal dense muted top-m" style="display: none;">\n                <p><%- Localizer.localize(\'normalized_power_legal_notice\') %> <a href="http://trainingpeaks.com/"\n                                                                                 class="colored" target="_blank">Peaksware,\n                    LLC</a>.</p>\n            </div>\n            \x3c!-- end Legal --\x3e\n        </div>\n\n    </div>\n\n</div>\n\n<div class="alert bottom-xs alert-error" style="display: none;">\n\n</div>'
     },
-    4910: function(e, t, i) {
+    4938: function(e, t, i) {
         "use strict";
-        var a = i(2487)
+        var a = i(2507)
           , n = i(7)
           , r = i.n(n)
           , s = i(8)
@@ -48919,10 +48930,10 @@
           , l = i(4)
           , c = i(13)
           , h = i(19)
-          , d = i(4245)
-          , p = i(98)
-          , u = i(1258)
-          , m = i(4247)
+          , d = i(4272)
+          , p = i(64)
+          , u = i(1254)
+          , m = i(4274)
           , g = i.n(m)
           , f = o.a.View.extend({
             template: r.a.template(g.a),
@@ -48937,16 +48948,16 @@
                     descent: this.model.get("summaryDTO").floorsDescended,
                     minElevation: this.model.get("summaryDTO").minElevation,
                     maxElevation: this.model.get("summaryDTO").maxElevation,
-                    indoorClimbElevationGain: this.splitSummaries[u.b.CLIMB_ACTIVE].elevationGain,
-                    indoorClimbMaxAscent: this.splitSummaries[u.b.CLIMB_ACTIVE].maxAscent,
-                    isIndoorClimbingActivity: p.a.isIndoorClimbingActivity(this.model.get("activityTypeDTO").typeKey)
+                    indoorClimbElevationGain: this.splitSummaries[u.b.CLIMB_ACTIVE] && this.splitSummaries[u.b.CLIMB_ACTIVE].elevationGain,
+                    indoorClimbMaxAscent: this.splitSummaries[u.b.CLIMB_ACTIVE] && this.splitSummaries[u.b.CLIMB_ACTIVE].maxElevationGain,
+                    isIndoorClimbingActivity: p.a.isIndoorClimbingActivity(this.model.get("activityTypeDTO").typeKey) || p.a.isBoulderingActivity(this.model.get("activityTypeDTO").typeKey)
                 }))
             }
         })
-          , v = i(4248)
-          , y = i(4252)
-          , A = i(2196)
-          , _ = i(4254)
+          , v = i(4275)
+          , y = i(4279)
+          , A = i(2214)
+          , _ = i(4281)
           , b = i.n(_)
           , C = o.a.View.extend({
             template: r.a.template(b.a),
@@ -48959,7 +48970,7 @@
                 }))
             }
         })
-          , w = i(4255)
+          , w = i(4282)
           , x = i.n(w)
           , S = o.a.View.extend({
             template: r.a.template(x.a),
@@ -48978,7 +48989,7 @@
                 }))
             }
         })
-          , T = i(4256)
+          , T = i(4283)
           , E = i.n(T)
           , L = o.a.View.extend({
             template: r.a.template(E.a),
@@ -48993,10 +49004,10 @@
                 }))
             }
         })
-          , P = i(4257)
-          , k = i.n(P)
+          , k = i(4284)
+          , P = i.n(k)
           , z = o.a.View.extend({
-            template: r.a.template(k.a),
+            template: r.a.template(P.a),
             initialize: function(e) {
                 this.activity = e.model,
                 this.splitSummaries = Object(u.e)(this.activity.splitSummaries)
@@ -49005,9 +49016,9 @@
                 return this.$el.html(this.template({
                     Localizer: l.a,
                     Personalizer: c.a,
-                    climbActive: this.splitSummaries[u.b.CLIMB_ACTIVE],
-                    climbRest: this.splitSummaries[u.b.CLIMB_REST],
-                    totalClimbTime: this.activity
+                    activeClimbDuration: this.splitSummaries[u.b.CLIMB_ACTIVE] && this.splitSummaries[u.b.CLIMB_ACTIVE].duration,
+                    restClimbDuration: this.splitSummaries[u.b.CLIMB_REST] && this.splitSummaries[u.b.CLIMB_REST].duration,
+                    totalClimbTime: this.activity && this.activity.duration
                 })),
                 this
             },
@@ -49015,9 +49026,9 @@
                 this.off()
             }
         })
-          , I = i(4258)
+          , I = i(4285)
           , D = i.n(I)
-          , B = o.a.View.extend({
+          , M = o.a.View.extend({
             template: r.a.template(D.a),
             render: function() {
                 this.$el.html(this.template({
@@ -49027,8 +49038,8 @@
                 }))
             }
         })
-          , M = i(2198)
-          , O = i(4259)
+          , B = i(2216)
+          , O = i(4286)
           , R = i.n(O)
           , N = o.a.View.extend({
             template: r.a.template(R.a),
@@ -49045,7 +49056,7 @@
                 return !("undefined" === typeof this.model.get("standingTime"))
             }
         })
-          , V = i(4260)
+          , V = i(4287)
           , F = i.n(V)
           , G = o.a.View.extend({
             template: r.a.template(F.a),
@@ -49066,8 +49077,8 @@
                 return "stand_up_paddleboarding" === this.activity.activityTypeDTO.typeKey
             }
         })
-          , H = i(216)
-          , U = i(4261)
+          , H = i(220)
+          , U = i(4288)
           , Q = i.n(U)
           , K = o.a.View.extend({
             template: r.a.template(Q.a),
@@ -49096,7 +49107,7 @@
                 this
             }
         })
-          , W = i(4262)
+          , W = i(4289)
           , Y = i.n(W)
           , j = o.a.View.extend({
             template: r.a.template(Y.a),
@@ -49131,7 +49142,7 @@
                 return this
             }
         })
-          , $ = i(4263)
+          , $ = i(4290)
           , Z = i.n($)
           , q = o.a.View.extend({
             template: r.a.template(Z.a),
@@ -49147,8 +49158,8 @@
                 this
             }
         })
-          , X = i(1430)
-          , J = i(36)
+          , X = i(1435)
+          , J = i(37)
           , ee = o.a.View.extend({
             initialize: function(e) {},
             render: function() {
@@ -49165,7 +49176,7 @@
                 }).render()
             }
         })
-          , te = i(4264)
+          , te = i(4291)
           , ie = i.n(te)
           , ae = o.a.View.extend({
             template: r.a.template(ie.a),
@@ -49220,11 +49231,11 @@
                 return this.activity.caloriesConsumed || this.activity.waterEstimated || this.activity.waterConsumed
             }
         })
-          , ne = (i(2249),
-        i(2003))
+          , ne = (i(2267),
+        i(2008))
           , re = i(17)
-          , se = i(1903)
-          , oe = i(4265)
+          , se = i(1908)
+          , oe = i(4292)
           , le = i.n(oe)
           , ce = o.a.View.extend({
             template: r.a.template(le.a),
@@ -49246,8 +49257,8 @@
                 })
             }
         })
-          , he = i(1324)
-          , de = i(4266)
+          , he = i(1329)
+          , de = i(4293)
           , pe = i.n(de)
           , ue = o.a.View.extend({
             template: r.a.template(pe.a),
@@ -49334,7 +49345,7 @@
                 }).render()
             }
         })
-          , me = i(4267)
+          , me = i(4294)
           , ge = i.n(me)
           , fe = o.a.View.extend({
             template: r.a.template(ge.a),
@@ -49355,15 +49366,14 @@
                 this.off()
             }
         })
-          , ve = i(4268)
+          , ve = i(4295)
           , ye = i.n(ve)
           , Ae = o.a.View.extend({
             template: r.a.template(ye.a),
             initialize: function(e) {
                 this.splitSummaries = Object(u.e)(e.splitSummaries),
                 this.indoorClimbDifficulty = e.indoorClimbDifficulty,
-                this.activityTypeKey = e.activityTypeKey,
-                this.routeMaxDifficulty = Object(u.c)(this.splitSummaries[u.b.CLIMB_ACTIVE].maxGradeValue.scale, this.splitSummaries[u.b.CLIMB_ACTIVE].maxGradeValue.valueKey, this.indoorClimbDifficulty)
+                this.splitSummaries[u.b.CLIMB_ACTIVE] && (this.routeMaxDifficulty = Object(u.c)(this.splitSummaries[u.b.CLIMB_ACTIVE].maxGradeValue.scale, this.splitSummaries[u.b.CLIMB_ACTIVE].maxGradeValue.valueKey, this.indoorClimbDifficulty))
             },
             render: function() {
                 return this.$el.html(this.template({
@@ -49378,7 +49388,7 @@
                 this.off()
             }
         })
-          , _e = i(4269)
+          , _e = i(4296)
           , be = i.n(_e)
           , Ce = {
             running: "Run",
@@ -49413,41 +49423,41 @@
                 return Ce[e.get("typeKey")] || "other"
             }
         })
-          , xe = i(100)
-          , Se = i(79)
-          , Te = i(80)
-          , Ee = i(97)
-          , Le = i(95)
-          , Pe = i(96)
-          , ke = i(11)
-          , ze = i.n(ke)
-          , Ie = i(275)
-          , De = i(2496)
-          , Be = i.n(De)
-          , Me = i(44)
+          , xe = i(101)
+          , Se = i(80)
+          , Te = i(81)
+          , Ee = i(99)
+          , Le = i(97)
+          , ke = i(98)
+          , Pe = i(11)
+          , ze = i.n(Pe)
+          , Ie = i(277)
+          , De = i(2516)
+          , Me = i.n(De)
+          , Be = i(45)
           , Oe = function(e) {
             function t() {
                 return Object(Se.a)(this, t),
                 Object(Ee.a)(this, Object(Le.a)(t).apply(this, arguments))
             }
-            return Object(Pe.a)(t, e),
+            return Object(ke.a)(t, e),
             Object(Te.a)(t, [{
                 key: "getCadenceRanges",
                 value: function() {
                     return [{
-                        color: Me.color_705,
+                        color: Be.color_705,
                         description: "> 120"
                     }, {
-                        color: Me.color_223,
+                        color: Be.color_223,
                         description: "90 - 120"
                     }, {
-                        color: Me.color_401,
+                        color: Be.color_401,
                         description: "60 - 90"
                     }, {
-                        color: Me.color_601,
+                        color: Be.color_601,
                         description: "30 - 60"
                     }, {
-                        color: Me.color_301,
+                        color: Be.color_301,
                         description: "0 - 30"
                     }]
                 }
@@ -49455,37 +49465,37 @@
                 key: "render",
                 value: function() {
                     return ze.a.createElement(ze.a.Fragment, null, ze.a.createElement("div", {
-                        className: "".concat(Be.a.title, " marBottomSM")
+                        className: "".concat(Me.a.title, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_cadence_help_heading"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.bodyOne, " marBottomSM")
+                        className: "".concat(Me.a.bodyOne, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_cadence_help_description"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.titleTwo, " marBottomSM")
+                        className: "".concat(Me.a.titleTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_cadence_help_cadence_zones_heading"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.bodyTwo, " marBottomSM")
+                        className: "".concat(Me.a.bodyTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_cadence_help_cadence_zones_description"
                     })), this.cadenceRanges(), ze.a.createElement("div", {
-                        className: "".concat(Be.a.titleTwo, " marBottomSM")
+                        className: "".concat(Me.a.titleTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_cadence_help_cadence_importance_heading"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.bodyTwo, " marBottomSM")
+                        className: "".concat(Me.a.bodyTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_cadence_help_cadence_importance_description_1"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.bodyTwo, " marBottomSM")
+                        className: "".concat(Me.a.bodyTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_cadence_help_cadence_importance_description_2"
@@ -49499,7 +49509,7 @@
                         return ze.a.createElement("tr", {
                             key: e.color
                         }, ze.a.createElement("td", null, ze.a.createElement("div", {
-                            className: Be.a.colorCircle
+                            className: Me.a.colorCircle
                         }, ze.a.createElement("span", {
                             style: {
                                 backgroundColor: e.color
@@ -49533,42 +49543,42 @@
                 return Object(Se.a)(this, t),
                 Object(Ee.a)(this, Object(Le.a)(t).apply(this, arguments))
             }
-            return Object(Pe.a)(t, e),
+            return Object(ke.a)(t, e),
             Object(Te.a)(t, [{
                 key: "render",
                 value: function() {
                     return ze.a.createElement(ze.a.Fragment, null, ze.a.createElement("div", {
-                        className: "".concat(Be.a.title, " marBottomSM")
+                        className: "".concat(Me.a.title, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_glide_length_help_heading"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.bodyOne, " marBottomSM")
+                        className: "".concat(Me.a.bodyOne, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_glide_length_help_description"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.titleTwo, " marBottomSM")
+                        className: "".concat(Me.a.titleTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_glide_length_help_how_heading"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.bodyTwo, " marBottomSM")
+                        className: "".concat(Me.a.bodyTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_glide_length_help_how_description"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.titleTwo, " marBottomSM")
+                        className: "".concat(Me.a.titleTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_glide_length_help_value_heading"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.bodyTwo, " marBottomSM")
+                        className: "".concat(Me.a.bodyTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_glide_length_help_value_description_1"
                     })), ze.a.createElement("div", {
-                        className: "".concat(Be.a.bodyTwo, " marBottomSM")
+                        className: "".concat(Me.a.bodyTwo, " marBottomSM")
                     }, ze.a.createElement(Ie.a, {
                         ns: "activity",
                         content: "ski_glide_length_help_value_description_2"
@@ -49585,11 +49595,11 @@
             }
         })
           , Fe = i(112)
-          , Ge = i(1231)
+          , Ge = i(1234)
           , He = i(66)
-          , Ue = i(4271)
+          , Ue = i(4298)
           , Qe = i.n(Ue)
-          , Ke = i(4272)
+          , Ke = i(4299)
           , We = i.n(Ke)
           , Ye = o.a.View.extend({
             template: r.a.template(We.a),
@@ -49603,13 +49613,13 @@
                 }))
             }
         })
-          , je = i(2200)
-          , $e = i(1370)
+          , je = i(2218)
+          , $e = i(1375)
           , Ze = i(124)
-          , qe = i(469)
-          , Xe = i(161)
-          , Je = i(1821)
-          , et = i(1538)
+          , qe = i(472)
+          , Xe = i(164)
+          , Je = i(1825)
+          , et = i(1540)
           , tt = i.n(et)
           , it = {
             fetchSelfEvaluationIcons: je.a
@@ -49635,7 +49645,7 @@
                 },
                 i
             }
-            return Object(Pe.a)(t, e),
+            return Object(ke.a)(t, e),
             Object(Te.a)(t, [{
                 key: "componentDidMount",
                 value: function() {
@@ -49860,7 +49870,7 @@
                       , s = p.a.isPilatesActivity(this.model.get("activityTypeDTO").typeKey)
                       , o = p.a.isAutoRacingActivity(this.model.get("activityTypeDTO").typeKey)
                       , u = p.a.isBreathworkActivity(this.model.get("activityTypeDTO").typeKey)
-                      , m = p.a.isIndoorClimbingActivity(this.model.get("activityTypeDTO").typeKey)
+                      , m = p.a.isIndoorClimbingActivity(this.model.get("activityTypeDTO").typeKey) || p.a.isBoulderingActivity(this.model.get("activityTypeDTO").typeKey)
                       , g = (this.isBackCountrySkiActivity(),
                     this.isSkateSkiActivity())
                       , _ = this.isYogaActivity()
@@ -49902,13 +49912,13 @@
                             isPilatesActivity: s
                         }).render();
                     if (S.averageHR || S.maxHR) {
-                        var P = Ge.a.map(this.model.getActivityTypeKey())
-                          , k = null;
-                        this.heartRateZones && (k = this.heartRateZones.findBySport(P.toUpperCase()),
-                        (r.a.isUndefined(k) || r.a.isNull(k)) && (k = this.heartRateZones.findBySport("DEFAULT"))),
+                        var k = Ge.a.map(this.model.getActivityTypeKey())
+                          , P = null;
+                        this.heartRateZones && (P = this.heartRateZones.findBySport(k.toUpperCase()),
+                        (r.a.isUndefined(P) || r.a.isNull(P)) && (P = this.heartRateZones.findBySport("DEFAULT"))),
                         new d.a({
                             el: this.$("#heartRateStatsPlaceholder"),
-                            heartRateZones: k,
+                            heartRateZones: P,
                             model: this.model,
                             enableToggle: e,
                             isYoga: _,
@@ -49945,7 +49955,6 @@
                     if (m)
                         new Ae({
                             el: this.$("#indoorClimbRoutesPlaceholder"),
-                            activityTypeKey: this.model.get("activityTypeDTO").typeKey,
                             splitSummaries: this.splitSummaries.toJSON(),
                             indoorClimbDifficulty: this.indoorClimbDifficulty
                         }).render();
@@ -49969,7 +49978,7 @@
                             el: this.$("#timingStatsYogaPlaceholder"),
                             model: this.model
                         }).render(),
-                        (D = new M.a({
+                        (D = new B.a({
                             el: this.$("#workoutDetailsStatsPlaceholder"),
                             model: this.model,
                             repCountingActivity: this.repCountingActivity,
@@ -49995,7 +50004,7 @@
                             splits: this.splits,
                             isPilatesActivity: s
                         })
-                          , D = new M.a({
+                          , D = new B.a({
                             el: this.$("#workoutDetailsStatsPlaceholder"),
                             model: this.model,
                             repCountingActivity: this.repCountingActivity,
@@ -50004,7 +50013,7 @@
                         I.render(),
                         D.render()
                     } else if (u) {
-                        new B({
+                        new M({
                             el: this.$("#timingStatsBreathworkPlaceholder"),
                             model: this.model
                         }).render()
@@ -50337,7 +50346,7 @@
         ot.Events = rt;
         t.a = ot
     },
-    4922: function(e, t, i) {
+    4948: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -50345,7 +50354,7 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(13)
-          , c = i(101)
+          , c = i(102)
           , h = s.a.Collection.extend({
             initialize: function(e) {
                 this.activityId = e.activityId
@@ -50363,7 +50372,7 @@
             }
         })
           , p = i(26);
-        i(1215);
+        i(1219);
         var u = function(e, t) {
             if (!e)
                 throw "collection is required";
@@ -50407,8 +50416,8 @@
             zone7: "power_zone_name_7"
         };
         var m = u
-          , g = i(4213)
-          , f = i(4217)
+          , g = i(4240)
+          , f = i(4244)
           , v = i.n(f)
           , y = s.a.View.extend({
             template: n.a.template(v.a),
@@ -50570,7 +50579,7 @@
             }
         })
           , A = (i(66),
-        i(4218))
+        i(4245))
           , _ = i.n(A)
           , b = s.a.View.extend({
             initialize: function(e) {
@@ -50602,12 +50611,12 @@
                 n
             }
         })
-          , C = i(4219)
+          , C = i(4246)
           , w = i.n(C)
-          , x = i(4220)
+          , x = i(4247)
           , S = i.n(x)
-          , T = i(214)
-          , E = i(1283)
+          , T = i(218)
+          , E = i(1289)
           , L = s.a.View.extend({
             tagName: "tr",
             initialize: function(e) {
@@ -50652,7 +50661,7 @@
                 this
             }
         })
-          , P = s.a.View.extend({
+          , k = s.a.View.extend({
             initialize: function(e) {
                 this.template = n.a.template(w.a),
                 this.apneaDives = e.apneaDives
@@ -50677,11 +50686,11 @@
                 }, this)
             }
         })
-          , k = i(4221)
-          , z = i.n(k)
-          , I = i(4222)
+          , P = i(4248)
+          , z = i.n(P)
+          , I = i(4249)
           , D = i.n(I)
-          , B = s.a.View.extend({
+          , M = s.a.View.extend({
             initialize: function(e) {
                 this.template = n.a.template(D.a),
                 this.totalSeatedTime = e.positionTimes.totalSeatedTime,
@@ -50696,11 +50705,11 @@
                 this
             }
         })
-          , M = i(4223)
-          , O = i(4225)
-          , R = i(4228)
-          , N = i(1361)
-          , V = i(81)
+          , B = i(4250)
+          , O = i(4252)
+          , R = i(4255)
+          , N = i(1366)
+          , V = i(82)
           , F = {
             ChartRangeChanged: "ChartRangeChanged",
             ResetZoom: "ResetZoom",
@@ -50803,14 +50812,14 @@
             },
             renderPCO: function() {
                 this.pcoChartView && this.pcoChartView.destroy(),
-                this.pcoChartView = new M.a({
+                this.pcoChartView = new B.a({
                     platformCenterOffsetData: this.getPlatformCenterOffset()
                 }),
                 this.$("#pco-container").append(this.pcoChartView.render().el)
             },
             renderPosition: function() {
                 this.cyclingPositonChartView && this.cyclingPositonChartView.remove(),
-                this.cyclingPositonChartView = new B({
+                this.cyclingPositonChartView = new M({
                     positionTimes: this.getPositionTimes()
                 }),
                 this.$("#position-container").append(this.cyclingPositonChartView.render().el)
@@ -50905,10 +50914,10 @@
         });
         G.Events = F;
         var H = G
-          , U = (i(2555),
-        i(4237))
+          , U = (i(2580),
+        i(4264))
           , Q = i.n(U)
-          , K = i(98)
+          , K = i(64)
           , W = function() {
             return o.a.localize("intervals")
         }
@@ -50918,6 +50927,7 @@
                 return o.a.localize("activity_splits");
             case "resort_skiing_snowboarding_ws":
                 return o.a.localize("splits.runs");
+            case "bouldering":
             case "indoor_climbing":
                 return o.a.localize("splits.routes");
             default:
@@ -51074,7 +51084,7 @@
             },
             onApneaDivesClicked: function(e) {
                 e.preventDefault(),
-                0 === this.apneaDivesTabClickCount && (this.apneaDivesTabView = new P({
+                0 === this.apneaDivesTabClickCount && (this.apneaDivesTabView = new k({
                     el: "#tab-apnea-dives",
                     apneaDives: this.apneaDives
                 }),
@@ -51173,23 +51183,23 @@
         $.Events = j;
         t.a = $
     },
-    4944: function(e, t, i) {
+    4969: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
-          , o = i(100)
-          , l = i(79)
-          , c = i(80)
-          , h = i(97)
-          , d = i(95)
-          , p = i(96)
+          , o = i(101)
+          , l = i(80)
+          , c = i(81)
+          , h = i(99)
+          , d = i(97)
+          , p = i(98)
           , u = i(11)
           , m = i.n(u)
-          , g = i(161)
+          , g = i(164)
           , f = i(13)
-          , v = i(275)
+          , v = i(277)
           , y = function() {
             function e(t) {
                 Object(l.a)(this, e),
@@ -51455,10 +51465,11 @@
             }]),
             e
         }()
-          , A = i(2497)
-          , _ = i.n(A)
-          , b = i(1258)
-          , C = function() {
+          , A = i(66)
+          , _ = i(2517)
+          , b = i.n(_)
+          , C = i(1254)
+          , w = function() {
             function e(t, i, a, n) {
                 Object(l.a)(this, e),
                 this.activitySplits = t,
@@ -51469,65 +51480,67 @@
             return Object(c.a)(e, [{
                 key: "getBackCountrySplits",
                 value: function() {
-                    var e, t = [], i = [], a = [], n = 0, r = new y(this.activityTypeKey);
-                    return t.push(r.getSplitsHeader(!0), r.getDurationHeader(!0), r.getDistanceHeader(!0), r.getElevationGainHeader(!0), r.getElevationLossHeader(!0), r.getAvgSpeedHeader(!0), r.getMaxSpeedHeader(!0), r.getAvgHRHeader(!0), r.getMaxHRHeader(!0), r.getCumulativeTimeHeader(!0), r.getMovingTimeHeader(!0), r.getCaloriesHeader(!0)),
-                    this.activitySplits.forEach(function(t, a) {
-                        e = n + t.duration,
-                        n = e,
-                        i.push({
+                    var e, t, i, a = [], n = [], r = 0, s = !1, o = new y(this.activityTypeKey);
+                    return a.push(o.getSplitsHeader(!0), o.getDurationHeader(!0), o.getDistanceHeader(!0), o.getElevationGainHeader(!0), o.getElevationLossHeader(!0), o.getAvgSpeedHeader(!0), o.getMaxSpeedHeader(!0), o.getAvgHRHeader(!0), o.getMaxHRHeader(!0), o.getCumulativeTimeHeader(!0), o.getMovingTimeHeader(!0), o.getCaloriesHeader(!0)),
+                    e = this.activitySplits.map(function(e, a) {
+                        return t = r + e.duration,
+                        r = t,
+                        s = "ASCENT_SPLIT" === e.type || "DESCENT_SPLIT" === e.type,
+                        i = "ASCENT_SPLIT" === e.type ? b.a.ascent : b.a.descent,
+                        {
                             index: {
-                                value: m.a.createElement("div", null, a + 1, m.a.createElement("span", {
-                                    className: "ASCENT_SPLIT" === t.type ? _.a.ascent : _.a.descent
-                                })),
+                                value: s ? m.a.createElement("div", null, a + 1, m.a.createElement("span", {
+                                    className: i
+                                })) : a + 1,
                                 sortValue: 1
                             },
                             duration: {
-                                value: f.a.personalizeDuration(t.duration),
-                                sortValue: f.a.personalizeDuration(t.duration)
+                                value: f.a.personalizeDuration(e.duration),
+                                sortValue: f.a.personalizeDuration(e.duration)
                             },
                             distance: {
-                                value: f.a.personalizeDistance(t.distance),
-                                sortValue: f.a.personalizeDistance(t.distance)
+                                value: f.a.personalizeDistance(e.distance),
+                                sortValue: f.a.personalizeDistance(e.distance)
                             },
                             elevationGain: {
-                                value: t.elevationGain ? f.a.personalizeElevation(t.elevationGain) : "--",
-                                sortValue: t.elevationGain
+                                value: e.elevationGain ? f.a.personalizeElevation(e.elevationGain) : "--",
+                                sortValue: e.elevationGain
                             },
                             elevationLoss: {
-                                value: t.elevationLoss ? f.a.personalizeElevation(t.elevationLoss) : "--",
-                                sortValue: t.elevationLoss
+                                value: e.elevationLoss ? f.a.personalizeElevation(e.elevationLoss) : "--",
+                                sortValue: e.elevationLoss
                             },
                             averageSpeed: {
-                                value: f.a.personalizeSpeed(t.averageSpeed),
-                                sortValue: f.a.personalizeSpeed(t.averageSpeed)
+                                value: f.a.personalizeSpeed(e.averageSpeed),
+                                sortValue: f.a.personalizeSpeed(e.averageSpeed)
                             },
                             maxSpeed: {
-                                value: f.a.personalizeSpeed(t.maxSpeed),
-                                sortValue: t.maxSpeed
+                                value: f.a.personalizeSpeed(e.maxSpeed),
+                                sortValue: e.maxSpeed
                             },
                             averageHR: {
-                                value: f.a.personalizeHeartRate(t.averageHR),
-                                sortValue: t.averageHR
+                                value: f.a.personalizeHeartRate(e.averageHR),
+                                sortValue: e.averageHR
                             },
                             maxHR: {
-                                value: f.a.personalizeHeartRate(t.maxHR),
-                                sortValue: f.a.personalizeHeartRate(t.maxHR)
+                                value: f.a.personalizeHeartRate(e.maxHR),
+                                sortValue: f.a.personalizeHeartRate(e.maxHR)
                             },
                             cumDuration: {
-                                value: f.a.personalizeDuration(e),
-                                sortValue: e
+                                value: f.a.personalizeDuration(t),
+                                sortValue: t
                             },
                             movingDuration: {
-                                value: f.a.personalizeDuration(t.movingDuration),
-                                sortValue: f.a.personalizeDuration(t.movingDuration)
+                                value: f.a.personalizeDuration(e.movingDuration),
+                                sortValue: f.a.personalizeDuration(e.movingDuration)
                             },
                             calories: {
-                                value: f.a.formatWholeNumber(t.calories),
-                                sortValue: f.a.formatWholeNumber(t.calories)
+                                value: f.a.formatWholeNumber(e.calories),
+                                sortValue: f.a.formatWholeNumber(e.calories)
                             }
-                        })
+                        }
                     }),
-                    a.push({
+                    n.push({
                         key: "index",
                         value: m.a.createElement(v.a, {
                             ns: "common",
@@ -51568,9 +51581,9 @@
                         value: f.a.formatWholeNumber(this.activitySummary.calories)
                     }),
                     {
-                        headers: t,
-                        data: i,
-                        footer: a
+                        headers: a,
+                        data: e,
+                        footer: n
                     }
                 }
             }, {
@@ -51592,18 +51605,19 @@
                       , n = this.activitySplits.filter(function(e) {
                         return e.status !== a[e.status]
                     }).sort(function(e, t) {
-                        return e.gradeValue.sortOrder - t.gradeValue.sortOrder
-                    })
-                      , r = new y(this.activityTypeKey);
+                        return e.messageIndex - t.messageIndex
+                    });
+                    0 === n.length && (n = this.activitySplits);
+                    var r = new y(this.activityTypeKey);
                     return t.push(r.getRoutesHeader(!0), r.getDifficultyHeader(!0), r.getFallsHeader(!0), r.getStatusHeader(!0), r.getDurationHeader(!0), r.getElevationGainHeader(!0), r.getAvgHRHeader(!0), r.getMaxHRHeader(!0), r.getCaloriesHeader(!0)),
-                    n.forEach(function(t, n) {
-                        i.push({
+                    i = n.map(function(t, i) {
+                        return {
                             index: {
-                                value: n + 1,
+                                value: i + 1,
                                 sortValue: 1
                             },
                             valueKey: {
-                                value: t.gradeValue && Object(b.c)(t.gradeValue.scale, t.gradeValue.valueKey, e.indoorClimbDifficulty),
+                                value: t.gradeValue ? Object(C.c)(t.gradeValue.scale, t.gradeValue.valueKey, e.indoorClimbDifficulty) : "--",
                                 sortValue: t.gradeValue && t.gradeValue.sortOrder
                             },
                             numFalls: {
@@ -51611,7 +51625,7 @@
                                 sortValue: f.a.formatWholeNumber(t.numFalls)
                             },
                             status: {
-                                value: a[t.status],
+                                value: a[t.status] ? a[t.status] : "--",
                                 sortValue: "".concat(a[t.status])
                             },
                             duration: {
@@ -51634,76 +51648,81 @@
                                 value: f.a.formatWholeNumber(t.calories),
                                 sortValue: f.a.formatWholeNumber(t.calories)
                             }
-                        })
+                        }
                     }),
+                    this.activityTypeKey === A.a.Bouldering && (t = t.filter(function(e) {
+                        return "elevationGain" !== e.key && "numFalls" !== e.key
+                    }),
+                    i = i.filter(function(e) {
+                        return delete e.elevationGain && delete e.numFalls
+                    })),
                     {
                         headers: t,
-                        data: i,
-                        footer: []
+                        data: i
                     }
                 }
             }, {
                 key: "getDefaultSplits",
                 value: function() {
-                    var e, t = [], i = [], a = [], n = 0, r = new y(this.activityTypeKey);
-                    return t.push(r.getSplitsHeader(!0), r.getDurationHeader(!0), r.getCumulativeTimeHeader(!0), r.getMovingTimeHeader(!0), r.getDistanceHeader(!0), r.getAvgSpeedHeader(!0), r.getMaxSpeedHeader(!0), r.getAvgHRHeader(!0), r.getMaxHRHeader(!0), r.getMinTempHeader(!0), r.getMaxTempHeader(!0), r.getAvgTempHeader(!0), r.getCaloriesHeader(!0)),
-                    this.activitySplits.forEach(function(t, a) {
-                        e = n + t.duration,
-                        n = e,
-                        i.push({
+                    var e, t, i = [], a = [], n = 0, r = new y(this.activityTypeKey);
+                    return i.push(r.getSplitsHeader(!0), r.getDurationHeader(!0), r.getCumulativeTimeHeader(!0), r.getMovingTimeHeader(!0), r.getDistanceHeader(!0), r.getAvgSpeedHeader(!0), r.getMaxSpeedHeader(!0), r.getAvgHRHeader(!0), r.getMaxHRHeader(!0), r.getMinTempHeader(!0), r.getMaxTempHeader(!0), r.getAvgTempHeader(!0), r.getCaloriesHeader(!0)),
+                    e = this.activitySplits.map(function(e, i) {
+                        return t = n + e.duration,
+                        n = t,
+                        {
                             index: {
-                                value: a + 1,
+                                value: i + 1,
                                 sortValue: 1
                             },
                             duration: {
-                                value: f.a.personalizeDuration(t.duration),
-                                sortValue: f.a.personalizeDuration(t.duration)
+                                value: f.a.personalizeDuration(e.duration),
+                                sortValue: f.a.personalizeDuration(e.duration)
                             },
                             cumDuration: {
-                                value: f.a.personalizeDuration(e),
-                                sortValue: e
+                                value: f.a.personalizeDuration(t),
+                                sortValue: t
                             },
                             movingDuration: {
-                                value: f.a.personalizeDuration(t.movingDuration),
-                                sortValue: f.a.personalizeDuration(t.movingDuration)
+                                value: f.a.personalizeDuration(e.movingDuration),
+                                sortValue: f.a.personalizeDuration(e.movingDuration)
                             },
                             distance: {
-                                value: f.a.personalizeDistance(t.distance),
-                                sortValue: f.a.personalizeDistance(t.distance)
+                                value: f.a.personalizeDistance(e.distance),
+                                sortValue: f.a.personalizeDistance(e.distance)
                             },
                             averageSpeed: {
-                                value: f.a.personalizeSpeed(t.averageSpeed),
-                                sortValue: f.a.personalizeSpeed(t.averageSpeed)
+                                value: f.a.personalizeSpeed(e.averageSpeed),
+                                sortValue: f.a.personalizeSpeed(e.averageSpeed)
                             },
                             maxSpeed: {
-                                value: f.a.personalizeSpeed(t.maxSpeed),
-                                sortValue: f.a.personalizeSpeed(t.maxSpeed)
+                                value: f.a.personalizeSpeed(e.maxSpeed),
+                                sortValue: f.a.personalizeSpeed(e.maxSpeed)
                             },
                             averageHR: {
-                                value: f.a.personalizeHeartRate(t.averageHR),
-                                sortValue: f.a.personalizeHeartRate(t.averageHR)
+                                value: f.a.personalizeHeartRate(e.averageHR),
+                                sortValue: f.a.personalizeHeartRate(e.averageHR)
                             },
                             maxHR: {
-                                value: f.a.personalizeHeartRate(t.maxHR),
-                                sortValue: f.a.personalizeHeartRate(t.maxHR)
+                                value: f.a.personalizeHeartRate(e.maxHR),
+                                sortValue: f.a.personalizeHeartRate(e.maxHR)
                             },
                             minTemperature: {
-                                value: f.a.personalizeTemperature(t.minTemperature),
-                                sortValue: f.a.personalizeTemperature(t.minTemperature)
+                                value: f.a.personalizeTemperature(e.minTemperature),
+                                sortValue: f.a.personalizeTemperature(e.minTemperature)
                             },
                             maxTemperature: {
-                                value: f.a.personalizeTemperature(t.maxTemperature),
-                                sortValue: f.a.personalizeTemperature(t.maxTemperature)
+                                value: f.a.personalizeTemperature(e.maxTemperature),
+                                sortValue: f.a.personalizeTemperature(e.maxTemperature)
                             },
                             averageTemperature: {
-                                value: f.a.personalizeTemperature(t.averageTemperature),
-                                sortValue: f.a.personalizeTemperature(t.averageTemperature)
+                                value: f.a.personalizeTemperature(e.averageTemperature),
+                                sortValue: f.a.personalizeTemperature(e.averageTemperature)
                             },
                             calories: {
-                                value: f.a.formatWholeNumber(t.calories),
-                                sortValue: f.a.formatWholeNumber(t.calories)
+                                value: f.a.formatWholeNumber(e.calories),
+                                sortValue: f.a.formatWholeNumber(e.calories)
                             }
-                        })
+                        }
                     }),
                     a.push({
                         key: "index",
@@ -51749,15 +51768,15 @@
                         value: f.a.formatWholeNumber(this.activitySummary.calories)
                     }),
                     {
-                        headers: t,
-                        data: i,
+                        headers: i,
+                        data: e,
                         footer: a
                     }
                 }
             }]),
             e
         }()
-          , w = (i(98),
+          , x = (i(64),
         function(e) {
             function t(e) {
                 return Object(l.a)(this, t),
@@ -51769,7 +51788,7 @@
                 value: function() {
                     var e = this.getActivitySplits();
                     return m.a.createElement("div", {
-                        className: _.a.splitsTab
+                        className: b.a.splitsTab
                     }, m.a.createElement(g.SortableTable, {
                         data: e.data,
                         columns: e.column,
@@ -51782,7 +51801,7 @@
                 value: function() {
                     var e = this.props;
                     return function(e, t, i, a) {
-                        var n, r = new C(e,t,i,a);
+                        var n, r = new w(e,t,i,a);
                         switch (i) {
                         case "backcountry_skiing_snowboarding_ws":
                             return {
@@ -51790,6 +51809,7 @@
                                 data: n.data,
                                 footer: n.footer
                             };
+                        case "bouldering":
                         case "indoor_climbing":
                             return {
                                 column: (n = r.getIndoorClimbRoutes()).headers,
@@ -51808,11 +51828,11 @@
             }]),
             t
         }(m.a.Component))
-          , x = i(4278)
-          , S = i.n(x)
-          , T = s.a.View.extend({
+          , S = i(4305)
+          , T = i.n(S)
+          , E = s.a.View.extend({
             initialize: function(e) {
-                this.template = n.a.template(S.a),
+                this.template = n.a.template(T.a),
                 this.activityTypeKey = e.activityTypeKey,
                 this.activitySummary = e.activitySummary,
                 this.activitySplits = e.activitySplits,
@@ -51821,7 +51841,7 @@
             render: function() {
                 this.$el.html(this.template()),
                 this.view = new o.a,
-                this.view.renderComponent(w, this.$(".react-activity-splits")[0], {
+                this.view.renderComponent(x, this.$(".react-activity-splits")[0], {
                     activityTypeKey: this.activityTypeKey,
                     activitySummary: this.activitySummary,
                     activitySplits: this.activitySplits,
@@ -51829,120 +51849,26 @@
                 })
             }
         });
-        t.a = T
+        t.a = E
     },
-    4945: function(e, t, i) {
+    4973: function(e, t, i) {
         "use strict";
-        var a = i(7)
-          , n = i.n(a)
-          , r = i(8)
-          , s = i.n(r)
-          , o = i(2499)
-          , l = i.n(o)
-          , c = s.a.View.extend({
-            template: n.a.template(l.a),
-            initialize: function(e) {
-                return this.accessory = e.accessory,
-                this
-            },
-            render: function() {
-                return this.$el.html(this.template({
-                    accessory: this.accessory
-                })),
-                this
-            }
-        })
-          , h = i(4)
-          , d = i(4295)
-          , p = i.n(d)
-          , u = s.a.View.extend({
-            template: n.a.template(p.a),
-            className: "text-center",
-            initialize: function(e) {
-                return this.status = e.status,
-                this.icon = e.icon,
-                this.customClasses = e.customClasses,
-                this
-            },
-            render: function() {
-                return this.$el.html(this.template({
-                    status: this.status,
-                    icon: this.icon
-                })),
-                this.customClasses && this.$el.addClass(this.customClasses),
-                this
-            }
-        })
-          , m = s.a.View.extend({
-            template: n.a.template(l.a),
-            initialize: function(e) {
-                if (!e.accessory)
-                    throw "accessory is required";
-                this.accessory = e.accessory;
-                var t = this.accessory.batteryStatusTypes[this.accessory.batteryInfo.batteryStatus];
-                return t || (t = this.accessory.batteryStatusTypes.UNKNOWN),
-                this.accessory.status = t.prefix ? h.a.localize(t.prefix) + ": " + h.a.localize(t.status) : h.a.localize(t.status),
-                this.accessory.icon = t.icon,
-                this
-            },
-            render: function() {
-                return this.$el.html(this.template({
-                    Localizer: h.a,
-                    accessory: {
-                        name: this.accessory.batteryInfo.name,
-                        imageUrl: this.accessory.batteryInfo.imageUrl
-                    }
-                })),
-                this.$el.append(new u({
-                    status: this.accessory.status,
-                    icon: this.accessory.icon
-                }).render().el),
-                this
-            }
-        })
-          , g = i(4296)
-          , f = i.n(g);
-        t.a = s.a.View.extend({
-            template: n.a.template(f.a),
-            initialize: function(e) {
-                return this.accessories = e.accessories,
-                this
-            },
-            render: function() {
-                if (this.$el.html(this.template({})),
-                this.accessories)
-                    for (var e, t = 0, i = this.accessories.length; t < i; t += 1)
-                        this.accessories[t] && (e = new (this.accessories[t].batteryInfo ? m : c)({
-                            accessory: this.accessories[t]
-                        }),
-                        this.$el.append(e.render().el));
-                else
-                    this.$el.empty();
-                return this
-            },
-            updateAccessories: function(e) {
-                this.accessories = e
-            }
-        })
-    },
-    4946: function(e, t, i) {
-        "use strict";
-        var a = i(79)
-          , n = i(80)
-          , r = i(97)
-          , s = i(95)
-          , o = i(96)
+        var a = i(80)
+          , n = i(81)
+          , r = i(99)
+          , s = i(97)
+          , o = i(98)
           , l = i(11)
           , c = i.n(l)
-          , h = i(1240)
+          , h = i(1244)
           , d = i(13)
-          , p = i(219)
-          , u = i(1270)
+          , p = i(223)
+          , u = i(1272)
           , m = i.n(u)
-          , g = i(275)
-          , f = i(2202)
+          , g = i(277)
+          , f = i(2220)
           , v = i.n(f)
-          , y = i(44)
+          , y = i(45)
           , A = {
             0: y.color_306,
             1: y.color_308,
@@ -52015,9 +51941,9 @@
             }]),
             t
         }(c.a.Component)
-          , b = i(161)
-          , C = i(215)
-          , w = i(62)
+          , b = i(164)
+          , C = i(219)
+          , w = i(30)
           , x = function(e) {
             function t() {
                 return Object(a.a)(this, t),
@@ -52311,19 +52237,113 @@
             }]),
             t
         }(c.a.Component);
-        t.a = Object(C.c)(["units", "activity"])(S)
+        t.a = Object(C.d)(["units", "activity"])(S)
     },
-    4953: function(e, t, i) {
+    4975: function(e, t, i) {
+        "use strict";
+        var a = i(7)
+          , n = i.n(a)
+          , r = i(8)
+          , s = i.n(r)
+          , o = i(2519)
+          , l = i.n(o)
+          , c = s.a.View.extend({
+            template: n.a.template(l.a),
+            initialize: function(e) {
+                return this.accessory = e.accessory,
+                this
+            },
+            render: function() {
+                return this.$el.html(this.template({
+                    accessory: this.accessory
+                })),
+                this
+            }
+        })
+          , h = i(4)
+          , d = i(4322)
+          , p = i.n(d)
+          , u = s.a.View.extend({
+            template: n.a.template(p.a),
+            className: "text-center",
+            initialize: function(e) {
+                return this.status = e.status,
+                this.icon = e.icon,
+                this.customClasses = e.customClasses,
+                this
+            },
+            render: function() {
+                return this.$el.html(this.template({
+                    status: this.status,
+                    icon: this.icon
+                })),
+                this.customClasses && this.$el.addClass(this.customClasses),
+                this
+            }
+        })
+          , m = s.a.View.extend({
+            template: n.a.template(l.a),
+            initialize: function(e) {
+                if (!e.accessory)
+                    throw "accessory is required";
+                this.accessory = e.accessory;
+                var t = this.accessory.batteryStatusTypes[this.accessory.batteryInfo.batteryStatus];
+                return t || (t = this.accessory.batteryStatusTypes.UNKNOWN),
+                this.accessory.status = t.prefix ? h.a.localize(t.prefix) + ": " + h.a.localize(t.status) : h.a.localize(t.status),
+                this.accessory.icon = t.icon,
+                this
+            },
+            render: function() {
+                return this.$el.html(this.template({
+                    Localizer: h.a,
+                    accessory: {
+                        name: this.accessory.batteryInfo.name,
+                        imageUrl: this.accessory.batteryInfo.imageUrl
+                    }
+                })),
+                this.$el.append(new u({
+                    status: this.accessory.status,
+                    icon: this.accessory.icon
+                }).render().el),
+                this
+            }
+        })
+          , g = i(4323)
+          , f = i.n(g);
+        t.a = s.a.View.extend({
+            template: n.a.template(f.a),
+            initialize: function(e) {
+                return this.accessories = e.accessories,
+                this
+            },
+            render: function() {
+                if (this.$el.html(this.template({})),
+                this.accessories)
+                    for (var e, t = 0, i = this.accessories.length; t < i; t += 1)
+                        this.accessories[t] && (e = new (this.accessories[t].batteryInfo ? m : c)({
+                            accessory: this.accessories[t]
+                        }),
+                        this.$el.append(e.render().el));
+                else
+                    this.$el.empty();
+                return this
+            },
+            updateAccessories: function(e) {
+                this.accessories = e
+            }
+        })
+    },
+    4980: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = i(4)
-          , l = i(2491)
-          , c = i(4192)
-          , h = i(4193)
-          , d = i(4198)
+          , l = i(2511)
+          , c = i(4219)
+          , h = i(4220)
+          , d = i(4225)
           , p = i.n(d)
           , u = {
             ADD_PHOTOS: "ADD_PHOTOS"
@@ -52351,8 +52371,8 @@
         });
         m.Events = u;
         var g = m
-          , f = i(4199)
-          , v = i(4202)
+          , f = i(4226)
+          , v = i(4229)
           , y = i.n(v)
           , A = {
             CANCEL_UPLOAD: "CANCEL_UPLOAD"
@@ -52465,12 +52485,12 @@
         });
         _.Events = A;
         var b = _
-          , C = i(36)
-          , w = i(2492)
-          , x = (i(199),
-        i(4203))
+          , C = i(37)
+          , w = i(2512)
+          , x = (i(203),
+        i(4230))
           , S = i.n(x)
-          , T = (i(4204),
+          , T = (i(4231),
         s.a.View.extend({
             template: n.a.template(S.a),
             initialize: function(e) {
@@ -52714,7 +52734,7 @@
         }));
         t.a = T
     },
-    4958: function(e, t, i) {
+    4983: function(e, t, i) {
         "use strict";
         var a = i(2)
           , n = i(14)
@@ -52724,17 +52744,17 @@
           , l = i.n(o)
           , c = i(4)
           , h = (i(13),
-        i(100))
-          , d = i(79)
-          , p = i(80)
-          , u = i(97)
-          , m = i(95)
-          , g = i(96)
+        i(101))
+          , d = i(80)
+          , p = i(81)
+          , u = i(99)
+          , m = i(97)
+          , g = i(98)
           , f = i(11)
           , v = i.n(f)
-          , y = i(161)
-          , A = i(275)
-          , _ = i(2201)
+          , y = i(164)
+          , A = i(277)
+          , _ = i(2219)
           , b = function(e) {
             var t = e.items;
             return Object.keys(t).map(function(e, i) {
@@ -52755,7 +52775,7 @@
                 full: !0
             }, t)
         }
-          , w = i(4274)
+          , w = i(4301)
           , x = i.n(w)
           , S = function(e) {
             function t() {
@@ -52805,16 +52825,16 @@
             }]),
             t
         }(v.a.Component)
-          , T = i(1594)
-          , E = i(4276)
+          , T = i(1599)
+          , E = i(4303)
           , L = i.n(E)
-          , P = {
+          , k = {
             class: "",
             displayLabel: "",
             fieldName: "caret-intervals",
             Personalizer: null
         }
-          , k = l.a.View.extend({
+          , P = l.a.View.extend({
             initialize: function(e) {
                 this.template = s.a.template(L.a),
                 this.colModel = e.colModel,
@@ -52849,7 +52869,7 @@
             getColumns: function() {
                 var e = []
                   , t = Object(n.a)(this.colModel);
-                return t.splice(0, 0, P),
+                return t.splice(0, 0, k),
                 t.forEach(function(t) {
                     if ("lap_indexes" !== t.displayLabel) {
                         var i = t.displayLabel ? c.a.localize(t.displayLabel) : "";
@@ -52917,30 +52937,29 @@
                 this.renderActivityIntervals()
             }
         });
-        t.a = k
+        t.a = P
     },
-    4964: function(e, t, i) {
+    4987: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
-          , o = (i(4),
-        i(13),
-        i(100))
-          , l = i(79)
-          , c = i(80)
-          , h = i(97)
-          , d = i(95)
-          , p = i(96)
+          , o = i(101)
+          , l = i(80)
+          , c = i(81)
+          , h = i(99)
+          , d = i(97)
+          , p = i(98)
           , u = i(11)
           , m = i.n(u)
-          , g = i(161)
-          , f = i(215)
-          , v = i(4305)
+          , g = i(164)
+          , f = i(219)
+          , v = i(4332)
           , y = i.n(v)
-          , A = i(1746)
-          , _ = (i(98),
+          , A = i(1751)
+          , _ = (i(13),
+        i(64),
         i(112))
           , b = function(e) {
             function t() {
@@ -52966,86 +52985,83 @@
             }, {
                 key: "getActivityStats",
                 value: function() {
-                    var e = this.props
-                      , t = e.activity
-                      , i = e.repCountingActivity
-                      , a = e.indoorClimbDifficulty;
-                    return function(e, t, i, a) {
-                        var n = e.activityTypeDTO.typeKey
-                          , r = []
-                          , s = new A.a(e,t,n,i,a);
-                        switch (n) {
+                    var e = this.props.topFiveMetrics;
+                    return function(e, t) {
+                        var i = t.activityTypeKey
+                          , a = []
+                          , n = new A.a(e,t);
+                        switch (i) {
                         case "apnea_diving":
-                            return e.maxDepth && r.push(s.getDeepestDive()),
-                            r.push(s.getSessionBottomTime()),
-                            r.push(s.getNumberOfApneaDives()),
-                            r.push(s.getDiveSurfaceTime()),
-                            e.diveSettings.waterType && r.push(s.getDiveWaterType()),
+                            return t.activity.maxDepth && a.push(n.getDeepestDive()),
+                            a.push(n.getSessionBottomTime()),
+                            a.push(n.getNumberOfApneaDives()),
+                            a.push(n.getDiveSurfaceTime()),
+                            t.activity.diveSettings && t.activity.diveSettings.waterType && a.push(n.getDiveWaterType()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "apnea_hunting":
-                            return r.push(s.getDeepestDive()),
-                            r.push(s.getSessionBottomTime()),
-                            r.push(s.getNumberOfApneaDives()),
-                            r.push(s.getDiveSurfaceTime()),
-                            e.diveSettings.waterType && r.push(s.getDiveWaterType()),
+                            return a.push(n.getDeepestDive()),
+                            a.push(n.getSessionBottomTime()),
+                            a.push(n.getNumberOfApneaDives()),
+                            a.push(n.getDiveSurfaceTime()),
+                            t.activity.diveSettings && t.activity.diveSettings.waterType && a.push(n.getDiveWaterType()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "atv":
-                            return r.push(s.getDistance()),
-                            r.push(s.getDuration()),
-                            r.push(s.getAverageSpeedOrPace()),
-                            r.push(s.getCalories()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getDuration()),
+                            a.push(n.getAverageSpeedOrPace()),
+                            a.push(n.getCalories()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "auto_racing":
-                            return r.push(s.getBestLapTime()),
-                            r.push(s.getMaxSpeed()),
-                            r.push(s.getNumberOfRaceLap()),
-                            r.push(s.getAverageSpeedOrPace()),
-                            r.push(s.getTotalTime()),
+                            return a.push(n.getBestLapTime()),
+                            a.push(n.getMaxSpeed()),
+                            a.push(n.getNumberOfRaceLap()),
+                            a.push(n.getAverageSpeedOrPace()),
+                            a.push(n.getTotalTime()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "backcountry_skiing_snowboarding_ws":
-                            return r.push(s.getDistance()),
-                            r.push(s.getElevationGain()),
-                            r.push(s.getElevationLoss()),
-                            r.push(s.getDuration()),
-                            r.push(s.getAverageHR()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getElevationGain()),
+                            a.push(n.getElevationLoss()),
+                            a.push(n.getDuration()),
+                            a.push(n.getAverageHR()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "bouldering":
-                            return r.push(s.getTotalClimbRoutes()),
-                            r.push(s.getMaxDifficulity()),
-                            r.push(s.getDuration()),
-                            r.push(s.getCalories()),
-                            r.push(s.getAverageHR()),
+                            return a.push(n.getTotalClimbRoutes()),
+                            a.push(n.getMaxDifficulity()),
+                            a.push(n.getDuration()),
+                            a.push(n.getCalories()),
+                            a.push(n.getAverageHR()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "indoor_climbing":
-                            return r.push(s.getTotalClimbRoutes()),
-                            r.push(s.getMaxDifficulity()),
-                            r.push(s.getDuration()),
-                            r.push(s.getClimbAscent()),
-                            r.push(s.getNumberOfSends()),
+                            return a.push(n.getTotalClimbRoutes()),
+                            a.push(n.getMaxDifficulity()),
+                            a.push(n.getDuration()),
+                            a.push(n.getClimbAscent()),
+                            a.push(n.getNumberOfSends()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "skate_skiing_ws":
                         case "cross_country_skiing_ws":
-                            return r.push(s.getDistance()),
-                            r.push(s.getDuration()),
-                            r.push(s.getAverageSpeedOrPace()),
-                            r.push(s.getAveragePower()),
-                            r.push(s.getAverageHR()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getDuration()),
+                            a.push(n.getAverageSpeedOrPace()),
+                            t.activity.averagePower && a.push(n.getAveragePower()),
+                            a.push(n.getAverageHR()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "ccr_diving":
                         case "diving":
@@ -53056,21 +53072,21 @@
                                 activityStatMetrics: []
                             };
                         case "floor_climbing":
-                            return r.push(s.getTime()),
-                            r.push(s.getCalories()),
-                            r.push(s.getFloorsClimbed()),
-                            r.push(s.getFloorsPerMin()),
+                            return a.push(n.getTime()),
+                            a.push(n.getCalories()),
+                            a.push(n.getFloorsClimbed()),
+                            a.push(n.getFloorsPerMin()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "hiking":
                         case "indoor_cardio":
-                            return r.push(s.getDistance()),
-                            r.push(s.getDuration()),
-                            r.push(s.getAverageSpeedOrPace()),
-                            r.push(s.getCalories()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getDuration()),
+                            a.push(n.getAverageSpeedOrPace()),
+                            a.push(n.getCalories()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "cycling":
                         case "bmx":
@@ -53083,136 +53099,192 @@
                         case "track_cycling":
                         case "virtual_ride":
                         case "cyclocross":
-                            return r.push(s.getDistance()),
-                            r.push(s.getDuration()),
-                            r.push(s.getAverageSpeedOrPace()),
-                            r.push(s.getElevationGain()),
-                            r.push(s.getAveragePower()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getDuration()),
+                            a.push(n.getAverageSpeedOrPace()),
+                            a.push(n.getElevationGain()),
+                            t.activity.averagePower && a.push(n.getAveragePower()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "lap_swimming":
-                            return r.push(s.getDistance()),
-                            r.push(s.getDuration()),
-                            r.push(s.getAverageSpeedOrPace()),
-                            e.calories && r.push(s.getCalories()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getDuration()),
+                            a.push(n.getAverageSpeedOrPace()),
+                            t.activity.calories && a.push(n.getCalories()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "multi_sport":
-                            return r.push(s.getDistance()),
-                            r.push(s.getDuration()),
-                            r.push(s.getAverageSpeedOrPace()),
-                            r.push(s.getElevationGain()),
-                            e.averageHR && r.push(s.getAverageHR()),
-                            e.calories && r.push(s.getCalories()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getDuration()),
+                            a.push(n.getAverageSpeedOrPace()),
+                            a.push(n.getElevationGain()),
+                            t.activity.averageHR && a.push(n.getAverageHR()),
+                            t.activity.calories && a.push(n.getCalories()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
+                            };
+                        case "offshore_grinding":
+                            return a.push(n.getMaxSpeed()),
+                            a.push(n.getDuration()),
+                            a.push(n.getAverageHR()),
+                            t.activity.averagePower && a.push(n.getAveragePower()),
+                            t.activity.averageBikeCadence && a.push(n.getAverageCadence()),
+                            {
+                                activityStatMetrics: a
                             };
                         case "open_water_swimming":
-                            return r.push(s.getDistance()),
-                            r.push(s.getDuration()),
-                            t.avgSpeedOrPace && r.push(s.getAverageSpeedOrPace()),
-                            e.calories && r.push(s.getCalories()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getDuration()),
+                            e.avgSpeedOrPace && a.push(n.getAverageSpeedOrPace()),
+                            t.activity.calories && a.push(n.getCalories()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "pilates":
-                            return r.push(s.getTime()),
-                            r.push(s.getCalories()),
-                            r.push(s.getAverageHR()),
+                            return a.push(n.getTime()),
+                            a.push(n.getCalories()),
+                            a.push(n.getAverageHR()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "resort_skiing_snowboarding_ws":
-                            return r.push(s.getDistance()),
-                            r.push(s.getDuration()),
-                            r.push(s.getElevationLoss()),
-                            r.push(s.getMaxSpeed()),
-                            r.push(s.getNumberOfRuns()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getDuration()),
+                            a.push(n.getElevationLoss()),
+                            a.push(n.getMaxSpeed()),
+                            a.push(n.getNumberOfRuns()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "strength_training":
-                            return r.push(s.getStrengthTotalTime()),
-                            r.push(s.getWorkoutTime()),
-                            r.push(s.getAverageHR()),
-                            r.push(s.getCalories()),
+                            return a.push(n.getStrengthTotalTime()),
+                            a.push(n.getWorkoutTime()),
+                            a.push(n.getAverageHR()),
+                            a.push(n.getCalories()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "yoga":
-                            return r.push(s.getTime()),
-                            r.push(s.getAvgRespirationRate()),
-                            r.push(s.getAverageHR()),
+                            return a.push(n.getTime()),
+                            a.push(n.getAvgRespirationRate()),
+                            a.push(n.getAverageHR()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         case "breathwork":
-                            return r.push(s.getTime()),
-                            r.push(s.getAvgRespirationRate()),
-                            r.push(s.getAverageHR()),
-                            r.push(s.getStressChange()),
+                            return a.push(n.getTime()),
+                            a.push(n.getAvgRespirationRate()),
+                            a.push(n.getAverageHR()),
+                            a.push(n.getStressChange()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             };
                         default:
-                            return r.push(s.getDistance()),
-                            r.push(s.getDuration()),
-                            r.push(s.getAverageSpeedOrPace()),
-                            r.push(s.getElevationGain()),
-                            e.calories && r.push(s.getCalories()),
+                            return a.push(n.getDistance()),
+                            a.push(n.getDuration()),
+                            a.push(n.getAverageSpeedOrPace()),
+                            a.push(n.getElevationGain()),
+                            t.activity.calories && a.push(n.getCalories()),
                             {
-                                activityStatMetrics: r
+                                activityStatMetrics: a
                             }
                         }
-                    }(t, _.a.getSpeedModelforActivity(t), i, a)
+                    }(_.a.getSpeedModelforActivity(e.activity), e)
                 }
             }]),
             t
         }(m.a.Component)
           , C = Object(f.d)(["units", "activity", "diving", "segment"])(b)
-          , w = i(4307)
+          , w = i(4334)
           , x = i.n(w)
-          , S = s.a.View.extend({
+          , S = i(1254)
+          , T = s.a.View.extend({
             initialize: function(e) {
                 this.template = n.a.template(x.a),
                 this.activity = e.activity,
                 this.repCountingActivity = e.repCountingActivity,
-                this.indoorClimbDifficulty = e.indoorClimbDifficulty
+                this.indoorClimbDifficulty = e.indoorClimbDifficulty,
+                this.topFiveMetrics = {
+                    activity: this.activity,
+                    repCountingActivity: this.repCountingActivity,
+                    activityTypeKey: this.activity.activityTypeDTO.typeKey,
+                    splitSummaries: this.activity.splitSummaries ? Object(S.e)(this.activity.splitSummaries) : void 0,
+                    indoorClimbDifficulty: this.indoorClimbDifficulty
+                }
             },
             render: function() {
                 this.$el.html(this.template()),
                 this.view = new o.a,
                 this.view.renderComponent(C, this.$(".react-activity-small-stats")[0], {
-                    activity: this.activity,
-                    repCountingActivity: this.repCountingActivity,
-                    indoorClimbDifficulty: this.indoorClimbDifficulty
+                    topFiveMetrics: this.topFiveMetrics
                 })
             }
         });
-        t.a = S
+        t.a = T
     },
-    4969: function(e, t, i) {
+    5008: function(e, t, i) {
         "use strict";
-        var a = i(8)
+        var a = i(7)
           , n = i.n(a)
-          , r = n.a.Model.extend({
-            initialize: function() {}
-        });
-        t.a = n.a.Collection.extend({
-            model: r,
-            url: function() {
-                return "/proxy/activity-service/activity/" + this.activityId + "/jumpDetails"
+          , r = i(4)
+          , s = i(8)
+          , o = i.n(s)
+          , l = i(13)
+          , c = i(4318)
+          , h = i.n(c)
+          , d = o.a.View.extend({
+            template: n.a.template(h.a),
+            tagName: "li",
+            className: "media",
+            initialize: function(e) {
+                return this.song = e.song,
+                this.trackNum = e.trackNum,
+                this
             },
-            initialize: function(e, t) {
-                if ("undefined" === typeof t.activityId)
-                    throw "ActivityJumps requires an activity ID";
-                this.activityId = t.activityId
+            render: function() {
+                return this.$el.html(this.template({
+                    title: this.song.get("title"),
+                    songInfoString: this.getSongInfoString([this.song.get("artist"), this.song.get("album"), l.a.personalizeDuration(this.song.get("lengthInSeconds"))]),
+                    trackNum: this.trackNum
+                })),
+                this
+            },
+            getSongInfoString: function(e) {
+                return e.filter(function(e) {
+                    return !!e
+                }).join(" \u2022 ")
+            }
+        })
+          , p = i(4319)
+          , u = i.n(p);
+        t.a = o.a.View.extend({
+            template: n.a.template(u.a),
+            className: "playlist-container bottom-m",
+            initialize: function(e) {
+                return this.songs = e.songs,
+                this
+            },
+            render: function() {
+                return this.$el.html(this.template({
+                    Localizer: r.a
+                })),
+                n.a.each(this.songs, function(e, t) {
+                    this.renderSong(e, t)
+                }, this),
+                this
+            },
+            renderSong: function(e, t) {
+                var i = new d({
+                    song: e,
+                    trackNum: t + 1
+                });
+                this.$(".media-list").append(i.render().el)
             }
         })
     },
-    4978: function(e, t, i) {
+    5019: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
@@ -53220,10 +53292,10 @@
           , s = i.n(r)
           , o = i(4)
           , l = i(13)
-          , c = i(1415)
+          , c = i(1420)
           , h = i(22)
           , d = i(17)
-          , p = i(4242)
+          , p = i(4269)
           , u = i.n(p)
           , m = s.a.View.extend({
             tagName: "tr",
@@ -53283,7 +53355,7 @@
                 e
             }
         })
-          , g = i(4243)
+          , g = i(4270)
           , f = i.n(g)
           , v = s.a.View.extend({
             template: n.a.template(f.a),
@@ -53405,77 +53477,36 @@
         });
         t.a = v
     },
-    4982: function(e, t, i) {
+    5024: function(e, t, i) {
         "use strict";
-        var a = i(7)
+        i(7);
+        var a = i(8)
           , n = i.n(a)
-          , r = i(4)
-          , s = i(8)
-          , o = i.n(s)
-          , l = i(13)
-          , c = i(4291)
-          , h = i.n(c)
-          , d = o.a.View.extend({
-            template: n.a.template(h.a),
-            tagName: "li",
-            className: "media",
-            initialize: function(e) {
-                return this.song = e.song,
-                this.trackNum = e.trackNum,
-                this
+          , r = n.a.Model.extend({});
+        t.a = n.a.Collection.extend({
+            model: r,
+            url: function() {
+                return "/proxy/activity-service/activity/" + this.activityId + "/playlist"
             },
-            render: function() {
-                return this.$el.html(this.template({
-                    title: this.song.get("title"),
-                    songInfoString: this.getSongInfoString([this.song.get("artist"), this.song.get("album"), l.a.personalizeDuration(this.song.get("lengthInSeconds"))]),
-                    trackNum: this.trackNum
-                })),
-                this
+            initialize: function(e, t) {
+                this.activityId = t.activityId
             },
-            getSongInfoString: function(e) {
-                return e.filter(function(e) {
-                    return !!e
-                }).join(" \u2022 ")
-            }
-        })
-          , p = i(4292)
-          , u = i.n(p);
-        t.a = o.a.View.extend({
-            template: n.a.template(u.a),
-            className: "playlist-container bottom-m",
-            initialize: function(e) {
-                return this.songs = e.songs,
-                this
-            },
-            render: function() {
-                return this.$el.html(this.template({
-                    Localizer: r.a
-                })),
-                n.a.each(this.songs, function(e, t) {
-                    this.renderSong(e, t)
-                }, this),
-                this
-            },
-            renderSong: function(e, t) {
-                var i = new d({
-                    song: e,
-                    trackNum: t + 1
-                });
-                this.$(".media-list").append(i.render().el)
+            parse: function(e) {
+                return e.playedSongs
             }
         })
     },
-    4986: function(e, t, i) {
+    5038: function(e, t, i) {
         "use strict";
         var a = i(7)
           , n = i.n(a)
           , r = i(8)
           , s = i.n(r)
           , o = i(4)
-          , l = i(29)
-          , c = i(216)
-          , h = i(4206)
-          , d = i(4211)
+          , l = i(28)
+          , c = i(220)
+          , h = i(4233)
+          , d = i(4238)
           , p = i.n(d)
           , u = s.a.View.extend({
             template: n.a.template(p.a),
@@ -53487,7 +53518,7 @@
                 this
             }
         })
-          , m = i(4212)
+          , m = i(4239)
           , g = i.n(m)
           , f = {
             ELEV_CORRECTION_CHANGED: "ELEV_CORRECTION_CHANGED"
@@ -53551,24 +53582,24 @@
         v.Events = f;
         t.a = v
     },
-    4987: function(e, t, i) {
+    5040: function(e, t, i) {
         "use strict";
-        i(7);
         var a = i(8)
           , n = i.n(a)
-          , r = n.a.Model.extend({});
+          , r = n.a.Model.extend({
+            initialize: function() {}
+        });
         t.a = n.a.Collection.extend({
             model: r,
             url: function() {
-                return "/proxy/activity-service/activity/" + this.activityId + "/playlist"
+                return "/proxy/activity-service/activity/" + this.activityId + "/jumpDetails"
             },
             initialize: function(e, t) {
+                if ("undefined" === typeof t.activityId)
+                    throw "ActivityJumps requires an activity ID";
                 this.activityId = t.activityId
-            },
-            parse: function(e) {
-                return e.playedSongs
             }
         })
     }
 }]);
-//# sourceMappingURL=221.24514864.chunk.js.map
+//# sourceMappingURL=221.14e96ba7.chunk.js.map
