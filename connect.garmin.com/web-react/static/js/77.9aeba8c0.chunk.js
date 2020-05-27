@@ -9516,7 +9516,7 @@
                     var l = this.determineSeriesName(t)
                       , c = this.determineSeriesValue(t)
                       , h = this.getPointColor(c)
-                      , d = 5;
+                      , d = (this.activeTab == "last_six_months" || this.activeTab == "last_year") ? 2 : 5; // TX GCOverrides v1.15 graph dot size
                     if ("widget" == this.chartFormat)
                         d = 3;
                     var u = {
@@ -16544,7 +16544,7 @@
             url: function() {
                 var t = "/proxy/fitnessstats-service/activity";
                 return t += this.urlParser.convertObjectToQueryString({
-                    aggregation: "daily",                       // TX GCOverrides v1.15 - detailed yearly and 6 month reports
+                    aggregation: "daily",                       // TX GCOverrides v1.15 - detailed yearly and 6 months reports
                     userFirstDay: this.firstDayOfWeek.dayName,
                     startDate: this.startDate,
                     endDate: this.endDate,
