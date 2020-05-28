@@ -3,8 +3,9 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.15;
-var gcoVerTm = '2020/05/25';
+var gcoVer = 1.16;
+var gcwVer = "4.31.0.17";
+var gcoVerTm = '2020/05/28';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;            // enter the number of hours (without minutes) of your sleep goal
@@ -23,7 +24,8 @@ var gcoInitDone = false;
 function gcoInit() {
     var gcControls = document.getElementsByClassName("header-controls");
     if (!gcoInitDone && gcControls && gcControls[0]) {
-        gcControls[0].insertAdjacentHTML("afterend", '<span style="color:#ccc; font-size:12pt;">GCOverrides <span style="font-size:7pt;">v'+gcoVer+'</span></span>');
+        var gcwOK = (window.URL_BUST_VALUE == gcwVer)? gcwVer : '<span style="color:#e88">' + window.URL_BUST_VALUE + ' x ' + gcwVer + '!</span>';
+        gcControls[0].insertAdjacentHTML("afterend", '<span style="color:#ccc; font-size:12pt;">GCOverrides <span style="font-size:9pt;">v'+gcoVer+'&nbsp; &nbsp;<span style="font-size:7pt;">GCW ' + gcwOK + '</span></span></span>');
         gcoInitDone = true;
     }
         

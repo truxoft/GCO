@@ -3,6 +3,10 @@ GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa
 =========================================================================================
 CHANGELOG
 
+2020/05/28 v1.16
+- recoding chunks for GCW 4.31.0.17
+- added a GCW version info and a red warning to the GCOverrides title in case of nonmatching chunks
+
 2020/05/25 v1.15
 - minor tweaking of the graph tooltips
 - added detailed 6 Months and Yearly graphs in Reports
