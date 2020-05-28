@@ -4,7 +4,7 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
 var gcoVer = 1.16;
-var gcwVer = "4.31.0.17";
+var gcwVer = "4.31.1.1";
 var gcoVerTm = '2020/05/28';
 
 // === GCOverrides SETTINGS ============================================
