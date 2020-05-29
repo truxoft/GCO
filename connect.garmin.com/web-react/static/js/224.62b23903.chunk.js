@@ -1,4 +1,4 @@
-// TX GCOverrides v1.16
+// TX GCOverrides v1.17
 (window.webpackJsonp = window.webpackJsonp || []).push([[224, 2, 6, 8, 9, 10, 12, 17, 18, 19, 24, 250, 403], {
     1233: function(t, e, i) {
         (e = t.exports = i(36)(!0)).push([t.i, "/* breakpoints */\n/* Using .9375 on the max-widths prevents overlap at the breakpoint pixel. 1em by default equals 16px, .9375 is 15/16ths */", "", {
@@ -7423,7 +7423,6 @@
                     unit_key: o.a.getHeartRateUnitKey(),
                     defaultChartType: "line",
 //                    defaultChartType: "column",                         // TX GCOverrides for HR zone overrides (not finished!)
-                    defaultChartType: "line",
                     primaryChartMin: n.a.partial(c.a.prototype.getLowerRange, 2, !0),
                     primaryChartMax: n.a.partial(c.a.prototype.getUpperRange, 0, !0),
                     expandedMin: n.a.partial(c.a.prototype.getLowerRange, 0),
@@ -16718,7 +16717,7 @@
             hasData: function() {
                 return this.activityDetails.hasData(this.seriesKey)
             },
-            buildData: function(t, e) {         // TX !!! bookmark - buidling the graph data array
+            buildData: function(t, e) {          // TX !!! bookmark - buidling the graph data array
                 for (var i, a, n = [], r = 0, o = this.data.length; r < o; r++)
                     this.data[r] && (i = this.data[r][0],
                     this.xAxisType === d.a.Distance && (i = s.a.convertDistance(i, this.activitySummary.getActivityTypeKey())),
@@ -53598,7 +53597,7 @@
                             return e === t.lapAveragePaceChartView && t.paceChartToggleToAnalytics(),
                             !0
                         }
-                    }))) : this.addSeries(u.a.Pace, k.a)
+                    }))) : this.paceChartView = this.addSeries(u.a.Pace, k.a)
                 },
                 setupCadenceChartView: function() {
                     this.speedType == h.a.SpeedTypes.Speed || this.speedType == h.a.SpeedTypes.NauticalSpeed ? this.addSeries(u.a.BikeCadence, P.a) : this.speedType == h.a.SpeedTypes.Pace ? this.addSeries(u.a.RunCadence, z.a) : this.speedType == h.a.SpeedTypes.SwimPace && this.addSeries(u.a.OpenWaterSwimStrokes, U.a)
@@ -67460,22 +67459,23 @@
           , n = i.n(a)
           , r = i(0)
           , o = i.n(r)
-          , s = i(2568)
-          , l = i.n(s)
-          , c = o.a.View.extend({
-            template: n.a.template(l.a),
+          , s = i(8)
+          , l = i(2568)
+          , c = i.n(l)
+          , h = o.a.View.extend({
+            template: n.a.template(c.a),
             initialize: function(t) {
                 return this.accessory = t.accessory,
                 this
             },
             render: function() {
                 return this.$el.html(this.template({
-                    accessory: this.accessory
+                    accessory: this.accessory,
+                    Localizer: s.a
                 })),
                 this
             }
         })
-          , h = i(8)
           , p = i(4494)
           , d = i.n(p)
           , u = o.a.View.extend({
@@ -67497,20 +67497,20 @@
             }
         })
           , m = o.a.View.extend({
-            template: n.a.template(l.a),
+            template: n.a.template(c.a),
             initialize: function(t) {
                 if (!t.accessory)
                     throw "accessory is required";
                 this.accessory = t.accessory;
                 var e = this.accessory.batteryStatusTypes[this.accessory.batteryInfo.batteryStatus];
                 return e || (e = this.accessory.batteryStatusTypes.UNKNOWN),
-                this.accessory.status = e.prefix ? h.a.localize(e.prefix) + ": " + h.a.localize(e.status) : h.a.localize(e.status),
+                this.accessory.status = e.prefix ? s.a.localize(e.prefix) + ": " + s.a.localize(e.status) : s.a.localize(e.status),
                 this.accessory.icon = e.icon,
                 this
             },
             render: function() {
                 return this.$el.html(this.template({
-                    Localizer: h.a,
+                    Localizer: s.a,
                     accessory: {
                         name: this.accessory.batteryInfo.name,
                         imageUrl: this.accessory.batteryInfo.imageUrl,
@@ -67536,7 +67536,7 @@
                 if (this.$el.html(this.template({})),
                 this.accessories)
                     for (var t, e = 0, i = this.accessories.length; e < i; e += 1)
-                        this.accessories[e] && (t = new (this.accessories[e].batteryInfo ? m : c)({
+                        this.accessories[e] && (t = new (this.accessories[e].batteryInfo ? m : h)({
                             accessory: this.accessories[e]
                         }),
                         this.$el.append(t.render().el));
@@ -71111,4 +71111,4 @@
         e.a = h
     }
 }]);
-//# sourceMappingURL=224.409062e0.chunk.js.map
+//# sourceMappingURL=224.62b23903.chunk.js.map

@@ -3,9 +3,9 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.16;
+var gcoVer = 1.17;
 var gcwVer = "4.31.1.1";
-var gcoVerTm = '2020/05/28';
+var gcoVerTm = '2020/05/29';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;            // enter the number of hours (without minutes) of your sleep goal

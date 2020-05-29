@@ -4,7 +4,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 
 *The overrides have no ability to communicate directly with the Garmin device. They can only influence the way the data from Garmin Connect is being presented to the local user of the given Chrome instance.*
 
-## Current Features (v1.15)
+## Current Features (v1.17)
 * **Activity Overlays bugfix** - adds missing overlays, their labels and titles, on zoomed graphs on the Activity pages
 * **Bugfix of Floors per Minute** - the value on the detailed page of a Floor Climbing activity needs to be devided by 60 to show the true pace
 * **Custom Sleep Goal** - the default fixed 8h sleep goal can be now adjusted in the [GCO Settings](#Settings)
