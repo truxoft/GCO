@@ -3,9 +3,9 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.18;
-var gcwVer = "4.31.2.1";
-var gcoVerTm = '2020/05/30';
+var gcoVer = 1.19;
+var gcwVer = "4.32.0.14";
+var gcoVerTm = '2020/06/23';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;            // enter the number of hours (without minutes) of your sleep goal
@@ -141,6 +141,23 @@ function gcoActivityOverlays() {
         }
     }
 } 
+
+
+// ---------------------------------------------------------------------
+// Setting the default Activity Event Type
+// ---------------------------------------------------------------------
+var defEventDone = false;
+function gcoDefActEventType() {
+    var gcFloorClimb = document.getElementById("react-activitySmallStats");
+    if (gcFloorClimb && gcFloorClimb.children[0] && gcFloorClimb.children[0].children[0] && gcFloorClimb.children[0].children[0].children[3]) {
+        var gcFloorsMin = gcFloorClimb.children[0].children[0].children[3].children[0].children[0];
+        var val = parseFloat(gcFloorsMin.innerText);
+        if (val > 0 && !defEventDone) {
+            floorFixDone = true;
+            gcFloorsMin.innerText = Math.round(val/0.6)/100; // rounding division by 60 to 2 decimals
+        }
+    }
+}
 
 
 // ---------------------------------------------------------------------
@@ -280,7 +297,7 @@ function gcoElementsKC2KJ(rootObj, elemType) {
 
 
 // ---------------------------------------------------------------------
-// Stringify dump for a circular object - for analysius / debugging only
+// Stringify dump for a circular object - for analysis / debugging only
 // ---------------------------------------------------------------------
 function gcoDump(tag, obj) {
 // TX !!! DEBUG    
