@@ -3,30 +3,38 @@ function consoleInfo(a){if(typeof console==="object"&&typeof console.info==="fun
 // === GCOverrides =====================================================
 // Copyright © 2020 by Ivo Truxa, all rights reserved - gco@apnea.cz
 // =====================================================================
-var gcoVer = 1.19;
-var gcwVer = "4.32.0.14";
-var gcoVerTm = '2020/06/23';
+var gcoVer = 1.20;
+var gcwVer = "4.37.1.0";
+var gcoVerTm = '2020/11/11';
 
 // === GCOverrides SETTINGS ============================================
 var gcoSleepH = 8;            // enter the number of hours (without minutes) of your sleep goal
 var gcoSleepM = 0;            // enter the remaining number of minutes of your sleep goal
-var gcoUseKJ = true;         // change false to true to enable the conversion of kcal to kJoules
-var gcoNoGolf = true;        // hide Golf from menu and gear
+var gcoUseKJ  = true;         // change false to true to enable the conversion of kcal to kJoules
+var gcoNoGolf = true;         // hide Golf from menu and gear
 // below: hide available badges containing this string (regex) in the description 
 var gcoHideBadges = " watch| montre|-Uhr| reloj| hodink";  
 // === end of GCO settings =============================================
 
+var gcoDTO = null;   
 var gcoInitDone = false;
+var gcoActivityPage = window.location.href.indexOf('/activity/');
+var gcoLastURI = window.location.href;
+
 
 // ---------------------------------------------------------------------
 // Identification of GCOverrides
 // ---------------------------------------------------------------------
 function gcoInit() {
     var gcControls = document.getElementsByClassName("header-controls");
-    if (!gcoInitDone && gcControls && gcControls[0]) {
-        var gcwOK = (window.URL_BUST_VALUE == gcwVer)? gcwVer : '<span style="color:#e88">' + window.URL_BUST_VALUE + ' x ' + gcwVer + '!</span>';
-        gcControls[0].insertAdjacentHTML("afterend", '<span style="color:#ccc; font-size:12pt;">GCOverrides <span style="font-size:9pt;">v'+gcoVer+'&nbsp; &nbsp;<span style="font-size:7pt;">GCW ' + gcwOK + '</span></span></span>');
+    if ((!gcoInitDone || gcoLastURI != window.location.href) && gcControls && gcControls[0]) {
+        if (!gcoInitDone) {
+            var gcwOK = (window.URL_BUST_VALUE == gcwVer)? gcwVer : '<span style="color:#e88">' + window.URL_BUST_VALUE + ' x ' + gcwVer + '!</span>';
+            gcControls[0].insertAdjacentHTML("afterend", '<span style="color:#ccc; font-size:12pt;">GCOverrides <span style="font-size:9pt;">v'+gcoVer+'&nbsp; &nbsp;<span style="font-size:7pt;">GCW ' + gcwOK + '</span></span></span>');
+        }
         gcoInitDone = true;
+        gcoDTO      = null;
+        gcoLastURI  = window.location.href;
     }
         
     // hiding Golf
@@ -42,20 +50,27 @@ function gcoInit() {
 // ---------------------------------------------------------------------
 // some GCO functions need to be re-applied periodically
 // ---------------------------------------------------------------------
-// Note: using setInterval() is a temporary quick & dirty hack; 
-//       properly it should be done by overriding events or classes.
-//       In some cases, a one-time call in document.onload would be sufficient 
+// Note: using setInterval() is a quick & dirty hack; 
+// some functions need to be re-applied even after the initial page load (i.e. after zooming, popups, etc.)
 setInterval(function(){
-    gcoInit();
-    gcoWeight6m();
-    gcoActivityOverlays();
-    gcoFloorsPerMin(); 
-    gcoSleepGoalFix();
-    gcoKCalToKJoule();
-    gcoHideWatchBadges();
-    gcoRemoveInputEvent(); 
-    gcoDiveDistance();
+    if (document.readyState==='complete' || document.readyState==='interactive') {
+        gcoInit();
+        gcoKCalToKJoule();
+        if (gcoActivityPage) {
+            gcoActivityOverlays();
+            gcoFloorsPerMin(); 
+            gcoDiveDistance();
+            gcoActivitySteps();
+        } else {
+            gcoWeight6m();
+            gcoSleepGoalFix();
+            gcoHideWatchBadges();
+            gcoRemoveInputEvent(); 
+        }
+    }
 },1000);
+
+
 
 
 // ---------------------------------------------------------------------
@@ -220,6 +235,40 @@ function gcoHideWatchBadges() {
 } 
 
 
+
+// ---------------------------------------------------------------------
+// Calculating Activity steps from stride an distance
+// ---------------------------------------------------------------------
+function gcoActivitySteps() {
+    var gcCaloriesDiv = document.getElementById("caloriesPlaceholder");
+    var gcoStepsDiv   = document.getElementById("gcoStepsPlaceholder");
+    var gcoAvgStride  = document.getElementsByClassName("avg-stride-length-help");
+    var gcoAvgCadence = document.getElementsByClassName("avg-cadence-help");
+
+    if (    !gcoStepsDiv 
+         &&  gcCaloriesDiv
+         && (gcoAvgStride && gcoAvgStride.length || gcoAvgCadence && gcoAvgCadence.length)
+         && (!gcoDTO || gcoDTO == "Undefined")
+       ) {
+        gcoDTO = gcoGlobalSearch(window,"summaryDTO") || "Undefined";  
+        if (gcoDTO != "Undefined") { 
+            var gcoSteps = 0;
+            if (gcoAvgStride && gcoAvgStride.length) {
+                gcoSteps = eval("Math.round(100*window"+gcoDTO+".distance / window"+gcoDTO+".strideLength)");  
+            } else if (gcoAvgCadence && gcoAvgCadence.length) {
+                gcoSteps = eval("Math.round(window"+gcoDTO+".averageRunCadence * window"+gcoDTO+".movingDuration/60)");  
+            }
+            gcoStepsDiv  = document.createElement("div"); 
+//          console.log(gcoSteps + " steps");  
+            if (gcoSteps && gcoSteps!= 'NaN' && gcCaloriesDiv && gcoStepsDiv) {
+                gcoStepsDiv.innerHTML = '<h3>Steps</h3><div class="data-block small"><div class="data-bit">'+gcoSteps+' steps</div><span class="data-label">&nbsp;</span></div>';
+                gcCaloriesDiv.parentNode.insertBefore(gcoStepsDiv, gcCaloriesDiv);
+            }
+        }
+    }
+}
+
+
 // ---------------------------------------------------------------------
 // Converting kCal values to kJoules (SI units)
 // ---------------------------------------------------------------------
@@ -311,6 +360,44 @@ function gcoDump(tag, obj) {
     }));
     cache = null; 
 // TX !!! DEBUG    
+}
+
+
+// ---------------------------------------------------------------------
+// global search for a value - for analysis / debugging only
+// https://stackoverflow.com/questions/12102425/
+// ---------------------------------------------------------------------
+function gcoGlobalSearch(startObject, value) {
+    var stack    = [[startObject,'']];
+    var searched = [];
+    var found    = null;
+    var isArray  = function(test) {
+        return Object.prototype.toString.call( test ) === '[object Array]';
+    }
+
+    while(stack.length) {
+        var fromStack = stack.pop();
+        var obj = fromStack[0];
+        var address = fromStack[1];
+
+        if (typeof obj == "function") {}
+        else if (address && address.indexOf(value)!=-1 || typeof obj == typeof value && obj==value) {
+            found = address;
+            break;
+        } else if (typeof obj == "object" && searched.indexOf(obj) == -1) {
+           if ( isArray(obj) ) 
+                {var prefix = '['; var postfix = ']';}
+           else {var prefix = '.'; var postfix = '';}
+
+           for( i in obj ) {
+               // skiping some properties triggering errors
+               if (i != "webkitStorageInfo" && i!="cssRules" && i!="rules")
+                   stack.push( [ obj[i], address + prefix + i + postfix ] );
+           }
+           searched.push(obj);
+        }
+    }
+    return found == '' ? false : found;
 }
 
 // TX end ==============================================================

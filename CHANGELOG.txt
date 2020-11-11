@@ -3,6 +3,10 @@ GCOverrides (Garmin Connect Overrides) - created on 2020/30/01 by Ivo Truxa
 =========================================================================================
 CHANGELOG
 
+2020/11/11 v1.20
+- recoding chunks for GCW 4.37.1.0
+- added Step counts at Walk and Run Activities
+
 2020/05/29 v1.19
 - recoding chunks for GCW 4.32.0.14
 

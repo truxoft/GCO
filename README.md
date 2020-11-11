@@ -18,6 +18,7 @@ The Chrome browser allows the user to override the look, the behaviour, and even
 * **Enabling manual date input in Reports** - in the native version, on the Progress Summary page of Reports, the date can only be picked from the Calendar. Now you can enter it manually.
 * **Diving Distance** - information about the direct distance between the entry and the exit locations of a dive
 * **Detailed 6 Months and Yearly Graphs** - instead of the default monthly averages, all data is shown on most 6 Months and 1 Year reports
+* **Step Counts for Activities** - onn the pages of activities of the type Run and Walk, the count of steps done during the activity is displayed
 * ... more to come
 
 ## Retired Features
