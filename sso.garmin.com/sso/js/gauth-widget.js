@@ -56,7 +56,7 @@ setInterval(function(){
     if (document.readyState==='complete' || document.readyState==='interactive') {
         gcoInit();
         gcoKCalToKJoule();
-        if (gcoActivityPage) {
+        if (gcoActivityPage > 0) {
             gcoActivityOverlays();
             gcoFloorsPerMin(); 
             gcoDiveDistance();
@@ -256,7 +256,7 @@ function gcoActivitySteps() {
             if (gcoAvgStride && gcoAvgStride.length) {
                 gcoSteps = eval("Math.round(100*window"+gcoDTO+".distance / window"+gcoDTO+".strideLength)");  
             } else if (gcoAvgCadence && gcoAvgCadence.length) {
-                gcoSteps = eval("Math.round(window"+gcoDTO+".averageRunCadence * window"+gcoDTO+".movingDuration/60)");  
+                gcoSteps = eval("Math.round(window"+gcoDTO+".averageRunCadence * window"+gcoDTO+".duration/60)");  
             }
             gcoStepsDiv  = document.createElement("div"); 
 //          console.log(gcoSteps + " steps");  
